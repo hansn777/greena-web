@@ -173,6 +173,34 @@ body {
   text-align: center;
 }
 
+/* Map Hero Section */
+.map-hero {
+  height: 500px;
+  color: #000000;
+  background-image: url('back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.map-hero .hero-content {
+  text-align: left;
+  padding: 0 120px;
+  width: 100%;
+  max-width: none;
+}
+
+.map-hero .hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-hero .hero-subtitle {
+  font-size: 1.2rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .hero-content {
   z-index: 2;
   max-width: 800px;
@@ -806,6 +834,18 @@ body {
     margin: 0;
     overflow: hidden;
     pointer-events: none;
+  }
+
+  .map-hero .hero-content {
+    padding: 0;
+  }
+
+  .map-hero .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .map-hero .hero-subtitle {
+    font-size: 1rem;
   }
 
   .nav-menu {

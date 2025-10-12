@@ -60,7 +60,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero map-hero">
       <div class="hero-content">
         <h1 class="hero-title">오시는 길</h1>
         <p class="hero-subtitle">
@@ -277,11 +277,12 @@
 
           // 마커 클릭 시 정보창 표시
           naver.maps.Event.addListener(marker, "click", function () {
-            if (infoWindow.getMap()) {
-              infoWindow.close();
-            } else {
-              infoWindow.open(map, marker);
-            }
+            // 네이버 지도 검색으로 이동
+            var address =
+              "서울특별시 서초구 반포대로27길 13(서초동, 서초꽃마을 주얼리)";
+            var searchUrl =
+              "https://map.naver.com/v5/search/" + encodeURIComponent(address);
+            window.open(searchUrl, "_blank");
           });
 
           console.log("네이버 지도가 성공적으로 로드되었습니다.");
