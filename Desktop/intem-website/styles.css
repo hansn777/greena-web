@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -33,11 +33,12 @@ body {
 }
 
 .nav-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   padding: 16px 120px;
   width: 100%;
+  max-width: 1920px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   min-height: 60px;
@@ -77,7 +78,6 @@ body {
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .nav-menu li {
@@ -114,8 +114,12 @@ body {
   text-decoration: none;
   color: #ffffff;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .nav-menu a:hover {
@@ -124,8 +128,6 @@ body {
 
 
 .quote-btn {
-  position: absolute;
-  right: 120px;
   background: #26C86E;
   color: white;
   border: none;
@@ -137,6 +139,7 @@ body {
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  justify-self: end;
 }
 
 .quote-btn:hover {
@@ -778,10 +781,21 @@ body {
   }
 
   .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 12px 24px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     min-height: 60px;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
   }
 
   .quote-btn {
@@ -794,14 +808,10 @@ body {
     pointer-events: none;
   }
 
-  .hamburger {
-    display: flex;
-  }
-
   .nav-menu {
     display: none;
     gap: 1rem;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .hero {
@@ -1253,5 +1263,157 @@ body {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+}
+
+/* Sitemap Overlay Styles */
+.sitemap-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sitemap-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.sitemap-container {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background: #ffffff;
+  position: relative;
+  overflow-y: auto;
+}
+
+.sitemap-header {
+  background: #ffffff;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sitemap-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.sitemap-close:hover {
+  color: #666;
+}
+
+.sitemap-content {
+  padding: 0;
+  background: #ffffff;
+}
+
+.sitemap-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sitemap-menu li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sitemap-menu li:last-child {
+  border-bottom: none;
+}
+
+.sitemap-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.sitemap-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sitemap-menu a::after {
+  content: "›";
+  font-size: 1.2rem;
+  color: #000000;
+  transition: transform 0.3s ease;
+}
+
+.sitemap-menu a:hover::after {
+  transform: translateX(5px);
+}
+
+/* Sitemap Responsive */
+@media (max-width: 860px) {
+  .sitemap-overlay {
+    display: none;
+  }
+ 
+  .sitemap-overlay.active {
+    display: flex;
+  }
+
+  .sitemap-container {
+    max-width: 100%;
+  }
+
+  .sitemap-header {
+    padding: 15px 20px;
+  }
+
+  .sitemap-close {
+    font-size: 1.8rem;
+  }
+
+  .sitemap-menu a {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sitemap-header {
+    padding: 12px 15px;
+  }
+
+  .sitemap-close {
+    font-size: 1.5rem;
+  }
+
+  .sitemap-menu a {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 861px) {
+  .sitemap-overlay {
+    display: none !important;
   }
 }

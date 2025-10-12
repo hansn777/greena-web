@@ -308,4 +308,46 @@ window.addEventListener("resize", handleQuoteButtonResize);
 // Initial call to set correct state
 handleQuoteButtonResize();
 
+// Sitemap Functionality
+function initSitemap() {
+  const hamburger = document.querySelector(".hamburger");
+  const sitemapOverlay = document.getElementById("sitemapOverlay");
+  const sitemapClose = document.getElementById("sitemapClose");
+
+  if (hamburger && sitemapOverlay && sitemapClose) {
+    // Open sitemap
+    hamburger.addEventListener("click", () => {
+      if (window.innerWidth <= 860) {
+        sitemapOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    });
+
+    // Close sitemap
+    sitemapClose.addEventListener("click", () => {
+      sitemapOverlay.classList.remove("active");
+      document.body.style.overflow = "auto";
+    });
+
+    // Close sitemap when clicking overlay
+    sitemapOverlay.addEventListener("click", (e) => {
+      if (e.target === sitemapOverlay) {
+        sitemapOverlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Close sitemap on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && sitemapOverlay.classList.contains("active")) {
+        sitemapOverlay.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+  }
+}
+
+// Initialize sitemap
+initSitemap();
+
 console.log("인템 웹사이트가 성공적으로 로드되었습니다!");
