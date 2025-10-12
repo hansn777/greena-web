@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오시는 길</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=k32jds060c"
+    ></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="GreenA.png" alt="인템 로고" />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="#about">회사소개</a></li>
+            <li><a href="#products">유지관리/렌탈</a></li>
+            <li><a href="#maintenance">블로그</a></li>
+            <li><a href="#store">오시는길</a></li>
+          </ul>
+          <div class="nav-right">
+            <button class="quote-btn">견적문의</button>
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">오시는 길</h1>
+        <p class="hero-subtitle">
+          인템을 방문해주시는 고객님들을 위한 안내입니다
+        </p>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+      <div class="container">
+        <div class="location-content">
+          <div class="location-info">
+            <h2>LOCATION</h2>
+            <h3>오시는 길</h3>
+
+            <div class="map-container">
+              <div
+                id="map"
+                style="width: 100%; height: 400px; border-radius: 12px"
+              >
+                <div class="map-placeholder">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <p>지도 로딩 중...</p>
+                  <p style="font-size: 0.9rem; color: #999">
+                    API 인증을 확인해주세요
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Details Section -->
+    <section class="company-details">
+      <div class="container">
+        <div class="details-content">
+          <div class="company-info-details">
+            <div class="company-logo-block">
+              <span class="logo-intem-text">INTEM</span>
+              <span class="logo-intem-dot"></span>
+              <div class="logo-intem-korean-oval">인템</div>
+            </div>
+            <div class="company-contact-block">
+              <h3 class="company-name-korean">인템</h3>
+              <p>
+                <span class="label">Address:</span>
+                <span class="value"
+                  >서울 노원구 월계로45길 28 월계테크노타운 8층 인템</span
+                >
+              </p>
+              <p>
+                <span class="label">Tel:</span>
+                <span class="value">1688-7995</span>
+              </p>
+              <p>
+                <span class="label">E-mail:</span>
+                <span class="value">ars99@naver.com</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="customer-center">
+            <h3>고객센터</h3>
+            <div class="phone-number">1688 - 7995</div>
+            <div class="business-hours">
+              <p><strong>평일 상담시간:</strong> 오전 9시 - 오후 6시</p>
+              <p><strong>점심시간:</strong> 오후 12시 - 1시</p>
+              <p><strong>휴무일:</strong> 토, 일, 공휴일</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#" class="footer-link">인템스토어</a>
+            <a href="#" class="footer-link">스마트스토어</a>
+            <a href="#" class="footer-link">블로그</a>
+          </div>
+          <div class="footer-copyright">
+            <p>Copyright © 인템 All rights reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // 인증 실패 처리 함수
+      window.navermap_authFailure = function () {
+        console.log("네이버 지도 API 인증에 실패했습니다.");
+        document.getElementById("map").innerHTML = `
+          <div class="map-placeholder">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>지도 API 인증 실패 (401 오류)</p>
+            <p style="font-size: 0.9rem; color: #999;">네이버 클라우드 플랫폼에서 다음 도메인을 등록해주세요:</p>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">
+              • http://127.0.0.1:5500<br>
+              • http://localhost:5500<br>
+              • http://127.0.0.1:56616<br>
+              • http://localhost:56616
+            </p>
+          </div>
+        `;
+      };
+
+      // 네이버 지도 API 초기화
+      function initMap() {
+        try {
+          // 서초꽃마을 주얼리 위치 (정확한 주소 좌표)
+          var mapOptions = {
+            center: new naver.maps.LatLng(37.4919, 127.0074), // 서초구 반포대로27길 13
+            zoom: 16,
+          };
+
+          var map = new naver.maps.Map("map", mapOptions);
+
+          // 마커 추가 (Location 아이콘 스타일)
+          var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.4919, 127.0074),
+            map: map,
+            title: "서초꽃마을 주얼리",
+            icon: {
+              content: [
+                '<div style="',
+                "position: relative;",
+                "width: 70px;",
+                "height: 70px;",
+                '">',
+                // Location 핀 모양
+                '<div style="',
+                "background: #26C86E;",
+                "width: 35px;",
+                "height: 35px;",
+                "border-radius: 50% 50% 50% 0;",
+                "transform: rotate(-45deg);",
+                "border: 4px solid white;",
+                "box-shadow: 0 3px 8px rgba(0,0,0,0.3);",
+                "position: absolute;",
+                "top: 0;",
+                "left: 50%;",
+                "margin-left: -17.5px;",
+                '">',
+                // 핀 안의 점
+                '<div style="',
+                "background: white;",
+                "width: 14px;",
+                "height: 14px;",
+                "border-radius: 50%;",
+                "position: absolute;",
+                "top: 50%;",
+                "left: 50%;",
+                "margin-top: -7px;",
+                "margin-left: -7px;",
+                "transform: rotate(45deg);",
+                '"></div>',
+                "</div>",
+                // 핀 아래 그림자
+                '<div style="',
+                "background: rgba(0,0,0,0.2);",
+                "width: 12px;",
+                "height: 12px;",
+                "border-radius: 50%;",
+                "position: absolute;",
+                "top: 30px;",
+                "left: 50%;",
+                "margin-left: -6px;",
+                "transform: rotate(45deg);",
+                '"></div>',
+                "</div>",
+              ].join(""),
+              size: new naver.maps.Size(70, 70),
+              anchor: new naver.maps.Point(35, 35),
+            },
+          });
+
+          // 마커 라벨 추가 (그린에이) - border 삭제, 간격 더 좁게
+          var markerLabel = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.4919, 127.0074),
+            map: map,
+            icon: {
+              content: [
+                '<div style="',
+                "background: rgba(255, 255, 255, 0.9);",
+                "color: #26C86E;",
+                "padding: 4px 8px;",
+                "border-radius: 12px;",
+                "font-size: 12px;",
+                "font-weight: bold;",
+                "box-shadow: 0 1px 3px rgba(0,0,0,0.2);",
+                "white-space: nowrap;",
+                "margin-top: 6px;",
+                '">',
+                "그린에이",
+                "</div>",
+              ].join(""),
+              size: new naver.maps.Size(60, 20),
+              anchor: new naver.maps.Point(30, -2),
+            },
+          });
+
+          // 정보창 추가
+          var infoWindow = new naver.maps.InfoWindow({
+            content:
+              '<div style="padding: 10px;"><strong>서초꽃마을 주얼리</strong><br>서울 서초구 서초동</div>',
+          });
+
+          // 마커 클릭 시 정보창 표시
+          naver.maps.Event.addListener(marker, "click", function () {
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, marker);
+            }
+          });
+
+          console.log("네이버 지도가 성공적으로 로드되었습니다.");
+        } catch (error) {
+          console.error("지도 초기화 중 오류가 발생했습니다:", error);
+          document.getElementById("map").innerHTML = `
+            <div class="map-placeholder">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>지도 로딩 오류</p>
+              <p style="font-size: 0.9rem; color: #999;">지도를 불러오는 중 오류가 발생했습니다</p>
+            </div>
+          `;
+        }
+      }
+
+      // 페이지 로드 시 지도 초기화
+      window.addEventListener("load", initMap);
+    </script>
+  </body>
+</html>
