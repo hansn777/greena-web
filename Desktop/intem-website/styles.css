@@ -289,8 +289,8 @@ body.scrolled .navbar_hoveredMenuList a:hover {
 }
 
 body.scrolled .mega-menu-header {
-  color: #4b5563 !important;
-  border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+  color: #6b7280 !important;
+  border-bottom: 1px solid rgba(107, 114, 128, 0.3) !important;
 }
 
 body.scrolled .nav-menu a {
