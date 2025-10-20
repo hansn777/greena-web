@@ -141,7 +141,8 @@ window.addEventListener("scroll", () => {
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    navContainer.style.backdropFilter =
+      "blur(20px) saturate(100%) brightness(1.0)";
     header.style.boxShadow = "none";
 
     // Change nav menu links to white color
@@ -163,7 +164,8 @@ window.addEventListener("scroll", () => {
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    navContainer.style.backdropFilter =
+      "blur(20px) saturate(100%) brightness(1.0)";
     header.style.boxShadow = "none";
 
     // Change nav menu links to white color
@@ -383,7 +385,7 @@ handleQuoteButtonResize();
 
 // 스크롤 시 메가 메뉴 텍스트 색상 변경
 window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY > 80;
+  const scrolled = window.scrollY > 100;
   document.body.classList.toggle("scrolled", scrolled);
 });
 
