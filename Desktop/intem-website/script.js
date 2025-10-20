@@ -120,6 +120,7 @@ window.addEventListener("scroll", () => {
     header.style.background = "#ffffff";
     header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
     navContainer.style.background = "rgba(255, 255, 255, 0.2)";
+    navContainer.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
 
     // Change nav menu links to dark color
