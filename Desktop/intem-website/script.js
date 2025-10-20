@@ -10,6 +10,7 @@ if (hamburger && mobileNavOverlay && mobileNavClose) {
       mobileNavOverlay.classList.add("active");
       document.body.style.overflow = "hidden";
       hamburger.classList.add("active");
+      document.body.classList.add("mobile-nav-active");
     }
   });
 
@@ -18,6 +19,7 @@ if (hamburger && mobileNavOverlay && mobileNavClose) {
     mobileNavOverlay.classList.remove("active");
     document.body.style.overflow = "auto";
     hamburger.classList.remove("active");
+    document.body.classList.remove("mobile-nav-active");
   });
 
   // Close mobile navigation when clicking overlay
@@ -26,6 +28,7 @@ if (hamburger && mobileNavOverlay && mobileNavClose) {
       mobileNavOverlay.classList.remove("active");
       document.body.style.overflow = "auto";
       hamburger.classList.remove("active");
+      document.body.classList.remove("mobile-nav-active");
     }
   });
 
@@ -35,6 +38,7 @@ if (hamburger && mobileNavOverlay && mobileNavClose) {
       mobileNavOverlay.classList.remove("active");
       document.body.style.overflow = "auto";
       hamburger.classList.remove("active");
+      document.body.classList.remove("mobile-nav-active");
     }
   });
 }

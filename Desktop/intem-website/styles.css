@@ -181,6 +181,19 @@ body {
   transform: translateY(0) !important;
 }
 
+/* 햄버거 메뉴가 활성화된 상태에서는 메가 메뉴 호버 비활성화 */
+.mobile-nav-active .navbar_hoveredMenuBg {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+}
+
+.mobile-nav-active .nav-container:hover .navbar_hoveredMenuBg {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) !important;
+}
+
 .navbar_hoveredMenuContainer {
   display: flex !important;
   justify-content: center !important;
