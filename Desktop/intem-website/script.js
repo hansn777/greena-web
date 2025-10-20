@@ -360,6 +360,65 @@ window.addEventListener("resize", handleQuoteButtonResize);
 // Initial call to set correct state
 handleQuoteButtonResize();
 
+// 페이지 로드 시 초기 nav 상태 설정
+function initializeNavState() {
+  const header = document.querySelector(".header");
+  const navContainer = document.querySelector(".nav-container");
+  const navMenuLinks = document.querySelectorAll(".nav-menu a");
+  const hamburgerSpans = document.querySelectorAll(".hamburger span");
+  const logoImages = document.querySelectorAll(".logo-img");
+  const asset9Image = logoImages.length > 1 ? logoImages[1] : null;
+
+  if (window.scrollY > 100) {
+    // 100px 이상: nav와 메가메뉴 모두 흰색 배경
+    header.style.background = "#ffffff";
+    header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
+    navContainer.style.background = "rgba(255, 255, 255, 0.2)";
+    navContainer.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
+    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+
+    // Change nav menu links to dark color
+    navMenuLinks.forEach((link) => {
+      link.style.color = "#333";
+    });
+
+    // Change hamburger to dark color
+    hamburgerSpans.forEach((span) => {
+      span.style.background = "#333";
+    });
+
+    // Change asset9.png to black
+    if (asset9Image) {
+      asset9Image.style.filter = "brightness(0) saturate(100%)";
+    }
+  } else {
+    // 0px~100px: nav와 메가메뉴 모두 글래스모피즘
+    header.style.background = "transparent";
+    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
+    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    header.style.boxShadow = "none";
+
+    // Change nav menu links to white color
+    navMenuLinks.forEach((link) => {
+      link.style.color = "#ffffff";
+    });
+
+    // Change hamburger to white color
+    hamburgerSpans.forEach((span) => {
+      span.style.background = "#ffffff";
+    });
+
+    // Reset asset9.png to original color
+    if (asset9Image) {
+      asset9Image.style.filter = "none";
+    }
+  }
+}
+
+// 페이지 로드 시 초기 상태 설정
+initializeNavState();
+
 // (삭제) 사이트맵 관련 코드 제거됨
 
 // 스크롤 시 메가 메뉴 텍스트 색상 변경
