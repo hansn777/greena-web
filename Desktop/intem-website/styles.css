@@ -26,7 +26,7 @@ body {
   width: 100%;
   max-width: 1920px;
   background: transparent;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px) saturate(180%) brightness(1.2);
   z-index: 1000;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 0 auto;
