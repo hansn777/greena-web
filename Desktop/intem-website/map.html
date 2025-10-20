@@ -13,7 +13,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"
+    ></script>
   </head>
   <body>
     <!-- Header -->
@@ -38,6 +41,33 @@
                       <a href="company.html"><li>회사소개</li></a>
                       <a href="company.html#map-section"><li>오시는길</li></a>
                       <a href="company.html#certificate-section"><li>인증서</li></a>
+                    </ul>
+                  </li>
+                  <li class="navbar_hoveredListContainer">
+                    <ul class="navbar_hoveredMenuList">
+                      <a href="index.html#products"><li>산업용공청기</li></a>
+                      <a href="index.html#products"><li>공기청정기</li></a>
+                      <a href="index.html#products"><li>탈취기</li></a>
+                      <a href="index.html#products"><li>방향제</li></a>
+                    </ul>
+                  </li>
+                  <li class="navbar_hoveredListContainer">
+                    <ul class="navbar_hoveredMenuList">
+                      <a href="index.html#business"><li>납품실적</li></a>
+                      <a href="index.html#business"><li>거래처</li></a>
+                    </ul>
+                  </li>
+                  <li class="navbar_hoveredListContainer">
+                    <ul class="navbar_hoveredMenuList">
+                      <a href="index.html#service"><li>유지관리</li></a>
+                      <a href="index.html#service"><li>렌탈</li></a>
+                    </ul>
+                  </li>
+                  <li class="navbar_hoveredListContainer">
+                    <ul class="navbar_hoveredMenuList">
+                      <a href="https://intem.biz/" target="_blank"><li>공식스토어</li></a>
+                      <a href="https://smartstore.naver.com/intem" target="_blank"><li>스마트스토어</li></a>
+                      <a href="https://blog.naver.com/ars99" target="_blank"><li>블로그</li></a>
                     </ul>
                   </li>
                 </ul>
@@ -118,11 +148,11 @@
         <div class="location-content">
           <h2>오시는 길</h2>
           <p>인템을 방문해주시는 고객님들을 위한 안내입니다</p>
-          
+
           <div class="map-container">
-            <div id="map" style="width: 100%; height: 400px;"></div>
+            <div id="map" style="width: 100%; height: 400px"></div>
           </div>
-          
+
           <div class="location-info">
             <h3>인템 본사</h3>
             <div class="company-details">
@@ -131,7 +161,10 @@
                   <h4>INTEM</h4>
                 </div>
                 <div class="company-contact-block">
-                  <p><strong>주소:</strong> 서울 노원구 월계로45길 28 월계테크노타운 8층 인템</p>
+                  <p>
+                    <strong>주소:</strong> 서울 노원구 월계로45길 28
+                    월계테크노타운 8층 인템
+                  </p>
                   <p><strong>전화:</strong> 1688-7995</p>
                   <p><strong>팩스:</strong> 02-6499-7995</p>
                   <p><strong>대표자:</strong> 이재룡</p>
@@ -182,22 +215,23 @@
     <script>
       // 네이버 지도 초기화
       function initMap() {
-        const map = new naver.maps.Map('map', {
+        const map = new naver.maps.Map("map", {
           center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
-          zoom: 15
+          zoom: 15,
         });
 
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(37.6213, 127.0594),
           map: map,
-          title: '인템 본사'
+          title: "인템 본사",
         });
 
         const infoWindow = new naver.maps.InfoWindow({
-          content: '<div style="padding: 10px;"><strong>인템 본사</strong><br>서울 노원구 월계로45길 28<br>월계테크노타운 8층</div>'
+          content:
+            '<div style="padding: 10px;"><strong>인템 본사</strong><br>서울 노원구 월계로45길 28<br>월계테크노타운 8층</div>',
         });
 
-        naver.maps.Event.addListener(marker, 'click', function() {
+        naver.maps.Event.addListener(marker, "click", function () {
           if (infoWindow.getMap()) {
             infoWindow.close();
           } else {
@@ -206,19 +240,21 @@
         });
 
         // 마커 클릭 시 네이버 지도 검색으로 이동
-        naver.maps.Event.addListener(marker, 'click', function() {
-          const address = '서울 노원구 월계로45길 28 월계테크노타운 8층 인템';
-          const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(address)}`;
-          window.open(searchUrl, '_blank');
+        naver.maps.Event.addListener(marker, "click", function () {
+          const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 인템";
+          const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
+            address
+          )}`;
+          window.open(searchUrl, "_blank");
         });
       }
 
       // 페이지 로드 시 지도 초기화
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof naver !== 'undefined') {
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof naver !== "undefined") {
           initMap();
         } else {
-          console.log('네이버 지도 API가 로드되지 않았습니다.');
+          console.log("네이버 지도 API가 로드되지 않았습니다.");
         }
       });
     </script>
