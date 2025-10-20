@@ -143,7 +143,7 @@ body {
 .nav-menu a {
   text-decoration: none;
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 180;
   font-size: 14px;
   transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -219,6 +219,18 @@ body {
   padding: 0 1.5rem !important;
   list-style: none !important;
   margin: 0 !important;
+}
+
+.mega-menu-header {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  margin-bottom: 1rem !important;
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  pointer-events: none !important;
+  user-select: none !important;
 }
 
 .navbar_hoveredMenuList {
