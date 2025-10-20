@@ -157,8 +157,21 @@ body {
   position: relative;
 }
 
-/* 인템 공식 사이트 스타일 - navbar_hoveredMenuBg */
+/* 인템 공식 사이트 navbar_hovered 스타일 */
 .navbar_hoveredMenuBg {
+  --font-pretendard: "pretendard","pretendard Fallback";
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --swiper-theme-color: #007aff;
+  --swiper-navigation-size: 44px;
+  font-size: 1rem !important;
+  color: #111 !important;
+  font-family: pretendard,pretendard Fallback !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  word-break: keep-all !important;
+  z-index: 700 !important;
   position: absolute !important;
   width: 100% !important;
   top: 90px !important;
@@ -166,23 +179,19 @@ body {
   right: 0 !important;
   display: flex !important;
   justify-content: center !important;
-  transition: 0.8s !important;
-  border-bottom: 1px solid rgba(71, 75, 80, 0.774) !important;
+  transition: .8s !important;
+  border-bottom: 1px solid rgba(71,75,80,.774) !important;
   backdrop-filter: blur(20px) !important;
-  background: rgba(3, 13, 29, 0.8) !important;
+  background: rgba(3,13,29,.8) !important;
   height: 300px !important;
   opacity: 0 !important;
   visibility: hidden !important;
-  z-index: 700 !important;
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
 .dropdown:hover .navbar_hoveredMenuBg,
 .navbar_hoveredMenuBg:hover {
   opacity: 1 !important;
   visibility: visible !important;
-  display: flex !important;
 }
 
 .navbar_hoveredMenuContainer {
@@ -219,26 +228,26 @@ body {
 
 .navbar_hoveredMenuList li a {
   display: block !important;
-  padding: 20px 40px !important;
-  color: #ffffff !important;
+  padding: 12px 24px !important;
+  color: #ededed !important;
   text-decoration: none !important;
-  font-size: 20px !important;
-  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
   transition: all 0.3s ease !important;
   position: relative !important;
-  border-radius: 12px !important;
-  background: rgba(83, 193, 120, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 2px solid rgba(83, 193, 120, 0.3) !important;
-  min-width: 200px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin: 4px 0 !important;
   text-align: center !important;
+  min-width: 150px !important;
 }
 
 .navbar_hoveredMenuList li a:hover {
-  background: rgba(83, 193, 120, 0.3) !important;
+  background: rgba(83, 193, 120, 0.2) !important;
   color: #53C178 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 25px rgba(83, 193, 120, 0.3) !important;
+  border-color: rgba(83, 193, 120, 0.3) !important;
+  transform: translateY(-1px) !important;
 }
 
 .dropdown-menu-list li a::before {
