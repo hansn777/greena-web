@@ -14,7 +14,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <!-- 네이버 지도 API 대신 Google Maps API 사용 -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+    ></script>
   </head>
   <body>
     <!-- Header -->
@@ -247,7 +251,7 @@
       // Google Maps 초기화
       function initMap() {
         const location = { lat: 37.6213, lng: 127.0594 }; // 월계테크노타운 근처 좌표
-        
+
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 15,
           center: location,
@@ -256,9 +260,9 @@
             {
               featureType: "poi",
               elementType: "labels",
-              stylers: [{ visibility: "off" }]
-            }
-          ]
+              stylers: [{ visibility: "off" }],
+            },
+          ],
         });
 
         const marker = new google.maps.Marker({
@@ -271,8 +275,8 @@
             fillColor: "#53C178",
             fillOpacity: 1,
             strokeColor: "#ffffff",
-            strokeWeight: 3
-          }
+            strokeWeight: 3,
+          },
         });
 
         const infoWindow = new google.maps.InfoWindow({
@@ -300,7 +304,7 @@
                 월계테크노타운 8층
               </div>
             </div>
-          `
+          `,
         });
 
         marker.addListener("click", function () {
