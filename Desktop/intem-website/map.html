@@ -280,8 +280,8 @@
               </div>
             `,
             size: new naver.maps.Size(40, 40),
-            anchor: new naver.maps.Point(20, 20)
-          }
+            anchor: new naver.maps.Point(20, 20),
+          },
         });
 
         const infoWindow = new naver.maps.InfoWindow({
@@ -333,9 +333,61 @@
       // 페이지 로드 시 지도 초기화
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof naver !== "undefined") {
-          initMap();
+          try {
+            initMap();
+          } catch (error) {
+            console.error("지도 초기화 중 오류 발생:", error);
+            // 지도 대신 안내 메시지 표시
+            const mapContainer = document.getElementById("map");
+            if (mapContainer) {
+              mapContainer.innerHTML = `
+                <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 400px;
+                  background: #f3f4f6;
+                  border: 2px dashed #d1d5db;
+                  border-radius: 8px;
+                  color: #6b7280;
+                  font-size: 16px;
+                  text-align: center;
+                  flex-direction: column;
+                  gap: 8px;
+                ">
+                  <div>🗺️</div>
+                  <div>지도를 불러올 수 없습니다</div>
+                  <div style="font-size: 14px;">API 키를 확인해주세요</div>
+                </div>
+              `;
+            }
+          }
         } else {
           console.log("네이버 지도 API가 로드되지 않았습니다.");
+          // API 로드 실패 시 안내 메시지 표시
+          const mapContainer = document.getElementById("map");
+          if (mapContainer) {
+            mapContainer.innerHTML = `
+              <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 400px;
+                background: #f3f4f6;
+                border: 2px dashed #d1d5db;
+                border-radius: 8px;
+                color: #6b7280;
+                font-size: 16px;
+                text-align: center;
+                flex-direction: column;
+                gap: 8px;
+              ">
+                <div>🗺️</div>
+                <div>지도를 불러올 수 없습니다</div>
+                <div style="font-size: 14px;">네이버 지도 API 키를 확인해주세요</div>
+              </div>
+            `;
+          }
         }
       });
     </script>
