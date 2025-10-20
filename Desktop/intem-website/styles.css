@@ -223,7 +223,7 @@ body {
 
 .mega-menu-header {
   font-size: 0.75rem !important;
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   color: #ffffff !important;
   text-align: center !important;
   margin-bottom: 1rem !important;
@@ -234,7 +234,7 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-bottom-color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .navbar_hoveredMenuList {
@@ -290,6 +290,7 @@ body.scrolled .navbar_hoveredMenuList a:hover {
 
 body.scrolled .mega-menu-header {
   color: #333333 !important;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2) !important;
 }
 
 .navbar_hoveredMenuList li {
