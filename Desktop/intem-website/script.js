@@ -137,9 +137,9 @@ window.addEventListener("scroll", () => {
     }
   } else {
     header.style.background = "transparent";
-    header.style.backdropFilter = "blur(20px) saturate(180%) brightness(1.1)";
+    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter = "blur(20px) saturate(180%) brightness(1.1)";
+    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     header.style.boxShadow = "none";
 
     // Change nav menu links to white color
