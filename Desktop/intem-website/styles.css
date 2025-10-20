@@ -1003,14 +1003,12 @@ body {
   font-size: 16px;
   font-weight: 500;
   border-bottom: 1px solid #f8f9fa;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
 }
 
 .mobile-nav-link:hover {
   background: #f8f9fa;
   color: #53C178;
-  padding-left: 32px;
-  transform: translateX(2px);
 }
 
 /* 모바일 하위 메뉴 스타일 */
