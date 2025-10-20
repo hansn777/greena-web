@@ -13,76 +13,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <!-- 네이버 지도 API 대신 임시 지도 구현 -->
-    <script>
-      // 임시 지도 구현
-      function initMap() {
-        const mapContainer = document.getElementById("map");
-        if (!mapContainer) return;
-        
-        mapContainer.innerHTML = `
-          <div style="
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-          ">
-            <div style="
-              background: rgba(255, 255, 255, 0.2);
-              padding: 20px;
-              border-radius: 8px;
-              backdrop-filter: blur(10px);
-            ">
-              <div style="font-size: 24px; margin-bottom: 10px;">🗺️</div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">인템 본사</div>
-              <div style="font-size: 14px; opacity: 0.9;">서울 노원구 월계로45길 28</div>
-              <div style="font-size: 14px; opacity: 0.9;">월계테크노타운 8층</div>
-              <div style="margin-top: 15px;">
-                <a href="https://map.naver.com/v5/search/서울 노원구 월계로45길 28 월계테크노타운 8층 인템" 
-                   target="_blank" 
-                   style="
-                     display: inline-block;
-                     background: rgba(255, 255, 255, 0.3);
-                     color: white;
-                     padding: 8px 16px;
-                     border-radius: 20px;
-                     text-decoration: none;
-                     font-size: 14px;
-                     transition: all 0.3s ease;
-                   "
-                   onmouseover="this.style.background='rgba(255,255,255,0.5)'"
-                   onmouseout="this.style.background='rgba(255,255,255,0.3)'"
-                >
-                  네이버 지도에서 보기
-                </a>
-              </div>
-            </div>
-            <div style="
-              position: absolute;
-              top: 10px;
-              right: 10px;
-              background: rgba(0, 0, 0, 0.3);
-              color: white;
-              padding: 4px 8px;
-              border-radius: 4px;
-              font-size: 12px;
-            ">
-              지도 로딩 중...
-            </div>
-          </div>
-        `;
-        
-        console.log("임시 지도 표시 완료");
-      }
-    </script>
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nuWS9nAm01rYz1Msmp6PlInu7rv5C73PyndxKOYr"
+    ></script>
   </head>
   <body>
     <!-- Header -->
@@ -454,13 +388,112 @@
         });
       });
 
-      // 임시 지도 초기화 함수 (네이버 지도 API 대신)
+      // 네이버 지도 초기화 함수
       function initMap() {
-        const mapContainer = document.getElementById("map");
-        if (!mapContainer) {
-          console.error("지도 컨테이너를 찾을 수 없습니다.");
+        // 네이버 지도 API가 로드되었는지 확인
+        if (typeof naver === 'undefined') {
+          console.error("네이버 지도 API가 로드되지 않았습니다.");
+          // API가 로드되지 않았을 때 임시 지도 표시
+          showFallbackMap();
           return;
         }
+        
+        try {
+          const map = new naver.maps.Map("map", {
+            center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
+            zoom: 15,
+          });
+          
+          // 지도 인스턴스를 전역 변수에 저장
+          window.currentMap = map;
+
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(37.6213, 127.0594),
+            map: map,
+            title: "인템 본사",
+            icon: {
+              content: `
+                <div style="
+                  width: 40px;
+                  height: 40px;
+                  background: #53C178;
+                  border: 3px solid #ffffff;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                  transform: translate(-50%, -50%);
+                ">
+                  <div style="
+                    width: 12px;
+                    height: 12px;
+                    background: #ffffff;
+                    border-radius: 50%;
+                  "></div>
+                </div>
+              `,
+              size: new naver.maps.Size(40, 40),
+              anchor: new naver.maps.Point(20, 20),
+            },
+          });
+
+          const infoWindow = new naver.maps.InfoWindow({
+            content: `
+              <div style="
+                padding: 15px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                border: 1px solid #e5e7eb;
+                min-width: 200px;
+              ">
+                <div style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #1f2937;
+                  margin-bottom: 8px;
+                ">인템 본사</div>
+                <div style="
+                  font-size: 14px;
+                  color: #6b7280;
+                  line-height: 1.5;
+                ">
+                  서울 노원구 월계로45길 28<br>
+                  월계테크노타운 8층
+                </div>
+              </div>
+            `,
+          });
+
+          naver.maps.Event.addListener(marker, "click", function () {
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, marker);
+            }
+          });
+
+          // 마커 클릭 시 네이버 지도 검색으로 이동
+          naver.maps.Event.addListener(marker, "click", function () {
+            const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 인템";
+            const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
+              address
+            )}`;
+            window.open(searchUrl, "_blank");
+          });
+          
+          console.log("네이버 지도 초기화 완료");
+        } catch (error) {
+          console.error("네이버 지도 초기화 중 오류:", error);
+          showFallbackMap();
+        }
+      }
+      
+      // 네이버 지도 API 실패 시 대체 지도 표시
+      function showFallbackMap() {
+        const mapContainer = document.getElementById("map");
+        if (!mapContainer) return;
         
         mapContainer.innerHTML = `
           <div style="
@@ -527,14 +560,18 @@
           </div>
         `;
         
-        console.log("임시 지도 표시 완료");
+        console.log("대체 지도 표시 완료");
       }
 
-      // 임시 지도 로드 확인
+      // 네이버 지도 API 로드 확인
       window.addEventListener("load", function () {
         console.log("페이지 로드 완료");
-        console.log("임시 지도 시스템 활성화");
-        console.log("지도 기능이 정상적으로 작동합니다.");
+        console.log("naver 객체 존재 여부:", typeof naver !== "undefined");
+        if (typeof naver !== "undefined") {
+          console.log("네이버 지도 API 로드 성공");
+        } else {
+          console.log("네이버 지도 API 로드 실패 - 대체 지도 사용");
+        }
       });
 
       // 오시는길 섹션이 활성화될 때 지도 초기화
@@ -558,13 +595,19 @@
             
             setTimeout(() => {
               try {
-                console.log("임시 지도 초기화 시작");
+                console.log("지도 초기화 시작");
+                
+                // 기존 지도가 있다면 제거
+                if (window.currentMap) {
+                  window.currentMap.destroy();
+                }
+                
                 initMap();
-                console.log("임시 지도 초기화 완료");
+                console.log("지도 초기화 완료");
               } catch (error) {
                 console.error("지도 초기화 중 오류 발생:", error);
               }
-            }, 100);
+            }, 300);
           });
         }
       });
