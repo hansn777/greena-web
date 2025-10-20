@@ -21,14 +21,17 @@
         <div class="nav-container">
           <div class="logo">
             <a href="index.html">
-              <img src="GreenA.png" alt="인템 로고" />
+              <div class="logo-group">
+                <img src="asset8.png" alt="인템 로고 8" class="logo-img" />
+                <img src="asset9.png" alt="인템 로고 9" class="logo-img" />
+              </div>
             </a>
           </div>
           <ul class="nav-menu">
             <li><a href="#about">회사소개</a></li>
             <li><a href="#products">유지관리/렌탈</a></li>
             <li><a href="#maintenance">블로그</a></li>
-            <li><a href="map.html">오시는길</a></li>
+            <li><a href="#store">오시는길</a></li>
           </ul>
           <div class="nav-right">
             <button class="quote-btn">견적문의</button>
@@ -42,25 +45,35 @@
       </div>
     </header>
 
-    <!-- Sitemap Overlay -->
-    <div class="sitemap-overlay" id="sitemapOverlay">
-      <div class="sitemap-container">
-        <div class="sitemap-header">
-          <button class="sitemap-close" id="sitemapClose">×</button>
+    <!-- Mobile Navigation Sidebar (Hamburger Menu) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+          <button class="mobile-nav-close" id="mobileNavClose">×</button>
         </div>
-        <div class="sitemap-content">
-          <ul class="sitemap-menu">
-            <li><a href="index.html#about">회사소개</a></li>
-            <li><a href="index.html#products">유지관리/렌탈</a></li>
-            <li><a href="index.html#maintenance">블로그</a></li>
-            <li><a href="map.html">오시는길</a></li>
+        <div class="mobile-nav-content">
+          <ul class="mobile-nav-menu">
+            <li>
+              <a href="index.html#about" class="mobile-nav-link">회사소개</a>
+            </li>
+            <li>
+              <a href="index.html#products" class="mobile-nav-link"
+                >유지관리/렌탈</a
+              >
+            </li>
+            <li>
+              <a href="index.html#maintenance" class="mobile-nav-link"
+                >블로그</a
+              >
+            </li>
+            <li><a href="map.html" class="mobile-nav-link">오시는길</a></li>
           </ul>
         </div>
       </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero map-hero">
+    <section class="hero">
       <div class="hero-content">
         <h1 class="hero-title">오시는 길</h1>
         <p class="hero-subtitle">
@@ -277,12 +290,11 @@
 
           // 마커 클릭 시 정보창 표시
           naver.maps.Event.addListener(marker, "click", function () {
-            // 네이버 지도 검색으로 이동
-            var address =
-              "서울특별시 서초구 반포대로27길 13(서초동, 서초꽃마을 주얼리)";
-            var searchUrl =
-              "https://map.naver.com/v5/search/" + encodeURIComponent(address);
-            window.open(searchUrl, "_blank");
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, marker);
+            }
           });
 
           console.log("네이버 지도가 성공적으로 로드되었습니다.");

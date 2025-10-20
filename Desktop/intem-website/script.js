@@ -1,11 +1,41 @@
 // Mobile Navigation Toggle
 const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+const mobileNavOverlay = document.getElementById("mobileNavOverlay");
+const mobileNavClose = document.getElementById("mobileNavClose");
 
-if (hamburger) {
+if (hamburger && mobileNavOverlay && mobileNavClose) {
+  // Open mobile navigation
   hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    if (window.innerWidth <= 860) {
+      mobileNavOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+      hamburger.classList.add("active");
+    }
+  });
+
+  // Close mobile navigation
+  mobileNavClose.addEventListener("click", () => {
+    mobileNavOverlay.classList.remove("active");
+    document.body.style.overflow = "auto";
+    hamburger.classList.remove("active");
+  });
+
+  // Close mobile navigation when clicking overlay
+  mobileNavOverlay.addEventListener("click", (e) => {
+    if (e.target === mobileNavOverlay) {
+      mobileNavOverlay.classList.remove("active");
+      document.body.style.overflow = "auto";
+      hamburger.classList.remove("active");
+    }
+  });
+
+  // Close mobile navigation on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileNavOverlay.classList.contains("active")) {
+      mobileNavOverlay.classList.remove("active");
+      document.body.style.overflow = "auto";
+      hamburger.classList.remove("active");
+    }
   });
 }
 
@@ -78,6 +108,8 @@ window.addEventListener("scroll", () => {
   const aboutSection = document.querySelector(".about");
   const navMenuLinks = document.querySelectorAll(".nav-menu a");
   const hamburgerSpans = document.querySelectorAll(".hamburger span");
+  const logoImages = document.querySelectorAll(".logo-img");
+  const asset9Image = logoImages.length > 1 ? logoImages[1] : null; // asset9.png (두 번째 이미지)
 
   if (window.scrollY > 100) {
     header.style.background = "#ffffff";
@@ -94,6 +126,11 @@ window.addEventListener("scroll", () => {
     hamburgerSpans.forEach((span) => {
       span.style.background = "#333";
     });
+
+    // Change asset9.png to black
+    if (asset9Image) {
+      asset9Image.style.filter = "brightness(0) saturate(100%)";
+    }
   } else {
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(10px)";
@@ -109,6 +146,11 @@ window.addEventListener("scroll", () => {
     hamburgerSpans.forEach((span) => {
       span.style.background = "#ffffff";
     });
+
+    // Reset asset9.png to original color
+    if (asset9Image) {
+      asset9Image.style.filter = "none";
+    }
   }
 
   // About section text color change
@@ -308,46 +350,6 @@ window.addEventListener("resize", handleQuoteButtonResize);
 // Initial call to set correct state
 handleQuoteButtonResize();
 
-// Sitemap Functionality
-function initSitemap() {
-  const hamburger = document.querySelector(".hamburger");
-  const sitemapOverlay = document.getElementById("sitemapOverlay");
-  const sitemapClose = document.getElementById("sitemapClose");
-
-  if (hamburger && sitemapOverlay && sitemapClose) {
-    // Open sitemap
-    hamburger.addEventListener("click", () => {
-      if (window.innerWidth <= 860) {
-        sitemapOverlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
-    });
-
-    // Close sitemap
-    sitemapClose.addEventListener("click", () => {
-      sitemapOverlay.classList.remove("active");
-      document.body.style.overflow = "auto";
-    });
-
-    // Close sitemap when clicking overlay
-    sitemapOverlay.addEventListener("click", (e) => {
-      if (e.target === sitemapOverlay) {
-        sitemapOverlay.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-    });
-
-    // Close sitemap on escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && sitemapOverlay.classList.contains("active")) {
-        sitemapOverlay.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-    });
-  }
-}
-
-// Initialize sitemap
-initSitemap();
+// (삭제) 사이트맵 관련 코드 제거됨
 
 console.log("인템 웹사이트가 성공적으로 로드되었습니다!");
