@@ -394,6 +394,9 @@
           center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
           zoom: 15,
         });
+        
+        // 지도 인스턴스를 전역 변수에 저장
+        window.currentMap = map;
 
         const marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(37.6213, 127.0594),
@@ -489,11 +492,30 @@
         if (mapButton) {
           mapButton.addEventListener("click", function () {
             console.log("오시는길 버튼 클릭됨");
+            
+            // 지도 컨테이너가 보이는지 확인
+            const mapContainer = document.getElementById("map");
+            if (!mapContainer) {
+              console.error("지도 컨테이너를 찾을 수 없습니다.");
+              return;
+            }
+            
+            // 지도 컨테이너가 숨겨져 있다면 보이도록 설정
+            if (mapContainer.style.display === "none") {
+              mapContainer.style.display = "block";
+            }
+            
             setTimeout(() => {
               console.log("naver 객체 확인:", typeof naver !== "undefined");
               if (typeof naver !== "undefined") {
                 try {
                   console.log("지도 초기화 시작");
+                  
+                  // 기존 지도가 있다면 제거
+                  if (window.currentMap) {
+                    window.currentMap.destroy();
+                  }
+                  
                   initMap();
                   console.log("지도 초기화 완료");
                 } catch (error) {
@@ -502,7 +524,7 @@
               } else {
                 console.log("네이버 지도 API가 로드되지 않았습니다.");
               }
-            }, 100);
+            }, 300); // 타이밍을 300ms로 증가
           });
         }
       });
