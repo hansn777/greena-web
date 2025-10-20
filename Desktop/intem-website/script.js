@@ -358,7 +358,7 @@ handleQuoteButtonResize();
 
 // 스크롤 시 메가 메뉴 텍스트 색상 변경
 window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY > 80;
+  const scrolled = window.scrollY > 100;
   document.body.classList.toggle("scrolled", scrolled);
 });
 
