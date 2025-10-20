@@ -165,8 +165,9 @@ body {
   right: 0 !important;
   width: 100% !important;
   z-index: 50 !important;
-  background: #1f2937 !important;
-  border-top: 1px solid #374151 !important;
+  background: rgba(31, 41, 55, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(71, 75, 80, 0.774) !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
   opacity: 0 !important;
   visibility: hidden !important;
@@ -250,7 +251,8 @@ body {
 .navbar_hoveredMenuList a:hover {
   color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
-  padding-left: 0.5rem !important;
+  transform: scale(0.95) !important;
+  font-size: 0.8rem !important;
 }
 
 /* 스크롤 시 메가 메뉴 텍스트 색상 변경 */
@@ -261,6 +263,8 @@ body.scrolled .navbar_hoveredMenuList a {
 body.scrolled .navbar_hoveredMenuList a:hover {
   color: #53C178 !important;
   background-color: rgba(83, 193, 120, 0.1) !important;
+  transform: scale(0.95) !important;
+  font-size: 0.8rem !important;
 }
 
 .navbar_hoveredMenuList li {
