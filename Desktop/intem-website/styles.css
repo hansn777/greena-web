@@ -966,6 +966,11 @@ body {
 
 .mobile-nav-menu li {
   margin: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-nav-menu li:last-child {
+  border-bottom: none;
 }
 
 .mobile-nav-link {
@@ -991,32 +996,42 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
-  border-left: 2px solid #e5e7eb;
   background-color: #f8f9fa;
+  border-top: 1px solid #e5e7eb;
 }
 
 .mobile-sub-menu li {
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-sub-menu li:last-child {
+  border-bottom: none;
 }
 
 .mobile-sub-menu .mobile-nav-link {
   font-size: 0.875rem;
   color: #6b7280;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
   display: block;
   text-decoration: none;
   transition: all 0.2s ease;
-  border-bottom: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.mobile-sub-menu .mobile-nav-link::before {
+  content: '•';
+  position: absolute;
+  left: 1rem;
+  color: #53C178;
+  font-weight: bold;
 }
 
 .mobile-sub-menu .mobile-nav-link:hover {
   color: #53C178;
   background-color: rgba(83, 193, 120, 0.05);
-  padding-left: 1.5rem;
-  transform: translateX(4px);
+  padding-left: 2rem;
 }
 
 /* Mobile Navigation Background Overlay */
