@@ -1006,10 +1006,6 @@ body {
   transition: none;
 }
 
-.mobile-nav-link:hover {
-  background: #f8f9fa;
-  color: #53C178;
-}
 
 /* 모바일 하위 메뉴 스타일 */
 .mobile-sub-menu {
