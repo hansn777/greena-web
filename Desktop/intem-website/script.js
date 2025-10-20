@@ -356,4 +356,10 @@ handleQuoteButtonResize();
 
 // (삭제) 사이트맵 관련 코드 제거됨
 
+// 스크롤 시 메가 메뉴 텍스트 색상 변경
+window.addEventListener("scroll", () => {
+  const scrolled = window.scrollY > 50;
+  document.body.classList.toggle("scrolled", scrolled);
+});
+
 console.log("인템 웹사이트가 성공적으로 로드되었습니다!");
