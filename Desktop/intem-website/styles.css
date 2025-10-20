@@ -188,7 +188,7 @@ body {
   visibility: hidden !important;
 }
 
-.nav-menu:hover .navbar_hoveredMenuBg,
+.nav-container:hover .navbar_hoveredMenuBg,
 .navbar_hoveredMenuBg:hover {
   opacity: 1 !important;
   visibility: visible !important;
