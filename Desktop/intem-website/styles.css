@@ -252,7 +252,7 @@ body {
   color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
   transform: scale(1.05) !important;
-  font-size: 1.1rem !important;
+  font-size: 0.95rem !important;
 }
 
 /* 스크롤 시 메가 메뉴 배경 및 텍스트 색상 변경 */
@@ -270,7 +270,7 @@ body.scrolled .navbar_hoveredMenuList a:hover {
   color: #333333 !important;
   background-color: rgba(107, 114, 128, 0.1) !important;
   transform: scale(1.05) !important;
-  font-size: 1.1rem !important;
+  font-size: 0.95rem !important;
 }
 
 .navbar_hoveredMenuList li {
