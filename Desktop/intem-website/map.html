@@ -302,6 +302,21 @@
           console.log("네이버 지도 API가 로드되지 않았습니다.");
         }
       });
+
+      // Nav 초기화 - 기본 블러 효과 적용
+      document.addEventListener("DOMContentLoaded", function () {
+        const navContainer = document.querySelector(".nav-container");
+        const header = document.querySelector(".header");
+        
+        if (navContainer) {
+          navContainer.style.background = "rgba(255, 255, 255, 0.1)";
+          navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+        }
+        
+        if (header) {
+          header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+        }
+      });
     </script>
   </body>
 </html>
