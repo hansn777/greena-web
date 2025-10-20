@@ -152,6 +152,57 @@ body {
   color: #53C178;
 }
 
+/* 드롭다운 메뉴 스타일 */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  padding: 8px 0;
+  margin-top: 8px;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  list-style: none;
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  margin: 0 8px;
+}
+
+.dropdown-menu li a:hover {
+  background: #53C178;
+  color: white;
+  transform: translateX(4px);
+}
+
 
 .quote-btn {
   position: absolute;
@@ -1397,6 +1448,208 @@ body {
     margin-bottom: 20px;
     font-size: 36px;
   }
+}
+
+/* 회사소개 페이지 스타일 */
+.company-hero {
+  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
+  color: white;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.company-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.company-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.company-intro {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.intro-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #53C178;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.intro-content h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.intro-text h4 {
+  font-size: 1.5rem;
+  color: #53C178;
+  margin: 2rem 0 1rem 0;
+}
+
+.intro-text h5 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.intro-text p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.ceo-signature {
+  text-align: right;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #53C178;
+}
+
+.ceo-signature p {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 인증서 페이지 스타일 */
+.certificate-hero {
+  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
+  color: white;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.certificate-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.certificate-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.certificate-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.certificate-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #53C178;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.certificate-content h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.certificate-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(83, 193, 120, 0.2);
+}
+
+.certificate-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.certificate-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.certificate-info {
+  padding: 1.5rem;
+}
+
+.certificate-info h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.certificate-info p {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.cert-date {
+  background: #53C178;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* 회사소개/인증서 페이지 반응형 디자인 */
+@media (max-width: 860px) {
+  .company-hero h1,
+  .certificate-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .company-hero p,
+  .certificate-hero p {
+    font-size: 1rem;
+  }
+  
+  .intro-content h2,
+  .certificate-content h2 {
+    font-size: 2rem;
+  }
+  
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .company-intro,
+  .certificate-section {
+    padding: 60px 0;
+  }
+}
 
   .logo-intem-dot {
     top: -5px;
