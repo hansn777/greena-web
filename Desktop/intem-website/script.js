@@ -374,7 +374,8 @@ function initializeNavState() {
     header.style.background = "#ffffff";
     header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
     navContainer.style.background = "rgba(255, 255, 255, 0.2)";
-    navContainer.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
+    navContainer.style.backdropFilter =
+      "blur(30px) saturate(180%) brightness(1.2)";
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
 
     // Change nav menu links to dark color
@@ -396,7 +397,8 @@ function initializeNavState() {
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    navContainer.style.backdropFilter =
+      "blur(20px) saturate(100%) brightness(1.0)";
     header.style.boxShadow = "none";
 
     // Change nav menu links to white color
