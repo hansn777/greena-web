@@ -120,7 +120,8 @@ window.addEventListener("scroll", () => {
     header.style.background = "#ffffff";
     header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
     navContainer.style.background = "rgba(255, 255, 255, 0.2)";
-    navContainer.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
+    navContainer.style.backdropFilter =
+      "blur(30px) saturate(180%) brightness(1.2)";
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
 
     // Change nav menu links to dark color
@@ -137,31 +138,8 @@ window.addEventListener("scroll", () => {
     if (asset9Image) {
       asset9Image.style.filter = "brightness(0) saturate(100%)";
     }
-  } else if (window.scrollY > 80) {
-    // 80px~100px: nav만 글래스모피즘, 메가메뉴는 흰색 배경
-    header.style.background = "transparent";
-    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter =
-      "blur(20px) saturate(100%) brightness(1.0)";
-    header.style.boxShadow = "none";
-
-    // Change nav menu links to white color
-    navMenuLinks.forEach((link) => {
-      link.style.color = "#ffffff";
-    });
-
-    // Change hamburger to white color
-    hamburgerSpans.forEach((span) => {
-      span.style.background = "#ffffff";
-    });
-
-    // Reset asset9.png to original color
-    if (asset9Image) {
-      asset9Image.style.filter = "none";
-    }
   } else {
-    // 0px~80px: nav와 메가메뉴 모두 글래스모피즘
+    // 0px~100px: nav와 메가메뉴 모두 글래스모피즘
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
