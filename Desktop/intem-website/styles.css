@@ -188,7 +188,7 @@ body {
   visibility: hidden !important;
 }
 
-.dropdown:hover .navbar_hoveredMenuBg,
+.dropdown:hover ~ .navbar_hoveredMenuBg,
 .navbar_hoveredMenuBg:hover {
   opacity: 1 !important;
   visibility: visible !important;
