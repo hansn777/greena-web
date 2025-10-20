@@ -195,14 +195,25 @@ body {
 }
 
 .navbar_hoveredMenuContainer {
-  list-style: none !important;
-  margin: 0 !important;
+  --font-pretendard: "pretendard","pretendard Fallback";
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --swiper-theme-color: #007aff;
+  --swiper-navigation-size: 44px;
+  font-size: 1rem !important;
+  color: #111 !important;
+  font-family: pretendard,pretendard Fallback !important;
+  box-sizing: border-box !important;
   padding: 0 !important;
+  margin: 0 !important;
+  word-break: keep-all !important;
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
-  height: 100% !important;
-  width: 100% !important;
+  min-width: 620px !important;
+  text-align: center !important;
+  height: auto !important;
+  text-wrap: nowrap !important;
+  list-style: none !important;
 }
 
 .navbar_hoveredListContainer {
@@ -219,35 +230,29 @@ body {
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 20px !important;
+  gap: 8px !important;
+}
+
+.navbar_hoveredMenuList a {
+  display: block !important;
+  text-decoration: none !important;
+  color: #ededed !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar_hoveredMenuList a:hover {
+  background: rgba(83, 193, 120, 0.2) !important;
+  color: #53C178 !important;
 }
 
 .navbar_hoveredMenuList li {
+  list-style: none !important;
   margin: 0 !important;
-}
-
-.navbar_hoveredMenuList li a {
-  display: block !important;
-  padding: 12px 24px !important;
-  color: #ededed !important;
-  text-decoration: none !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease !important;
-  position: relative !important;
-  border-radius: 6px !important;
-  background: transparent !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin: 4px 0 !important;
-  text-align: center !important;
-  min-width: 150px !important;
-}
-
-.navbar_hoveredMenuList li a:hover {
-  background: rgba(83, 193, 120, 0.2) !important;
-  color: #53C178 !important;
-  border-color: rgba(83, 193, 120, 0.3) !important;
-  transform: translateY(-1px) !important;
+  padding: 0 !important;
 }
 
 .dropdown-menu-list li a::before {
