@@ -116,6 +116,7 @@ window.addEventListener("scroll", () => {
   const asset9Image = logoImages.length > 1 ? logoImages[1] : null; // asset9.png (두 번째 이미지)
 
   if (window.scrollY > 100) {
+    // 100px 이상: nav와 메가메뉴 모두 흰색 배경
     header.style.background = "#ffffff";
     header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
     navContainer.style.background = "rgba(255, 255, 255, 0.2)";
@@ -135,7 +136,30 @@ window.addEventListener("scroll", () => {
     if (asset9Image) {
       asset9Image.style.filter = "brightness(0) saturate(100%)";
     }
+  } else if (window.scrollY > 80) {
+    // 80px~100px: nav만 글래스모피즘, 메가메뉴는 흰색 배경
+    header.style.background = "transparent";
+    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
+    navContainer.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
+    header.style.boxShadow = "none";
+
+    // Change nav menu links to white color
+    navMenuLinks.forEach((link) => {
+      link.style.color = "#ffffff";
+    });
+
+    // Change hamburger to white color
+    hamburgerSpans.forEach((span) => {
+      span.style.background = "#ffffff";
+    });
+
+    // Reset asset9.png to original color
+    if (asset9Image) {
+      asset9Image.style.filter = "none";
+    }
   } else {
+    // 0px~80px: nav와 메가메뉴 모두 글래스모피즘
     header.style.background = "transparent";
     header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
     navContainer.style.background = "rgba(255, 255, 255, 0.1)";
@@ -359,7 +383,7 @@ handleQuoteButtonResize();
 
 // 스크롤 시 메가 메뉴 텍스트 색상 변경
 window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY > 100;
+  const scrolled = window.scrollY > 80;
   document.body.classList.toggle("scrolled", scrolled);
 });
 
