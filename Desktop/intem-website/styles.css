@@ -157,59 +157,68 @@ body {
   position: relative;
 }
 
-/* 인템 스타일 드롭다운 메뉴 */
+/* 인템 공식 사이트 스타일 드롭다운 메뉴 */
 .dropdown-menu {
   position: absolute !important;
-  top: 100% !important;
-  left: 50% !important;
-  transform: translateX(-50%) translateY(-10px) !important;
-  background: #ffffff !important;
-  border-radius: 12px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
-  min-width: 200px !important;
+  width: 100% !important;
+  top: 90px !important;
+  left: 0 !important;
+  right: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  transition: 0.8s !important;
+  border-bottom: 1px solid rgba(71, 75, 80, 0.774) !important;
+  backdrop-filter: blur(20px) !important;
+  background: rgba(3, 13, 29, 0.8) !important;
+  height: 300px !important;
   opacity: 0 !important;
   visibility: hidden !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  z-index: 1000 !important;
-  padding: 16px 0 !important;
-  margin-top: 12px !important;
-  border: 1px solid #e2e8f0 !important;
-  backdrop-filter: blur(20px) !important;
+  z-index: 700 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .dropdown:hover .dropdown-menu {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translateX(-50%) translateY(0) !important;
 }
 
 .dropdown-menu-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important;
+  gap: 20px !important;
 }
 
 .dropdown-menu-list li {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .dropdown-menu-list li a {
   display: block !important;
-  padding: 12px 24px !important;
-  color: #64748b !important;
+  padding: 16px 32px !important;
+  color: #ededed !important;
   text-decoration: none !important;
-  font-size: 14px !important;
+  font-size: 18px !important;
   font-weight: 500 !important;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.3s ease !important;
   position: relative !important;
-  border-radius: 6px !important;
-  margin: 2px 8px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .dropdown-menu-list li a:hover {
-  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%) !important;
-  color: white !important;
-  transform: translateX(4px) !important;
+  background: rgba(83, 193, 120, 0.3) !important;
+  color: #53C178 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(83, 193, 120, 0.3) !important;
 }
 
 .dropdown-menu-list li a::before {
