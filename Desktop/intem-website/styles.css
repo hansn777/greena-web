@@ -181,6 +181,15 @@ body {
   transform: translateY(0) !important;
 }
 
+/* 태블릿 사이즈(860px 이하)에서는 메가 메뉴 호버 비활성화 */
+@media (max-width: 860px) {
+  .nav-container:hover .navbar_hoveredMenuBg {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+  }
+}
+
 /* 햄버거 메뉴가 활성화된 상태에서는 메가 메뉴 호버 비활성화 */
 .mobile-nav-active .navbar_hoveredMenuBg {
   opacity: 0 !important;
