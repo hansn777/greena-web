@@ -13,11 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <!-- 네이버 지도 API 대신 Google Maps API 사용 -->
     <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nuWS9nAm01rYz1Msmp6PlInu7rv5C73PyndxKOYr"
     ></script>
   </head>
   <body>
@@ -248,38 +246,45 @@
 
     <script src="script.js"></script>
     <script>
-      // Google Maps 초기화
+      // 네이버 지도 초기화
       function initMap() {
-        const location = { lat: 37.6213, lng: 127.0594 }; // 월계테크노타운 근처 좌표
-
-        const map = new google.maps.Map(document.getElementById("map"), {
+        const map = new naver.maps.Map("map", {
+          center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
           zoom: 15,
-          center: location,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          styles: [
-            {
-              featureType: "poi",
-              elementType: "labels",
-              stylers: [{ visibility: "off" }],
-            },
-          ],
         });
 
-        const marker = new google.maps.Marker({
-          position: location,
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(37.6213, 127.0594),
           map: map,
           title: "인템 본사",
           icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 20,
-            fillColor: "#53C178",
-            fillOpacity: 1,
-            strokeColor: "#ffffff",
-            strokeWeight: 3,
+            content: `
+              <div style="
+                width: 40px;
+                height: 40px;
+                background: #53C178;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transform: translate(-50%, -50%);
+              ">
+                <div style="
+                  width: 12px;
+                  height: 12px;
+                  background: #ffffff;
+                  border-radius: 50%;
+                "></div>
+              </div>
+            `,
+            size: new naver.maps.Size(40, 40),
+            anchor: new naver.maps.Point(20, 20),
           },
         });
 
-        const infoWindow = new google.maps.InfoWindow({
+        const infoWindow = new naver.maps.InfoWindow({
           content: `
             <div style="
               padding: 15px;
@@ -307,12 +312,16 @@
           `,
         });
 
-        marker.addListener("click", function () {
-          infoWindow.open(map, marker);
+        naver.maps.Event.addListener(marker, "click", function () {
+          if (infoWindow.getMap()) {
+            infoWindow.close();
+          } else {
+            infoWindow.open(map, marker);
+          }
         });
 
         // 마커 클릭 시 네이버 지도 검색으로 이동
-        marker.addListener("click", function () {
+        naver.maps.Event.addListener(marker, "click", function () {
           const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 인템";
           const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
             address
@@ -323,7 +332,7 @@
 
       // 페이지 로드 시 지도 초기화
       document.addEventListener("DOMContentLoaded", function () {
-        if (typeof google !== "undefined") {
+        if (typeof naver !== "undefined") {
           try {
             initMap();
           } catch (error) {
@@ -354,7 +363,7 @@
             }
           }
         } else {
-          console.log("Google Maps API가 로드되지 않았습니다.");
+          console.log("네이버 지도 API가 로드되지 않았습니다.");
           // API 로드 실패 시 안내 메시지 표시
           const mapContainer = document.getElementById("map");
           if (mapContainer) {
@@ -375,7 +384,7 @@
               ">
                 <div>🗺️</div>
                 <div>지도를 불러올 수 없습니다</div>
-                <div style="font-size: 14px;">Google Maps API 키를 확인해주세요</div>
+                <div style="font-size: 14px;">네이버 지도 API 키를 확인해주세요</div>
               </div>
             `;
           }

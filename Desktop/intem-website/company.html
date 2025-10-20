@@ -13,11 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <!-- 네이버 지도 API 대신 Google Maps API 사용 -->
     <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nuWS9nAm01rYz1Msmp6PlInu7rv5C73PyndxKOYr"
     ></script>
   </head>
   <body>
@@ -390,38 +388,45 @@
         });
       });
 
-      // Google Maps 초기화 함수
+      // 네이버 지도 초기화 함수
       function initMap() {
-        const location = { lat: 37.6213, lng: 127.0594 }; // 월계테크노타운 근처 좌표
-
-        const map = new google.maps.Map(document.getElementById("map"), {
+        const map = new naver.maps.Map("map", {
+          center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
           zoom: 15,
-          center: location,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          styles: [
-            {
-              featureType: "poi",
-              elementType: "labels",
-              stylers: [{ visibility: "off" }],
-            },
-          ],
         });
 
-        const marker = new google.maps.Marker({
-          position: location,
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(37.6213, 127.0594),
           map: map,
           title: "인템 본사",
           icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 20,
-            fillColor: "#53C178",
-            fillOpacity: 1,
-            strokeColor: "#ffffff",
-            strokeWeight: 3,
+            content: `
+              <div style="
+                width: 40px;
+                height: 40px;
+                background: #53C178;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transform: translate(-50%, -50%);
+              ">
+                <div style="
+                  width: 12px;
+                  height: 12px;
+                  background: #ffffff;
+                  border-radius: 50%;
+                "></div>
+              </div>
+            `,
+            size: new naver.maps.Size(40, 40),
+            anchor: new naver.maps.Point(20, 20),
           },
         });
 
-        const infoWindow = new google.maps.InfoWindow({
+        const infoWindow = new naver.maps.InfoWindow({
           content: `
             <div style="
               padding: 15px;
@@ -449,12 +454,16 @@
           `,
         });
 
-        marker.addListener("click", function () {
-          infoWindow.open(map, marker);
+        naver.maps.Event.addListener(marker, "click", function () {
+          if (infoWindow.getMap()) {
+            infoWindow.close();
+          } else {
+            infoWindow.open(map, marker);
+          }
         });
 
         // 마커 클릭 시 네이버 지도 검색으로 이동
-        marker.addListener("click", function () {
+        naver.maps.Event.addListener(marker, "click", function () {
           const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 인템";
           const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
             address
@@ -463,14 +472,14 @@
         });
       }
 
-      // Google Maps API 로드 확인
+      // 네이버 지도 API 로드 확인
       window.addEventListener("load", function () {
         console.log("페이지 로드 완료");
-        console.log("google 객체 존재 여부:", typeof google !== "undefined");
-        if (typeof google !== "undefined") {
-          console.log("Google Maps API 로드 성공");
+        console.log("naver 객체 존재 여부:", typeof naver !== "undefined");
+        if (typeof naver !== "undefined") {
+          console.log("네이버 지도 API 로드 성공");
         } else {
-          console.log("Google Maps API 로드 실패");
+          console.log("네이버 지도 API 로드 실패");
         }
       });
 
@@ -481,8 +490,8 @@
           mapButton.addEventListener("click", function () {
             console.log("오시는길 버튼 클릭됨");
             setTimeout(() => {
-              console.log("google 객체 확인:", typeof google !== "undefined");
-              if (typeof google !== "undefined") {
+              console.log("naver 객체 확인:", typeof naver !== "undefined");
+              if (typeof naver !== "undefined") {
                 try {
                   console.log("지도 초기화 시작");
                   initMap();
@@ -491,7 +500,7 @@
                   console.error("지도 초기화 중 오류 발생:", error);
                 }
               } else {
-                console.log("Google Maps API가 로드되지 않았습니다.");
+                console.log("네이버 지도 API가 로드되지 않았습니다.");
               }
             }, 100);
           });
