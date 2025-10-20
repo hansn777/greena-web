@@ -254,11 +254,11 @@ body {
 }
 
 /* 스크롤 시 메가 메뉴 텍스트 색상 변경 */
-.scrolled .navbar_hoveredMenuList a {
+body.scrolled .navbar_hoveredMenuList a {
   color: #333333 !important;
 }
 
-.scrolled .navbar_hoveredMenuList a:hover {
+body.scrolled .navbar_hoveredMenuList a:hover {
   color: #53C178 !important;
   background-color: rgba(83, 193, 120, 0.1) !important;
 }
