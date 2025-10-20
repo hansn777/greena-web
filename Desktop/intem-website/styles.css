@@ -165,8 +165,8 @@ body {
   right: 0 !important;
   width: 100% !important;
   z-index: 50 !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
   opacity: 0 !important;
