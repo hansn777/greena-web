@@ -222,7 +222,7 @@ body {
 }
 
 .mega-menu-header {
-  font-size: 1rem !important;
+  font-size: 0.75rem !important;
   font-weight: 600 !important;
   color: #ffffff !important;
   text-align: center !important;
@@ -231,6 +231,10 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
   pointer-events: none !important;
   user-select: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .navbar_hoveredMenuList {
@@ -282,6 +286,10 @@ body.scrolled .navbar_hoveredMenuList a:hover {
   background-color: rgba(107, 114, 128, 0.1) !important;
   transform: scale(1.05) !important;
   font-size: 0.95rem !important;
+}
+
+body.scrolled .mega-menu-header {
+  color: #333333 !important;
 }
 
 .navbar_hoveredMenuList li {
