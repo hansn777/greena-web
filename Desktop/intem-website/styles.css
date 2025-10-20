@@ -242,6 +242,8 @@ body {
   padding: 0.5rem 0 !important;
   border-radius: 0.375rem !important;
   transition: all 0.2s ease !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 .navbar_hoveredMenuList a:hover {
