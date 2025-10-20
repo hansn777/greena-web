@@ -117,8 +117,8 @@ window.addEventListener("scroll", () => {
 
   if (window.scrollY > 100) {
     header.style.background = "#ffffff";
-    header.style.backdropFilter = "blur(20px)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
+    header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
+    navContainer.style.background = "rgba(255, 255, 255, 0.2)";
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
 
     // Change nav menu links to dark color
