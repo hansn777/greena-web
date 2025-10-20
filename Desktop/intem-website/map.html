@@ -257,11 +257,59 @@
           position: new naver.maps.LatLng(37.6213, 127.0594),
           map: map,
           title: "인템 본사",
+          icon: {
+            content: `
+              <div style="
+                width: 40px;
+                height: 40px;
+                background: #53C178;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transform: translate(-50%, -50%);
+              ">
+                <div style="
+                  width: 12px;
+                  height: 12px;
+                  background: #ffffff;
+                  border-radius: 50%;
+                "></div>
+              </div>
+            `,
+            size: new naver.maps.Size(40, 40),
+            anchor: new naver.maps.Point(20, 20)
+          }
         });
 
         const infoWindow = new naver.maps.InfoWindow({
-          content:
-            '<div style="padding: 10px;"><strong>인템 본사</strong><br>서울 노원구 월계로45길 28<br>월계테크노타운 8층</div>',
+          content: `
+            <div style="
+              padding: 15px;
+              background: #ffffff;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              border: 1px solid #e5e7eb;
+              min-width: 200px;
+            ">
+              <div style="
+                font-size: 16px;
+                font-weight: 600;
+                color: #1f2937;
+                margin-bottom: 8px;
+              ">인템 본사</div>
+              <div style="
+                font-size: 14px;
+                color: #6b7280;
+                line-height: 1.5;
+              ">
+                서울 노원구 월계로45길 28<br>
+                월계테크노타운 8층
+              </div>
+            </div>
+          `,
         });
 
         naver.maps.Event.addListener(marker, "click", function () {
