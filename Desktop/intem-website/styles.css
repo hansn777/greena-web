@@ -143,7 +143,7 @@ body {
 .nav-menu a {
   text-decoration: none;
   color: #ffffff;
-  font-weight: 180;
+  font-weight: 700;
   font-size: 14px;
   transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -224,11 +224,11 @@ body {
 .mega-menu-header {
   font-size: 0.75rem !important;
   font-weight: 400 !important;
-  color: #ffffff !important;
+  color: #e5e7eb !important;
   text-align: center !important;
   margin-bottom: 1rem !important;
   padding: 0.5rem 0 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.3) !important;
   pointer-events: none !important;
   user-select: none !important;
   display: flex !important;
@@ -252,7 +252,7 @@ body {
 .navbar_hoveredMenuList a {
   display: block !important;
   text-decoration: none !important;
-  color: #ffffff !important;
+  color: #e5e7eb !important;
   font-size: 0.875rem !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
@@ -278,19 +278,23 @@ body.scrolled .navbar_hoveredMenuBg {
 }
 
 body.scrolled .navbar_hoveredMenuList a {
-  color: #333333 !important;
+  color: #374151 !important;
 }
 
 body.scrolled .navbar_hoveredMenuList a:hover {
-  color: #333333 !important;
+  color: #1f2937 !important;
   background-color: rgba(107, 114, 128, 0.1) !important;
   transform: scale(1.05) !important;
   font-size: 0.95rem !important;
 }
 
 body.scrolled .mega-menu-header {
-  color: #333333 !important;
-  border-bottom: 1px solid rgba(51, 51, 51, 0.2) !important;
+  color: #374151 !important;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.3) !important;
+}
+
+body.scrolled .nav-menu a {
+  color: #000000 !important;
 }
 
 .navbar_hoveredMenuList li {
