@@ -1450,11 +1450,11 @@ body {
   }
 }
 
-/* 서브 네비게이션 스타일 */
+/* 서브 네비게이션 스타일 - Tailwind CSS 스타일 적용 */
 .sub-nav {
-  background: #f8f9fa;
-  padding: 20px 0;
-  border-bottom: 1px solid #e9ecef;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 24px 0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .sub-nav-container {
@@ -1462,40 +1462,120 @@ body {
   justify-content: center;
   gap: 0;
   background: #ffffff;
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 500px;
   margin: 0 auto;
+  border: 1px solid #e2e8f0;
 }
 
 .sub-nav-item {
   display: block;
-  padding: 12px 24px;
+  padding: 12px 20px;
   text-decoration: none;
-  color: #666;
+  color: #64748b;
   font-weight: 500;
   font-size: 14px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .sub-nav-item:hover {
   color: #53C178;
-  background: rgba(83, 193, 120, 0.1);
+  background: rgba(83, 193, 120, 0.08);
+  transform: translateY(-1px);
 }
 
 .sub-nav-item.active {
-  background: #53C178;
+  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
   color: white;
   font-weight: 600;
+  box-shadow: 0 4px 14px 0 rgba(83, 193, 120, 0.39);
 }
 
 .sub-nav-item.active:hover {
-  background: #4aad6a;
+  background: linear-gradient(135deg, #4aad6a 0%, #3d8b5a 100%);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(83, 193, 120, 0.5);
+}
+
+/* 동적 컨텐츠 섹션 */
+.dynamic-content {
+  min-height: 600px;
+  background: #ffffff;
+}
+
+.content-section {
+  padding: 60px 0;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.content-section.hidden {
+  display: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 맵 컨텐츠 스타일 */
+.map-content {
+  text-align: center;
+}
+
+.map-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #53C178;
+  margin-bottom: 1rem;
+}
+
+.map-content h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.map-container {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.location-info {
+  background: #f8fafc;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.location-info h4 {
+  color: #53C178;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.location-info p {
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 /* 회사소개 페이지 스타일 */
