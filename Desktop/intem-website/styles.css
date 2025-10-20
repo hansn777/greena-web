@@ -1450,6 +1450,54 @@ body {
   }
 }
 
+/* 서브 네비게이션 스타일 */
+.sub-nav {
+  background: #f8f9fa;
+  padding: 20px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sub-nav-container {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sub-nav-item {
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  background: transparent;
+}
+
+.sub-nav-item:hover {
+  color: #53C178;
+  background: rgba(83, 193, 120, 0.1);
+}
+
+.sub-nav-item.active {
+  background: #53C178;
+  color: white;
+  font-weight: 600;
+}
+
+.sub-nav-item.active:hover {
+  background: #4aad6a;
+  color: white;
+}
+
 /* 회사소개 페이지 스타일 */
 .company-hero {
   background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
@@ -1648,6 +1696,17 @@ body {
   .company-intro,
   .certificate-section {
     padding: 60px 0;
+  }
+  
+  .sub-nav-container {
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+  }
+  
+  .sub-nav-item {
+    text-align: center;
+    padding: 10px 16px;
   }
 }
 
