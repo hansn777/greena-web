@@ -138,7 +138,7 @@ window.addEventListener("scroll", () => {
   } else {
     header.style.background = "transparent";
     header.style.backdropFilter = "none";
-    navContainer.style.background = "rgba(255, 255, 255, 0.2)";
+    navContainer.style.background = "transparent";
     header.style.boxShadow = "none";
 
     // Change nav menu links to white color
