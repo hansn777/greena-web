@@ -251,6 +251,24 @@
         const subNavItems = document.querySelectorAll(".sub-nav-item");
         const contentSections = document.querySelectorAll(".content-section");
 
+        // URL 해시에 따른 초기 섹션 설정
+        const hash = window.location.hash;
+        if (hash) {
+          const targetSection = hash.replace('#', '').replace('-section', '');
+          const targetButton = document.querySelector(`[data-section="${targetSection}"]`);
+          const targetElement = document.getElementById(hash.replace('#', ''));
+          
+          if (targetButton && targetElement) {
+            // 모든 버튼과 섹션 초기화
+            subNavItems.forEach(btn => btn.classList.remove("active"));
+            contentSections.forEach(section => section.classList.add("hidden"));
+            
+            // 해당 버튼과 섹션 활성화
+            targetButton.classList.add("active");
+            targetElement.classList.remove("hidden");
+          }
+        }
+
         subNavItems.forEach((item) => {
           item.addEventListener("click", function () {
             const targetSection = this.getAttribute("data-section");
