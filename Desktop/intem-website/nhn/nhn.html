@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NHN 클론</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="nhn.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="nhn-header">
+      <div class="nhn-header-inner">
+        <a class="nhn-brand" href="#" aria-label="NHN">NHN</a>
+        <nav class="nhn-nav" aria-label="주요 메뉴">
+          <button class="nhn-nav-item" data-menu="company">회사소개</button>
+          <button class="nhn-nav-item" data-menu="service">서비스</button>
+          <button class="nhn-nav-item" data-menu="pr">홍보</button>
+          <button class="nhn-nav-item" data-menu="ir">투자정보</button>
+          <button class="nhn-nav-item" data-menu="esg">ESG</button>
+          <button class="nhn-nav-item strong" data-menu="careers">
+            CAREERS
+          </button>
+          <button class="nhn-nav-item" data-menu="inside">INSIDE NHN</button>
+        </nav>
+        <div class="nhn-lang">
+          <button aria-label="한국어" class="active">KO</button>
+          <button aria-label="English">EN</button>
+          <button aria-label="日本語">JP</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero carousel -->
+    <section class="nhn-hero" role="banner">
+      <div class="nhn-hero-media" aria-hidden="true">
+        <div
+          class="nhn-hero-slide active"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1920&auto=format&fit=crop');
+          "
+        ></div>
+        <div
+          class="nhn-hero-slide"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1920&auto=format&fit=crop');
+          "
+        ></div>
+        <div
+          class="nhn-hero-slide"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1920&auto=format&fit=crop');
+          "
+        ></div>
+      </div>
+      <div class="nhn-hero-overlay"></div>
+      <div class="nhn-hero-wrap">
+        <div class="nhn-container nhn-hero-inner">
+          <div class="nhn-hero-copy">
+            <h1 class="nhn-hero-title">우리의 연결로 만드는 새로운 내일</h1>
+            <p class="nhn-hero-sub">
+              상상과 현실, 기술과 삶, 사람과 사람을 연결합니다.
+            </p>
+          </div>
+        </div>
+        <div class="nhn-hero-bottom">
+          <div class="nhn-hero-index">
+            <span class="nhn-hero-idx current">02</span>
+            <div class="nhn-hero-progress">
+              <div class="nhn-hero-progress-fill"></div>
+              <div class="nhn-hero-progress-bg"></div>
+            </div>
+            <span class="nhn-hero-idx total">03</span>
+          </div>
+          <div
+            class="nhn-hero-arrows"
+            role="tablist"
+            aria-label="히어로 슬라이드"
+          >
+            <button class="arrow prev" aria-label="prevButton" type="button">
+              <svg
+                class="arrow-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+              >
+                <path
+                  d="M23.5 14L17.5 20L23.5 26"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+            </button>
+            <button class="arrow next" aria-label="nextButton" type="button">
+              <svg
+                class="arrow-svg rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+              >
+                <path
+                  d="M23.5 14L17.5 20L23.5 26"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-up cards: 보도자료 / 채용공고 / 주가정보 -->
+    <section class="nhn-section">
+      <div class="nhn-container">
+        <div class="nhn-grid-3">
+          <a href="#" class="nhn-card" aria-label="보도자료 더 보기">
+            <div class="nhn-card-head">보도자료</div>
+            <div class="nhn-card-body">
+              <div class="nhn-skel"></div>
+              <div class="nhn-skel"></div>
+              <div class="nhn-skel"></div>
+            </div>
+            <div class="nhn-card-cta">더 보기</div>
+          </a>
+          <a href="#" class="nhn-card" aria-label="채용공고 더 보기">
+            <div class="nhn-card-head">채용공고</div>
+            <div class="nhn-card-body">
+              <div class="nhn-skel"></div>
+              <div class="nhn-skel"></div>
+              <div class="nhn-skel"></div>
+            </div>
+            <div class="nhn-card-cta">더 보기</div>
+          </a>
+          <a href="#" class="nhn-card" aria-label="주가정보 더 보기">
+            <div class="nhn-card-head">주가정보</div>
+            <div class="nhn-stock">
+              <div class="nhn-stock-price">—</div>
+              <div class="nhn-stock-meta">업데이트 준비중</div>
+            </div>
+            <div class="nhn-card-cta">더 보기</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services categories -->
+    <section class="nhn-section nhn-services">
+      <div class="nhn-container">
+        <h2 class="nhn-sec-title">Weaving New Play. NHN</h2>
+        <p class="nhn-sec-sub">
+          Game · Payment•Ad · Commerce · Technology · Contents
+        </p>
+        <div class="nhn-grid-5">
+          <a class="nhn-tile" href="#">
+            <div class="nhn-tile-name">Game</div>
+            <div class="nhn-tile-desc">누구나 연결되는 새로운 즐거움</div>
+          </a>
+          <a class="nhn-tile" href="#">
+            <div class="nhn-tile-name">Payment•Ad</div>
+            <div class="nhn-tile-desc">생활 속 어디서나 쉽고 편리하게</div>
+          </a>
+          <a class="nhn-tile" href="#">
+            <div class="nhn-tile-name">Commerce</div>
+            <div class="nhn-tile-desc">더 넓은 세상으로의 연결</div>
+          </a>
+          <a class="nhn-tile" href="#">
+            <div class="nhn-tile-name">Technology</div>
+            <div class="nhn-tile-desc">유연한 기술력으로 안전한 비즈니스</div>
+          </a>
+          <a class="nhn-tile" href="#">
+            <div class="nhn-tile-name">Contents</div>
+            <div class="nhn-tile-desc">나를 위한 새로운 발견</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE NHN -->
+    <section class="nhn-section nhn-news">
+      <div class="nhn-container">
+        <h2 class="nhn-sec-title">INSIDE NHN</h2>
+        <div class="nhn-grid-3">
+          <a href="#" class="nhn-news-card">
+            <div class="nhn-news-thumb" aria-hidden="true"></div>
+            <div class="nhn-news-meta">
+              <div class="nhn-news-title">NHN의 사람, 기술, 문화 이야기</div>
+              <div class="nhn-news-desc">
+                공식 뉴스룸 'INSIDE NHN'에서 만나보세요.
+              </div>
+            </div>
+          </a>
+          <a href="#" class="nhn-news-card">
+            <div class="nhn-news-thumb" aria-hidden="true"></div>
+            <div class="nhn-news-meta">
+              <div class="nhn-news-title">스토리</div>
+              <div class="nhn-news-desc">업데이트 예정</div>
+            </div>
+          </a>
+          <a href="#" class="nhn-news-card">
+            <div class="nhn-news-thumb" aria-hidden="true"></div>
+            <div class="nhn-news-meta">
+              <div class="nhn-news-title">컬처</div>
+              <div class="nhn-news-desc">업데이트 예정</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="nhn-footer">
+      <div class="nhn-container nhn-footer-inner">
+        <div class="nhn-footer-links">
+          <a href="#">제휴제안</a>
+          <a href="#">기업윤리</a>
+          <a href="#">개인정보 처리방침</a>
+        </div>
+        <div class="nhn-footer-copy">©NHN Corp. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script src="nhn.js"></script>
+  </body>
+</html>
