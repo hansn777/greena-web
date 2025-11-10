@@ -5,11 +5,16 @@
   box-sizing: border-box;
 }
 
+html {
+  min-width: 360px;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
+  min-width: 360px;
 }
 
 .container {
@@ -24,9 +29,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  max-width: 1920px;
   background: transparent;
-  backdrop-filter: blur(20px) saturate(100%) brightness(1.0);
   z-index: 1000;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 0 auto;
@@ -46,15 +49,13 @@ body {
   align-items: center;
   padding: 16px 120px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(100%) brightness(1.0);
+  background: rgb(219 219 219 / 10%);
   min-height: 60px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   vertical-align: middle;
   margin: 0 auto;
   position: relative;
 }
-
 
 .logo {
   display: flex;
@@ -124,7 +125,7 @@ body {
 }
 
 .quote-btn {
-  background: #53C178;
+  background: #53c178;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -149,7 +150,7 @@ body {
 }
 
 .nav-menu a:hover {
-  color: #53C178;
+  color: #53c178;
 }
 
 /* 드롭다운 메뉴 스타일 */
@@ -159,32 +160,43 @@ body {
 
 /* Tailwind 스타일 메가 메뉴 */
 .navbar_hoveredMenuBg {
-  position: absolute !important;
-  top: 100% !important;
+  position: fixed !important;
+  top: 72px !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
-  z-index: 50 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(20px) saturate(100%) brightness(1.0) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  height: auto !important; /* 높이 자동 */
+  min-height: 200px !important; /* 최소 높이 보장 */
+  z-index: 998 !important; /* header(1000)보다 낮지만 hero(1)보다 높음 */
+  background: rgb(219 219 219 / 10%) !important;
+  /* backdrop-filter는 JavaScript로 동적 적용 */
+  border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12),
+    0 4px 6px -2px rgba(0, 0, 0, 0.06) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   transition: all 0.3s ease-in-out !important;
-  transform: translateY(-10px) !important;
+  transform: translateY(-10px) translateZ(0) !important; /* GPU 가속 */
+  will-change: transform, opacity, backdrop-filter !important; /* 렌더링 최적화 */
+  backface-visibility: hidden !important; /* 렌더링 최적화 */
+  pointer-events: auto !important; /* 클릭 이벤트 허용 */
+  /* backdrop-filter 작동을 위한 추가 설정 */
+  -webkit-transform: translateY(-10px) translateZ(0) !important;
+  transform-style: preserve-3d !important;
 }
 
-.nav-container:hover .navbar_hoveredMenuBg,
+.container:hover .navbar_hoveredMenuBg,
+.nav-container:hover ~ .navbar_hoveredMenuBg,
 .navbar_hoveredMenuBg:hover {
   opacity: 1 !important;
   visibility: visible !important;
-  transform: translateY(0) !important;
+  transform: translateY(0) translateZ(0) !important; /* GPU 가속 유지 */
 }
 
 /* 태블릿 사이즈(860px 이하)에서는 메가 메뉴 호버 비활성화 */
 @media (max-width: 860px) {
-  .nav-container:hover .navbar_hoveredMenuBg {
+  .container:hover .navbar_hoveredMenuBg,
+  .nav-container:hover ~ .navbar_hoveredMenuBg {
     opacity: 0 !important;
     visibility: hidden !important;
     transform: translateY(-10px) !important;
@@ -198,7 +210,8 @@ body {
   transform: translateY(-10px) !important;
 }
 
-.mobile-nav-active .nav-container:hover .navbar_hoveredMenuBg {
+.mobile-nav-active .container:hover .navbar_hoveredMenuBg,
+.mobile-nav-active .nav-container:hover ~ .navbar_hoveredMenuBg {
   opacity: 0 !important;
   visibility: hidden !important;
   transform: translateY(-10px) !important;
@@ -209,9 +222,11 @@ body {
   justify-content: center !important;
   align-items: flex-start !important;
   padding: 2rem 0 !important;
-  max-width: 1200px !important;
+  max-width: 1000px !important;
   margin: 0 auto !important;
   list-style: none !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .navbar_hoveredListContainer {
@@ -234,7 +249,8 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-bottom-color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-bottom-color 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .navbar_hoveredMenuList {
@@ -252,7 +268,7 @@ body {
 .navbar_hoveredMenuList a {
   display: block !important;
   text-decoration: none !important;
-  color: #e5e7eb !important;
+  color: #ffffff !important;
   font-size: 0.875rem !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
@@ -273,7 +289,8 @@ body {
 /* 스크롤 시 메가 메뉴 배경 및 텍스트 색상 변경 */
 body.scrolled .navbar_hoveredMenuBg {
   background: #ffffff !important;
-  backdrop-filter: none !important;
+  backdrop-filter: blur(100px) saturate(100%) brightness(1) !important;
+  -webkit-backdrop-filter: blur(100px) saturate(100%) brightness(1) !important;
   border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -304,13 +321,13 @@ body.scrolled .nav-menu a {
 }
 
 .dropdown-menu-list li a::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #53C178;
+  background: #53c178;
   transform: scaleY(0);
   transition: transform 0.2s ease;
 }
@@ -319,11 +336,10 @@ body.scrolled .nav-menu a {
   transform: scaleY(1);
 }
 
-
 .quote-btn {
   position: absolute;
   right: 120px;
-  background: #53C178;
+  background: #53c178;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -337,7 +353,7 @@ body.scrolled .nav-menu a {
 }
 
 .quote-btn:hover {
-  background: #53C178;
+  background: #53c178;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(38, 200, 110, 0.3);
 }
@@ -370,35 +386,203 @@ body.scrolled .nav-menu a {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
   position: relative;
+  padding: 80px 0 24px; /* tighter to fit in viewport */
+  background: #000;
+  color: #fff;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
+  flex-direction: column;
+  min-height: 100vh; /* ensure one-screen fit */
+  z-index: 1; /* navbar_hoveredMenuBg(999)보다 낮게 */
 }
 
-.hero-content {
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 800ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 1200ms ease;
+}
+
+.hero-slide.active {
+  opacity: 0.9;
+  transform: scale(1);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.15));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
   z-index: 2;
-  max-width: 800px;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 0;
+  min-height: 96px;
+}
+
+.container.hero-inner {
+  max-width: none;
+  padding: 0 120px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: transparent;
+}
+
+.hero-wrap {
+  position: relative;
+  padding: 0;
+}
+
+.hero-copy {
+  margin: 12vh auto clamp(24px, 6vh, 96px); /* smaller, responsive bottom gap */
+  padding: 0;
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  margin: 0 0 1.25rem 0;
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: left;
   color: white;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .hero-subtitle {
+  margin: 12px 0 0;
+  color: #e5e7eb;
+  text-align: left;
   font-size: 1.2rem;
   font-weight: 400;
-  margin-bottom: 2.5rem;
-  color: white;
-  line-height: 1.6;
+  line-height: 1.5;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 40px;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+.hero-bottom {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  /* add visual spacer from .hero-copy without changing slide height */
+  margin-top: clamp(144px, 36vh, 840px);
+  z-index: 2;
+  transition: flex-direction 0.3s ease, gap 0.3s ease;
+}
+
+.hero-index {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-idx {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.hero-idx.current {
+  font-size: 28px;
+  color: #f8fafc;
+}
+
+.hero-idx.total {
+  color: #cbd5e1;
+  font-size: 20px;
+}
+
+.hero-progress {
+  position: relative;
+  width: 120px;
+  height: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-progress-bg {
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  opacity: 0.4;
+}
+
+.hero-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: #ffffff;
+  width: 0%;
+}
+
+.hero-progress-fill.animating {
+  animation: heroProgress var(--slide-duration, 5s) linear forwards;
+}
+
+@keyframes heroProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.hero-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.hero-arrows .arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-arrows .arrow .arrow-svg {
+  display: block;
+}
+
+.rotate-180 {
+  transform: scaleX(-1);
 }
 
 @keyframes slideInUp {
@@ -413,7 +597,7 @@ body.scrolled .nav-menu a {
 }
 
 .cta-button {
-  background: #53C178;
+  background: #53c178;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -425,101 +609,8 @@ body.scrolled .nav-menu a {
 }
 
 .cta-button:hover {
-  background: #53C178;
+  background: #53c178;
   transform: translateY(-2px);
-}
-
-.scroll-btn {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.scroll-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-.scroll-btn i {
-  animation: bounce 2s infinite;
-  color: #ffffff;
-  transition: color 0.3s ease;
-}
-
-.scroll-btn:hover i {
-  color: #ffffff;
-}
-
-.scroll-down-btn {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.scroll-down-btn:hover {
-  background: white;
-  color: #333;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-.scroll-down-btn i {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-5px);
-  }
-  60% {
-    transform: translateY(-3px);
-  }
-}
-
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* About Section */
@@ -573,7 +664,7 @@ body.scrolled .nav-menu a {
 }
 
 .view-btn {
-  background: #53C178;
+  background: #53c178;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -587,7 +678,7 @@ body.scrolled .nav-menu a {
 }
 
 .view-btn:hover {
-  background: #53C178;
+  background: #53c178;
   transform: translateY(-2px);
 }
 
@@ -636,7 +727,7 @@ body.scrolled .nav-menu a {
 .service-icon {
   width: 80px;
   height: 80px;
-  background: #53C178;
+  background: #53c178;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -757,7 +848,7 @@ body.scrolled .nav-menu a {
 }
 
 .feature-tag {
-  background: #53C178;
+  background: #53c178;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -794,9 +885,9 @@ body.scrolled .nav-menu a {
 
 .tab-btn.active,
 .tab-btn:hover {
-  background: #53C178;
+  background: #53c178;
   color: white;
-  border-color: #53C178;
+  border-color: #53c178;
 }
 
 .results-content {
@@ -891,12 +982,12 @@ body.scrolled .nav-menu a {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #53C178;
+  border-color: #53c178;
 }
 
 .submit-btn {
   width: 100%;
-  background: #53C178;
+  background: #53c178;
   color: white;
   border: none;
   padding: 1rem;
@@ -907,7 +998,7 @@ body.scrolled .nav-menu a {
 }
 
 .submit-btn:hover {
-  background: #53C178;
+  background: #53c178;
   transform: translateY(-2px);
 }
 
@@ -1056,7 +1147,6 @@ body.scrolled .nav-menu a {
   transition: none;
 }
 
-
 /* 모바일 하위 메뉴 스타일 */
 .mobile-sub-menu {
   list-style: none;
@@ -1086,16 +1176,15 @@ body.scrolled .nav-menu a {
   position: relative;
 }
 
-
 .mobile-sub-menu .mobile-nav-link:hover {
-  color: #53C178;
+  color: #53c178;
   background-color: rgba(83, 193, 120, 0.05);
   padding-left: 2rem;
 }
 
 /* Mobile Navigation Background Overlay */
 .mobile-nav-overlay::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
@@ -1134,13 +1223,19 @@ body.scrolled .nav-menu a {
 }
 
 /* Responsive Design */
-@media (max-width: 1920px) {
-  .header {
-    width: 100%;
-    max-width: 1920px;
+
+@media (max-width: 840px) and (min-width: 480px) {
+  .hero-title {
+    font-size: 38px;
+    line-height: 1.2;
   }
 }
 
+@media (max-width: 1020px) {
+  .hero-bottom {
+    margin-top: clamp(156px, 38vh, 880px);
+  }
+}
 
 @media (max-width: 860px) {
   .header {
@@ -1152,7 +1247,6 @@ body.scrolled .nav-menu a {
   .nav-container {
     padding: 12px 24px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     min-height: 60px;
   }
 
@@ -1177,21 +1271,47 @@ body.scrolled .nav-menu a {
   }
 
   .hero {
-    padding: 0 20px;
+    min-height: 92vh; /* show a bit of next section */
+    padding: 64px 0 20px;
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-top: 10px;
   }
 
-  .scroll-down-btn {
-    bottom: 20px;
-    padding: 10px 20px;
-    font-size: 12px;
+  /* Adjust background focal point for slides on tablets */
+  .hero-slide {
+    background-position: center 35%;
+  }
+
+  .hero-wrap {
+    padding: 0;
+    margin: 0;
+  }
+
+  .container.hero-inner {
+    padding: 0 24px;
+  }
+
+  .hero-copy {
+    padding: 0;
+    margin-top: 10vh;
+    margin-bottom: clamp(80px, 5vh, 140px);
+  }
+
+  .hero-bottom {
+    padding: 0;
+    margin: 0;
+    left: 24px;
+    right: 24px;
+    margin-top: clamp(124px, 32vh, 720px);
   }
 }
 
@@ -1205,10 +1325,8 @@ body.scrolled .nav-menu a {
   .nav-container {
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     min-height: 60px;
   }
-
 
   .hamburger {
     display: flex;
@@ -1219,32 +1337,81 @@ body.scrolled .nav-menu a {
   }
 
   .hero {
-    padding: 0 20px;
+    min-height: 88vh; /* show more of next section */
+    padding: 56px 0 16px;
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: 0.875rem;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    margin-top: 8px;
   }
 
-  .scroll-down-btn {
-    bottom: 20px;
-    padding: 10px 20px;
-    font-size: 12px;
+  /* Adjust focal point for small screens */
+  .hero-slide {
+    background-position: center 30%;
+  }
+
+  .hero-wrap {
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-copy {
+    padding: 0;
+    margin-top: 8vh;
+    margin-bottom: clamp(20px, 5vh, 72px);
+  }
+
+  .hero-bottom {
+    padding: 0;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    left: 24px;
+    right: 24px;
+    margin-top: clamp(158px, 46.2vh, 924px);
   }
 }
 
+@media (max-width: 720px) {
+  .hero {
+    min-height: 86vh;
+  }
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 29px;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    margin-top: 6px;
   }
 
+  .hero-slide {
+    background-position: center 28%;
+  }
+
+  .hero-wrap {
+    padding: 0;
+  }
+
+  .hero-copy {
+    margin-bottom: clamp(16px, 4vh, 64px);
+  }
+  .hero-bottom {
+    margin-top: clamp(158px, 46.2vh, 924px);
+  }
+}
+
+@media (max-width: 780px) {
   .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1289,6 +1456,9 @@ body.scrolled .nav-menu a {
 }
 
 @media (max-width: 480px) {
+  .hero {
+    min-height: 80vh;
+  }
   .header {
     width: 100%;
     background: transparent;
@@ -1298,10 +1468,8 @@ body.scrolled .nav-menu a {
   .nav-container {
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     min-height: 60px;
   }
-
 
   .hamburger {
     display: flex;
@@ -1311,8 +1479,39 @@ body.scrolled .nav-menu a {
     display: none;
   }
 
+  .container.hero-inner {
+    padding: 0 20px;
+  }
+
   .hero-title {
-    font-size: 2rem;
+    font-size: 28px; /* increased for mobile */
+    line-height: 1.35;
+    margin-bottom: 0.625rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem; /* increased for mobile */
+    margin-top: 6px;
+  }
+
+  .hero-slide {
+    background-position: center 25%;
+  }
+
+  .hero-bottom {
+    left: 20px;
+    right: 20px;
+  }
+
+  .hero-wrap {
+    padding: 0;
+  }
+
+  .hero-copy {
+    margin-bottom: clamp(12px, 4vh, 56px);
+  }
+  .hero-bottom {
+    margin-top: clamp(137px, 38.4vh, 768px);
   }
 
   .section-header h2 {
@@ -1330,6 +1529,69 @@ body.scrolled .nav-menu a {
     gap: 1rem;
     text-align: center;
   }
+}
+
+/* Tablet adjustments for hero-bottom (<= 860px) */
+@media (max-width: 860px) {
+  .hero-bottom .hero-idx.current {
+    font-size: 24px;
+  }
+  .hero-bottom .hero-idx.total {
+    font-size: 16px;
+  }
+  .hero-bottom .hero-arrows {
+    gap: 10px;
+  }
+  .hero-bottom .hero-arrows .arrow {
+    width: 32px;
+    height: 32px;
+  }
+  .hero-bottom .hero-arrows .arrow .arrow-svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Small mobile adjustments for hero-bottom (<= 360px) */
+@media (max-width: 360px) {
+  .hero {
+    min-height: 78vh;
+  }
+  .hero-bottom {
+    margin-top: clamp(179px, 34.56vh, 922px); /* consistent across all slides */
+  }
+  .hero-bottom .hero-idx.current {
+    font-size: 20px;
+  }
+  .hero-bottom .hero-idx.total {
+    font-size: 14px;
+  }
+  .hero-bottom .hero-arrows {
+    gap: 8px;
+  }
+  .hero-bottom .hero-arrows .arrow {
+    width: 28px;
+    height: 28px;
+  }
+  .hero-bottom .hero-arrows .arrow .arrow-svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 280px) {
+  .hero {
+    min-height: 76vh;
+  }
+  .hero-bottom {
+    margin-top: clamp(179px, 34.56vh, 922px); /* consistent across all slides */
+  }
+}
+
+/* Hero copy absolute positioning offset (double spacing)
+   If .hero-copy is positioned absolute, this increases the bottom gap */
+.hero-copy {
+  bottom: clamp(420px, 5vh, 80px);
 }
 
 /* Map Page Styles */
@@ -1387,7 +1649,7 @@ body.scrolled .nav-menu a {
 
 .map-placeholder i {
   font-size: 3rem;
-  color: #53C178;
+  color: #53c178;
   margin-bottom: 1rem;
 }
 
@@ -1524,7 +1786,7 @@ body.scrolled .nav-menu a {
 .phone-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #53C178;
+  color: #53c178;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -1564,7 +1826,7 @@ body.scrolled .nav-menu a {
 }
 
 .footer-link:hover {
-  color: #53C178;
+  color: #53c178;
 }
 
 .footer-copyright p {
@@ -1615,7 +1877,8 @@ body.scrolled .nav-menu a {
   background: #ffffff;
   border-radius: 12px;
   padding: 6px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   max-width: 500px;
   margin: 0 auto;
   border: 1px solid #e2e8f0;
@@ -1638,13 +1901,13 @@ body.scrolled .nav-menu a {
 }
 
 .sub-nav-item:hover {
-  color: #53C178;
+  color: #53c178;
   background: rgba(83, 193, 120, 0.08);
   transform: translateY(-1px);
 }
 
 .sub-nav-item.active {
-  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
+  background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
   color: white;
   font-weight: 600;
   box-shadow: 0 4px 14px 0 rgba(83, 193, 120, 0.39);
@@ -1691,7 +1954,7 @@ body.scrolled .nav-menu a {
 .map-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #53C178;
+  color: #53c178;
   margin-bottom: 1rem;
 }
 
@@ -1705,7 +1968,8 @@ body.scrolled .nav-menu a {
   margin: 2rem 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .location-info {
@@ -1717,7 +1981,7 @@ body.scrolled .nav-menu a {
 }
 
 .location-info h4 {
-  color: #53C178;
+  color: #53c178;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -1731,7 +1995,7 @@ body.scrolled .nav-menu a {
 
 /* 회사소개 페이지 스타일 */
 .company-hero {
-  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
+  background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
   color: white;
   text-align: center;
   padding: 120px 0;
@@ -1756,7 +2020,7 @@ body.scrolled .nav-menu a {
 .intro-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #53C178;
+  color: #53c178;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -1776,7 +2040,7 @@ body.scrolled .nav-menu a {
 
 .intro-text h4 {
   font-size: 1.5rem;
-  color: #53C178;
+  color: #53c178;
   margin: 2rem 0 1rem 0;
 }
 
@@ -1796,7 +2060,7 @@ body.scrolled .nav-menu a {
   text-align: right;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 2px solid #53C178;
+  border-top: 2px solid #53c178;
 }
 
 .ceo-signature p {
@@ -1807,7 +2071,7 @@ body.scrolled .nav-menu a {
 
 /* 인증서 페이지 스타일 */
 .certificate-hero {
-  background: linear-gradient(135deg, #53C178 0%, #4aad6a 100%);
+  background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
   color: white;
   text-align: center;
   padding: 120px 0;
@@ -1832,7 +2096,7 @@ body.scrolled .nav-menu a {
 .certificate-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #53C178;
+  color: #53c178;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -1894,7 +2158,7 @@ body.scrolled .nav-menu a {
 }
 
 .cert-date {
-  background: #53C178;
+  background: #53c178;
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
@@ -1908,63 +2172,62 @@ body.scrolled .nav-menu a {
   .certificate-hero h1 {
     font-size: 2rem;
   }
-  
+
   .company-hero p,
   .certificate-hero p {
     font-size: 1rem;
   }
-  
+
   .intro-content h2,
   .certificate-content h2 {
     font-size: 2rem;
   }
-  
+
   .certificate-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .company-intro,
   .certificate-section {
     padding: 60px 0;
   }
-  
+
   .sub-nav-container {
     flex-direction: column;
     gap: 4px;
     padding: 12px;
   }
-  
+
   .sub-nav-item {
     text-align: center;
     padding: 10px 16px;
   }
 }
 
-  .logo-intem-dot {
-    top: -5px;
-    left: 10px;
-    width: 12px;
-    height: 12px;
-  }
+.logo-intem-dot {
+  top: -5px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+}
 
-  .logo-intem-korean-oval {
-    font-size: 16px;
-    padding: 3px 10px;
-  }
+.logo-intem-korean-oval {
+  font-size: 16px;
+  padding: 3px 10px;
+}
 
-  .company-contact-block {
-    text-align: left;
-    font-size: 14px;
-  }
+.company-contact-block {
+  text-align: left;
+  font-size: 14px;
+}
 
-  .company-contact-block h3.company-name-korean {
-    font-size: 20px;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
+.company-contact-block h3.company-name-korean {
+  font-size: 20px;
+}
+
+.footer-content {
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
 }

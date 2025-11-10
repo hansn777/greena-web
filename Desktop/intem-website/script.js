@@ -105,121 +105,198 @@ function handleQuoteButtonResize() {
   }
 }
 
-// Header Scroll Effect
-window.addEventListener("scroll", () => {
-  const header = document.querySelector(".header");
-  const navContainer = document.querySelector(".nav-container");
-  const aboutSection = document.querySelector(".about");
-  const navMenuLinks = document.querySelectorAll(".nav-menu a");
-  const hamburgerSpans = document.querySelectorAll(".hamburger span");
-  const logoImages = document.querySelectorAll(".logo-img");
-  const asset9Image = logoImages.length > 1 ? logoImages[1] : null; // asset9.png (두 번째 이미지)
+// Header Scroll Effect - 최적화된 버전
+let scrollTimeout;
+const SCROLL_THRESHOLD = 100;
+const BLUR_VALUE = "blur(12px) saturate(140%)";
+const BG_COLOR_GLASS = "rgb(219 219 219 / 10%)";
+const BG_COLOR_SCROLLED = "rgba(255, 255, 255, 0.2)";
 
-  if (window.scrollY > 100) {
-    // 100px 이상: nav와 메가메뉴 모두 흰색 배경
+// 요소 캐싱 (성능 최적화)
+const scrollElements = {
+  header: null,
+  navContainer: null,
+  megaMenuBg: null,
+  navMenuLinks: null,
+  hamburgerSpans: null,
+  asset9Image: null,
+  aboutSection: null,
+};
+
+// 초기 요소 캐싱
+function cacheScrollElements() {
+  scrollElements.header = document.querySelector(".header");
+  scrollElements.navContainer = document.querySelector(".nav-container");
+  scrollElements.megaMenuBg = document.querySelector(".navbar_hoveredMenuBg");
+  scrollElements.navMenuLinks = document.querySelectorAll(".nav-menu a");
+  scrollElements.hamburgerSpans = document.querySelectorAll(".hamburger span");
+  const logoImages = document.querySelectorAll(".logo-img");
+  scrollElements.asset9Image = logoImages.length > 1 ? logoImages[1] : null;
+  scrollElements.aboutSection = document.querySelector(".about");
+}
+
+// 스크롤 효과 적용 함수
+function applyScrollEffects(isScrolled) {
+  const {
+    header,
+    navContainer,
+    megaMenuBg,
+    navMenuLinks,
+    hamburgerSpans,
+    asset9Image,
+  } = scrollElements;
+
+  if (!header || !navContainer) return;
+
+  if (isScrolled) {
+    // 100px 이상: 스크롤된 상태
     header.style.background = "#ffffff";
-    header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.2)";
-    navContainer.style.backdropFilter =
-      "blur(30px) saturate(180%) brightness(1.2)";
     header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
 
-    // Change nav menu links to dark color
+    // nav-container와 megaMenuBg 동시 효과 적용
+    navContainer.style.background = BG_COLOR_SCROLLED;
+    navContainer.style.backdropFilter = "";
+    navContainer.style.webkitBackdropFilter = "";
+    navContainer.style.removeProperty("backdrop-filter");
+    navContainer.style.removeProperty("-webkit-backdrop-filter");
+
+    if (megaMenuBg) {
+      megaMenuBg.style.background = "#ffffff";
+      megaMenuBg.style.backdropFilter = "";
+      megaMenuBg.style.webkitBackdropFilter = "";
+      megaMenuBg.style.removeProperty("backdrop-filter");
+      megaMenuBg.style.removeProperty("-webkit-backdrop-filter");
+      // !important로 강제 적용
+      megaMenuBg.style.setProperty("background", "#ffffff", "important");
+      megaMenuBg.style.setProperty("backdrop-filter", "none", "important");
+      megaMenuBg.style.setProperty(
+        "-webkit-backdrop-filter",
+        "none",
+        "important"
+      );
+    }
+
+    // 텍스트 색상 변경
     navMenuLinks.forEach((link) => {
       link.style.color = "#333";
     });
-
-    // Change hamburger to dark color
     hamburgerSpans.forEach((span) => {
       span.style.background = "#333";
     });
-
-    // Change asset9.png to black
     if (asset9Image) {
       asset9Image.style.filter = "brightness(0) saturate(100%)";
     }
   } else {
-    // 0px~100px: nav와 메가메뉴 모두 글래스모피즘
+    // 0px~100px: 글래스모피즘 상태
     header.style.background = "transparent";
-    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter =
-      "blur(20px) saturate(100%) brightness(1.0)";
     header.style.boxShadow = "none";
 
-    // Change nav menu links to white color
+    // nav-container와 megaMenuBg 동시 효과 적용
+    navContainer.style.background = BG_COLOR_GLASS;
+    navContainer.style.backdropFilter = BLUR_VALUE;
+    navContainer.style.webkitBackdropFilter = BLUR_VALUE;
+
+    if (megaMenuBg) {
+      megaMenuBg.style.background = BG_COLOR_GLASS;
+      megaMenuBg.style.backdropFilter = BLUR_VALUE;
+      megaMenuBg.style.webkitBackdropFilter = BLUR_VALUE;
+      // !important로 강제 적용
+      megaMenuBg.style.setProperty("background", BG_COLOR_GLASS, "important");
+      megaMenuBg.style.setProperty("backdrop-filter", BLUR_VALUE, "important");
+      megaMenuBg.style.setProperty(
+        "-webkit-backdrop-filter",
+        BLUR_VALUE,
+        "important"
+      );
+    }
+
+    // 텍스트 색상 변경
     navMenuLinks.forEach((link) => {
       link.style.color = "#ffffff";
     });
-
-    // Change hamburger to white color
     hamburgerSpans.forEach((span) => {
       span.style.background = "#ffffff";
     });
-
-    // Reset asset9.png to original color
     if (asset9Image) {
       asset9Image.style.filter = "none";
     }
   }
+}
 
-  // About section text color change
-  if (aboutSection) {
-    const aboutRect = aboutSection.getBoundingClientRect();
-    const aboutTop = aboutRect.top;
-
-    if (navContainer.offsetHeight <= 5) {
-      // When nav-container height is 0-5px, make text white
-      const aboutTextH2 = aboutSection.querySelector(".about-text h2");
-      const aboutTextP = aboutSection.querySelector(".about-text p");
-      const aboutCardH3 = aboutSection.querySelectorAll(".about-card h3");
-
-      if (aboutTextH2) aboutTextH2.style.color = "#ffffff";
-      if (aboutTextP) aboutTextP.style.color = "#ffffff";
-      aboutCardH3.forEach((h3) => {
-        h3.style.color = "#ffffff";
-      });
-    } else {
-      // When scrolled, maintain current colors
-      const aboutTextH2 = aboutSection.querySelector(".about-text h2");
-      const aboutTextP = aboutSection.querySelector(".about-text p");
-      const aboutCardH3 = aboutSection.querySelectorAll(".about-card h3");
-
-      if (aboutTextH2) aboutTextH2.style.color = "#333";
-      if (aboutTextP) aboutTextP.style.color = "#666";
-      aboutCardH3.forEach((h3) => {
-        h3.style.color = "#333";
-      });
-    }
+// 스크롤 이벤트 핸들러 (throttle 적용)
+window.addEventListener("scroll", () => {
+  // Throttle: 16ms마다 실행 (약 60fps)
+  if (scrollTimeout) {
+    return;
   }
+
+  scrollTimeout = requestAnimationFrame(() => {
+    const isScrolled = window.scrollY > SCROLL_THRESHOLD;
+    applyScrollEffects(isScrolled);
+
+    // 호버 중에도 스크롤 효과가 적용되도록 강제 업데이트
+    if (scrollElements.megaMenuBg) {
+      const megaMenuBg = scrollElements.megaMenuBg;
+      if (isScrolled) {
+        megaMenuBg.style.setProperty("background", "#ffffff", "important");
+        megaMenuBg.style.setProperty("backdrop-filter", "none", "important");
+        megaMenuBg.style.setProperty(
+          "-webkit-backdrop-filter",
+          "none",
+          "important"
+        );
+      } else {
+        megaMenuBg.style.setProperty("background", BG_COLOR_GLASS, "important");
+        megaMenuBg.style.setProperty(
+          "backdrop-filter",
+          BLUR_VALUE,
+          "important"
+        );
+        megaMenuBg.style.setProperty(
+          "-webkit-backdrop-filter",
+          BLUR_VALUE,
+          "important"
+        );
+      }
+    }
+
+    // About section text color change
+    if (scrollElements.aboutSection && scrollElements.navContainer) {
+      const aboutRect = scrollElements.aboutSection.getBoundingClientRect();
+      const navHeight = scrollElements.navContainer.offsetHeight;
+
+      if (navHeight <= 5) {
+        const aboutTextH2 =
+          scrollElements.aboutSection.querySelector(".about-text h2");
+        const aboutTextP =
+          scrollElements.aboutSection.querySelector(".about-text p");
+        const aboutCardH3 =
+          scrollElements.aboutSection.querySelectorAll(".about-card h3");
+
+        if (aboutTextH2) aboutTextH2.style.color = "#ffffff";
+        if (aboutTextP) aboutTextP.style.color = "#ffffff";
+        aboutCardH3.forEach((h3) => {
+          h3.style.color = "#ffffff";
+        });
+      } else {
+        const aboutTextH2 =
+          scrollElements.aboutSection.querySelector(".about-text h2");
+        const aboutTextP =
+          scrollElements.aboutSection.querySelector(".about-text p");
+        const aboutCardH3 =
+          scrollElements.aboutSection.querySelectorAll(".about-card h3");
+
+        if (aboutTextH2) aboutTextH2.style.color = "#333";
+        if (aboutTextP) aboutTextP.style.color = "#666";
+        aboutCardH3.forEach((h3) => {
+          h3.style.color = "#333";
+        });
+      }
+    }
+
+    scrollTimeout = null;
+  });
 });
-
-// Scroll Down Button
-const scrollDownBtn = document.querySelector(".scroll-down-btn");
-const scrollBtn = document.querySelector(".scroll-btn");
-if (scrollDownBtn) {
-  scrollDownBtn.addEventListener("click", () => {
-    const aboutSection = document.querySelector(".about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-}
-
-if (scrollBtn) {
-  scrollBtn.addEventListener("click", () => {
-    const aboutSection = document.querySelector(".about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-}
 
 // Form Submission
 const contactForm = document.querySelector(".contact-form form");
@@ -287,72 +364,105 @@ document.querySelectorAll(".service-card").forEach((card) => {
   });
 });
 
-// Page Load Animation
-window.addEventListener("load", () => {
-  // 히어로 섹션 요소들에 애니메이션 클래스 추가
+// Mega Menu는 스크롤 이벤트에서만 처리 (호버 이벤트 제거로 충돌 방지)
+
+// Hero carousel
+(function () {
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  const idxCurrent = document.querySelector(".hero-idx.current");
+  const idxTotal = document.querySelector(".hero-idx.total");
+  const prevBtn = document.querySelector(".hero-arrows .prev");
+  const nextBtn = document.querySelector(".hero-arrows .next");
   const heroTitle = document.querySelector(".hero-title");
   const heroSubtitle = document.querySelector(".hero-subtitle");
-  const ctaButton = document.querySelector(".cta-button");
-  const scrollDownBtn = document.querySelector(".scroll-down-btn");
+  let current = 0;
+  const durationMs = 5000;
 
-  // 초기 상태 설정
-  if (heroTitle) {
-    heroTitle.style.opacity = "0";
-    heroTitle.style.transform = "translateY(50px)";
-    heroTitle.style.transition =
-      "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+  // 슬라이드별 텍스트 내용
+  const slideContents = [
+    {
+      highlight: "그린에이",
+      title: "공기의 가치를 새롭게",
+      subtitle: "매일 더 깨끗한 공기, 그린에이와 함께 해보세요",
+    },
+    {
+      highlight: "전문가의 관리가",
+      title: "공기를 더 진심으로",
+      subtitle: "매 순간 깨끗한 공기를 위한 맞춤 케어 솔루션",
+    },
+    {
+      highlight: "실내 공기관리,",
+      title: "번거로움 없이 맡기세요",
+      subtitle: "렌탈부터 유지관리까지 원스톱 케어 서비스",
+    },
+  ];
+
+  function pad2(n) {
+    return String(n).padStart(2, "0");
   }
 
-  if (heroSubtitle) {
-    heroSubtitle.style.opacity = "0";
-    heroSubtitle.style.transform = "translateY(50px)";
-    heroSubtitle.style.transition =
-      "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+  function setSlide(i) {
+    slides.forEach((s, si) => s.classList.toggle("active", si === i));
+    const nextIdx = (i + 1) % slides.length;
+    if (idxCurrent) idxCurrent.textContent = pad2(i + 1);
+    if (idxTotal) idxTotal.textContent = pad2(nextIdx + 1);
+    current = i;
+
+    // 텍스트 내용 변경
+    if (heroTitle && heroSubtitle && slideContents[i]) {
+      const content = slideContents[i];
+      const highlightSpan = heroTitle.querySelector(".highlight");
+      if (highlightSpan) {
+        highlightSpan.textContent = content.highlight;
+      }
+      // highlight 다음의 텍스트를 찾아서 변경
+      const titleText = heroTitle.childNodes;
+      for (let j = 0; j < titleText.length; j++) {
+        if (titleText[j].nodeType === 3 && titleText[j].textContent.trim()) {
+          // 텍스트 노드이고 <br> 다음의 텍스트
+          if (j > 0 && titleText[j - 1].tagName === "BR") {
+            titleText[j].textContent = content.title;
+            break;
+          }
+        }
+      }
+      // 또는 더 간단하게: hero-title의 구조를 확인하고 적절히 변경
+      heroTitle.innerHTML = `<span class="highlight">${content.highlight}</span><br />${content.title}`;
+      heroSubtitle.textContent = content.subtitle;
+    }
+
+    // restart progress bar
+    const fill = document.querySelector(".hero-progress-fill");
+    if (fill) {
+      fill.style.setProperty("--slide-duration", durationMs / 1000 + "s");
+      fill.classList.remove("animating");
+      void fill.offsetWidth; // reflow to restart animation
+      fill.classList.add("animating");
+    }
   }
 
-  if (ctaButton) {
-    ctaButton.style.opacity = "0";
-    ctaButton.style.transform = "translateY(50px)";
-    ctaButton.style.transition =
-      "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+  if (prevBtn)
+    prevBtn.addEventListener("click", () =>
+      setSlide((current - 1 + slides.length) % slides.length)
+    );
+  if (nextBtn)
+    nextBtn.addEventListener("click", () =>
+      setSlide((current + 1) % slides.length)
+    );
+
+  // Auto-rotate with reduced-motion respect
+  const autoTimer = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const next = (current + 1) % slides.length;
+    setSlide(next);
+  };
+  setInterval(autoTimer, durationMs);
+
+  // Initialize
+  if (slides.length > 0) {
+    setSlide(0);
   }
-
-  if (scrollDownBtn) {
-    scrollDownBtn.style.opacity = "0";
-    scrollDownBtn.style.transform = "translateX(-50%) translateY(50px)";
-    scrollDownBtn.style.transition =
-      "all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-  }
-
-  // 순차적 애니메이션 실행
-  setTimeout(() => {
-    if (heroTitle) {
-      heroTitle.style.opacity = "1";
-      heroTitle.style.transform = "translateY(0)";
-    }
-  }, 200);
-
-  setTimeout(() => {
-    if (heroSubtitle) {
-      heroSubtitle.style.opacity = "1";
-      heroSubtitle.style.transform = "translateY(0)";
-    }
-  }, 600);
-
-  setTimeout(() => {
-    if (ctaButton) {
-      ctaButton.style.opacity = "1";
-      ctaButton.style.transform = "translateY(0)";
-    }
-  }, 1000);
-
-  setTimeout(() => {
-    if (scrollDownBtn) {
-      scrollDownBtn.style.opacity = "1";
-      scrollDownBtn.style.transform = "translateX(-50%) translateY(0)";
-    }
-  }, 1400);
-});
+})();
 
 // Window resize event listener for quote button
 window.addEventListener("resize", handleQuoteButtonResize);
@@ -360,66 +470,12 @@ window.addEventListener("resize", handleQuoteButtonResize);
 // Initial call to set correct state
 handleQuoteButtonResize();
 
-// 페이지 로드 시 초기 nav 상태 설정
-function initializeNavState() {
-  const header = document.querySelector(".header");
-  const navContainer = document.querySelector(".nav-container");
-  const navMenuLinks = document.querySelectorAll(".nav-menu a");
-  const hamburgerSpans = document.querySelectorAll(".hamburger span");
-  const logoImages = document.querySelectorAll(".logo-img");
-  const asset9Image = logoImages.length > 1 ? logoImages[1] : null;
-
-  if (window.scrollY > 100) {
-    // 100px 이상: nav와 메가메뉴 모두 흰색 배경
-    header.style.background = "#ffffff";
-    header.style.backdropFilter = "blur(30px) saturate(180%) brightness(1.2)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.2)";
-    navContainer.style.backdropFilter =
-      "blur(30px) saturate(180%) brightness(1.2)";
-    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
-
-    // Change nav menu links to dark color
-    navMenuLinks.forEach((link) => {
-      link.style.color = "#333";
-    });
-
-    // Change hamburger to dark color
-    hamburgerSpans.forEach((span) => {
-      span.style.background = "#333";
-    });
-
-    // Change asset9.png to black
-    if (asset9Image) {
-      asset9Image.style.filter = "brightness(0) saturate(100%)";
-    }
-  } else {
-    // 0px~100px: nav와 메가메뉴 모두 글래스모피즘
-    header.style.background = "transparent";
-    header.style.backdropFilter = "blur(20px) saturate(100%) brightness(1.0)";
-    navContainer.style.background = "rgba(255, 255, 255, 0.1)";
-    navContainer.style.backdropFilter =
-      "blur(20px) saturate(100%) brightness(1.0)";
-    header.style.boxShadow = "none";
-
-    // Change nav menu links to white color
-    navMenuLinks.forEach((link) => {
-      link.style.color = "#ffffff";
-    });
-
-    // Change hamburger to white color
-    hamburgerSpans.forEach((span) => {
-      span.style.background = "#ffffff";
-    });
-
-    // Reset asset9.png to original color
-    if (asset9Image) {
-      asset9Image.style.filter = "none";
-    }
-  }
-}
-
 // 페이지 로드 시 초기 상태 설정
-initializeNavState();
+document.addEventListener("DOMContentLoaded", () => {
+  cacheScrollElements();
+  const isScrolled = window.scrollY > SCROLL_THRESHOLD;
+  applyScrollEffects(isScrolled);
+});
 
 // (삭제) 사이트맵 관련 코드 제거됨
 

@@ -42,42 +42,6 @@
             </li>
           </ul>
 
-          <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
-          <div class="navbar_hoveredMenuBg">
-            <ul class="navbar_hoveredMenuContainer">
-              <li class="navbar_hoveredListContainer">
-                <div class="mega-menu-header">회사소개</div>
-                <ul class="navbar_hoveredMenuList">
-                  <a href="company.html"><li>회사소개</li></a>
-                  <a href="company.html#certificate-section"><li>인증서</li></a>
-                  <a href="company.html#map-section"><li>오시는길</li></a>
-                </ul>
-              </li>
-              <li class="navbar_hoveredListContainer">
-                <div class="mega-menu-header">제품소개</div>
-                <ul class="navbar_hoveredMenuList">
-                  <a href="products.html"><li>공기청정기</li></a>
-                  <a href="products.html"><li>향기분사기</li></a>
-                </ul>
-              </li>
-              <li class="navbar_hoveredListContainer">
-                <div class="mega-menu-header">유지관리/렌탈</div>
-                <ul class="navbar_hoveredMenuList">
-                  <a href="#maintenance"><li>유지관리</li></a>
-                  <a href="#maintenance"><li>렌탈</li></a>
-                </ul>
-              </li>
-              <li class="navbar_hoveredListContainer">
-                <div class="mega-menu-header">블로그</div>
-                <ul class="navbar_hoveredMenuList">
-                  <a href="https://blog.naver.com/ars99" target="_blank"
-                    ><li>블로그</li></a
-                  >
-                </ul>
-              </li>
-            </ul>
-          </div>
-
           <div class="nav-right">
             <button class="quote-btn">견적문의</button>
             <div class="hamburger">
@@ -86,6 +50,42 @@
               <span></span>
             </div>
           </div>
+        </div>
+
+        <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
+        <div class="navbar_hoveredMenuBg">
+          <ul class="navbar_hoveredMenuContainer">
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">회사소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="company.html"><li>회사소개</li></a>
+                <a href="company.html#certificate-section"><li>인증서</li></a>
+                <a href="company.html#map-section"><li>오시는길</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">제품소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="products.html"><li>공기청정기</li></a>
+                <a href="products.html"><li>향기분사기</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">유지관리/렌탈</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="#maintenance"><li>유지관리</li></a>
+                <a href="#maintenance"><li>렌탈</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">블로그</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="https://blog.naver.com/ars99" target="_blank"
+                  ><li>블로그</li></a
+                >
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
@@ -162,22 +162,88 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="highlight">그린에이</span><br />
-          공기의 가치를 새롭게
-        </h1>
-        <h2 class="hero-subtitle">
-          매일 더 깨끗한 공기, 그린에이와 함께 해보세요
-        </h2>
-        <button class="scroll-btn">
-          <span>SCROLL DOWN</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
+    <section class="hero" role="banner">
+      <div class="hero-media" aria-hidden="true">
+        <div
+          class="hero-slide active"
+          style="background-image: url('back.png')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('young-engineers-coming-with-energy-innovations.jpg');
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('person-special-equipment-disinfecting-restricted-area.jpg');
+          "
+        ></div>
       </div>
-      <div class="hero-image">
-        <img src="back.png" />
+      <div class="hero-overlay"></div>
+      <div class="hero-wrap">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 class="hero-title">
+              <span class="highlight">그린에이</span><br />
+              공기의 가치를 새롭게
+            </h1>
+            <p class="hero-subtitle">
+              매일 더 깨끗한 공기, 그린에이와 함께 해보세요
+            </p>
+          </div>
+          <div class="hero-bottom">
+            <div class="hero-index">
+              <span class="hero-idx current">01</span>
+              <div class="hero-progress">
+                <div class="hero-progress-fill"></div>
+                <div class="hero-progress-bg"></div>
+              </div>
+              <span class="hero-idx total">02</span>
+            </div>
+            <div
+              class="hero-arrows"
+              role="tablist"
+              aria-label="히어로 슬라이드"
+            >
+              <button class="arrow prev" aria-label="prevButton" type="button">
+                <svg
+                  class="arrow-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M23.5 14L17.5 20L23.5 26"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </button>
+              <button class="arrow next" aria-label="nextButton" type="button">
+                <svg
+                  class="arrow-svg rotate-180"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M23.5 14L17.5 20L23.5 26"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
