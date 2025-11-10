@@ -486,3 +486,32 @@ window.addEventListener("scroll", () => {
 });
 
 console.log("인템 웹사이트가 성공적으로 로드되었습니다!");
+
+// Floating Action Button
+document.addEventListener("DOMContentLoaded", () => {
+  const floatMainBtn = document.getElementById("floatMainBtn");
+  const floatMenu = document.getElementById("floatMenu");
+
+  if (floatMainBtn && floatMenu) {
+    floatMainBtn.addEventListener("click", () => {
+      floatMainBtn.classList.toggle("active");
+      floatMenu.classList.toggle("active");
+    });
+
+    // 메뉴 외부 클릭 시 닫기
+    document.addEventListener("click", (e) => {
+      if (!floatMainBtn.contains(e.target) && !floatMenu.contains(e.target)) {
+        floatMainBtn.classList.remove("active");
+        floatMenu.classList.remove("active");
+      }
+    });
+
+    // ESC 키로 닫기
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        floatMainBtn.classList.remove("active");
+        floatMenu.classList.remove("active");
+      }
+    });
+  }
+});
