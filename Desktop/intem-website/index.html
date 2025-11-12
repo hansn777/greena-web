@@ -350,50 +350,314 @@
 
     <!-- Products Section -->
     <section class="products" id="products">
-      <div class="container">
-        <div class="section-header">
-          <h2>Our Product</h2>
-          <h3>공기청정기 시장을 선도하는<br />사람을 먼저 생각하는 기업인템</h3>
-          <p>제품을 클릭하면 자세히 확인해 보실 수 있습니다.</p>
+      <div
+        class="z-1 w-full"
+        style="opacity: 0; transform: translateY(60px) translateZ(0)"
+      >
+        <div
+          class="flex w-full flex-col items-center relative z-20 space-y-8 mb-0"
+        >
+          <article class="font-poppins text-t3-xl justify-center">
+            Weaving New Play. NHN
+          </article>
+          <article class="text-grayscale-3 text-body9-m text-center">
+            상상과 현실, 기술과 삶, 사람과 사람을 연결합니다.
+          </article>
         </div>
-        <div class="product-grid">
-          <div class="product-item">
-            <img
-              src="https://images.unsplash.com/photo-1581578731548-c6a0c3f2f2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              alt="병원"
-            />
-            <div class="product-overlay">
-              <h4>병원</h4>
+      </div>
+      <div class="min-w-1360 w-1360 pl-80 pr-80 mx-auto">
+        <section
+          class="mx-auto flex h-auto flex-col justify-center pb-240 text-center space-y-66"
+        >
+          <div>
+            <div class="products-slider-container">
+              <div class="products-slider-track" id="productsSliderTrack">
+                <ul class="flex space-x-20 products-slider-list">
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10 active"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer gradient-overlay"
+                    ></div>
+                    <img
+                      alt="병원"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 병원 homepage"
+                        class="flex items-center"
+                        href="#hospital"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>병원</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Hospital
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="산업현장"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 산업현장 homepage"
+                        class="flex items-center"
+                        href="#industry"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>산업현장</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Industry
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="회사"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 회사 homepage"
+                        class="flex items-center"
+                        href="#company"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>회사</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Company
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="도서관"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 도서관 homepage"
+                        class="flex items-center"
+                        href="#library"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>도서관</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Library
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
+            <ul
+              class="mt-32 flex font-poppins text-t7-l text-grayscale-8 first-of-type:ml-60 products-nav"
+            >
+              <li class="relative text-grayscale-1">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn active"
+                  type="button"
+                  data-index="0"
+                >
+                  병원
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-89">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="1"
+                >
+                  산업현장
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-45">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="2"
+                >
+                  회사
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-70">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="3"
+                >
+                  도서관
+                </button>
+              </li>
+            </ul>
           </div>
-          <div class="product-item">
-            <img
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              alt="산업현장"
-            />
-            <div class="product-overlay">
-              <h4>산업현장</h4>
-            </div>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              alt="회사"
-            />
-            <div class="product-overlay">
-              <h4>회사</h4>
-            </div>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-              alt="도서관"
-            />
-            <div class="product-overlay">
-              <h4>도서관</h4>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
     </section>
 
@@ -563,36 +827,24 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-info">
-            <h3>INTEM</h3>
-            <p>법인명: 인템 | 대표자: 이재룡</p>
-            <p>주소: 서울 노원구 월계로45길 28 월계테크노타운 8층 인템</p>
-            <p>전화번호: 1688-7995 | 팩스번호: 02-6499-7995</p>
-            <p>사업자 등록번호: 209-04-98884</p>
-            <p>개인정보관리책임자: 이준용 주임 ars99@naver.com</p>
-            <p>통신판매업 신고: 2009-서울노원-0122호</p>
+            <h3>그린에이</h3>
+            <p>법인명: 그린에이 대표자: 정수연</p>
+            <p>
+              주소: 경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동
+              9043호
+            </p>
+            <p>전화번호: 031-522-5709</p>
+            <p>팩스번호: 031-522-5706</p>
           </div>
           <div class="footer-contact">
             <h3>고객센터</h3>
-            <div class="phone-number">1688 - 7995</div>
             <p>평일 상담시간: 오전 9시 - 오후 6시</p>
             <p>점심시간: 오후 12시 - 1시</p>
             <p>휴무일 : 토, 일, 공휴일</p>
           </div>
-          <div class="footer-links">
-            <h3>바로가기</h3>
-            <ul>
-              <li><a href="#">인템스토어</a></li>
-              <li><a href="#">스마트스토어</a></li>
-              <li>
-                <a href="https://m.blog.naver.com/greena911" target="_blank"
-                  >블로그</a
-                >
-              </li>
-            </ul>
-          </div>
         </div>
         <div class="footer-bottom">
-          <p>Copyright © 인템 All rights reserved</p>
+          <p>Copyright © 그린에이 All rights reserved</p>
         </div>
       </div>
     </footer>
@@ -620,12 +872,12 @@
       </div>
       <button class="float-main-btn" id="floatMainBtn" aria-label="고객 상담">
         <img
-          src="float - open.png"
+          src="float%20-%20open.png"
           alt="열기"
           class="float-btn-img float-btn-open"
         />
         <img
-          src="float - close.png"
+          src="float%20-%20close.png"
           alt="닫기"
           class="float-btn-img float-btn-close"
         />

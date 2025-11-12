@@ -345,12 +345,274 @@ document
     observer.observe(el);
   });
 
-// Product Item Click Handler
-document.querySelectorAll(".product-item").forEach((item) => {
-  item.addEventListener("click", () => {
-    const title = item.querySelector("h4").textContent;
-    alert(`${title} 제품에 대한 자세한 정보를 보여드립니다.`);
+// NHN Style Products Section - Slider and Hover Effects
+document.addEventListener("DOMContentLoaded", () => {
+  const productCards = document.querySelectorAll(
+    ".products li.relative.h-526.w-224"
+  );
+  const sliderTrack = document.getElementById("productsSliderTrack");
+  const navButtons = document.querySelectorAll(".products-nav-btn");
+  const sliderList = document.querySelector(".products-slider-list");
+  const sliderContainer = document.querySelector(".products-slider-container");
+
+  if (!sliderTrack || !navButtons.length || !sliderList || !sliderContainer)
+    return;
+
+  // 반응형 브레이크포인트 상수
+  const BREAKPOINTS = {
+    mobile: 480,
+    tablet: 860,
+    desktop: 1360,
+  };
+
+  // 카드 너비와 간격 계산 함수 (반응형 대응)
+  const getCardWidth = () => {
+    const viewportWidth = window.innerWidth;
+    const containerWidth =
+      sliderContainer.offsetWidth ||
+      sliderContainer.clientWidth ||
+      viewportWidth;
+
+    // 반응형에 따라 카드 너비 결정
+    if (viewportWidth <= BREAKPOINTS.mobile) {
+      // 모바일: 화면 너비 - 패딩
+      return Math.max(containerWidth - 48, 280);
+    } else if (viewportWidth <= BREAKPOINTS.tablet) {
+      // 태블릿: 화면 너비 - 패딩
+      return Math.max(containerWidth - 48, 320);
+    } else if (viewportWidth <= BREAKPOINTS.desktop) {
+      // 작은 데스크톱: 컨테이너 너비
+      return containerWidth;
+    } else {
+      // 큰 데스크톱: 컨테이너 너비 (최대 1920px)
+      return Math.min(containerWidth, 1920);
+    }
+  };
+
+  const cardGap = 20; // space-x-20
+  let cardWidth = getCardWidth();
+  let cardTotalWidth = cardWidth + cardGap;
+
+  // 컨테이너 너비와 중앙 위치 계산 함수 (리사이즈 시에도 사용)
+  const getCenterOffset = (targetCardWidth = cardWidth) => {
+    const containerWidth =
+      sliderContainer.offsetWidth || sliderContainer.clientWidth;
+    // 컨테이너 너비가 0이면 기본값 사용
+    if (containerWidth === 0) {
+      const viewportWidth = window.innerWidth;
+      // 카드의 중앙이 화면 중앙에 오도록 계산
+      // 컨테이너 중앙 - 카드 중앙 = (containerWidth / 2) - (카드 왼쪽 끝 + cardWidth / 2)
+      // 카드 왼쪽 끝 위치 = (containerWidth - cardWidth) / 2
+      return (viewportWidth - targetCardWidth) / 2;
+    }
+    // 컨테이너의 중앙에서 카드 너비의 절반을 뺀 위치
+    // 이렇게 하면 카드의 중앙이 컨테이너 중앙에 정확히 위치함
+    return (containerWidth - targetCardWidth) / 2;
+  };
+
+  // 초기 위치 설정 (첫 번째 카드가 화면에 보이도록)
+  let currentIndex = 0;
+  let centerOffset = getCenterOffset(cardWidth);
+
+  // 카드 크기 업데이트 함수 (반응형 대응)
+  const updateCardSizes = () => {
+    const newCardWidth = getCardWidth();
+    const viewportWidth = window.innerWidth;
+
+    // 반응형에 따라 높이도 조정
+    let cardHeight = 526;
+    if (viewportWidth <= BREAKPOINTS.mobile) {
+      cardHeight = Math.max(200, (newCardWidth * 526) / 224); // 비율 유지
+    } else if (viewportWidth <= BREAKPOINTS.tablet) {
+      cardHeight = Math.max(300, (newCardWidth * 526) / 224);
+    }
+
+    // 카드 크기 업데이트
+    productCards.forEach((card) => {
+      card.style.width = `${newCardWidth}px`;
+      card.style.height = `${cardHeight}px`;
+    });
+
+    // 컨테이너 높이도 업데이트
+    sliderContainer.style.height = `${cardHeight}px`;
+
+    return newCardWidth;
+  };
+
+  // 초기화 함수 (최적화된 버전)
+  function initializeSlider() {
+    // 카드 너비 및 크기 업데이트
+    cardWidth = updateCardSizes();
+    cardTotalWidth = cardWidth + cardGap;
+    centerOffset = getCenterOffset(cardWidth);
+    currentIndex = 0;
+
+    // 첫 번째 카드에 active 클래스 추가
+    if (productCards[0] && !productCards[0].classList.contains("active")) {
+      productCards[0].classList.add("active");
+    }
+
+    // 첫 번째 카드가 화면 중앙에 오도록 설정
+    const initialTranslateX = centerOffset - 0 * cardTotalWidth;
+
+    // 초기화 시에는 transition 없이 즉시 이동
+    sliderTrack.style.transition = "none";
+    sliderTrack.style.transform = `translateX(${initialTranslateX}px)`;
+
+    // 다음 프레임에서 transition 다시 활성화
+    requestAnimationFrame(() => {
+      sliderTrack.style.transition = "";
+    });
+  }
+
+  // 초기화 실행 (한 번만)
+  requestAnimationFrame(() => {
+    initializeSlider();
   });
+
+  // 슬라이드 이동 함수 (네비게이션 버튼과 카드 클릭 시 공통 사용)
+  const moveToSlide = (index) => {
+    // 유효성 검사
+    if (index < 0 || index >= productCards.length) return;
+
+    // 이미 활성화된 인덱스면 무시
+    if (currentIndex === index) return;
+
+    // 카드 너비 및 크기 재계산 (반응형 대응)
+    cardWidth = updateCardSizes();
+    cardTotalWidth = cardWidth + cardGap;
+
+    // centerOffset 재계산
+    centerOffset = getCenterOffset(cardWidth);
+
+    // 모든 버튼에서 active 제거
+    navButtons.forEach((btn) => {
+      btn.classList.remove("active");
+      btn.classList.remove("cursor-default");
+      btn.style.fontWeight = "400";
+    });
+
+    // 모든 카드에서 active 제거 (강제 리플로우를 위해 약간의 지연)
+    productCards.forEach((card) => {
+      card.classList.remove("active");
+    });
+
+    // requestAnimationFrame을 사용하여 브라우저 리플로우 보장
+    requestAnimationFrame(() => {
+      // 클릭한 버튼에 active 추가
+      if (navButtons[index]) {
+        navButtons[index].classList.add("active");
+        navButtons[index].classList.add("cursor-default");
+        navButtons[index].style.fontWeight = "500";
+      }
+
+      // 클릭한 카드에 active 추가 (풀사이즈로 보이도록)
+      if (productCards[index]) {
+        productCards[index].classList.add("active");
+      }
+
+      // 슬라이드 이동 - 클릭된 카드가 화면 중앙에 오도록 계산
+      currentIndex = index;
+      // 카드의 중앙이 컨테이너 중앙에 오도록 계산
+      // 슬라이더 트랙의 초기 위치(0)에서 시작하여
+      // 클릭된 카드의 왼쪽 끝이 centerOffset 위치에 오도록 이동
+      const translateX = centerOffset - index * cardTotalWidth;
+      sliderTrack.style.transform = `translateX(${translateX}px)`;
+    });
+  };
+
+  // 네비게이션 버튼 클릭 이벤트
+  navButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      moveToSlide(index);
+    });
+  });
+
+  // 카드 클릭 이벤트
+  productCards.forEach((card, index) => {
+    card.addEventListener("click", (e) => {
+      // 링크가 있는 경우 링크 클릭을 방지하지 않도록 처리
+      const link = card.querySelector("a");
+      if (link && e.target.closest("a")) {
+        // 링크를 클릭한 경우는 기본 동작 허용
+        return;
+      }
+      moveToSlide(index);
+    });
+  });
+
+  // 초기 상태는 setTimeout 내에서 설정됨
+
+  productCards.forEach((card) => {
+    const hiddenContent = card.querySelector("[hidden]");
+    const gradientOverlay = card.querySelector(".gradient-overlay");
+
+    card.addEventListener("mouseenter", () => {
+      if (hiddenContent) {
+        hiddenContent.style.display = "block";
+        hiddenContent.style.visibility = "visible";
+        hiddenContent.style.opacity = "1";
+        hiddenContent.style.willChange = "auto";
+      }
+      if (gradientOverlay) {
+        gradientOverlay.style.background =
+          "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7))";
+      }
+    });
+
+    card.addEventListener("mouseleave", () => {
+      if (hiddenContent) {
+        hiddenContent.style.display = "none";
+        hiddenContent.style.visibility = "hidden";
+        hiddenContent.style.opacity = "0";
+        hiddenContent.style.willChange = "auto";
+      }
+      if (gradientOverlay) {
+        gradientOverlay.style.background =
+          "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))";
+      }
+    });
+  });
+
+  // Scroll Animation for Header
+  const headerElement =
+    document.querySelector(".products .z-1.w-full") ||
+    document.querySelector(".z-1.w-full");
+  if (headerElement) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            headerElement.style.opacity = "1";
+            headerElement.style.transform = "translateY(0) translateZ(0)";
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(headerElement);
+  }
+
+  // 윈도우 리사이즈 시 위치 재계산 (최적화된 버전)
+  let resizeTimeout;
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // 카드 너비 및 크기 업데이트
+      cardWidth = updateCardSizes();
+      cardTotalWidth = cardWidth + cardGap;
+
+      // centerOffset 재계산
+      centerOffset = getCenterOffset(cardWidth);
+
+      // 현재 활성화된 인덱스의 카드가 중앙에 오도록 재계산
+      const translateX = centerOffset - currentIndex * cardTotalWidth;
+      sliderTrack.style.transform = `translateX(${translateX}px)`;
+    }, 150); // 디바운스 시간 단축 (250ms -> 150ms)
+  };
+
+  window.addEventListener("resize", handleResize);
 });
 
 // Service Card Hover Effects
