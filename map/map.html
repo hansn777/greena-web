@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오시는길 - 인템</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nuWS9nAm01rYz1Msmp6PlInu7rv5C73PyndxKOYr"
+    ></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="../main/index.html">
+              <div class="logo-group">
+                <img src="asset8.png" alt="인템 로고 8" class="logo-img" />
+                <img src="asset9.png" alt="인템 로고 9" class="logo-img" />
+              </div>
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="dropdown">
+              <a href="company.html">회사소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="products.html">제품소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="#products">유지관리/렌탈</a>
+            </li>
+            <li class="dropdown">
+              <a href="#maintenance">블로그</a>
+            </li>
+          </ul>
+
+          <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
+          <div class="navbar_hoveredMenuBg">
+            <ul class="navbar_hoveredMenuContainer">
+              <li class="navbar_hoveredListContainer">
+                <div class="mega-menu-header">회사소개</div>
+                <ul class="navbar_hoveredMenuList">
+                  <a href="company.html"><li>회사소개</li></a>
+                  <a href="company.html#certificate-section"><li>인증서</li></a>
+                  <a href="company.html#map-section"><li>오시는길</li></a>
+                </ul>
+              </li>
+              <li class="navbar_hoveredListContainer">
+                <div class="mega-menu-header">제품소개</div>
+                <ul class="navbar_hoveredMenuList">
+                  <a href="products.html"><li>공기청정기</li></a>
+                  <a href="products.html"><li>향기분사기</li></a>
+                </ul>
+              </li>
+              <li class="navbar_hoveredListContainer">
+                <div class="mega-menu-header">유지관리/렌탈</div>
+                <ul class="navbar_hoveredMenuList">
+                  <a href="#maintenance"><li>유지관리</li></a>
+                  <a href="#maintenance"><li>렌탈</li></a>
+                </ul>
+              </li>
+              <li class="navbar_hoveredListContainer">
+                <div class="mega-menu-header">블로그</div>
+                <ul class="navbar_hoveredMenuList">
+                  <a href="https://m.blog.naver.com/greena911" target="_blank"
+                    ><li>블로그</li></a
+                  >
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-right">
+            <button class="quote-btn">견적문의</button>
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar (Hamburger Menu) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+          <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-nav-content">
+          <ul class="mobile-nav-menu">
+            <li>
+              <a href="company.html" class="mobile-nav-link">회사소개</a>
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="company.html" class="mobile-nav-link">회사소개</a>
+                </li>
+                <li>
+                  <a
+                    href="company.html#certificate-section"
+                    class="mobile-nav-link"
+                    >인증서</a
+                  >
+                </li>
+                <li>
+                  <a href="company.html#map-section" class="mobile-nav-link"
+                    >오시는길</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="products.html" class="mobile-nav-link">제품소개</a>
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="products.html" class="mobile-nav-link">공기청정기</a>
+                </li>
+                <li>
+                  <a href="products.html" class="mobile-nav-link">향기분사기</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#products" class="mobile-nav-link">유지관리/렌탈</a>
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="#maintenance" class="mobile-nav-link">유지관리</a>
+                </li>
+                <li><a href="#maintenance" class="mobile-nav-link">렌탈</a></li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://m.blog.naver.com/greena911"
+                target="_blank"
+                class="mobile-nav-link"
+                >블로그</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a
+                    href="https://m.blog.naver.com/greena911"
+                    target="_blank"
+                    class="mobile-nav-link"
+                    >블로그</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero map-hero">
+      <div class="hero-content">
+        <h1>DIRECTIONS</h1>
+        <p>오시는길</p>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+      <div class="container">
+        <div class="location-content">
+          <h2>오시는 길</h2>
+          <p>인템을 방문해주시는 고객님들을 위한 안내입니다</p>
+
+          <div class="map-container">
+            <div id="map" style="width: 100%; height: 400px"></div>
+          </div>
+
+          <div class="location-info">
+            <h3>인템 본사</h3>
+            <div class="company-details">
+              <div class="company-info-details">
+                <div class="company-logo-block">
+                  <h4>INTEM</h4>
+                </div>
+                <div class="company-contact-block">
+                  <p>
+                    <strong>주소:</strong> 서울 노원구 월계로45길 28
+                    월계테크노타운 8층 인템
+                  </p>
+                  <p><strong>전화:</strong> 1688-7995</p>
+                  <p><strong>팩스:</strong> 02-6499-7995</p>
+                  <p><strong>대표자:</strong> 이재룡</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>INTEM</h3>
+            <p>법인명: 인템 | 대표자: 이재룡</p>
+            <p>주소: 서울 노원구 월계로45길 28 월계테크노타운 8층 인템</p>
+            <p>전화번호: 1688-7995 | 팩스번호: 02-6499-7995</p>
+            <p>사업자 등록번호: 209-04-98884</p>
+            <p>개인정보관리책임자: 이준용 주임 ars99@naver.com</p>
+            <p>통신판매업 신고: 2009-서울노원-0122호</p>
+          </div>
+          <div class="footer-contact">
+            <h3>고객센터</h3>
+            <div class="phone-number">1688 - 7995</div>
+            <p>평일 상담시간: 오전 9시 - 오후 6시</p>
+            <p>점심시간: 오후 12시 - 1시</p>
+            <p>휴무일 : 토, 일, 공휴일</p>
+          </div>
+          <div class="footer-links">
+            <h3>바로가기</h3>
+            <ul>
+              <li><a href="#">인템스토어</a></li>
+              <li><a href="#">스마트스토어</a></li>
+              <li>
+                <a href="https://m.blog.naver.com/greena911" target="_blank"
+                  >블로그</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Copyright © 인템 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // 네이버 지도 초기화
+      function initMap() {
+        const map = new naver.maps.Map("map", {
+          center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
+          zoom: 15,
+        });
+
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(37.6213, 127.0594),
+          map: map,
+          title: "인템 본사",
+          icon: {
+            content: `
+              <div style="
+                width: 40px;
+                height: 40px;
+                background: #53C178;
+                border: 3px solid #ffffff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transform: translate(-50%, -50%);
+              ">
+                <div style="
+                  width: 12px;
+                  height: 12px;
+                  background: #ffffff;
+                  border-radius: 50%;
+                "></div>
+              </div>
+            `,
+            size: new naver.maps.Size(40, 40),
+            anchor: new naver.maps.Point(20, 20),
+          },
+        });
+
+        const infoWindow = new naver.maps.InfoWindow({
+          content: `
+            <div style="
+              padding: 15px;
+              background: #ffffff;
+              border-radius: 8px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              border: 1px solid #e5e7eb;
+              min-width: 200px;
+            ">
+              <div style="
+                font-size: 16px;
+                font-weight: 600;
+                color: #1f2937;
+                margin-bottom: 8px;
+              ">인템 본사</div>
+              <div style="
+                font-size: 14px;
+                color: #6b7280;
+                line-height: 1.5;
+              ">
+                서울 노원구 월계로45길 28<br>
+                월계테크노타운 8층
+              </div>
+            </div>
+          `,
+        });
+
+        naver.maps.Event.addListener(marker, "click", function () {
+          if (infoWindow.getMap()) {
+            infoWindow.close();
+          } else {
+            infoWindow.open(map, marker);
+          }
+        });
+
+        // 마커 클릭 시 네이버 지도 검색으로 이동
+        naver.maps.Event.addListener(marker, "click", function () {
+          const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 인템";
+          const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
+            address
+          )}`;
+          window.open(searchUrl, "_blank");
+        });
+      }
+
+      // 페이지 로드 시 지도 초기화
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof naver !== "undefined") {
+          try {
+            initMap();
+          } catch (error) {
+            console.error("지도 초기화 중 오류 발생:", error);
+            // 지도 대신 안내 메시지 표시
+            const mapContainer = document.getElementById("map");
+            if (mapContainer) {
+              mapContainer.innerHTML = `
+                <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 400px;
+                  background: #f3f4f6;
+                  border: 2px dashed #d1d5db;
+                  border-radius: 8px;
+                  color: #6b7280;
+                  font-size: 16px;
+                  text-align: center;
+                  flex-direction: column;
+                  gap: 8px;
+                ">
+                  <div>🗺️</div>
+                  <div>지도를 불러올 수 없습니다</div>
+                  <div style="font-size: 14px;">API 키를 확인해주세요</div>
+                </div>
+              `;
+            }
+          }
+        } else {
+          console.log("네이버 지도 API가 로드되지 않았습니다.");
+          // API 로드 실패 시 안내 메시지 표시
+          const mapContainer = document.getElementById("map");
+          if (mapContainer) {
+            mapContainer.innerHTML = `
+              <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 400px;
+                background: #f3f4f6;
+                border: 2px dashed #d1d5db;
+                border-radius: 8px;
+                color: #6b7280;
+                font-size: 16px;
+                text-align: center;
+                flex-direction: column;
+                gap: 8px;
+              ">
+                <div>🗺️</div>
+                <div>지도를 불러올 수 없습니다</div>
+                <div style="font-size: 14px;">네이버 지도 API 키를 확인해주세요</div>
+              </div>
+            `;
+          }
+        }
+      });
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

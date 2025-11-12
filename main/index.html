@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인템 - 공기청정기 렌탈 전문기업</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html">
+              <div class="logo-group">
+                <img src="asset8.png" alt="인템 로고 8" class="logo-img" />
+                <img src="asset9.png" alt="인템 로고 9" class="logo-img" />
+              </div>
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="dropdown">
+              <a href="../company/company.html">회사소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="products.html">제품소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="#products">유지관리/렌탈</a>
+            </li>
+            <li class="dropdown">
+              <a href="https://m.blog.naver.com/greena911" target="_blank"
+                >블로그</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-right">
+            <button class="quote-btn">견적문의</button>
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
+        <div class="navbar_hoveredMenuBg">
+          <ul class="navbar_hoveredMenuContainer">
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">회사소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="../company/company.html"><li>회사소개</li></a>
+                <a href="../company/company.html#certificate-section"
+                  ><li>인증서</li></a
+                >
+                <a href="../company/company.html#map-section"
+                  ><li>오시는길</li></a
+                >
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">제품소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="products.html"><li>공기청정기</li></a>
+                <a href="products.html"><li>향기분사기</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">유지관리/렌탈</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="#maintenance"><li>유지관리</li></a>
+                <a href="#maintenance"><li>렌탈</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">블로그</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="https://m.blog.naver.com/greena911" target="_blank"
+                  ><li>블로그</li></a
+                >
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar (Hamburger Menu) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+          <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        </div>
+        <div class="mobile-nav-content">
+          <ul class="mobile-nav-menu">
+            <li>
+              <a href="../company/company.html" class="mobile-nav-link"
+                >회사소개</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="../company/company.html" class="mobile-nav-link"
+                    >회사소개</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../company/company.html#certificate-section"
+                    class="mobile-nav-link"
+                    >인증서</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="../company/company.html#map-section"
+                    class="mobile-nav-link"
+                    >오시는길</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="products.html" class="mobile-nav-link">제품소개</a>
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="products.html" class="mobile-nav-link">공기청정기</a>
+                </li>
+                <li>
+                  <a href="products.html" class="mobile-nav-link">향기분사기</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#products" class="mobile-nav-link">유지관리/렌탈</a>
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="#maintenance" class="mobile-nav-link">유지관리</a>
+                </li>
+                <li><a href="#maintenance" class="mobile-nav-link">렌탈</a></li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://m.blog.naver.com/greena911"
+                target="_blank"
+                class="mobile-nav-link"
+                >블로그</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a
+                    href="https://m.blog.naver.com/greena911"
+                    target="_blank"
+                    class="mobile-nav-link"
+                    >블로그</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+      <div class="hero-media" aria-hidden="true">
+        <div
+          class="hero-slide active"
+          style="background-image: url('back.png')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('young-engineers-coming-with-energy-innovations.jpg');
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url('person-special-equipment-disinfecting-restricted-area.jpg');
+          "
+        ></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-wrap">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 class="hero-title">
+              <span class="highlight">그린에이</span><br />
+              공기의 가치를 새롭게
+            </h1>
+            <p class="hero-subtitle">
+              매일 더 깨끗한 공기, 그린에이와 함께 해보세요
+            </p>
+          </div>
+          <div class="hero-bottom">
+            <div class="hero-index">
+              <span class="hero-idx current">01</span>
+              <div class="hero-progress">
+                <div class="hero-progress-fill"></div>
+                <div class="hero-progress-bg"></div>
+              </div>
+              <span class="hero-idx total">02</span>
+            </div>
+            <div
+              class="hero-arrows"
+              role="tablist"
+              aria-label="히어로 슬라이드"
+            >
+              <button class="arrow prev" aria-label="prevButton" type="button">
+                <svg
+                  class="arrow-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M23.5 14L17.5 20L23.5 26"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </button>
+              <button class="arrow next" aria-label="nextButton" type="button">
+                <svg
+                  class="arrow-svg rotate-180"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M23.5 14L17.5 20L23.5 26"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>국내 최고의 공기청정기 기업<br />오랜 역사가 증명합니다</h2>
+            <p>
+              1995년 인템은 대한민국 최초로 공기청정기 렌탈의 새로운 장을
+              개척했습니다.<br />
+              끊임없는 혁신과 신뢰를 바탕으로 업계 최다 거래처를 자랑하며,<br />
+              국내 공기청정기 렌탈 시장을 선도하는 믿음직한 기업으로
+              자리매김하고 있습니다.<br />
+              앞으로도 지속 가능한 환경을 위한 해결책과 미래를 만들어가겠습니다.
+            </p>
+          </div>
+          <div class="about-cards">
+            <div class="about-card">
+              <h3>회사 연혁</h3>
+              <button class="view-btn">
+                VIEW MORE <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="about-card">
+              <h3>납품실적</h3>
+              <button class="view-btn">
+                VIEW MORE <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Section -->
+    <section class="service" id="maintenance">
+      <div class="container">
+        <div class="section-header">
+          <h2>How Service ?</h2>
+          <h3>
+            인템 유지관리 시스템은<br />오랜 경험을 기반으로한 데이터와 전문성을
+            자랑합니다.
+          </h3>
+        </div>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h4>전문 담당자 배정</h4>
+            <p>Dedicated Specialist Assigned</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <h4>동종 업계 최다 경력</h4>
+            <p>Industry-Leading Experience</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h4>공공 입찰 기관의 선택</h4>
+            <p>Chosen by Public Procurement Agencies</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h4>모든 기종 케어 가능</h4>
+            <p>Support for All Models</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <h4>합리적인 비용</h4>
+            <p>Competitive Pricing</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>재계약률 90% 이상</h4>
+            <p>Over 90% Renewal Rate</p>
+          </div>
+        </div>
+        <div class="service-footer">
+          <div class="service-guarantee">
+            <h4>AS 보증</h4>
+            <p>After-Sales Service Guarantee</p>
+          </div>
+          <button class="view-btn">
+            VIEW MORE <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div
+        class="z-1 w-full"
+        style="opacity: 0; transform: translateY(60px) translateZ(0)"
+      >
+        <div
+          class="flex w-full flex-col items-center relative z-20 space-y-8 mb-0"
+        >
+          <article class="font-poppins text-t3-xl justify-center">
+            Weaving New Play. NHN
+          </article>
+          <article class="text-grayscale-3 text-body9-m text-center">
+            상상과 현실, 기술과 삶, 사람과 사람을 연결합니다.
+          </article>
+        </div>
+      </div>
+      <div class="min-w-1360 w-1360 pl-80 pr-80 mx-auto">
+        <section
+          class="mx-auto flex h-auto flex-col justify-center pb-240 text-center space-y-66"
+        >
+          <div>
+            <div class="products-slider-container">
+              <div class="products-slider-track" id="productsSliderTrack">
+                <ul class="flex space-x-20 products-slider-list">
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10 active"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer gradient-overlay"
+                    ></div>
+                    <img
+                      alt="병원"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 병원 homepage"
+                        class="flex items-center"
+                        href="#hospital"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>병원</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Hospital
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="산업현장"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 산업현장 homepage"
+                        class="flex items-center"
+                        href="#industry"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>산업현장</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Industry
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="회사"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 회사 homepage"
+                        class="flex items-center"
+                        href="#company"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>회사</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Company
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li
+                    class="relative h-526 w-224 cursor-pointer overflow-hidden rounded-10"
+                  >
+                    <div
+                      class="absolute left-0 top-0 z-10 h-full w-full cursor-auto cursor-pointer"
+                    ></div>
+                    <img
+                      alt="도서관"
+                      loading="eager"
+                      decoding="async"
+                      class="rounded-10 object-cover"
+                      style="
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        color: transparent;
+                      "
+                      src="back.png"
+                    />
+                    <div
+                      hidden
+                      style="visibility: hidden; opacity: 0; will-change: auto"
+                    >
+                      <a
+                        aria-label="move to 도서관 homepage"
+                        class="flex items-center"
+                        href="#library"
+                      >
+                        <div
+                          class="absolute left-1/2 top-1/2 z-20 flex w-max -translate-x-1/2 -translate-y-1/2 flex-col items-center text-t5-xl text-white"
+                        >
+                          <h1>도서관</h1>
+                          <div class="flex items-center">
+                            <h1 class="pr-16 font-poppins text-t5-l">
+                              Library
+                            </h1>
+                            <svg
+                              class="h-40 w-40"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="40"
+                              height="40"
+                              viewBox="0 0 40 40"
+                              fill="none"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40ZM19.2947 27.7089C18.9032 27.3194 18.9016 26.6862 19.2911 26.2947L24.5588 21H12V19H24.613L19.2947 13.7089C18.9032 13.3194 18.9016 12.6862 19.2911 12.2947C19.6806 11.9032 20.3138 11.9016 20.7053 12.2911L27.7053 19.2553L28.4142 19.9606L27.7089 20.6695L20.7089 27.7053C20.3194 28.0968 19.6862 28.0984 19.2947 27.7089Z"
+                                fill="white"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <ul
+              class="mt-32 flex font-poppins text-t7-l text-grayscale-8 first-of-type:ml-60 products-nav"
+            >
+              <li class="relative text-grayscale-1">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn active"
+                  type="button"
+                  data-index="0"
+                >
+                  병원
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-89">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="1"
+                >
+                  산업현장
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-45">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="2"
+                >
+                  회사
+                </button>
+              </li>
+              <li class="relative text-grayscale-1 ml-70">
+                <button
+                  class="font-poppins text-grayscale-8 cursor-pointer products-nav-btn"
+                  type="button"
+                  data-index="3"
+                >
+                  도서관
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Fragrance Section -->
+    <section class="fragrance">
+      <div class="container">
+        <div class="fragrance-content">
+          <div class="fragrance-text">
+            <h2>향기가든 방향제</h2>
+            <p>
+              국제 향료 협회에서 인정받은 최고 등급 오일과 식물성 에탄올로
+              만들어져 인체에 무해합니다. KOTITI 검증을 통해 안전성을
+              입증받았으며, 피톤치드, 블랙체리, 화이트 블라썸, 피치 향으로
+              구성되었습니다.
+            </p>
+            <div class="fragrance-features">
+              <span class="feature-tag">KOTITI 인증</span>
+              <span class="feature-tag">CPL AROMAS</span>
+              <span class="feature-tag">식물추출원료</span>
+            </div>
+          </div>
+          <div class="fragrance-image">
+            <img
+              src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              alt="향기가든 방향제"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results" id="results">
+      <div class="container">
+        <div class="section-header">
+          <h2>주요 실적</h2>
+          <h3>Key Achievements</h3>
+        </div>
+        <div class="results-tabs">
+          <button class="tab-btn active" data-tab="government">
+            관공서/공공시설
+          </button>
+          <button class="tab-btn" data-tab="enterprise">기업/오피스</button>
+          <button class="tab-btn" data-tab="factory">공장/산업현장</button>
+          <button class="tab-btn" data-tab="education">교육시설</button>
+          <button class="tab-btn" data-tab="medical">의료시설</button>
+        </div>
+        <div class="results-content">
+          <div class="tab-content active" id="government">
+            <h4>관공서/공공시설</h4>
+            <p>
+              인템 공기청정기는 다양한 관공서 및 공공시설에 설치되어, 공공의
+              건강과 안전을 보호하고 쾌적한 실내 환경을 유지하는 데 기여하고
+              있습니다.
+            </p>
+            <div class="results-gallery">
+              <div class="gallery-item">
+                <img
+                  src="https://images.unsplash.com/photo-1581578731548-c6a0c3f2f2b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                  alt="관공서"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                  alt="관공서"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                  alt="관공서"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                  alt="관공서"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-text">
+            <h2>
+              끊임없는 노력과 쌓아온 신뢰는<br />새로운 발걸음으로 이어지고
+              있습니다
+            </h2>
+            <p>
+              인템과 함께한 공간에서 더 깨끗하고 건강한 환경을 만들어갑니다
+              고객의 신뢰를 바탕으로 지속적인 개선과 혁신을 추구하며, 더 나은
+              환경과 서비스를 제공하기 위해 최선을 다하고 있습니다.
+            </p>
+          </div>
+          <div class="contact-form">
+            <h3>견적 문의</h3>
+            <form>
+              <div class="form-group">
+                <label>성함</label>
+                <input type="text" name="name" required />
+              </div>
+              <div class="form-group">
+                <label>연락처</label>
+                <input type="tel" name="phone" required />
+              </div>
+              <div class="form-group">
+                <label>이메일</label>
+                <input type="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label>지역</label>
+                <input type="text" name="region" required />
+              </div>
+              <div class="form-group">
+                <label>모델 선택</label>
+                <select name="model" required>
+                  <option value="">선택</option>
+                  <option value="wac">WAC시리즈</option>
+                  <option value="samsung">삼성 블루스카이</option>
+                  <option value="ecoair">공간살균탈취기 i-EcoAir</option>
+                  <option value="dispenser">방향제 디스펜서</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>평형 선택</label>
+                <select name="size" required>
+                  <option value="">선택</option>
+                  <option value="10">10평형</option>
+                  <option value="20">20평형</option>
+                  <option value="30">30평형</option>
+                  <option value="40">40평형</option>
+                  <option value="50">50평형</option>
+                  <option value="60">60평형 이상</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>약정 기간</label>
+                <select name="contract" required>
+                  <option value="">선택</option>
+                  <option value="1">1년</option>
+                  <option value="2">2년</option>
+                  <option value="3">3년</option>
+                  <option value="4">4년</option>
+                  <option value="5">5년 이상</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>문의 사항</label>
+                <textarea name="message" rows="4"></textarea>
+              </div>
+              <button type="submit" class="submit-btn">보내기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <h3>그린에이</h3>
+            <p>법인명: 그린에이 대표자: 정수연</p>
+            <p>
+              주소: 경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동
+              9043호
+            </p>
+            <p>전화번호: 031-522-5709</p>
+            <p>팩스번호: 031-522-5706</p>
+          </div>
+          <div class="footer-contact">
+            <h3>고객센터</h3>
+            <p>평일 상담시간: 오전 9시 - 오후 6시</p>
+            <p>점심시간: 오후 12시 - 1시</p>
+            <p>휴무일 : 토, 일, 공휴일</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Copyright © 그린에이 All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="float-container" id="floatContainer">
+      <div class="float-menu" id="floatMenu">
+        <a href="tel:0315225709" class="float-item" aria-label="전화 상담">
+          <i class="fas fa-phone"></i>
+          <span class="float-tooltip">전화 상담</span>
+        </a>
+        <a
+          href="https://qr.kakao.com/talk/1IgYvcaBbEwhTRJYhlRIiQGov5s-"
+          target="_blank"
+          class="float-item"
+          aria-label="카카오톡 상담"
+        >
+          <i class="fas fa-comment-dots"></i>
+          <span class="float-tooltip">카카오톡</span>
+        </a>
+        <a href="#contact" class="float-item" aria-label="견적 문의">
+          <i class="fas fa-file-alt"></i>
+          <span class="float-tooltip">견적 문의</span>
+        </a>
+      </div>
+      <button class="float-main-btn" id="floatMainBtn" aria-label="고객 상담">
+        <img
+          src="float%20-%20open.png"
+          alt="열기"
+          class="float-btn-img float-btn-open"
+        />
+        <img
+          src="float%20-%20close.png"
+          alt="닫기"
+          class="float-btn-img float-btn-close"
+        />
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
