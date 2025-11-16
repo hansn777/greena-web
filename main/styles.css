@@ -2185,12 +2185,12 @@ body.scrolled .nav-menu a {
   font-style: italic;
 }
 
-.logo-intem-text {
+.logo-greena-text {
   position: relative;
   z-index: 1;
 }
 
-.logo-intem-dot {
+.logo-greena-dot {
   position: absolute;
   top: -10px;
   left: 15px;
@@ -2201,7 +2201,7 @@ body.scrolled .nav-menu a {
   z-index: 2;
 }
 
-.logo-intem-korean-oval {
+.logo-greena-korean-oval {
   background-color: #add8e6;
   color: #ffffff;
   padding: 5px 15px;
@@ -2698,14 +2698,14 @@ body.scrolled .nav-menu a {
   }
 }
 
-.logo-intem-dot {
+.logo-greena-dot {
   top: -5px;
   left: 10px;
   width: 12px;
   height: 12px;
 }
 
-.logo-intem-korean-oval {
+.logo-greena-korean-oval {
   font-size: 16px;
   padding: 3px 10px;
 }

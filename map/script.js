@@ -747,7 +747,7 @@ window.addEventListener("scroll", () => {
   document.body.classList.toggle("scrolled", scrolled);
 });
 
-console.log("인템 웹사이트가 성공적으로 로드되었습니다!");
+console.log("그린에이 웹사이트가 성공적으로 로드되었습니다!");
 
 // Floating Action Button
 document.addEventListener("DOMContentLoaded", () => {
