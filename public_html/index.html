@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>그린에이 - 공기청정기 렌탈 전문기업</title>
+    <title>그린에이 - 공기정화장치 전문기업</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
@@ -35,7 +35,7 @@
               <a href="products.html">제품소개</a>
             </li>
             <li class="dropdown">
-              <a href="#products">유지관리/렌탈</a>
+              <a href="maintenance.html">유지관리/렌탈</a>
             </li>
             <li class="dropdown">
               <a href="https://m.blog.naver.com/greena911" target="_blank"
@@ -61,12 +61,10 @@
               <div class="mega-menu-header">회사소개</div>
               <ul class="navbar_hoveredMenuList">
                 <a href="company/company.html"><li>회사소개</li></a>
-                <a href="../company/company.html#certificate-section"
+                <a href="company/company.html#certificate-section"
                   ><li>인증서</li></a
                 >
-                <a href="../company/company.html#map-section"
-                  ><li>오시는길</li></a
-                >
+                <a href="company/company.html#map-section"><li>오시는길</li></a>
               </ul>
             </li>
             <li class="navbar_hoveredListContainer">
@@ -79,8 +77,8 @@
             <li class="navbar_hoveredListContainer">
               <div class="mega-menu-header">유지관리/렌탈</div>
               <ul class="navbar_hoveredMenuList">
-                <a href="#maintenance"><li>유지관리</li></a>
-                <a href="#maintenance"><li>렌탈</li></a>
+                <a href="maintenance.html"><li>유지관리</li></a>
+                <a href="maintenance.html"><li>렌탈</li></a>
               </ul>
             </li>
             <li class="navbar_hoveredListContainer">
@@ -116,14 +114,14 @@
                 </li>
                 <li>
                   <a
-                    href="../company/company.html#certificate-section"
+                    href="company/company.html#certificate-section"
                     class="mobile-nav-link"
                     >인증서</a
                   >
                 </li>
                 <li>
                   <a
-                    href="../company/company.html#map-section"
+                    href="company/company.html#map-section"
                     class="mobile-nav-link"
                     >오시는길</a
                   >
@@ -142,12 +140,18 @@
               </ul>
             </li>
             <li>
-              <a href="#products" class="mobile-nav-link">유지관리/렌탈</a>
+              <a href="maintenance.html" class="mobile-nav-link"
+                >유지관리/렌탈</a
+              >
               <ul class="mobile-sub-menu">
                 <li>
-                  <a href="#maintenance" class="mobile-nav-link">유지관리</a>
+                  <a href="maintenance.html" class="mobile-nav-link"
+                    >유지관리</a
+                  >
                 </li>
-                <li><a href="#maintenance" class="mobile-nav-link">렌탈</a></li>
+                <li>
+                  <a href="maintenance.html" class="mobile-nav-link">렌탈</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -298,8 +302,8 @@
         <div class="section-header">
           <h2>How Service ?</h2>
           <h3>
-            그린에이 유지관리 시스템은<br />오랜 경험을 기반으로한 데이터와 전문성을
-            자랑합니다.
+            그린에이 유지관리 시스템은<br />오랜 경험을 기반으로한 데이터와
+            전문성을 자랑합니다.
           </h3>
         </div>
         <div class="service-grid">
@@ -861,13 +865,35 @@
 
     <!-- Floating Action Button -->
     <div class="float-container" id="floatContainer">
+      <!-- Channel.io Style Label Button -->
+      <button type="button" class="float-label-button" id="floatLabelButton">
+        <div class="float-label-text-wrapper">
+          <div class="float-label-title">견적문의가 필요하다면?</div>
+          <div class="float-label-status">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="float-label-icon"
+            >
+              <path
+                fill="currentColor"
+                d="M12 4c5.247 0 9.5 3.582 9.5 8s-4.253 8-9.5 8c-.69 0-1.363-.064-2.012-.182-1.416 1.21-3.05 1.794-4.11 2.062-.42.107-.716-.362-.496-.737.388-.66.863-1.599 1.14-2.609C4.09 17.086 2.5 14.7 2.5 12c0-4.418 4.253-8 9.5-8m-4.499 6.5c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501.826 0 1.5-.675 1.5-1.501 0-.824-.675-1.499-1.5-1.499m4.5 0c-.824 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499m4.5 0c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499"
+              ></path>
+            </svg>
+            <span class="float-label-status-text">대화 시작하기</span>
+          </div>
+        </div>
+      </button>
       <div class="float-menu" id="floatMenu">
         <a href="tel:0315225709" class="float-item" aria-label="전화 상담">
           <i class="fas fa-phone"></i>
           <span class="float-tooltip">전화 상담</span>
         </a>
         <a
-          href="https://qr.kakao.com/talk/1IgYvcaBbEwhTRJYhlRIiQGov5s-"
+          href="https://pf.kakao.com/_BFvHn/chat"
           target="_blank"
           class="float-item"
           aria-label="카카오톡 상담"

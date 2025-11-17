@@ -121,15 +121,20 @@ const scrollElements = {
   hamburgerSpans: null,
   asset9Image: null,
   aboutSection: null,
+  navSubBtns: null,
 };
 
 // 초기 요소 캐싱
 function cacheScrollElements() {
   scrollElements.header = document.querySelector(".header");
-  scrollElements.navContainer = document.querySelector(".nav-container");
+  // nav-container 또는 navTop_container__E1TtP 찾기
+  scrollElements.navContainer =
+    document.querySelector(".nav-container") ||
+    document.querySelector(".navTop_container__E1TtP");
   scrollElements.megaMenuBg = document.querySelector(".navbar_hoveredMenuBg");
   scrollElements.navMenuLinks = document.querySelectorAll(".nav-menu a");
   scrollElements.hamburgerSpans = document.querySelectorAll(".hamburger span");
+  scrollElements.navSubBtns = document.querySelectorAll(".nav-sub-btn");
   const logoImages = document.querySelectorAll(".logo-img");
   scrollElements.asset9Image = logoImages.length > 1 ? logoImages[1] : null;
   scrollElements.aboutSection = document.querySelector(".about");
@@ -144,6 +149,7 @@ function applyScrollEffects(isScrolled) {
     navMenuLinks,
     hamburgerSpans,
     asset9Image,
+    navSubBtns,
   } = scrollElements;
 
   if (!header || !navContainer) return;
@@ -183,6 +189,14 @@ function applyScrollEffects(isScrolled) {
     hamburgerSpans.forEach((span) => {
       span.style.background = "#333";
     });
+    // nav-sub-btn 색상 변경
+    if (navSubBtns) {
+      navSubBtns.forEach((btn) => {
+        btn.style.background = "rgba(0, 0, 0, 0.05)";
+        btn.style.color = "#333";
+        btn.style.borderColor = "rgba(0, 0, 0, 0.1)";
+      });
+    }
     if (asset9Image) {
       asset9Image.style.filter = "brightness(0) saturate(100%)";
     }
@@ -217,6 +231,14 @@ function applyScrollEffects(isScrolled) {
     hamburgerSpans.forEach((span) => {
       span.style.background = "#ffffff";
     });
+    // nav-sub-btn 색상 변경
+    if (navSubBtns) {
+      navSubBtns.forEach((btn) => {
+        btn.style.background = "rgba(255, 255, 255, 0.1)";
+        btn.style.color = "#ffffff";
+        btn.style.borderColor = "rgba(255, 255, 255, 0.2)";
+      });
+    }
     if (asset9Image) {
       asset9Image.style.filter = "none";
     }
@@ -753,18 +775,73 @@ console.log("그린에이 웹사이트가 성공적으로 로드되었습니다!
 document.addEventListener("DOMContentLoaded", () => {
   const floatMainBtn = document.getElementById("floatMainBtn");
   const floatMenu = document.getElementById("floatMenu");
+  const floatLabelButton = document.getElementById("floatLabelButton");
+  const floatContainer = document.getElementById("floatContainer");
+
+  // 플로팅 메뉴 열기/닫기 함수
+  const toggleFloatMenu = () => {
+    if (floatMainBtn && floatMenu) {
+      const isActive = floatMainBtn.classList.toggle("active");
+      floatMenu.classList.toggle("active");
+
+      // 라벨 버튼 표시/숨김 제어
+      if (floatLabelButton) {
+        if (isActive) {
+          // 클릭 시 즉시 숨기기 (애니메이션 없이)
+          floatLabelButton.style.transition = "none";
+          floatLabelButton.style.opacity = "0";
+          floatLabelButton.style.visibility = "hidden";
+          floatLabelButton.style.pointerEvents = "none";
+          floatLabelButton.style.transform = "translateY(-10px)";
+          // 다음 프레임에서 transition 복원 (다시 표시할 때 애니메이션 적용)
+          requestAnimationFrame(() => {
+            floatLabelButton.style.transition = "";
+          });
+        } else {
+          // 다시 표시할 때는 애니메이션 적용
+          floatLabelButton.style.transition = "";
+          floatLabelButton.style.opacity = "1";
+          floatLabelButton.style.visibility = "visible";
+          floatLabelButton.style.pointerEvents = "auto";
+          floatLabelButton.style.transform = "translateY(0)";
+        }
+      }
+    }
+  };
 
   if (floatMainBtn && floatMenu) {
-    floatMainBtn.addEventListener("click", () => {
-      floatMainBtn.classList.toggle("active");
-      floatMenu.classList.toggle("active");
+    // 메인 버튼 클릭 시 메뉴 토글
+    floatMainBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleFloatMenu();
     });
+
+    // 라벨 버튼 클릭 시 메뉴 토글
+    if (floatLabelButton) {
+      floatLabelButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleFloatMenu();
+      });
+    }
 
     // 메뉴 외부 클릭 시 닫기
     document.addEventListener("click", (e) => {
-      if (!floatMainBtn.contains(e.target) && !floatMenu.contains(e.target)) {
+      if (
+        floatContainer &&
+        !floatContainer.contains(e.target) &&
+        floatMenu.classList.contains("active")
+      ) {
         floatMainBtn.classList.remove("active");
         floatMenu.classList.remove("active");
+
+        // 라벨 버튼 다시 표시 (애니메이션 적용)
+        if (floatLabelButton) {
+          floatLabelButton.style.transition = "";
+          floatLabelButton.style.opacity = "1";
+          floatLabelButton.style.visibility = "visible";
+          floatLabelButton.style.pointerEvents = "auto";
+          floatLabelButton.style.transform = "translateY(0)";
+        }
       }
     });
 
@@ -773,6 +850,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Escape") {
         floatMainBtn.classList.remove("active");
         floatMenu.classList.remove("active");
+
+        // 라벨 버튼 다시 표시 (애니메이션 적용)
+        if (floatLabelButton) {
+          floatLabelButton.style.transition = "";
+          floatLabelButton.style.opacity = "1";
+          floatLabelButton.style.visibility = "visible";
+          floatLabelButton.style.pointerEvents = "auto";
+          floatLabelButton.style.transform = "translateY(0)";
+        }
       }
     });
   }
