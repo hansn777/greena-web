@@ -6,7 +6,7 @@
 }
 
 html {
-  min-width: 360px;
+  min-width: 380px;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
-  min-width: 360px;
+  min-width: 380px;
 }
 
 .container {
@@ -2045,8 +2045,8 @@ body.scrolled .nav-menu a {
   }
 }
 
-/* Small mobile adjustments for hero-bottom (<= 360px) */
-@media (max-width: 360px) {
+/* Small mobile adjustments for hero-bottom (<= 380px) */
+@media (max-width: 380px) {
   .hero {
     min-height: 78vh;
   }
