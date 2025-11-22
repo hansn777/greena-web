@@ -2413,11 +2413,6 @@ body.scrolled .nav-menu a {
   box-shadow: 0 6px 20px 0 rgba(83, 193, 120, 0.5);
 }
 
-/* 동적 컨텐츠 섹션 */
-.dynamic-content {
-  min-height: 600px;
-  background: #ffffff;
-}
 
 .content-section {
   padding: 60px 0;

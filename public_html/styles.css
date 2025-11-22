@@ -302,6 +302,18 @@ section > .container {
   transform: translateY(0) translateZ(0) !important; /* GPU 가속 유지 */
 }
 
+/* 메가 메뉴 강제 닫기 클래스 - JavaScript로 닫을 때 사용 */
+.navbar_hoveredMenuBg.mega-menu-closed,
+.navbar_hoveredMenuBg.mega-menu-closed:hover,
+.container:hover .navbar_hoveredMenuBg.mega-menu-closed,
+.nav-container:hover ~ .navbar_hoveredMenuBg.mega-menu-closed,
+.navTop_container__E1TtP:hover ~ .navbar_hoveredMenuBg.mega-menu-closed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-10px) translateZ(0) !important;
+  pointer-events: none !important;
+}
+
 /* 태블릿 사이즈(860px 이하)에서는 메가 메뉴 호버 비활성화 */
 @media (max-width: 860px) {
   .container:hover .navbar_hoveredMenuBg,
@@ -1812,12 +1824,7 @@ body.scrolled .nav-menu a {
   color: rgb(176, 176, 176);
   text-decoration: none;
   font-size: 0.9rem;
-  transition: color 0.2s ease;
   display: inline-block;
-}
-
-.footer-section ul li a:hover {
-  color: #ffffff;
 }
 
 .footer-section p {
@@ -1828,7 +1835,7 @@ body.scrolled .nav-menu a {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(0 0 0 / 10%);
   padding-top: 2rem;
   max-width: 1200px;
 }
@@ -2786,11 +2793,6 @@ body.scrolled .nav-menu a {
   box-shadow: 0 6px 20px 0 rgba(83, 193, 120, 0.5);
 }
 
-/* 동적 컨텐츠 섹션 */
-.dynamic-content {
-  min-height: 600px;
-  background: #ffffff;
-}
 
 .content-section {
   padding: 60px 0;

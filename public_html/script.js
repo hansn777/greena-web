@@ -43,16 +43,20 @@ if (hamburger && mobileNavOverlay && mobileNavClose) {
   });
 }
 
-// Smooth Scrolling for Navigation Links
+// Smooth Scrolling for Navigation Links (다른 페이지로 이동하는 링크는 제외)
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    const href = this.getAttribute("href");
+    // 같은 페이지 내 해시 링크만 처리 (다른 페이지의 해시는 제외)
+    if (href && !href.includes(".html")) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   });
 });
