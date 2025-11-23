@@ -2125,8 +2125,20 @@ body.scrolled .nav-menu a {
 
 #map {
   width: 100%;
-  height: 400px;
   border-radius: 12px;
+  padding-bottom: 192px;
+}
+
+@media (max-width: 860px) {
+  #map {
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  #map {
+    padding-bottom: 40px;
+  }
 }
 
 .map-placeholder {
@@ -2419,6 +2431,10 @@ body.scrolled .nav-menu a {
   animation: fadeInUp 0.6s ease-out;
 }
 
+#company-intro.content-section {
+  padding: 0;
+}
+
 .content-section.hidden {
   display: none;
 }
@@ -2461,10 +2477,11 @@ body.scrolled .nav-menu a {
 }
 
 .location-info {
-  background: #f8fafc;
+  background: #f6f8fa;
   padding: 2rem;
   border-radius: 12px;
   margin-top: 2rem;
+  margin-bottom: 192px;
   border: 1px solid #e2e8f0;
 }
 
@@ -2505,6 +2522,114 @@ body.scrolled .nav-menu a {
   background: #f8f9fa;
 }
 
+/* Dynamic Content Section (한화 스타일 참고) */
+.dynamic-content {
+  position: relative;
+  width: 100%;
+  padding: 60px 0 0 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Sub KV Section (한화 스타일 참고) */
+/* Container Gutter M Section (한화 스타일 참고) */
+.container.gutter-m {
+  padding: 80px 120px;
+  margin: 0 !important;
+}
+
+.container.gutter-m .section-inner {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  width: 100%;
+}
+
+.section-inner {
+  display: flex !important;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.container.gutter-m .left {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.container.gutter-m .right {
+  flex: 0 0 55%;
+  max-width: 55%;
+}
+
+.container.gutter-m .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.container.gutter-m .section-description {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .container.gutter-m {
+    padding: 60px 24px;
+  }
+  
+  .container.gutter-m .section-inner {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .container.gutter-m .left,
+  .container.gutter-m .right {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .container.gutter-m .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .container.gutter-m .section-description {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container.gutter-m {
+    padding: 40px 24px;
+  }
+  
+  .container.gutter-m .section-inner {
+    gap: 20px;
+  }
+  
+  .container.gutter-m .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .container.gutter-m .section-description {
+    font-size: 1rem;
+  }
+}
+
+.intro-content {
+  margin: 0;
+  padding: 60px 0;
+  animation: fadeInUp 0.6s ease-out;
+}
+
 .intro-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -2521,41 +2646,33 @@ body.scrolled .nav-menu a {
 }
 
 .intro-text {
-  max-width: 800px;
   margin: 0 auto;
   line-height: 1.8;
 }
 
 .intro-text h4 {
-  font-size: 1.5rem;
-  color: #53c178;
-  margin: 2rem 0 1rem 0;
+  font-size: 1rem;
+  color: #7b7c7d;
+  font-weight: 500;
+  margin: 2rem 0 0 0;
 }
 
 .intro-text h5 {
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   color: #333;
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
+}
+
+#map .intro-text h5 {
+  margin-bottom: 0;
 }
 
 .intro-text p {
   font-size: 1.1rem;
   color: #666;
-  margin-bottom: 1.5rem;
+  margin-bottom: 4rem;
 }
 
-.ceo-signature {
-  text-align: right;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 2px solid #53c178;
-}
-
-.ceo-signature p {
-  font-size: 1.2rem;
-  color: #333;
-  font-weight: 500;
-}
 
 /* 인증서 페이지 스타일 */
 .certificate-hero {

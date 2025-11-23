@@ -9,6 +9,12 @@
     />
     <title>회사소개 - 공기정화장치 전문기업</title>
 
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"
+    />
+
     <!-- SEO Meta Tags -->
     <meta
       name="description"
@@ -76,6 +82,63 @@
       /* JavaScript가 실행되면 이 클래스를 추가하여 표시 */
       .content-section.visible {
         display: block !important;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 네이버 지도 API가 생성하는 요소 내부의 모든 div border와 shadow 제거 */
+      /* 단, 마커 내부의 Location Pin Icon은 제외 */
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div:not([style*="border: 3px solid #53C178"]),
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div
+        div:not([style*="border: 3px solid #53C178"]),
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div
+        div
+        div:not([style*="border: 3px solid #53C178"]) {
+        border: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+
+      /* 마커 내부의 Location Pin Icon border 유지 */
+      #naver-map div[style*="border: 3px solid #53C178"],
+      #naver-map div[style*="border: 3px solid #53c178"] {
+        border: 3px solid #53c178 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+      }
+
+      /* 네이버 지도 InfoWindow 내부 div border와 shadow 제거 */
+      .nmap_iw,
+      .nmap_iw div,
+      .nmap_iw div div {
+        border: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+      }
+
+      /* 네이버 지도 API가 생성하는 특정 스타일 요소의 background 제거 */
+      #naver-map
+        div[style*="position: absolute"][style*="z-index: 0"][style*="border: 1px solid rgb(51, 51, 51)"] {
+        background: transparent !important;
+      }
+
+      /* 더 넓은 범위로 background 제거 */
+      #naver-map div[style*="position: absolute"][style*="z-index: 0"] {
+        background: transparent !important;
       }
     </style>
     <script>
@@ -150,7 +213,10 @@
     </script>
     <script
       type="text/javascript"
-      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nuWS9nAm01rYz1Msmp6PlInu7rv5C73PyndxKOYr"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=k32jds060c"
+      async
+      onload="console.log('네이버 지도 API 스크립트 로드 완료'); window.naverMapScriptLoaded = true;"
+      onerror="console.error('네이버 지도 API 스크립트 로드 실패'); window.naverMapScriptError = true;"
     ></script>
   </head>
   <body>
@@ -384,12 +450,9 @@
         <!-- Company Introduction Section -->
         <div class="content-section" id="company-intro">
           <div class="intro-content">
-            <h2>COMPANY INTRODUCTION</h2>
-            <h3>회사 소개</h3>
-
             <div class="intro-text">
-              <h4>Environment And People</h4>
-              <h5>환경과 사람을 소중히 생각하는 기업</h5>
+              <h4>회사소개 | COMPANY INTRODUCTION</h4>
+              <h5>보이지 않는 공기까지 정직하게 설계하는 기업</h5>
 
               <p>
                 현대인의 삶 속에서 실내공기 오염은 점점 더 심각해지고 있으며,
@@ -421,27 +484,261 @@
                 실천하는 기업입니다. 고객의 건강과 만족을 최우선으로 생각하며,
                 언제나 한결같은 품질과 서비스로 보답하겠습니다.
               </p>
+            </div>
+            <div class="intro-image">
+              <img src="회사소개.png" alt="회사소개" />
+            </div>
+          </div>
 
-              <div class="ceo-signature">
-                <p>그린에이 임직원 일동</p>
+          <!-- Container Gutter M Section (한화 스타일 참고) -->
+          <div class="container gutter-m">
+            <div class="left-right-content">
+              <div class="left">
+                <h2 class="section-title">
+                  그린에이는 지속가능한 내일을 만들어 갑니다.
+                </h2>
+              </div>
+              <div class="right-value-wrapper">
+                <div class="right">
+                  <p class="section-description">
+                    그린에이는 눈앞의 결과보다 오래 남을 가치를 생각합니다.
+                    깨끗한 공기와 정직한 기술로, 우리 모두의 지속가능한 내일을
+                    만들어갑니다.
+                  </p>
+                </div>
+
+                <!-- Value Box Wrapper -->
+                <div class="value-box-wrapper">
+                  <!-- 한화 스타일 참고: Value Box Section -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>도전</h3>
+                      <p>익숙함에 물음표를 던지는 용기</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        도전은 익숙한 일에 질문을 던지는 순간 시작되며, 그 작은
+                        물음들이 그린에이를 앞으로 나아가게 합니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Value Box 2 -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>정도</h3>
+                      <p>보이지 않아도, 흐름은 정직한</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        조용한 실천이 신뢰를 만들기에 그린에이는 작은 작업
+                        하나에도 원칙을 지키며 조용히 신뢰를 쌓습니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Value Box 3 -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>고객중심</h3>
+                      <p>사람을 위해 공기를 먼저</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        우리가 다루는 건 기계지만, 그 안에서 숨 쉬는 사람을 먼저
+                        생각하며 모든 기준과 방식은 언제나 고객의 입장에서 다시
+                        점검합니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Map Section -->
-        <div class="content-section hidden" id="map">
-          <div class="map-content">
-            <h2>DIRECTIONS</h2>
-            <h3>오시는길</h3>
-            <div class="map-container">
-              <div id="naver-map" style="width: 100%; height: 400px"></div>
+        <div id="map">
+          <div class="container">
+            <div class="intro-content">
+              <div class="intro-text">
+                <h4>오시는길 | MAP</h4>
+                <h5>오시는길</h5>
+              </div>
+              <div
+                class="list_end"
+                style="
+                  margin-top: 2rem;
+                  padding: 1.5rem;
+                  background: #f6f8fa;
+                  border-radius: 8px;
+                  font-family: 'Noto Sans KR', sans-serif;
+                "
+              >
+                <div style="font-size: 14px; line-height: 1.8; color: #333">
+                  <div
+                    style="
+                      margin-bottom: 0.5rem;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <strong style="color: #000000; white-space: nowrap"
+                      >주소:</strong
+                    >
+                    <span id="address-text"
+                      >경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동
+                      9043호</span
+                    >
+                    <button
+                      id="copy-address-btn"
+                      onclick="copyAddressToClipboard()"
+                      style="
+                        background: transparent;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        padding: 4px 8px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        color: #666;
+                        transition: all 0.2s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        white-space: nowrap;
+                        flex-shrink: 0;
+                      "
+                      onmouseover="this.style.borderColor='#53c178'; this.style.color='#53c178';"
+                      onmouseout="this.style.borderColor='#ddd'; this.style.color='#666';"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect
+                          x="9"
+                          y="9"
+                          width="13"
+                          height="13"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <path
+                          d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        ></path>
+                      </svg>
+                      복사
+                    </button>
+                  </div>
+                  <div style="margin-bottom: 0.5rem">
+                    <strong style="color: #000000; white-space: nowrap"
+                      >전화:</strong
+                    >
+                    <span style="white-space: nowrap">1688-7995</span>
+                  </div>
+                  <div>
+                    <strong style="color: #000000; white-space: nowrap"
+                      >팩스:</strong
+                    >
+                    <span style="white-space: nowrap">02-6499-7995</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="location-info">
-              <h4>그린에이 본사</h4>
-              <p>
-                주소: 경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동
-              </p>
+            <div class="container" style="position: relative">
+              <div id="naver-map" style="width: 100%; height: 486px"></div>
+              <!-- 현위치 버튼 -->
+              <button
+                id="current-location-btn"
+                style="
+                  position: absolute;
+                  top: 70px;
+                  right: 20px;
+                  z-index: 1000;
+                  background: #ffffff;
+                  border: none;
+                  border-radius: 8px;
+                  padding: 12px;
+                  cursor: pointer;
+                  box-shadow: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #53c178;
+                  transition: all 0.3s ease;
+                  font-family: inherit;
+                "
+                onmouseover="this.style.background='#53C178'; this.style.color='#ffffff';"
+                onmouseout="this.style.background='#ffffff'; this.style.color='#53c178';"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </button>
+              <!-- 본사로 이동 버튼 -->
+              <button
+                id="go-to-office-btn"
+                style="
+                  position: absolute;
+                  top: 20px;
+                  right: 20px;
+                  z-index: 1000;
+                  background: #ffffff;
+                  border: none;
+                  border-radius: 8px;
+                  padding: 12px;
+                  cursor: pointer;
+                  box-shadow: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #53c178;
+                  transition: all 0.3s ease;
+                  font-family: inherit;
+                "
+                onmouseover="this.style.background='#53C178'; this.style.color='#ffffff';"
+                onmouseout="this.style.background='#ffffff'; this.style.color='#53c178';"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  ></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -455,10 +752,7 @@
             <div class="certificate-grid">
               <div class="certificate-item">
                 <div class="certificate-image">
-                  <img
-                    src="https://via.placeholder.com/300x400/53C178/FFFFFF?text=ISO+9001"
-                    alt="ISO 9001 인증서"
-                  />
+                  <div class="certificate-placeholder">ISO 9001</div>
                 </div>
                 <div class="certificate-info">
                   <h4>ISO 9001 품질경영시스템</h4>
@@ -469,10 +763,7 @@
 
               <div class="certificate-item">
                 <div class="certificate-image">
-                  <img
-                    src="https://via.placeholder.com/300x400/53C178/FFFFFF?text=ISO+14001"
-                    alt="ISO 14001 인증서"
-                  />
+                  <div class="certificate-placeholder">ISO 14001</div>
                 </div>
                 <div class="certificate-info">
                   <h4>ISO 14001 환경경영시스템</h4>
@@ -483,10 +774,7 @@
 
               <div class="certificate-item">
                 <div class="certificate-image">
-                  <img
-                    src="https://via.placeholder.com/300x400/53C178/FFFFFF?text=K-ECO"
-                    alt="K-ECO 인증서"
-                  />
+                  <div class="certificate-placeholder">K-ECO</div>
                 </div>
                 <div class="certificate-info">
                   <h4>K-ECO 친환경 인증</h4>
@@ -695,15 +983,74 @@
           const targetElement = document.getElementById(hash.replace("#", ""));
 
           if (targetElement) {
-            // 모든 섹션 숨기기
+            // 모든 content-section 섹션 숨기기
             contentSections.forEach((section) => {
               section.classList.add("hidden");
               section.classList.remove("visible");
             });
 
+            // content-section이 아닌 섹션들도 명시적으로 숨기기 (map, certification)
+            const mapSection = document.getElementById("map");
+            const certSection = document.getElementById("certification");
+
+            if (mapSection && targetSection !== "map") {
+              mapSection.classList.remove("visible");
+              mapSection.style.display = "none";
+            }
+
+            if (certSection && targetSection !== "certification") {
+              certSection.classList.remove("visible");
+              certSection.style.display = "none";
+            }
+
             // 해당 섹션 보이기
             targetElement.classList.remove("hidden");
-            targetElement.classList.add("visible");
+            // dynamic-content에는 visible 클래스를 추가하지 않음
+            if (!targetElement.classList.contains("dynamic-content")) {
+              targetElement.classList.add("visible");
+            }
+
+            // content-section이 아닌 경우 display도 설정
+            if (!targetElement.classList.contains("content-section")) {
+              targetElement.style.display = "block";
+            }
+
+            // #map 섹션이 표시될 때 지도 초기화
+            if (targetElement.id === "map") {
+              setTimeout(() => {
+                const mapContainer = document.getElementById("naver-map");
+                if (mapContainer) {
+                  // 지도 컨테이너가 보이도록 설정
+                  mapContainer.style.display = "block";
+
+                  // 네이버 지도 API가 로드되었는지 확인
+                  if (typeof naver !== "undefined") {
+                    // 지도가 초기화되지 않았으면 초기화
+                    if (!window.currentMap) {
+                      initMap();
+                    } else {
+                      // 이미 초기화되어 있으면 지도 리사이즈
+                      window.currentMap.refresh();
+                    }
+                  } else {
+                    // API가 아직 로드되지 않았으면 대기 후 재시도
+                    const checkNaver = setInterval(() => {
+                      if (typeof naver !== "undefined") {
+                        clearInterval(checkNaver);
+                        if (!window.currentMap) {
+                          initMap();
+                        } else {
+                          window.currentMap.refresh();
+                        }
+                      }
+                    }, 100);
+
+                    // 5초 후에도 로드되지 않으면 중단
+                    setTimeout(() => clearInterval(checkNaver), 5000);
+                  }
+                }
+              }, 300);
+            }
 
             // 버튼이 있으면 활성화
             if (targetButton) {
@@ -922,6 +1269,93 @@
             });
           });
 
+        // Sub KV 스크롤 애니메이션 (한화 스타일 참고)
+        // Dynamic Content 내부 요소들의 스크롤 애니메이션 (한화 스타일 참고)
+        const dynamicContent = document.querySelector(".dynamic-content");
+        if (dynamicContent) {
+          const animatedElements = dynamicContent.querySelectorAll(
+            ".intro-content, .intro-text, .intro-text h4, .intro-text h5, .intro-text p, .intro-image, #map .container"
+          );
+
+          animatedElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            // intro-image는 더 빠른 애니메이션 적용
+            const isIntroImage = element.classList.contains("intro-image");
+            const transitionDuration = isIntroImage ? "0.4s" : "0.6s";
+            const delayMultiplier = isIntroImage ? 0.03 : 0.05;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: isIntroImage ? 0.05 : 0.1,
+                rootMargin: isIntroImage
+                  ? "0px 0px -100px 0px"
+                  : "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
+        // Container Gutter M 스크롤 애니메이션 (dynamic-content와 동일)
+        const containerGutterM = document.querySelector(".container.gutter-m");
+        if (containerGutterM) {
+          const gutterMElements = containerGutterM.querySelectorAll(
+            ".left-right-content, .left, .right, .right-value-wrapper, .value-box-wrapper, .value-box, .section-title, .section-description, .sub-title-1, .sub-title-5"
+          );
+
+          gutterMElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            // right-value-wrapper는 더 빠른 애니메이션 적용
+            const isRightValueWrapper = element.classList.contains(
+              "right-value-wrapper"
+            );
+            const transitionDuration = isRightValueWrapper ? "0.4s" : "0.6s";
+            const delayMultiplier = isRightValueWrapper ? 0.03 : 0.05;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: isRightValueWrapper ? 0.05 : 0.1,
+                rootMargin: isRightValueWrapper
+                  ? "0px 0px -100px 0px"
+                  : "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
         // URL 해시에 따른 초기 섹션 설정
         // 초기 해시는 전역 변수에서 가져오거나 현재 해시 사용
         const hash = window.__initialHash || window.location.hash;
@@ -964,8 +1398,51 @@
               const targetElement = document.getElementById(
                 hash.replace("#", "")
               );
-              if (targetElement) {
+              if (
+                targetElement &&
+                !targetElement.classList.contains("dynamic-content")
+              ) {
                 targetElement.classList.add("visible");
+              }
+
+              // #map 섹션이 표시될 때 지도 초기화
+              if (targetElement && targetElement.id === "map") {
+                // #map 섹션이 보이도록 설정
+                targetElement.style.display = "block";
+
+                setTimeout(() => {
+                  const mapContainer = document.getElementById("naver-map");
+                  if (mapContainer) {
+                    // 지도 컨테이너가 보이도록 설정
+                    mapContainer.style.display = "block";
+
+                    // 네이버 지도 API가 로드되었는지 확인
+                    if (typeof naver !== "undefined") {
+                      // 지도가 초기화되지 않았으면 초기화
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        // 이미 초기화되어 있으면 지도 리사이즈
+                        window.currentMap.refresh();
+                      }
+                    } else {
+                      // API가 아직 로드되지 않았으면 대기 후 재시도
+                      const checkNaver = setInterval(() => {
+                        if (typeof naver !== "undefined") {
+                          clearInterval(checkNaver);
+                          if (!window.currentMap) {
+                            initMap();
+                          } else {
+                            window.currentMap.refresh();
+                          }
+                        }
+                      }, 100);
+
+                      // 5초 후에도 로드되지 않으면 중단
+                      setTimeout(() => clearInterval(checkNaver), 5000);
+                    }
+                  }
+                }, 500);
               }
             });
           });
@@ -981,8 +1458,62 @@
             defaultButton.classList.add("active");
           }
 
-          if (defaultSection) {
+          // map과 certification 섹션 명시적으로 숨기기
+          const mapSection = document.getElementById("map");
+          const certSection = document.getElementById("certification");
+
+          if (mapSection) {
+            mapSection.classList.remove("visible");
+            mapSection.style.display = "none";
+          }
+
+          if (certSection) {
+            certSection.classList.remove("visible");
+            certSection.style.display = "none";
+          }
+
+          if (
+            defaultSection &&
+            !defaultSection.classList.contains("dynamic-content")
+          ) {
             defaultSection.classList.add("visible");
+          }
+
+          // 기본 섹션이 #map인 경우 지도 초기화
+          if (defaultSection && defaultSection.id === "map") {
+            setTimeout(() => {
+              const mapContainer = document.getElementById("naver-map");
+              if (mapContainer) {
+                // 지도 컨테이너가 보이도록 설정
+                mapContainer.style.display = "block";
+
+                // 네이버 지도 API가 로드되었는지 확인
+                if (typeof naver !== "undefined") {
+                  // 지도가 초기화되지 않았으면 초기화
+                  if (!window.currentMap) {
+                    initMap();
+                  } else {
+                    // 이미 초기화되어 있으면 지도 리사이즈
+                    window.currentMap.refresh();
+                  }
+                } else {
+                  // API가 아직 로드되지 않았으면 대기 후 재시도
+                  const checkNaver = setInterval(() => {
+                    if (typeof naver !== "undefined") {
+                      clearInterval(checkNaver);
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        window.currentMap.refresh();
+                      }
+                    }
+                  }, 100);
+
+                  // 5초 후에도 로드되지 않으면 중단
+                  setTimeout(() => clearInterval(checkNaver), 5000);
+                }
+              }
+            }, 500);
           }
         }
 
@@ -1045,19 +1576,73 @@
             // 클릭된 버튼에 active 클래스 추가
             this.classList.add("active");
 
-            // 모든 섹션 숨기기
+            // 모든 content-section 섹션 숨기기
             contentSections.forEach((section) => {
               section.classList.add("hidden");
               section.classList.remove("visible");
             });
 
+            // content-section이 아닌 섹션들도 명시적으로 숨기기 (map, certification)
+            const mapSection = document.getElementById("map");
+            const certSection = document.getElementById("certification");
+
+            if (mapSection && targetSection !== "map") {
+              mapSection.classList.remove("visible");
+              mapSection.style.display = "none";
+            }
+
+            if (certSection && targetSection !== "certification") {
+              certSection.classList.remove("visible");
+              certSection.style.display = "none";
+            }
+
             // 선택된 섹션만 보이기
             const targetElement = document.getElementById(targetSection);
             if (targetElement) {
               targetElement.classList.remove("hidden");
-              targetElement.classList.add("visible");
+              // dynamic-content에는 visible 클래스를 추가하지 않음
+              if (!targetElement.classList.contains("dynamic-content")) {
+                targetElement.classList.add("visible");
+              }
               // CSS display를 강제로 설정
               targetElement.style.display = "block";
+
+              // #map 섹션이 표시될 때 지도 초기화
+              if (targetElement.id === "map") {
+                setTimeout(() => {
+                  const mapContainer = document.getElementById("naver-map");
+                  if (mapContainer) {
+                    // 지도 컨테이너가 보이도록 설정
+                    mapContainer.style.display = "block";
+
+                    // 네이버 지도 API가 로드되었는지 확인
+                    if (typeof naver !== "undefined") {
+                      // 지도가 초기화되지 않았으면 초기화
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        // 이미 초기화되어 있으면 지도 리사이즈
+                        window.currentMap.refresh();
+                      }
+                    } else {
+                      // API가 아직 로드되지 않았으면 대기 후 재시도
+                      const checkNaver = setInterval(() => {
+                        if (typeof naver !== "undefined") {
+                          clearInterval(checkNaver);
+                          if (!window.currentMap) {
+                            initMap();
+                          } else {
+                            window.currentMap.refresh();
+                          }
+                        }
+                      }, 100);
+
+                      // 5초 후에도 로드되지 않으면 중단
+                      setTimeout(() => clearInterval(checkNaver), 5000);
+                    }
+                  }
+                }, 300);
+              }
             }
 
             // URL 해시 업데이트 (버튼 클릭 시 해시 반영)
@@ -1080,17 +1665,108 @@
 
       // 네이버 지도 초기화 함수
       function initMap() {
+        // 지도 컨테이너 확인
+        const mapContainer = document.getElementById("naver-map");
+        if (!mapContainer) {
+          console.error("지도 컨테이너를 찾을 수 없습니다.");
+          return;
+        }
+
+        // 지도 컨테이너가 보이지 않으면 보이도록 설정
+        if (
+          mapContainer.style.display === "none" ||
+          mapContainer.offsetParent === null
+        ) {
+          mapContainer.style.display = "block";
+        }
+
+        // 이미 지도가 초기화되어 있고 유효한 경우 리사이즈만 수행
+        if (window.currentMap) {
+          try {
+            // 지도가 유효한지 확인
+            if (
+              window.currentMap &&
+              typeof window.currentMap.refresh === "function"
+            ) {
+              console.log(
+                "지도가 이미 초기화되어 있습니다. 리사이즈만 수행합니다."
+              );
+              setTimeout(() => {
+                if (window.currentMap) {
+                  window.currentMap.refresh();
+                }
+              }, 100);
+              return;
+            }
+          } catch (error) {
+            console.warn(
+              "기존 지도가 유효하지 않습니다. 재초기화합니다:",
+              error
+            );
+            window.currentMap = null;
+          }
+        }
+
         // 네이버 지도 API가 로드되었는지 확인
-        if (typeof naver === "undefined") {
+        if (typeof naver === "undefined" || typeof naver.maps === "undefined") {
           console.error("네이버 지도 API가 로드되지 않았습니다.");
+          console.error("현재 프로토콜:", window.location.protocol);
+          console.error("현재 URL:", window.location.href);
+          console.error("naver 객체:", typeof naver);
+          console.error(
+            "naver.maps 객체:",
+            typeof naver !== "undefined"
+              ? typeof naver.maps
+              : "naver가 undefined"
+          );
+
+          // file:// 프로토콜 사용 시 경고
+          if (window.location.protocol === "file:") {
+            console.error(
+              "❌ 네이버 지도 API는 file:// 프로토콜을 지원하지 않습니다."
+            );
+            console.error("❌ 현재 URL:", window.location.href);
+            console.error("");
+            console.error("✅ 해결 방법:");
+            console.error(
+              "포트 5500이 이미 사용 중이므로 HTTP 서버가 실행 중입니다."
+            );
+            console.error("다음 URL로 접근하세요:");
+            console.error("👉 http://localhost:5500/company/company.html");
+            console.error("   또는");
+            console.error("👉 http://127.0.0.1:5500/company/company.html");
+            console.error("");
+            console.error("file:// URL 대신 위의 HTTP URL을 사용해야 합니다!");
+            showFallbackMap();
+            return;
+          }
+
           // API가 로드되지 않았을 때 임시 지도 표시
           showFallbackMap();
+
+          // API가 나중에 로드될 수 있으므로 재시도
+          if (!window.naverMapAPILoaded) {
+            setTimeout(() => {
+              if (
+                typeof naver !== "undefined" &&
+                typeof naver.maps !== "undefined"
+              ) {
+                console.log(
+                  "네이버 지도 API가 나중에 로드되었습니다. 재시도합니다."
+                );
+                initMap();
+              }
+            }, 1000);
+          }
           return;
         }
 
         try {
+          // 경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 좌표
+          const mapCenter = new naver.maps.LatLng(37.6315, 127.1158);
+
           const map = new naver.maps.Map("naver-map", {
-            center: new naver.maps.LatLng(37.6213, 127.0594), // 월계테크노타운 근처 좌표
+            center: mapCenter,
             zoom: 15,
           });
 
@@ -1098,33 +1774,67 @@
           window.currentMap = map;
 
           const marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(37.6213, 127.0594),
+            position: mapCenter,
             map: map,
             title: "그린에이 본사",
             icon: {
               content: `
                 <div style="
-                  width: 40px;
-                  height: 40px;
-                  background: #53C178;
-                  border: 3px solid #ffffff;
-                  border-radius: 50%;
+                  position: relative;
                   display: flex;
+                  flex-direction: column;
                   align-items: center;
-                  justify-content: center;
-                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                  transform: translate(-50%, -50%);
                 ">
+                  <!-- Location Pin Icon -->
                   <div style="
-                    width: 12px;
-                    height: 12px;
+                    position: relative;
+                    width: 60px;
+                    height: 60px;
                     background: #ffffff;
+                    border: 3px solid #53C178;
                     border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    z-index: 2;
+                  ">
+                    <img 
+                      src="../asset8.png" 
+                      alt="그린에이 로고" 
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        object-fit: contain;
+                      "
+                      onerror="this.style.display='none';"
+                    />
+                  </div>
+                  <!-- Pin Point -->
+                  <div style="
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 16px solid #53C178;
+                    margin-top: -2px;
+                    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
                   "></div>
+                  <!-- Text Label -->
+                  <div style="
+                    padding: 4px 8px;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #1f2937;
+                    white-space: nowrap;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  ">그린에이</div>
                 </div>
               `,
-              size: new naver.maps.Size(40, 40),
-              anchor: new naver.maps.Point(20, 20),
+              size: new naver.maps.Size(80, 96),
+              anchor: new naver.maps.Point(40, 76),
             },
           });
 
@@ -1149,8 +1859,8 @@
                   color: #6b7280;
                   line-height: 1.5;
                 ">
-                  서울 노원구 월계로45길 28<br>
-                  월계테크노타운 8층
+                  경기도 구리시 갈매중앙로 190<br>
+                  휴밸나인 지식산업센터 C동
                 </div>
               </div>
             `,
@@ -1167,18 +1877,350 @@
           // 마커 클릭 시 네이버 지도 검색으로 이동
           naver.maps.Event.addListener(marker, "click", function () {
             const address =
-              "서울 노원구 월계로45길 28 월계테크노타운 8층 그린에이";
+              "경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 그린에이";
             const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
               address
             )}`;
             window.open(searchUrl, "_blank");
           });
 
-          console.log("네이버 지도 초기화 완료");
+          // 마커 위치 고정 (줌 레벨 변경 시에도 위치 유지)
+          // 마커의 position은 항상 고정된 좌표를 가리키도록 설정
+          marker.setPosition(mapCenter);
+
+          // 지도 줌 변경 시 마커 위치가 변경되지 않도록 보장
+          naver.maps.Event.addListener(map, "zoom_changed", function () {
+            // 줌 레벨이 변경되어도 마커 위치는 항상 고정
+            marker.setPosition(mapCenter);
+          });
+
+          // 지도 중심 변경 시에도 마커 위치 고정
+          naver.maps.Event.addListener(map, "center_changed", function () {
+            // 지도 중심이 변경되어도 마커는 항상 고정된 위치에 유지
+            // 단, 사용자가 직접 지도를 이동한 경우는 제외
+          });
+
+          // 초기 로드 시 마커를 중앙에 맞춤
+          setTimeout(() => {
+            map.setCenter(mapCenter);
+            map.setZoom(15);
+          }, 200);
+
+          // 본사 위치 (전역 변수로 저장)
+          const officeLocation = mapCenter;
+          let routePolyline = null;
+          let currentLocationMarker = null;
+
+          // 본사로 이동 버튼
+          const goToOfficeBtn = document.getElementById("go-to-office-btn");
+          if (goToOfficeBtn) {
+            goToOfficeBtn.addEventListener("click", function () {
+              // 지도를 본사 위치로 이동
+              map.setCenter(officeLocation);
+              map.setZoom(15);
+            });
+          }
+
+          // 현위치 조회 기능
+          const currentLocationBtn = document.getElementById(
+            "current-location-btn"
+          );
+
+          if (currentLocationBtn) {
+            currentLocationBtn.addEventListener("click", function () {
+              if (!navigator.geolocation) {
+                alert("현위치 조회 기능을 지원하지 않는 브라우저입니다.");
+                return;
+              }
+
+              // 버튼 비활성화 및 로딩 표시
+              currentLocationBtn.disabled = true;
+              currentLocationBtn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+              `;
+
+              navigator.geolocation.getCurrentPosition(
+                function (position) {
+                  const lat = position.coords.latitude;
+                  const lng = position.coords.longitude;
+                  const currentLocation = new naver.maps.LatLng(lat, lng);
+
+                  // 기존 현위치 마커 제거
+                  if (currentLocationMarker) {
+                    currentLocationMarker.setMap(null);
+                  }
+
+                  // 현위치 마커 생성
+                  currentLocationMarker = new naver.maps.Marker({
+                    position: currentLocation,
+                    map: map,
+                    icon: {
+                      content: `
+                        <div style="
+                          width: 20px;
+                          height: 20px;
+                          background: #4285f4;
+                          border: 3px solid #ffffff;
+                          border-radius: 50%;
+                          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                        "></div>
+                      `,
+                      size: new naver.maps.Size(20, 20),
+                      anchor: new naver.maps.Point(10, 10),
+                    },
+                    title: "현재 위치",
+                  });
+
+                  // 기존 경로 제거
+                  if (routePolyline) {
+                    routePolyline.setMap(null);
+                    routePolyline = null;
+                  }
+
+                  // 네이버 지도 Directions 5.0 API를 사용하여 자동차 경로 표시
+                  getCarRoute(currentLocation, officeLocation);
+
+                  // 지도를 현위치와 본사 위치를 모두 볼 수 있도록 조정
+                  const bounds = new naver.maps.LatLngBounds();
+                  bounds.extend(currentLocation);
+                  bounds.extend(officeLocation);
+                  map.fitBounds(bounds, { padding: 50 });
+
+                  // 버튼 복원
+                  currentLocationBtn.disabled = false;
+                  currentLocationBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  `;
+
+                  console.log("현위치 조회 완료:", lat, lng);
+                },
+                function (error) {
+                  let errorMessage = "현위치를 조회할 수 없습니다.";
+                  switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                      errorMessage = "현위치 조회 권한이 거부되었습니다.";
+                      break;
+                    case error.POSITION_UNAVAILABLE:
+                      errorMessage = "현위치 정보를 사용할 수 없습니다.";
+                      break;
+                    case error.TIMEOUT:
+                      errorMessage = "현위치 조회 시간이 초과되었습니다.";
+                      break;
+                  }
+                  alert(errorMessage);
+
+                  // 버튼 복원
+                  currentLocationBtn.disabled = false;
+                  currentLocationBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  `;
+                },
+                {
+                  enableHighAccuracy: true,
+                  timeout: 10000,
+                  maximumAge: 0,
+                }
+              );
+            });
+          }
+
+          // 네이버 지도 앱으로 자동차 경로 안내 (CORS 문제로 인해 직접 API 호출 불가)
+          function getCarRoute(start, end) {
+            // 기존 경로 제거
+            if (routePolyline) {
+              routePolyline.setMap(null);
+              routePolyline = null;
+            }
+
+            // 네이버 클라우드 플랫폼 Directions API는 브라우저에서 직접 호출 시 CORS 오류 발생
+            // 따라서 네이버 지도 앱으로 경로 안내 링크를 제공합니다
+            console.log("네이버 지도 앱으로 경로 안내를 제공합니다.");
+
+            // 직선 경로를 표시하고 네이버 지도 링크 제공
+            drawStraightRoute(start, end);
+            showNaverMapLink(start, end);
+          }
+
+          // 네이버 지도 앱으로 경로 안내 링크 표시
+          function showNaverMapLink(start, end) {
+            // 네이버 지도 본사 위치 바로가기 URL
+            const naverMapUrl = `https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EA%B0%88%EB%A7%A4%EC%A4%91%EC%95%99%EB%A1%9C%20190%20%ED%9C%B4%EB%B0%B8%EB%82%98%EC%9D%B8%20%EC%A7%80%EC%8B%9D%EC%82%B0%EC%97%85%EC%84%BC%ED%84%B0%20C%EB%8F%99%20%EA%B7%B8%EB%A6%B0%EC%97%90%EC%9D%B4/address/14151674.9795259,4528342.6847385,%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EA%B0%88%EB%A7%A4%EC%A4%91%EC%95%99%EB%A1%9C%20190?isCorrectAnswer=true&c=15.00,0,0,0,dh`;
+
+            // 기존 정보창 제거
+            if (routeInfoWindow) {
+              routeInfoWindow.close();
+            }
+
+            const infoContent = `
+              <div style="
+                padding: 16px;
+                background: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                border: 2px solid #53C178;
+                min-width: 240px;
+                font-family: 'Noto Sans KR', sans-serif;
+              ">
+                <div style="
+                  font-size: 13px;
+                  color: #666;
+                  margin-bottom: 16px;
+                  line-height: 1.6;
+                ">
+                  상세 경로, 거리, 예상 시간은<br>
+                  네이버 지도에서 확인하실 수 있습니다.
+                </div>
+                <a href="${naverMapUrl}" target="_blank" style="
+                  display: block;
+                  background: #53C178;
+                  color: white;
+                  padding: 12px 20px;
+                  border-radius: 8px;
+                  text-decoration: none;
+                  font-size: 14px;
+                  font-weight: 600;
+                  text-align: center;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 2px 8px rgba(83, 193, 120, 0.3);
+                " 
+                onmouseover="this.style.background='#4aad6a'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.background='#53C178'; this.style.transform='translateY(0)';"
+                >네이버 지도 바로가기</a>
+              </div>
+            `;
+
+            routeInfoWindow = new naver.maps.InfoWindow({
+              content: infoContent,
+              anchorSize: new naver.maps.Size(0, 0),
+              pixelOffset: new naver.maps.Point(0, -10),
+            });
+
+            // 현위치 마커 위에 정보창 표시
+            if (currentLocationMarker) {
+              routeInfoWindow.open(map, currentLocationMarker);
+            } else {
+              // 마커가 없으면 지도 중심에 표시
+              routeInfoWindow.open(map, map.getCenter());
+            }
+          }
+
+          // 경로 정보 표시 함수
+          let routeInfoWindow = null;
+          function showRouteInfo(distance, duration) {
+            // 기존 정보창 제거
+            if (routeInfoWindow) {
+              routeInfoWindow.close();
+            }
+
+            const infoContent = `
+              <div style="
+                padding: 12px 16px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                border: 2px solid #53C178;
+                min-width: 200px;
+                font-family: 'Noto Sans KR', sans-serif;
+              ">
+                <div style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  color: #53C178;
+                  margin-bottom: 8px;
+                ">🚗 자동차 경로 안내</div>
+                <div style="
+                  font-size: 13px;
+                  color: #333;
+                  margin-bottom: 4px;
+                ">거리: <strong>${distance} km</strong></div>
+                <div style="
+                  font-size: 13px;
+                  color: #333;
+                ">예상 시간: <strong>약 ${duration}분</strong></div>
+              </div>
+            `;
+
+            routeInfoWindow = new naver.maps.InfoWindow({
+              content: infoContent,
+              anchorSize: new naver.maps.Size(0, 0),
+            });
+
+            // 현위치 마커 위에 정보창 표시
+            if (currentLocationMarker) {
+              routeInfoWindow.open(map, currentLocationMarker);
+            }
+          }
+
+          // 직선 경로 그리기 함수 (경로 검색 실패 시 사용)
+          function drawStraightRoute(start, end) {
+            if (routePolyline) {
+              routePolyline.setMap(null);
+            }
+
+            routePolyline = new naver.maps.Polyline({
+              map: map,
+              path: [start, end],
+              strokeColor: "#53C178",
+              strokeWeight: 5,
+              strokeOpacity: 0.6,
+              strokeStyle: "dashed",
+            });
+          }
+
+          console.log("✅ 네이버 지도 초기화 완료");
+          console.log("지도 중심 좌표:", mapCenter);
+          console.log("지도 인스턴스:", map);
         } catch (error) {
           console.error("네이버 지도 초기화 중 오류:", error);
           showFallbackMap();
         }
+      }
+
+      // 주소 클립보드 복사 함수
+      function copyAddressToClipboard() {
+        const addressText = document.getElementById("address-text");
+        const address = addressText
+          ? addressText.textContent.trim()
+          : "경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 9043호";
+        const copyBtn = document.getElementById("copy-address-btn");
+
+        // 클립보드에 복사
+        navigator.clipboard
+          .writeText(address)
+          .then(function () {
+            // 복사 성공 시 버튼 텍스트 변경
+            if (copyBtn) {
+              const originalText = copyBtn.innerHTML;
+              copyBtn.innerHTML = `
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              복사됨
+            `;
+              copyBtn.style.borderColor = "#53c178";
+              copyBtn.style.color = "#53c178";
+
+              // 2초 후 원래대로 복원
+              setTimeout(function () {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.borderColor = "";
+                copyBtn.style.color = "";
+              }, 2000);
+            }
+          })
+          .catch(function (err) {
+            console.error("클립보드 복사 실패:", err);
+            alert("주소 복사에 실패했습니다. 다시 시도해주세요.");
+          });
       }
 
       // 네이버 지도 API 실패 시 대체 지도 표시
@@ -1211,10 +2253,10 @@
             ">
               <div style="font-size: 32px; margin-bottom: 15px;">🗺️</div>
               <div style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">그린에이 본사</div>
-              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 5px;">서울 노원구 월계로45길 28</div>
-              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 20px;">월계테크노타운 8층</div>
+              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 5px;">경기도 구리시 갈매중앙로 190</div>
+              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 20px;">휴밸나인 지식산업센터 C동</div>
               <div style="margin-top: 20px;">
-                <a href="https://map.naver.com/v5/search/서울 노원구 월계로45길 28 월계테크노타운 8층 그린에이" 
+                <a href="https://map.naver.com/v5/search/경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 그린에이" 
                    target="_blank" 
                    style="
                      display: inline-block;
@@ -1254,16 +2296,150 @@
         console.log("대체 지도 표시 완료");
       }
 
-      // 네이버 지도 API 로드 확인
+      // 네이버 지도 API 로드 확인 및 자동 초기화
+      let naverMapAPICheckCount = 0;
+      const MAX_CHECK_COUNT = 100; // 최대 10초 대기 (100ms * 100)
+
+      function checkNaverMapAPI() {
+        naverMapAPICheckCount++;
+
+        // 현재 URL 정보 로깅 (첫 번째 시도만)
+        if (naverMapAPICheckCount === 1) {
+          console.log("=== 네이버 지도 API 로드 확인 시작 ===");
+          console.log("현재 프로토콜:", window.location.protocol);
+          console.log("현재 호스트:", window.location.host);
+          console.log("현재 URL:", window.location.href);
+          console.log(
+            "API 스크립트 URL:",
+            "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=k32jds060c"
+          );
+        }
+
+        if (typeof naver !== "undefined" && typeof naver.maps !== "undefined") {
+          console.log("✅ 네이버 지도 API 로드 성공!");
+          console.log("naver 객체:", naver);
+          console.log("naver.maps 객체:", naver.maps);
+          window.naverMapAPILoaded = true;
+
+          // URL에 #map이 있으면 자동으로 지도 초기화
+          if (window.location.hash === "#map") {
+            setTimeout(() => {
+              const mapSection = document.getElementById("map");
+              if (mapSection && mapSection.style.display !== "none") {
+                initMap();
+              }
+            }, 500);
+          }
+        } else {
+          if (naverMapAPICheckCount < MAX_CHECK_COUNT) {
+            if (naverMapAPICheckCount % 10 === 0) {
+              // 10회마다 로그 출력
+              console.log(
+                `⏳ 네이버 지도 API 로드 대기 중... (${naverMapAPICheckCount}/${MAX_CHECK_COUNT})`
+              );
+              console.log("naver 타입:", typeof naver);
+              if (typeof naver !== "undefined") {
+                console.log("naver.maps 타입:", typeof naver.maps);
+              }
+            }
+            // API가 아직 로드되지 않았으면 재시도
+            setTimeout(checkNaverMapAPI, 100);
+          } else {
+            console.error("❌ 네이버 지도 API 로드 실패: 최대 대기 시간 초과");
+            console.error("최종 naver 타입:", typeof naver);
+            if (typeof naver !== "undefined") {
+              console.error("최종 naver.maps 타입:", typeof naver.maps);
+            }
+            console.error("가능한 원인:");
+            console.error("1. 네이버 클라우드 콘솔의 Web 서비스 URL 설정 확인");
+            console.error("2. API 키 확인 (ncpKeyId=k32jds060c)");
+            console.error("3. 브라우저 콘솔에서 네트워크 탭 확인");
+            showFallbackMap();
+          }
+        }
+      }
+
+      // 페이지 로드 시 API 확인
       window.addEventListener("load", function () {
         console.log("페이지 로드 완료");
-        console.log("naver 객체 존재 여부:", typeof naver !== "undefined");
-        if (typeof naver !== "undefined") {
-          console.log("네이버 지도 API 로드 성공");
-        } else {
-          console.log("네이버 지도 API 로드 실패 - 대체 지도 사용");
-        }
+        checkNaverMapAPI();
       });
+
+      // DOMContentLoaded 시에도 확인 (더 빠른 초기화)
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", checkNaverMapAPI);
+      } else {
+        checkNaverMapAPI();
+      }
+
+      // 스크립트 로드 이벤트도 확인
+      (function () {
+        const naverMapScript = document.querySelector(
+          'script[src*="openapi.map.naver.com"]'
+        );
+        if (naverMapScript) {
+          console.log(
+            "네이버 지도 API 스크립트 태그 발견:",
+            naverMapScript.src
+          );
+
+          // 이미 로드되었을 수 있으므로 즉시 확인
+          if (
+            naverMapScript.complete ||
+            naverMapScript.readyState === "complete"
+          ) {
+            console.log("✅ 네이버 지도 API 스크립트가 이미 로드되었습니다.");
+            setTimeout(checkNaverMapAPI, 100);
+          } else {
+            console.log("⏳ 네이버 지도 API 스크립트 로드 대기 중...");
+            naverMapScript.addEventListener("load", function () {
+              console.log("✅ 네이버 지도 API 스크립트 로드 이벤트 발생");
+              window.naverMapScriptLoaded = true;
+              setTimeout(checkNaverMapAPI, 100);
+            });
+            naverMapScript.addEventListener("error", function (e) {
+              console.error("❌ 네이버 지도 API 스크립트 로드 실패");
+              console.error("에러 상세:", e);
+              window.naverMapScriptError = true;
+              console.error("가능한 원인:");
+              console.error(
+                "1. 네이버 클라우드 콘솔의 Web 서비스 URL에 현재 도메인이 등록되어 있는지 확인"
+              );
+              console.error("2. API 키가 올바른지 확인");
+              console.error("3. 네트워크 연결 확인");
+              showFallbackMap();
+            });
+          }
+        } else {
+          console.error("❌ 네이버 지도 API 스크립트 태그를 찾을 수 없습니다.");
+        }
+      })();
+
+      // 추가 확인: 스크립트가 로드되었는지 주기적으로 확인
+      let scriptCheckCount = 0;
+      const scriptCheckInterval = setInterval(function () {
+        scriptCheckCount++;
+        if (typeof naver !== "undefined" && typeof naver.maps !== "undefined") {
+          console.log("네이버 지도 API 확인됨 (주기적 확인)");
+          clearInterval(scriptCheckInterval);
+          window.naverMapAPILoaded = true;
+          if (window.location.hash === "#map") {
+            setTimeout(() => {
+              const mapSection = document.getElementById("map");
+              if (mapSection && mapSection.style.display !== "none") {
+                initMap();
+              }
+            }, 500);
+          }
+        } else if (scriptCheckCount >= 100) {
+          // 10초 후에도 로드되지 않으면 중단
+          console.error("네이버 지도 API 로드 실패: 주기적 확인 시간 초과");
+          clearInterval(scriptCheckInterval);
+          if (window.naverMapScriptError) {
+            showFallbackMap();
+          }
+        }
+      }, 100);
 
       // 오시는길 섹션이 활성화될 때 지도 초기화
       document.addEventListener("DOMContentLoaded", function () {
@@ -1288,9 +2464,34 @@
               try {
                 console.log("지도 초기화 시작");
 
-                // 기존 지도가 있다면 제거
+                // 기존 지도가 있고 유효한 경우에만 refresh, 아니면 재초기화
                 if (window.currentMap) {
-                  window.currentMap.destroy();
+                  try {
+                    // 지도가 유효한지 확인
+                    if (
+                      window.currentMap &&
+                      typeof window.currentMap.refresh === "function"
+                    ) {
+                      // 지도가 이미 있으면 refresh만 수행
+                      window.currentMap.refresh();
+                      console.log("지도 리사이즈 완료");
+                      return;
+                    }
+                  } catch (refreshError) {
+                    console.warn(
+                      "지도 refresh 실패, 재초기화합니다:",
+                      refreshError
+                    );
+                    // refresh 실패 시 재초기화를 위해 null로 설정
+                    window.currentMap = null;
+                  }
+                }
+
+                // 지도 컨테이너 초기화 (새로 초기화하는 경우만)
+                const mapContainer = document.getElementById("naver-map");
+                if (mapContainer && !window.currentMap) {
+                  // 지도가 없을 때만 컨테이너 초기화
+                  mapContainer.innerHTML = "";
                 }
 
                 initMap();
