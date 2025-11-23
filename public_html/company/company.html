@@ -745,14 +745,39 @@
 
         <!-- Certificate Section -->
         <div class="content-section hidden" id="certification">
+          <div class="intro-content">
+            <div class="intro-text">
+              <h4>인증서 | CERTIFICATES</h4>
+              <h5 style="margin-bottom: 0">인증서</h5>
+              <a
+                href="#"
+                style="
+                  display: inline-block;
+                  margin-top: 2rem;
+                  font-size: 1.1rem;
+                  color: #666;
+                  text-decoration: none;
+                  line-height: 1.8;
+                "
+                >안심하고 사용할 수 있는 인증된 필터로 변함없이 깨끗한 공기로</a
+              >
+            </div>
+          </div>
           <div class="certificate-content">
-            <h2>CERTIFICATES</h2>
-            <h3>인증서</h3>
-
             <div class="certificate-grid">
               <div class="certificate-item">
                 <div class="certificate-image">
-                  <div class="certificate-placeholder">ISO 9001</div>
+                  <img
+                    src="./해파.png"
+                    alt="ISO 9001 품질경영시스템"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>ISO 9001</div>';"
+                  />
                 </div>
                 <div class="certificate-info">
                   <h4>ISO 9001 품질경영시스템</h4>
@@ -763,18 +788,17 @@
 
               <div class="certificate-item">
                 <div class="certificate-image">
-                  <div class="certificate-placeholder">ISO 14001</div>
-                </div>
-                <div class="certificate-info">
-                  <h4>ISO 14001 환경경영시스템</h4>
-                  <p>환경경영시스템 국제표준 인증</p>
-                  <span class="cert-date">2023.02.20</span>
-                </div>
-              </div>
-
-              <div class="certificate-item">
-                <div class="certificate-image">
-                  <div class="certificate-placeholder">K-ECO</div>
+                  <img
+                    src="./미디엄.png"
+                    alt="K-ECO 친환경 인증"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>K-ECO</div>';"
+                  />
                 </div>
                 <div class="certificate-info">
                   <h4>K-ECO 친환경 인증</h4>
@@ -1273,11 +1297,68 @@
         // Dynamic Content 내부 요소들의 스크롤 애니메이션 (한화 스타일 참고)
         const dynamicContent = document.querySelector(".dynamic-content");
         if (dynamicContent) {
-          const animatedElements = dynamicContent.querySelectorAll(
-            ".intro-content, .intro-text, .intro-text h4, .intro-text h5, .intro-text p, .intro-image, #map .container"
+          // 각 섹션별로 intro-text 요소들을 그룹화하여 동일한 애니메이션 속도 적용
+          const sections = [
+            {
+              id: "#company-intro",
+              selector:
+                "#company-intro .intro-text, #company-intro .intro-text h4, #company-intro .intro-text h5, #company-intro .intro-text p",
+            },
+            {
+              id: "#map",
+              selector:
+                "#map .intro-text, #map .intro-text h4, #map .intro-text h5",
+            },
+            {
+              id: "#certification",
+              selector:
+                "#certification .intro-text, #certification .intro-text h4, #certification .intro-text h5",
+            },
+          ];
+
+          // 각 섹션의 intro-text 요소들에 동일한 애니메이션 적용 (#company-intro 기준)
+          sections.forEach((section) => {
+            const sectionElements = dynamicContent.querySelectorAll(
+              section.selector
+            );
+            sectionElements.forEach((element, index) => {
+              // 초기 상태 설정
+              element.style.opacity = "0";
+              element.style.transform = "translateY(30px)";
+
+              // #company-intro 기준: 0.6s duration, 0.05 delay multiplier
+              const transitionDuration = "0.6s";
+              const delayMultiplier = 0.05;
+              const delay = index * delayMultiplier;
+
+              element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+              const elementObserver = new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.opacity = "1";
+                      entry.target.style.transform = "translateY(0)";
+                      elementObserver.unobserve(entry.target);
+                    }
+                  });
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: "0px 0px -50px 0px",
+                }
+              );
+
+              elementObserver.observe(element);
+            });
+          });
+
+          // 나머지 요소들 (intro-content, intro-image, container 등)
+          const otherElements = dynamicContent.querySelectorAll(
+            ".intro-content, .intro-image, #map .container, #certification .intro-content, .certificate-grid"
           );
 
-          animatedElements.forEach((element, index) => {
+          otherElements.forEach((element, index) => {
             // 초기 상태 설정
             element.style.opacity = "0";
             element.style.transform = "translateY(30px)";
@@ -2375,7 +2456,7 @@
       // 스크립트 로드 이벤트도 확인
       (function () {
         const naverMapScript = document.querySelector(
-          'script[src*="openapi.map.naver.com"]'
+          'script[src*="oapi.map.naver.com"], script[src*="openapi.map.naver.com"]'
         );
         if (naverMapScript) {
           console.log(
