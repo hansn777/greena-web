@@ -121,6 +121,12 @@ section > .container {
   display: block !important;
 }
 
+/* asset9.png 이미지를 검정색으로 변경 */
+.logo-img[src*="asset9.png"],
+.logo-img[alt*="그린에이 로고 9"] {
+  filter: brightness(0);
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -2425,7 +2431,6 @@ body.scrolled .nav-menu a {
   box-shadow: 0 6px 20px 0 rgba(83, 193, 120, 0.5);
 }
 
-
 .content-section {
   padding: 60px 0 192px 0;
   animation: fadeInUp 0.6s ease-out;
@@ -2500,6 +2505,12 @@ body.scrolled .nav-menu a {
   color: #64748b;
   margin-bottom: 0.5rem;
   font-size: 1rem;
+}
+
+/* list_end 클래스 bottom margin 복구 */
+#map .list_end,
+#certification .list_end {
+  margin-bottom: 32px;
 }
 
 /* 회사소개 페이지 스타일 */
@@ -2588,23 +2599,23 @@ body.scrolled .nav-menu a {
   .container.gutter-m {
     padding: 60px 24px;
   }
-  
+
   .container.gutter-m .section-inner {
     flex-direction: column;
     gap: 30px;
   }
-  
+
   .container.gutter-m .left,
   .container.gutter-m .right {
     flex: 1 1 100%;
     max-width: 100%;
   }
-  
+
   .container.gutter-m .section-title {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   .container.gutter-m .section-description {
     font-size: 1.1rem;
   }
@@ -2614,15 +2625,15 @@ body.scrolled .nav-menu a {
   .container.gutter-m {
     padding: 40px 24px;
   }
-  
+
   .container.gutter-m .section-inner {
     gap: 20px;
   }
-  
+
   .container.gutter-m .section-title {
     font-size: 1.75rem;
   }
-  
+
   .container.gutter-m .section-description {
     font-size: 1rem;
   }
@@ -2680,7 +2691,6 @@ body.scrolled .nav-menu a {
   color: #666;
   margin-bottom: 4rem;
 }
-
 
 /* 인증서 페이지 스타일 */
 .certificate-hero {
@@ -2740,7 +2750,6 @@ body.scrolled .nav-menu a {
 
 .certificate-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(83, 193, 120, 0.2);
 }
 
 .certificate-image {

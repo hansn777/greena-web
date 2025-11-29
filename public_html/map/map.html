@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오시는길 - 그린에이</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../asset8.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../asset8.png" />
+    <link rel="apple-touch-icon" href="../asset8.png" />
+
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
@@ -326,7 +332,8 @@
 
         // 마커 클릭 시 네이버 지도 검색으로 이동
         naver.maps.Event.addListener(marker, "click", function () {
-          const address = "서울 노원구 월계로45길 28 월계테크노타운 8층 그린에이";
+          const address =
+            "서울 노원구 월계로45길 28 월계테크노타운 8층 그린에이";
           const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
             address
           )}`;

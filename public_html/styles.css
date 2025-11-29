@@ -158,6 +158,12 @@ section {
   display: block !important;
 }
 
+/* asset9.png 이미지를 검정색으로 변경 */
+.logo-img[src*="asset9.png"],
+.logo-img[alt*="그린에이 로고 9"] {
+  filter: brightness(0);
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -1026,6 +1032,105 @@ body.scrolled .nav-menu a {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.max-w-400px {
+  max-width: 400px;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Responsive utilities */
+@media (max-width: 1024px) {
+  .max-lg\:flex-col {
+    flex-direction: column;
+  }
+
+  .max-lg\:gap-8 {
+    gap: 2rem;
+  }
+
+  .max-lg\:items-center {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .max-md\:pb-54px {
+    padding-bottom: 54px;
+  }
+
+  .max-md\:pt-9 {
+    padding-top: 36px;
+  }
+
+  .max-md\:gap-6 {
+    gap: 1.5rem;
+  }
+
+  .max-md\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .max-md\:text-xl {
+    font-size: 1.25rem;
+  }
+}
+
 .relative {
   position: relative;
 }
@@ -1134,6 +1239,184 @@ body.scrolled .nav-menu a {
 .products svg.h-40.w-40 {
   width: 40px;
   height: 40px;
+}
+
+/* Contact Section - Tetherdrop Style */
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 160px 120px; /* PC 기준 */
+}
+
+/* 1024px 초과일 때만 align-items: flex-end 적용 */
+@media (min-width: 1025px) {
+  .contact-section {
+    align-items: flex-end;
+  }
+}
+
+/* 860px 이상 1024px 이하일 때 align-items: center 적용 */
+@media (min-width: 860px) and (max-width: 1024px) {
+  .contact-section {
+    align-items: center;
+  }
+}
+
+.contact-section .flex.flex-col.gap-8 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* contact-section 내부의 flex flex-col gap-8 안에 있는 logo-group */
+.contact-section .flex.flex-col.gap-8 .logo-group {
+  width: auto; /* 고정 사이즈 삭제 */
+  gap: 2.4px !important; /* 2px * 1.2 */
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-section .flex.flex-col.gap-8 .logo-group .logo-img {
+  max-width: 106.8px !important; /* 89px * 1.2 */
+}
+
+/* contact-section 내부의 flex flex-col gap-8 안에 있는 asset9.png 로고 색상을 #333333으로 변경 */
+.contact-section .flex.flex-col.gap-8 .logo-group .logo-img[src*="asset9.png"],
+.contact-section
+  .flex.flex-col.gap-8
+  .logo-group
+  .logo-img[alt*="그린에이 로고 9"] {
+  filter: brightness(0) saturate(0%) invert(20%);
+  /* #333333 = rgb(51, 51, 51) - brightness(0)로 검정색 만든 후 invert(20%)로 #333333 색상 적용 */
+}
+
+.contact-section .flex.flex-col.gap-5 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-section .w-full.max-w-400px {
+  width: 100%;
+  max-width: 400px;
+}
+
+.contact-section .contact-btn,
+.contact-section button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  background: #53c178;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  height: 3.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  width: 100%;
+}
+
+.contact-section .contact-btn:hover,
+.contact-section button:hover {
+  background: rgba(83, 193, 120, 0.9);
+  transform: scale(1.05);
+}
+
+.contact-section .contact-btn:active,
+.contact-section button:active {
+  transform: scale(0.95);
+}
+
+.contact-section h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 860px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 80px 24px; /* 상하 동일, 좌우 24px 고정 */
+    align-items: center !important; /* 860 이하에서도 center 적용 */
+  }
+
+  .contact-section .flex.flex-col.gap-8 {
+    align-items: center !important; /* 부모 flex container에 가운데 정렬 설정 - !important로 다른 규칙 덮어쓰기 */
+    width: 100%; /* 전체 너비 사용 */
+  }
+
+  .contact-section .flex.flex-col.gap-8 .logo-group {
+    margin: 0 auto !important; /* 가운데 정렬 - !important로 다른 규칙 덮어쓰기 */
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 120px 120px; /* 상하 동일 */
+  }
+
+  .contact-section .flex.flex-col.gap-8 {
+    align-items: center;
+  }
+
+  .contact-section .flex.flex-col.gap-8 .logo-group {
+    width: auto; /* 고정 사이즈 삭제 */
+    gap: 2.4px !important;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-section .flex.flex-col.gap-8 .logo-group .logo-img {
+    max-width: 106.8px !important;
+  }
+
+  .contact-section .flex.flex-col.gap-5 {
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 24px; /* 상하 동일, 좌우 24px 고정 */
+  }
+
+  .contact-section h2 {
+    font-size: 2.25rem; /* 더 크게 조정 (36px) */
+  }
+
+  .contact-section .flex.flex-col.gap-8 .logo-group {
+    width: auto; /* 고정 사이즈 삭제 */
+    gap: 2.4px !important;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-section .flex.flex-col.gap-8 .logo-group .logo-img {
+    max-width: 106.8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 24px; /* 제일 작은 모바일 상하 60px, 좌우 24px 고정 */
+  }
+
+  .contact-section h2 {
+    font-size: 1.75rem; /* 480px 이하에서는 28px */
+  }
 }
 
 /* NHN Text Positioning */
@@ -2807,6 +3090,22 @@ body.scrolled .nav-menu a {
   padding-top: 0;
 }
 
+#air-purifier-section.content-section {
+  padding: 0;
+}
+
+#maintenance-section.content-section {
+  padding: 0;
+}
+
+#rental-section.content-section {
+  padding: 0;
+}
+
+#fragrance-section.content-section {
+  padding: 0;
+}
+
 .content-section.hidden {
   display: none;
 }
@@ -2870,6 +3169,12 @@ body.scrolled .nav-menu a {
   font-size: 1rem;
 }
 
+/* list_end 클래스 bottom margin 복구 */
+#map .list_end,
+#certification .list_end {
+  margin-bottom: 32px;
+}
+
 /* 회사소개 페이지 스타일 */
 .company-hero {
   background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
@@ -2896,7 +3201,7 @@ body.scrolled .nav-menu a {
 
 .intro-content {
   margin: 0;
-  padding: 60px 0;
+  padding: 60px 0 0 0;
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -2916,7 +3221,7 @@ body.scrolled .nav-menu a {
 }
 
 .intro-text {
-  margin: 0 auto;
+  margin: 0 auto 32px auto;
   line-height: 1.8;
 }
 
@@ -2960,10 +3265,89 @@ body.scrolled .nav-menu a {
   margin-bottom: 0;
 }
 
+#maintenance-section .intro-text h5 {
+  margin-bottom: 0;
+}
+
 .intro-text p {
   font-size: 1.1rem;
   color: #666;
   margin-bottom: 4rem;
+}
+
+/* Maintenance Intro Text Section */
+.maintenance-intro-text-section {
+  padding: 40px 0 120px 0;
+  background: #ffffff;
+  text-align: center;
+}
+
+.maintenance-intro-text-content {
+  margin: 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* maintenance-intro-text-content 내부 요소들의 초기 애니메이션 상태 */
+.maintenance-intro-text-content .maintenance-intro-text-line1,
+.maintenance-intro-text-content .maintenance-intro-text-title,
+.maintenance-intro-text-content .maintenance-intro-text-line2 {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 순차적 애니메이션 delay */
+.maintenance-intro-text-content .maintenance-intro-text-line1 {
+  transition-delay: 0s;
+}
+
+.maintenance-intro-text-content .maintenance-intro-text-title {
+  transition-delay: 0.05s;
+}
+
+.maintenance-intro-text-content .maintenance-intro-text-line2 {
+  transition-delay: 0.1s;
+}
+
+/* 애니메이션 활성화 클래스 */
+.maintenance-intro-text-content.animate .maintenance-intro-text-line1,
+.maintenance-intro-text-content.animate .maintenance-intro-text-title,
+.maintenance-intro-text-content.animate .maintenance-intro-text-line2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.maintenance-intro-text-line1 {
+  font-size: 1.2rem;
+  color: #4aad6a;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.maintenance-intro-text-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.maintenance-intro-text-line2 {
+  font-size: 1.3rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.maintenance-intro-text-line3 {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
 }
 
 /* 인증서 페이지 스타일 */
@@ -3024,7 +3408,6 @@ body.scrolled .nav-menu a {
 
 .certificate-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(83, 193, 120, 0.2);
 }
 
 .certificate-image {
@@ -3696,7 +4079,7 @@ body.scrolled .nav-menu a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("back.png");
+  background-image: url("../company/back.png");
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -3932,6 +4315,276 @@ body.scrolled .nav-menu a {
   color: #666;
 }
 
+/* Maintenance Details Section */
+.maintenance-details-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.maintenance-detail-item {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.maintenance-detail-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.maintenance-detail-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #26c86e;
+}
+
+.maintenance-detail-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+
+.maintenance-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.maintenance-detail-list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #6b7280;
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.maintenance-detail-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #26c86e;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.maintenance-detail-list li:last-child {
+  margin-bottom: 0;
+}
+
+.maintenance-detail-list li strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .maintenance-details-section {
+    padding: 60px 0;
+  }
+
+  .maintenance-detail-item {
+    padding: 30px 24px;
+    margin-bottom: 24px;
+  }
+
+  .maintenance-detail-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .maintenance-detail-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .maintenance-detail-list li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-details-section {
+    padding: 40px 0;
+  }
+
+  .maintenance-detail-item {
+    padding: 24px 20px;
+    margin-bottom: 20px;
+  }
+
+  .maintenance-detail-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+
+  .maintenance-detail-description {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .maintenance-detail-list li {
+    font-size: 0.9rem;
+    padding-left: 20px;
+  }
+}
+
+/* Maintenance Cycle Table Section */
+.maintenance-cycle-table-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.table-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.maintenance-cycle-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.maintenance-cycle-table thead {
+  background: #53c178;
+  color: white;
+}
+
+.maintenance-cycle-table th {
+  padding: 20px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.maintenance-cycle-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.maintenance-cycle-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.maintenance-cycle-table tbody tr.row-group:hover {
+  background-color: #f0fdf4;
+}
+
+.maintenance-cycle-table td {
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  color: #333;
+  vertical-align: middle;
+}
+
+.maintenance-cycle-table .cell-category {
+  background: #fcfcfc;
+  font-weight: 600;
+  color: #1ea85a;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.maintenance-cycle-table .cell-task {
+  text-align: left;
+  padding-left: 24px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.maintenance-cycle-table .cell-school,
+.maintenance-cycle-table .cell-government,
+.maintenance-cycle-table .cell-enterprise {
+  color: #4b5563;
+}
+
+/* 컬럼 너비 조정 */
+.maintenance-cycle-table .col-category {
+  width: 15%;
+}
+
+.maintenance-cycle-table .col-task {
+  width: 25%;
+}
+
+.maintenance-cycle-table .col-school,
+.maintenance-cycle-table .col-government,
+.maintenance-cycle-table .col-enterprise {
+  width: 20%;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 860px) {
+  .maintenance-cycle-table-section {
+    padding: 60px 0;
+  }
+
+  .table-wrapper {
+    margin: 0 -24px;
+    padding: 0 24px;
+  }
+
+  .maintenance-cycle-table {
+    font-size: 0.85rem;
+  }
+
+  .maintenance-cycle-table th {
+    padding: 14px 10px;
+    font-size: 0.9rem;
+  }
+
+  .maintenance-cycle-table td {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+  }
+
+  .maintenance-cycle-table .cell-task {
+    padding-left: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-cycle-table-section {
+    padding: 40px 0;
+  }
+
+  .maintenance-cycle-table {
+    font-size: 0.75rem;
+  }
+
+  .maintenance-cycle-table th {
+    padding: 10px 6px;
+    font-size: 0.8rem;
+  }
+
+  .maintenance-cycle-table td {
+    padding: 10px 6px;
+    font-size: 0.75rem;
+  }
+
+  .maintenance-cycle-table .cell-task {
+    padding-left: 8px;
+  }
+}
+
 /* Maintenance Clients Section */
 .maintenance-clients {
   padding: 80px 0;
@@ -4064,7 +4717,336 @@ body.scrolled .nav-menu a {
   margin-bottom: 40px;
 }
 
+/* Bento Grid Section */
+.bento-grid-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+/* Bento Grid Section 전체화면 슬라이드 (dynamic-content 밖으로 이동) */
+.bento-grid-section.framer-1t3518c {
+  /* 좌우 padding 완전 제거하여 전체화면 사용 */
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  position: relative;
+}
+
+/* GCOO Style Classes */
+.framer-1t3518c {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.framer-1puff5l-container {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Bento Grid Section 내부의 container는 슬라이드 트랙을 위한 패딩만 제공 */
+.bento-grid-section.framer-1t3518c > .container {
+  padding: 0;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+/* slide-wrapper도 좌우 padding 없이 */
+.bento-grid-section.framer-1t3518c .slide-wrapper {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.hidden-pc6fso,
+.hidden-1yspi3h {
+  /* Utility classes for responsive behavior */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Slide Wrapper (GCOO Style) */
+.slide-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-track {
+  display: flex;
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  gap: 24px;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slide-item {
+  flex: 0 0 calc(25% - 18px);
+  min-width: calc(25% - 18px);
+  flex-shrink: 0;
+  min-height: 400px;
+  height: auto;
+}
+
+/* 슬라이드 내부 bento-card-small padding/margin 제거 */
+#maintenance-section .slide-item .bento-card.bento-card-small {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: visible;
+  background-color: #ffffff;
+  background-size: 80% auto !important;
+  background-repeat: no-repeat !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#maintenance-section .slide-item .bento-card.bento-card-small::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #53c178;
+  opacity: 0.7;
+  z-index: 0;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+#maintenance-section .slide-item .bento-card-content {
+  padding: 40px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+#maintenance-section .slide-item .bento-card-icon {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.slide-item .bento-card {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* GCOO Style Bento Card Enhancements */
+.framer-1puff5l-container .bento-card {
+  position: relative;
+  overflow: visible;
+  will-change: transform;
+}
+
+/* bento-card-small 스크롤 문제 해결 */
+.bento-card-small {
+  overflow: visible;
+}
+
+.bento-card-content {
+  overflow: visible;
+}
+
+.framer-1puff5l-container .bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(83, 193, 120, 0.05) 0%,
+    rgba(83, 193, 120, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.framer-1puff5l-container .bento-card:hover::before {
+  opacity: 1;
+}
+
+.bento-grid-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bento-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.bento-card-large {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #86efac;
+}
+
+.bento-card-small {
+  background: white;
+}
+
+.bento-card-title-only {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #26c86e 0%, #1ea85a 100%);
+  text-align: center;
+  padding: 30px;
+  border: none;
+}
+
+.bento-card-title-only:hover {
+  transform: none;
+}
+
+.bento-service-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.bento-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bento-card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.bento-card-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.bento-card-text:last-child {
+  margin-bottom: 0;
+}
+
+.bento-card-icon {
+  width: 64px;
+  height: 64px;
+  background: #53c178;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+#maintenance-section .slide-item .bento-card-subtitle {
+  font-size: 24px !important;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+
+#maintenance-section .slide-item .bento-card-description {
+  font-size: 14px !important;
+  line-height: 1.7;
+  color: #666666 !important;
+  margin: 0;
+  padding-top: 8px !important;
+  word-wrap: break-word;
+  flex: 1;
+  min-height: 0;
+}
+
 /* Maintenance Page Responsive */
+@media (max-width: 1024px) {
+  .slide-item {
+    flex: 0 0 calc(50% - 12px);
+    min-width: calc(50% - 12px);
+  }
+
+  #maintenance-section .slide-item .bento-card-content {
+    padding: 32px !important;
+    height: 100% !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-subtitle {
+    font-size: 22px !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-description {
+    font-size: 13px !important;
+  }
+}
+
 @media (max-width: 860px) {
   .content-section {
     padding-bottom: 40px;
@@ -4128,6 +5110,142 @@ body.scrolled .nav-menu a {
   .maintenance-features-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .bento-grid-section {
+    padding: 60px 0;
+  }
+
+  /* Bento Grid Section 전체화면 슬라이드 */
+  .bento-grid-section.framer-1t3518c {
+    /* 좌우 padding 완전 제거 */
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .bento-grid-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .maintenance-intro-text-section {
+    padding: 40px 0 80px 0;
+  }
+
+  .maintenance-intro-text-content {
+    margin: 0 24px;
+  }
+
+  .maintenance-intro-text-title {
+    font-size: 2.25rem;
+  }
+
+  .maintenance-intro-text-line1,
+  .maintenance-intro-text-line2,
+  .maintenance-intro-text-line3 {
+    font-size: 1rem;
+  }
+
+  .maintenance-intro-text-line2 {
+    font-size: 1.15rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .framer-1puff5l-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .slide-item {
+    flex: 0 0 calc(100% - 20px);
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+  }
+
+  .slide-track {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  #maintenance-section .slide-item {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+  }
+
+  #maintenance-section .slide-item .bento-card.bento-card-small {
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0 0 48px 0 !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-content {
+    padding: 24px !important;
+    padding-bottom: 48px !important;
+    height: 100% !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-subtitle {
+    font-size: 20px !important;
+    margin-bottom: 12px;
+  }
+
+  #maintenance-section .slide-item .bento-card-description {
+    font-size: 13px !important;
+    line-height: 1.6;
+  }
+
+  .bento-card-large,
+  .bento-card-title-only {
+    grid-column: span 1;
+  }
+
+  /* 일반 bento-card 패딩 - 주석 처리하여 maintenance-section 충돌 제거 */
+  /* .bento-card {
+    padding: 30px 24px;
+  } */
+
+  .bento-card-title {
+    font-size: 1.5rem;
+  }
+
+  .bento-card-text {
+    font-size: 1rem;
+  }
+
+  .bento-service-title {
+    font-size: 1.5rem;
+  }
+
+  .bento-card-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+
+  #maintenance-section .slide-item .bento-card-subtitle {
+    font-size: 24px !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-description {
+    font-size: 14px !important;
+    color: #666666 !important;
+    padding-top: 8px !important;
   }
 
   .process-steps {
@@ -4271,13 +5389,94 @@ body.scrolled .nav-menu a {
     margin-bottom: 30px;
   }
 
+  .bento-grid-section {
+    padding: 40px 0;
+  }
+
+  /* Bento Grid Section 전체화면 슬라이드 */
+  .bento-grid-section.framer-1t3518c {
+    /* 좌우 padding 완전 제거 */
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .bento-grid-title {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+
+  .bento-card {
+    padding: 40px 20px;
+  }
+
+  .bento-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .bento-card-text {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .bento-service-title {
+    font-size: 1.25rem;
+  }
+
+  .bento-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  #maintenance-section .slide-item .bento-card.bento-card-small {
+    padding: 40px 20px !important;
+  }
+
+  #maintenance-section .slide-item .bento-card-subtitle {
+    font-size: 24px !important;
+    margin-bottom: 12px;
+  }
+
+  #maintenance-section .slide-item .bento-card-description {
+    font-size: 14px !important;
+    color: #666666 !important;
+    padding-top: 8px !important;
+  }
+
   .intro-text h5 {
     font-size: 1.75rem;
     margin-bottom: 4rem;
   }
 
+  #maintenance-section .intro-text h5 {
+    margin-bottom: 0;
+  }
+
   .intro-text p {
     font-size: 1rem;
+  }
+
+  .maintenance-intro-text-section {
+    padding: 40px 0 80px 0;
+  }
+
+  .maintenance-intro-text-title {
+    font-size: 2rem;
+  }
+
+  .maintenance-intro-text-line1,
+  .maintenance-intro-text-line2,
+  .maintenance-intro-text-line3 {
+    font-size: 1rem;
+  }
+
+  .maintenance-intro-text-line2 {
+    font-size: 1.1rem;
   }
 
   .maintenance-service-icon {

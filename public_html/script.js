@@ -49,13 +49,13 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const href = this.getAttribute("href");
     // 같은 페이지 내 해시 링크만 처리 (다른 페이지의 해시는 제외)
     if (href && !href.includes(".html")) {
-      e.preventDefault();
+    e.preventDefault();
       const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
       }
     }
   });
