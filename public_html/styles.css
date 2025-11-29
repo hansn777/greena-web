@@ -1246,6 +1246,14 @@ body.scrolled .nav-menu a {
   display: flex;
   justify-content: space-between;
   padding: 160px 120px; /* PC 기준 */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contact-section.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 1024px 초과일 때만 align-items: flex-end 적용 */
@@ -4317,39 +4325,127 @@ body.scrolled .nav-menu a {
 
 /* Maintenance Details Section */
 .maintenance-details-section {
-  padding: 80px 0;
+  padding: 80px 120px;
   background: #f8f9fa;
+}
+
+/* 렌탈 섹션이 활성화되었을 때 maintenance-details-section과 maintenance-cycle-table-section 숨기기 */
+#rental-section.visible ~ .maintenance-details-section,
+#rental-section.visible ~ * .maintenance-details-section,
+body:has(#rental-section.visible) .maintenance-details-section {
+  display: none;
+}
+
+#rental-section.visible ~ .maintenance-cycle-table-section,
+#rental-section.visible ~ * .maintenance-cycle-table-section,
+body:has(#rental-section.visible) .maintenance-cycle-table-section {
+  display: none;
+}
+
+/* Content Layout (NHN Style) */
+#contentLayout {
+  padding: 0 120px;
+}
+
+#contentLayout .flex.flex-row {
+  gap: 62px;
+  align-items: flex-start;
+}
+
+#contentLayoutRental .flex.flex-row {
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* Side Tab Layout (NHN Style) */
+#sideTabLayout {
+  flex-shrink: 0;
+  width: 240px;
+}
+
+#sideTabLayoutRental {
+  flex-shrink: 0;
+  width: 240px;
+}
+
+.maintenance-tab-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maintenance-tab-item {
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 300px;
+  text-align: center;
+  color: #666666;
+}
+
+.maintenance-tab-item:hover {
+  background: #f9fafb;
+  color: #000000;
+  font-weight: bold;
+}
+
+.maintenance-tab-item.active {
+  background: #e5e7eb;
+  color: #212126;
+  font-weight: 600;
+}
+
+.maintenance-tab-item span {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* Content Area */
+.maintenance-content-area {
+  flex: 1;
+  min-width: 0;
 }
 
 .maintenance-detail-item {
   background: white;
   border-radius: 12px;
   padding: 40px;
-  margin-bottom: 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
 }
 
-.maintenance-detail-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.maintenance-detail-item.active {
+  display: block;
+  animation: fadeInUp 0.4s ease-out;
 }
 
-.maintenance-detail-item:last-child {
-  margin-bottom: 0;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .maintenance-detail-title {
   font-size: 1.75rem;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #26c86e;
+  margin: 0;
+  padding: 0;
 }
 
 .maintenance-detail-description {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.8;
   color: #4b5563;
   margin-bottom: 24px;
@@ -4362,60 +4458,163 @@ body.scrolled .nav-menu a {
 }
 
 .maintenance-detail-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   font-size: 1rem;
   line-height: 1.8;
   color: #6b7280;
-  margin-bottom: 12px;
-  padding-left: 24px;
+  margin-bottom: 20px;
+  padding: 16px 24px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
   position: relative;
-}
-
-.maintenance-detail-list li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #26c86e;
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 
 .maintenance-detail-list li:last-child {
   margin-bottom: 0;
 }
 
-.maintenance-detail-list li strong {
-  color: #1f2937;
+.detail-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.check-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: #53c178;
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-size: 1rem;
   font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.detail-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.detail-items > div {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b7280;
 }
 
 @media (max-width: 860px) {
   .maintenance-details-section {
-    padding: 60px 0;
+    padding: 60px 24px;
+  }
+
+  #contentLayout {
+    padding: 0 24px;
+  }
+
+  #contentLayout .flex.flex-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #contentLayoutRental .flex.flex-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #sideTabLayout {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #sideTabLayoutRental {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .maintenance-tab-menu {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .maintenance-tab-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .maintenance-tab-item {
+    flex-shrink: 0;
+    white-space: nowrap;
+    border-radius: 300px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+
+  .maintenance-tab-item span {
+    font-size: 0.85rem;
+  }
+
+  .maintenance-content-area {
+    width: 100%;
   }
 
   .maintenance-detail-item {
     padding: 30px 24px;
-    margin-bottom: 24px;
   }
 
   .maintenance-detail-title {
     font-size: 1.5rem;
-    margin-bottom: 16px;
+    margin: 0;
+    padding: 0;
   }
 
   .maintenance-detail-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 20px;
   }
 
   .maintenance-detail-list li {
     font-size: 0.95rem;
+    gap: 12px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .maintenance-details-section {
-    padding: 40px 0;
+    padding: 40px 24px;
+  }
+
+  #contentLayoutRental .flex.flex-row {
+    flex-direction: column;
+    gap: 24px;
   }
 
   .maintenance-detail-item {
@@ -4425,25 +4624,56 @@ body.scrolled .nav-menu a {
 
   .maintenance-detail-title {
     font-size: 1.25rem;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    margin: 0;
+    padding: 0;
   }
 
   .maintenance-detail-description {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     margin-bottom: 16px;
   }
 
   .maintenance-detail-list li {
     font-size: 0.9rem;
-    padding-left: 20px;
+    gap: 10px;
+  }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    font-size: 11px;
+  }
+
+  .detail-header {
+    gap: 10px;
+  }
+
+  .detail-items {
+    gap: 6px;
   }
 }
 
 /* Maintenance Cycle Table Section */
 .maintenance-cycle-table-section {
-  padding: 80px 0;
+  padding: 0;
   background: white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.maintenance-cycle-table-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.maintenance-cycle-table-section .container {
+  padding: 0 120px;
+}
+
+.maintenance-cycle-table-section .section-title {
+  margin-top: 120px;
 }
 
 .table-wrapper {
@@ -4533,8 +4763,12 @@ body.scrolled .nav-menu a {
 
 /* 반응형 스타일 */
 @media (max-width: 860px) {
-  .maintenance-cycle-table-section {
-    padding: 60px 0;
+  .maintenance-cycle-table-section .container {
+    padding: 60px 24px;
+  }
+
+  .maintenance-cycle-table-section .section-title {
+    margin-top: 0;
   }
 
   .table-wrapper {
