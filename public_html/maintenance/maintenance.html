@@ -376,7 +376,7 @@
                       <div class="bento-card-content">
                         <div class="bento-card-icon">
                   <i class="fas fa-search"></i>
-              </div>
+                </div>
                         <h4 class="bento-card-subtitle" style="font-size: 24px !important;">기기점검 및 공기질 측정</h4>
                         <p class="bento-card-description" style="font-size: 14px !important; color: #666666 !important; padding-top: 8px;">
                           필터 상태, 공기질, 모터 및 센서 동작을 점검하고 VSP 조정 등 운전 조건을 최적화하여 장비의 효율과 성능을 안정적으로 유지합니다.
@@ -406,7 +406,7 @@
                       <div class="bento-card-content">
                         <div class="bento-card-icon">
                   <i class="fas fa-spray-can"></i>
-              </div>
+                </div>
                         <h4 class="bento-card-subtitle" style="font-size: 24px !important;">기기청소</h4>
                         <p class="bento-card-description" style="font-size: 14px !important; color: #666666 !important; padding-top: 8px;">
                           기기의 메인보드 등 주요 부품에 손상이 없도록 세심하게 작업을 진행하면서 내·외부에 쌓인 먼지와 오염물을 제거하고 주요 부품을 세척하여 냉난방 효율과 공기 순환 상태를 최적의 수준으로 유지합니다.
@@ -421,22 +421,22 @@
                       <div class="bento-card-content">
                         <div class="bento-card-icon">
                   <i class="fas fa-shield-virus"></i>
-            </div>
+                </div>
                         <h4 class="bento-card-subtitle" style="font-size: 24px !important;">살균케어</h4>
                         <p class="bento-card-description" style="font-size: 14px !important; color: #666666 !important; padding-top: 8px;">
                           전문 살균제와 연무기를 사용하여 장비 내부 및 공기 접촉 부위를 소독하고, 세균과 곰팡이 번식을 예방하여 위생적이고 청정한 실내 공기 환경을 유지합니다.
-                        </p>
-                </div>
-              </div>
-                  </li>
-                </ul>
+                </p>
               </div>
             </div>
+                  </li>
+                </ul>
           </div>
+              </div>
+              </div>
         </section>
-      </div>
+              </div>
 
-    </section>
+        </section>
 
     <!-- Rental Section -->
     <div class="content-section hidden" id="rental-section">
@@ -445,7 +445,7 @@
             <div class="intro-text">
               <h4>렌탈 | RENTAL</h4>
             </div>
-          </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1642,7 +1642,38 @@
 
             // Show selected content item
             const selectedContent = document.querySelector(
-              `.maintenance-detail-item[data-content="${tabIndex}"]`
+              `#contentLayout .maintenance-detail-item[data-content="${tabIndex}"]`
+            );
+            if (selectedContent) {
+              selectedContent.classList.add("active");
+            }
+          });
+        });
+
+        // Rental Tab Menu (NHN Style) - Rental Section
+        const rentalTabItems = document.querySelectorAll("#sideTabLayoutRental .maintenance-tab-item");
+        const rentalDetailItems = document.querySelectorAll("#contentLayoutRental .maintenance-detail-item[data-content]");
+
+        rentalTabItems.forEach((tabItem) => {
+          tabItem.addEventListener("click", function () {
+            const tabIndex = this.getAttribute("data-tab");
+
+            // Remove active class from all tabs in rental section
+            rentalTabItems.forEach((item) => {
+              item.classList.remove("active");
+            });
+
+            // Add active class to clicked tab
+            this.classList.add("active");
+
+            // Hide all content items in rental section
+            rentalDetailItems.forEach((item) => {
+              item.classList.remove("active");
+            });
+
+            // Show selected content item
+            const selectedContent = document.querySelector(
+              `#contentLayoutRental .maintenance-detail-item[data-content="${tabIndex}"]`
             );
             if (selectedContent) {
               selectedContent.classList.add("active");
