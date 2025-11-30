@@ -3118,6 +3118,45 @@ body.scrolled .nav-menu a {
   display: none;
 }
 
+#rental-section.content-section.visible,
+#rental-section.visible,
+#rental-section.content-section:not(.hidden) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Rental Section Title - only visible in rental-section */
+.rental-section-title {
+  margin-bottom: 36px;
+}
+
+.rental-intro-content {
+  display: none;
+  padding: 60px 120px 0 120px !important;
+}
+
+.rental-intro-content .intro-text {
+  margin: 0 auto 0 auto;
+}
+
+.rental-intro-content .intro-text h4 {
+  font-size: 1rem;
+  color: #7b7c7d;
+  font-weight: 500;
+  margin: 2rem 0 32px 0;
+}
+
+@media (max-width: 860px) {
+  .rental-intro-content {
+    padding: 60px 24px 0 24px !important;
+  }
+
+  .rental-section-title {
+    padding: 0 24px;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -5014,6 +5053,10 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  padding: 80px 0;
 }
 
 .slide-track {
@@ -5403,6 +5446,11 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
     min-height: 0 !important;
   }
 
+  .slide-wrapper {
+    min-height: 400px;
+    padding: 60px 0;
+  }
+
   .slide-track {
     display: flex;
     flex-direction: column;
@@ -5464,6 +5512,11 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 
   .bento-service-title {
     font-size: 1.5rem;
+  }
+
+  .slide-wrapper {
+    min-height: 350px;
+    padding: 40px 0;
   }
 
   .bento-card-icon {
