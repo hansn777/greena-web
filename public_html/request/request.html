@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="766b9efcf22f57c5a4c14a5fa0625a5ee1e147a5"
+    />
+    <title>견적문의 - 그린에이</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../asset8.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../asset8.png" />
+    <link rel="apple-touch-icon" href="../asset8.png" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="그린에이 견적문의 페이지입니다. 공기정화장치, 공기청정기 렌탈 및 유지관리 서비스에 대한 견적을 문의하세요."
+    />
+    <meta
+      name="keywords"
+      content="견적문의, 공기정화장치, 공기청정기, 렌탈, 유지관리, 그린에이"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
+    <!-- Request Page Specific Styles -->
+    <style>
+      /* request.html에만 적용되는 스타일 */
+      .maintenance-hero-content {
+        text-align: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .maintenance-hero-content .maintenance-hero-badge,
+      .maintenance-hero-content .maintenance-hero-title,
+      .maintenance-hero-content .maintenance-hero-subtitle {
+        text-align: center !important;
+      }
+
+      .maintenance-hero .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Hero 섹션 하단 패딩 및 container 크기에 맞춰 자동 높이 조정 (request.html 한정) */
+      .maintenance-hero {
+        padding-bottom: 60px !important; /* 하단 여백 60px */
+        min-height: auto !important; /* container 콘텐츠에 맞춰 자동 조정 */
+        height: auto !important;
+        padding-top: 140px !important; /* 상단 여백 */
+      }
+
+      .maintenance-hero .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: auto; /* container도 콘텐츠에 맞춰 자동 조정 */
+      }
+
+      /* Inquiry Section z-index 조정 및 스타일 제거 (request.html 한정) */
+      .inquiry-section {
+        position: relative;
+        z-index: 10; /* 원하는 z-index 값으로 조정 가능 */
+        padding: 0 !important; /* padding: 120px 0; 제거 */
+        background: transparent !important; /* background: #ffffff; 제거 */
+      }
+
+      /* Inquiry Form Wrapper 스타일 (request.html 한정) */
+      .inquiry-form-wrapper {
+        background-color: #ffffff;
+        padding: 80px;
+        border-radius: 24px; /* 라운드 값 증가 */
+        box-shadow: 0 10px 6px rgba(0, 0, 0, 0.03),
+          10px 2px 4px rgba(0, 0, 0, 0.02);
+        margin: 0 !important;
+        margin-bottom: 240px !important; /* bottom margin 240px */
+        max-width: none !important; /* max-width: 800px; 삭제 */
+      }
+
+      /* 반응형 패딩 및 마진 조정 */
+      @media (max-width: 860px) {
+        .inquiry-form-wrapper {
+          padding: 56px;
+          margin-bottom: 120px !important; /* 반응형 마진 조정 */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .inquiry-form-wrapper {
+          padding: 32px;
+          margin-bottom: 80px !important; /* 반응형 마진 조정 */
+        }
+      }
+
+      /* Maintenance Hero Background 이미지 좌우 풀로 채우기 (request.html 한정) */
+      .maintenance-hero-bg {
+        background-size: cover !important; /* 좌우 풀로 채우기 */
+        background-position: center !important;
+        height: 500px !important; /* 상하 사이즈 줄이기 (원하는 높이로 조정 가능) */
+        bottom: auto !important; /* bottom: 0 제거 */
+        top: 0 !important;
+      }
+
+      /* 반응형에 맞춰 이미지 조정 */
+      @media (max-width: 860px) {
+        .maintenance-hero-bg {
+          background-size: cover !important;
+          background-position: center !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .maintenance-hero-bg {
+          background-size: cover !important;
+          background-position: center !important;
+        }
+      }
+
+      /* Inquiry Tabs 스타일 변경 (request.html 한정) */
+      .inquiry-tabs {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 32px;
+        border-bottom: none !important; /* border-bottom: 2px solid #e5e7eb; 삭제 */
+      }
+
+      /* 탭 콘텐츠 전환 (barobill 스타일) */
+      .inquiry-tab-content {
+        display: none;
+      }
+
+      .inquiry-tab-content.active {
+        display: block;
+      }
+
+      /* 두 탭 버튼을 동일한 크기/텍스트 사이즈로 맞춤 */
+      .inquiry-tab,
+      .inquiry-tab.active {
+        flex: 0 1 300px; /* 데스크톱 기준, wrapper 패딩 안에서만 늘어나도록 */
+        max-width: 100%;
+        text-align: center;
+        padding: 12px 24px;
+        font-size: 14px !important; /* 최대 텍스트 사이즈 14px */
+        font-weight: 500 !important;
+        border-bottom-color: transparent !important;
+        border-radius: 25px !important;
+        margin: 0 !important; /* 버튼 마진 제거 */
+        border: 1px solid transparent; /* 기본 border 두께 지정 */
+      }
+
+      /* 비활성 탭 스타일 */
+      .inquiry-tab {
+        background-color: #fff !important;
+        border-color: #dee3ed !important;
+        color: #24292f !important;
+      }
+
+      /* Active 탭 스타일 (barobill 스타일 적용) */
+      .inquiry-tab.active {
+        background-color: #24292f !important;
+        border-color: #1f2327 !important;
+        color: #fff !important;
+      }
+
+      @media (max-width: 1024px) {
+        .inquiry-tab,
+        .inquiry-tab.active {
+          flex: 0 1 240px; /* 태블릿에서 조금 줄이기 */
+          font-size: 13px !important; /* 태블릿 텍스트 사이즈 */
+        }
+        .inquiry-tabs {
+          gap: 24px;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .inquiry-tab,
+        .inquiry-tab.active {
+          font-size: 12px !important; /* 중간 화면 텍스트 사이즈 */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .inquiry-tab,
+        .inquiry-tab.active {
+          flex: 0 0 50%; /* 모바일에서는 2개가 한 줄에 반반 */
+          font-size: 11px !important; /* 모바일 텍스트 사이즈 */
+        }
+        .inquiry-tabs {
+          gap: 16px;
+        }
+      }
+
+      /* Radio Label 상하 가운데 정렬 및 border 스타일 (request.html 한정) */
+      .radio-label {
+        display: flex !important;
+        align-items: center !important; /* 상하 가운데 정렬 */
+        justify-content: space-between !important;
+        border: 1px solid #dee3ed !important;
+        border-radius: 4px !important;
+        font-size: 0.9rem !important;
+      }
+
+      /* Form Col border-color 및 border-radius 변경 (request.html 한정) */
+      .inquiry-form-wrapper .form-col {
+        border: 1px solid #dee3ed !important;
+        border-radius: 4px !important;
+        padding: 0 !important;
+      }
+
+      .inquiry-form-wrapper .form-col.focused {
+        border-color: #53c178 !important;
+        box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1) !important;
+      }
+
+      .inquiry-form-wrapper .form-col.has-value {
+        border-color: #53c178 !important;
+      }
+
+      .inquiry-form-wrapper .form-col label {
+        position: absolute;
+        top: -10px;
+        left: 0.4rem;
+        background-color: #ffffff;
+        padding: 0 3px;
+        font-size: 0.8rem !important;
+        color: #a6b1bf;
+        transition: color 0.2s ease;
+        z-index: 1;
+      }
+
+      .inquiry-form-wrapper .form-col.focused label,
+      .inquiry-form-wrapper .form-col.has-value label {
+        color: #53c178 !important;
+      }
+
+      .inquiry-form-wrapper .form-col input {
+        border: none !important;
+        background-color: transparent !important;
+        padding: 0.75rem 1rem;
+      }
+
+      .inquiry-form-wrapper .form-col input:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      /* Checkbox Label 스타일 변경 (request.html 한정) */
+      .checkbox-label {
+        display: flex !important;
+        align-items: center !important; /* 상하 가운데 정렬 */
+        justify-content: center !important; /* 좌우도 가운데 정렬 */
+        color: #212126 !important; /* 텍스트 색상 */
+        border: 1px solid #dee3ed !important;
+        border-radius: 4px !important;
+        font-size: 0.9rem !important;
+      }
+
+      .checkbox-label.active,
+      .checkbox-label:has(input[type="checkbox"]:checked) {
+        box-shadow: none !important; /* box-shadow 삭제 */
+        border: 1px solid #53c178 !important; /* 체크박스 활성화 시 border 색상 */
+      }
+
+      /* 개인정보 동의 체크박스만 border 제거 (request.html 한정) */
+      .checkbox-label:has(input[name="privacyAgree"]),
+      .checkbox-label:has(input[name="privacyAgree"]:checked) {
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* form-col 내부 form-textarea 스타일 (request.html 한정) */
+      .form-col .form-textarea {
+        border: 1px solid #53c178 !important;
+        color: #212126 !important; /* form-col과 동일한 텍스트 색상 */
+      }
+
+      /* form-group 내 textarea 스타일 (request.html 한정) */
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        color: #212126 !important; /* form-col과 동일한 텍스트 색상 */
+      }
+
+      /* custom-file b-form-file 텍스트 색상 통일 (request.html 한정) */
+      .custom-file.b-form-file,
+      .custom-file-label,
+      .form-file-text {
+        color: #212126 !important; /* form-col과 동일한 텍스트 색상 */
+      }
+
+      /* Barobill 스타일 파일 업로드 (request.html 한정) */
+      .form-group.mat-fieldset {
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        padding: 8px 12px 8px 12px;
+        margin-bottom: 1.5rem;
+        position: relative;
+        background: #ffffff;
+      }
+
+      .form-group.mat-fieldset legend {
+        background-color: transparent;
+        border-bottom: 6px solid #fff;
+        color: #a6b1bf;
+        font-size: 0.8rem !important;
+        height: calc(0.7rem + 1px);
+        left: 0.4rem;
+        margin: 0 !important;
+        padding: 0 3px !important;
+        position: absolute;
+        top: -10px !important;
+      }
+
+      .form-group.mat-fieldset:focus-within legend {
+        color: #53c178;
+      }
+
+      .custom-file {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+      }
+
+      /* custom-file b-form-file 상하 가운데 정렬 (request.html 한정) */
+      .custom-file.b-form-file {
+        display: flex;
+        align-items: center; /* 상하 가운데 정렬 */
+      }
+
+      .custom-file-input {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .custom-file-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        border: none !important; /* border 삭제 */
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .custom-file-label::after {
+        content: attr(data-browse);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        display: flex;
+        align-items: center; /* 상하 가운데 정렬 */
+        justify-content: center;
+        height: calc(
+          1.5em + 0.75rem + 2px
+        ); /* custom-file-input과 동일한 높이 */
+        padding: 0 !important; /* 패딩 삭제 */
+        line-height: 1.5;
+        color: #495057;
+        background-color: transparent !important; /* background-color 삭제 */
+        border-left: inherit;
+        border-radius: 0 4px 4px 0;
+        font-size: 0.85rem !important; /* 파일찾기 텍스트 사이즈 축소 */
+      }
+
+      .form-file-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
+        margin-right: 80px;
+      }
+
+      /* 반응형 조정 */
+      @media (max-width: 860px) {
+        .custom-file,
+        .custom-file-input,
+        .custom-file-label,
+        .custom-file-label::after {
+          height: calc(1.4em + 0.7rem + 2px);
+        }
+        .custom-file-label {
+          padding: 0.35rem 0.65rem;
+        }
+        .custom-file-label::after {
+          padding: 0 !important; /* 패딩 삭제 */
+        }
+        .form-file-text {
+          margin-right: 70px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .custom-file,
+        .custom-file-input,
+        .custom-file-label,
+        .custom-file-label::after {
+          height: calc(1.3em + 0.65rem + 2px);
+        }
+        .custom-file-label {
+          padding: 0.3rem 0.6rem;
+          font-size: 0.9rem;
+        }
+        .custom-file-label::after {
+          padding: 0 !important; /* 패딩 삭제 */
+          font-size: 0.9rem;
+        }
+        .form-file-text {
+          margin-right: 60px;
+        }
+      }
+
+      /* ============================================
+         Barobill 스타일 기본 폼 스타일 (request.html 한정)
+         ============================================ */
+
+      /* Form Label 스타일 */
+      .form-label {
+        display: block;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #212126;
+      }
+
+      /* Form Row 스타일 */
+      .form-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+
+      /* Form Col 기본 레이아웃 스타일 (Barobill 스타일) */
+      .form-col {
+        flex: 1;
+        position: relative;
+        margin-bottom: 1.5rem;
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        padding: 0;
+        background: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      /* Form Input 스타일 (Barobill 스타일) */
+      .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #212126;
+        background-color: #ffffff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #53c178;
+        box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1);
+      }
+
+      .form-input::placeholder {
+        color: #a6b1bf;
+      }
+
+      /* Form Textarea 스타일 */
+      .form-textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #212126;
+        background-color: #ffffff;
+        resize: vertical;
+        min-height: 120px;
+        font-family: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+      }
+
+      .form-textarea:focus {
+        outline: none;
+        border-color: #53c178;
+        box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1);
+      }
+
+      .form-textarea::placeholder {
+        color: #a6b1bf;
+      }
+
+      /* Checkbox Group 스타일 */
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .checkbox-group {
+          flex-direction: column;
+        }
+      }
+
+      /* Inquiry Form 스타일 */
+      .inquiry-form {
+        width: 100%;
+      }
+
+      /* Inquiry Submit Button 스타일 (Barobill 스타일) */
+      .inquiry-submit-btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        background-color: #24292f;
+        color: #ffffff;
+        border: 1px solid #24292f;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-top: 1.5rem;
+      }
+
+      .inquiry-submit-btn:hover {
+        background-color: #1f2327;
+        border-color: #1f2327;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .inquiry-submit-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* File Upload Group 스타일 (기술문의 탭용) */
+      .file-upload-group {
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .file-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      .file-label {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dee3ed;
+        border-radius: 4px;
+        background-color: #ffffff;
+        color: #212126;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .file-label:hover {
+        border-color: #53c178;
+        color: #53c178;
+      }
+
+      .file-input:focus + .file-label {
+        outline: none;
+        border-color: #53c178;
+        box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1);
+      }
+
+      /* Form Group 스타일 */
+      .inquiry-form-wrapper .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .inquiry-form-wrapper .form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Radio Label Active 상태 스타일 */
+      .radio-label.active {
+        border-color: #53c178 !important;
+        background-color: rgba(83, 193, 120, 0.05);
+      }
+
+      /* 반응형 조정 */
+      @media (max-width: 768px) {
+        .inquiry-form-wrapper {
+          padding: 2rem !important;
+        }
+
+        .form-label {
+          font-size: 0.9rem;
+        }
+
+        .form-input,
+        .form-textarea {
+          font-size: 0.875rem;
+          padding: 0.625rem 0.875rem;
+        }
+
+        .inquiry-submit-btn {
+          padding: 0.75rem 1.25rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="../index/index.html">
+              <div class="logo-group">
+                <img
+                  src="../asset8.png"
+                  alt="그린에이 로고 8"
+                  class="logo-img"
+                />
+                <img
+                  src="../asset9.png"
+                  alt="그린에이 로고 9"
+                  class="logo-img"
+                />
+              </div>
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="dropdown">
+              <a href="../company/company.html">회사소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="../products/products.html#air-purifier-section"
+                >제품소개</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="../maintenance/maintenance.html#maintenance-section"
+                >유지관리/렌탈</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="https://m.blog.naver.com/greena911" target="_blank"
+                >블로그</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-right">
+            <button class="quote-btn">견적문의</button>
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
+        <div class="navbar_hoveredMenuBg">
+          <ul class="navbar_hoveredMenuContainer">
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">회사소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="../company/company.html#company-intro"
+                  ><li>회사소개</li></a
+                >
+                <a href="../company/company.html#map"><li>오시는길</li></a>
+                <a href="../company/company.html#certification"
+                  ><li>인증서</li></a
+                >
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">제품소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="../products/products.html#air-purifier-section"
+                  ><li>공기청정기</li></a
+                >
+                <a href="../products/products.html#fragrance-section"
+                  ><li>향기분사기</li></a
+                >
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">유지관리/렌탈</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="../maintenance/maintenance.html#maintenance-section"
+                  ><li>유지관리</li></a
+                >
+                <a href="../maintenance/maintenance.html#rental-section"
+                  ><li>렌탈</li></a
+                >
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">블로그</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="https://m.blog.naver.com/greena911" target="_blank"
+                  ><li>블로그</li></a
+                >
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div
+      class="maintenance-hero-bg"
+      style="background-image: url('invoice.jpg')"
+    ></div>
+    <section class="maintenance-hero">
+      <div class="container">
+        <div class="maintenance-hero-content">
+          <div class="maintenance-hero-badge">INVOICE</div>
+          <h1 class="maintenance-hero-title">견적문의</h1>
+          <p class="maintenance-hero-subtitle">
+            그린에이 담당자가 빠른 시간 내에 연락드리겠습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inquiry Form Section -->
+    <section class="inquiry-section">
+      <div class="container">
+        <div class="inquiry-form-wrapper">
+          <div class="inquiry-tabs">
+            <button class="inquiry-tab active" data-tab="quote">
+              유지관리 문의
+            </button>
+            <button class="inquiry-tab" data-tab="technical">렌탈 문의</button>
+          </div>
+
+          <div class="inquiry-tab-content active" id="quote-tab">
+            <form class="inquiry-form" id="quoteForm">
+              <div class="form-group">
+                <label class="form-label">담당자 정보</label>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >회사명</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="companyName"
+                      placeholder="회사명"
+                      required
+                    />
+                  </div>
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >이름</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="name"
+                      placeholder="이름"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >연락처</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-input"
+                      name="phone"
+                      placeholder="연락처"
+                      required
+                    />
+                  </div>
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >수신용 이메일</label
+                    >
+                    <input
+                      type="email"
+                      class="form-input"
+                      name="email"
+                      placeholder="수신용 이메일"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">기기 종류</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="deviceType"
+                      value="air-purifier"
+                    />
+                    <span>공기청정기</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="deviceType"
+                      value="air-circulator"
+                    />
+                    <span>공기순환기</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="deviceType" value="hvac-kit" />
+                    <span>냉난방기 공기청정키트</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="deviceType" value="other" />
+                    <span>기타</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">별도 문의사항</label>
+                <textarea
+                  class="form-textarea"
+                  name="content"
+                  rows="6"
+                  placeholder="별도로 문의하실 내용을 입력해주세요"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <fieldset class="form-group mat-fieldset" id="file-fieldset">
+                  <legend
+                    tabindex="-1"
+                    class="bv-no-focus-ring col-form-label pt-0"
+                  >
+                    사진 첨부
+                  </legend>
+                  <div>
+                    <div
+                      class="custom-file b-form-file"
+                      id="file-upload-wrapper"
+                    >
+                      <input
+                        type="file"
+                        accept=".png, .jpg, .jpeg, .gif"
+                        class="custom-file-input"
+                        name="file1"
+                        id="file1"
+                      />
+                      <label
+                        class="custom-file-label"
+                        for="file1"
+                        data-browse="파일찾기"
+                      >
+                        <span class="d-block form-file-text"
+                          >파일을 선택하세요</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacyAgree" required />
+                  <span>개인정보 수집 및 이용에 동의합니다.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="inquiry-submit-btn">문의하기</button>
+            </form>
+          </div>
+
+          <div class="inquiry-tab-content" id="technical-tab">
+            <form class="inquiry-form" id="technicalForm">
+              <div class="form-group">
+                <label class="form-label">담당자 정보</label>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >회사명</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="companyName"
+                      placeholder="회사명"
+                      required
+                    />
+                  </div>
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >이름</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="name"
+                      placeholder="이름"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >연락처</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-input"
+                      name="phone"
+                      placeholder="연락처"
+                      required
+                    />
+                  </div>
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >이메일</label
+                    >
+                    <input
+                      type="email"
+                      class="form-input"
+                      name="email"
+                      placeholder="이메일"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">문의내용</label>
+                <textarea
+                  class="form-textarea"
+                  name="content"
+                  rows="6"
+                  placeholder="기술 문의 내용을 입력해주세요"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">첨부파일</label>
+                <div class="file-upload-group">
+                  <input
+                    type="file"
+                    class="file-input"
+                    name="file1"
+                    id="tech-file1"
+                  />
+                  <label for="tech-file1" class="file-label">첨부파일1</label>
+                </div>
+                <div class="file-upload-group">
+                  <input
+                    type="file"
+                    class="file-input"
+                    name="file2"
+                    id="tech-file2"
+                  />
+                  <label for="tech-file2" class="file-label">첨부파일2</label>
+                </div>
+                <div class="file-upload-group">
+                  <input
+                    type="file"
+                    class="file-input"
+                    name="file3"
+                    id="tech-file3"
+                  />
+                  <label for="tech-file3" class="file-label">첨부파일3</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="privacyAgree" required />
+                  <span>개인정보 수집 및 이용에 동의합니다.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="inquiry-submit-btn">문의하기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="../index/index.html">
+              <div class="logo-group">
+                <img
+                  src="../asset8.png"
+                  alt="그린에이 로고 8"
+                  class="logo-img"
+                />
+                <img
+                  src="../asset9.png"
+                  alt="그린에이 로고 9"
+                  class="logo-img"
+                />
+              </div>
+            </a>
+          </div>
+          <div class="footer-sections">
+            <div class="footer-section">
+              <h3>회사소개</h3>
+              <ul>
+                <li><a href="../company/company.html">회사소개</a></li>
+                <li><a href="../company/company.html#map">오시는길</a></li>
+                <li>
+                  <a href="../company/company.html#certification">인증서</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>제품소개</h3>
+              <ul>
+                <li>
+                  <a href="../products/products.html#air-purifier-section"
+                    >공기청정기</a
+                  >
+                </li>
+                <li>
+                  <a href="../products/products.html#fragrance-section"
+                    >향기분사기</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>유지관리/렌탈</h3>
+              <ul>
+                <li>
+                  <a href="../maintenance/maintenance.html#maintenance-section"
+                    >유지관리</a
+                  >
+                </li>
+                <li>
+                  <a href="../maintenance/maintenance.html#rental-section"
+                    >렌탈</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>블로그</h3>
+              <ul>
+                <li>
+                  <a href="https://m.blog.naver.com/greena911" target="_blank"
+                    >블로그</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>고객센터</h3>
+              <p>전화: 031-522-5709</p>
+              <p>이메일: help@greenaofficial.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>
+              <strong>(주)그린에이</strong><br />
+              Copyright © 2025 그린에이 All rights Reserved.
+            </p>
+            <p>
+              경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 9043호 ·
+              대표: 정수연<br />
+              고객센터: 031-522-5709 · 팩스: 031-522-5706
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="float-container" id="floatContainer">
+      <!-- Channel.io Style Label Button -->
+      <button type="button" class="float-label-button" id="floatLabelButton">
+        <div class="float-label-text-wrapper">
+          <div class="float-label-title">견적문의가 필요하다면?</div>
+          <div class="float-label-status">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="float-label-icon"
+            >
+              <path
+                fill="currentColor"
+                d="M12 4c5.247 0 9.5 3.582 9.5 8s-4.253 8-9.5 8c-.69 0-1.363-.064-2.012-.182-1.416 1.21-3.05 1.794-4.11 2.062-.42.107-.716-.362-.496-.737.388-.66.863-1.599 1.14-2.609C4.09 17.086 2.5 14.7 2.5 12c0-4.418 4.253-8 9.5-8m-4.499 6.5c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501.826 0 1.5-.675 1.5-1.501 0-.824-.675-1.499-1.5-1.499m4.5 0c-.824 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499m4.5 0c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499"
+              ></path>
+            </svg>
+            <span class="float-label-status-text">대화 시작하기</span>
+          </div>
+        </div>
+      </button>
+      <div class="float-menu" id="floatMenu">
+        <a href="tel:0315225709" class="float-item" aria-label="전화 상담">
+          <i class="fas fa-phone"></i>
+          <span class="float-tooltip">전화 상담</span>
+        </a>
+        <a
+          href="https://pf.kakao.com/_BFvHn/chat"
+          target="_blank"
+          class="float-item"
+          aria-label="카카오톡 상담"
+        >
+          <i class="fas fa-comment-dots"></i>
+          <span class="float-tooltip">카카오톡</span>
+        </a>
+        <a href="#inquiry-section" class="float-item" aria-label="견적 문의">
+          <i class="fas fa-file-alt"></i>
+          <span class="float-tooltip">견적 문의</span>
+        </a>
+      </div>
+      <button class="float-main-btn" id="floatMainBtn" aria-label="고객 상담">
+        <img
+          src="../index/float - open.png"
+          alt="열기"
+          class="float-btn-img float-btn-open"
+        />
+        <img
+          src="../index/float - close.png"
+          alt="닫기"
+          class="float-btn-img float-btn-close"
+        />
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav-menu">
+        <a href="../company/company.html" class="mobile-nav-link">회사소개</a>
+        <a
+          href="../products/products.html#air-purifier-section"
+          class="mobile-nav-link"
+          >제품소개</a
+        >
+        <a
+          href="../maintenance/maintenance.html#maintenance-section"
+          class="mobile-nav-link"
+          >유지관리/렌탈</a
+        >
+        <a
+          href="https://m.blog.naver.com/greena911"
+          target="_blank"
+          class="mobile-nav-link"
+          >블로그</a
+        >
+        <a href="../request/request.html" class="mobile-nav-link">견적문의</a>
+      </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+      // Inquiry Tab Switching
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".inquiry-tab");
+        const tabContents = document.querySelectorAll(".inquiry-tab-content");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            const targetTab = this.getAttribute("data-tab");
+
+            // Remove active class from all tabs and contents
+            tabs.forEach((t) => t.classList.remove("active"));
+            tabContents.forEach((content) =>
+              content.classList.remove("active")
+            );
+
+            // Add active class to clicked tab and corresponding content
+            this.classList.add("active");
+            document.getElementById(targetTab + "-tab").classList.add("active");
+          });
+        });
+
+        // Radio button selection styling (barobill style)
+        const radioLabels = document.querySelectorAll(".radio-label");
+        radioLabels.forEach((label) => {
+          const radio = label.querySelector('input[type="radio"]');
+          if (radio) {
+            // Update style on change
+            radio.addEventListener("change", function () {
+              // Remove active class from all labels in the same group
+              const groupName = this.name;
+              document
+                .querySelectorAll(`input[name="${groupName}"]`)
+                .forEach((r) => {
+                  r.closest(".radio-label").classList.remove("active");
+                });
+              // Add active class to selected label
+              if (this.checked) {
+                label.classList.add("active");
+              }
+            });
+
+            // Set initial state
+            if (radio.checked) {
+              label.classList.add("active");
+            }
+          }
+        });
+
+        // File upload - 파일명 표시 및 label 클릭 시 파일 업로드 (barobill style)
+        const fileInputs = document.querySelectorAll(".custom-file-input");
+        fileInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            const fileName = this.files[0]
+              ? this.files[0].name
+              : "파일을 선택하세요";
+            const label = this.nextElementSibling;
+            const fileText = label.querySelector(".form-file-text");
+            if (fileText) {
+              fileText.textContent = fileName;
+            }
+          });
+        });
+
+        // custom-file-label 클릭 시 파일 업로드 기능 추가
+        const customFileLabels =
+          document.querySelectorAll(".custom-file-label");
+        customFileLabels.forEach((label) => {
+          label.addEventListener("click", function (e) {
+            // label의 for 속성으로 연결된 input 찾기 (우선순위 1)
+            const forAttr = this.getAttribute("for");
+            if (forAttr) {
+              const fileInput = document.getElementById(forAttr);
+              if (fileInput && fileInput.type === "file") {
+                e.preventDefault();
+                e.stopPropagation();
+                fileInput.click();
+                return;
+              }
+            }
+
+            // 부모 요소에서 custom-file-input 찾기 (우선순위 2)
+            const parent = this.closest(".custom-file, .b-form-file");
+            if (parent) {
+              const fileInput = parent.querySelector(".custom-file-input");
+              if (fileInput && fileInput.type === "file") {
+                e.preventDefault();
+                e.stopPropagation();
+                fileInput.click();
+                return;
+              }
+            }
+
+            // 이전 형제 요소에서 찾기 (우선순위 3)
+            const fileInput = this.previousElementSibling;
+            if (
+              fileInput &&
+              fileInput.classList.contains("custom-file-input") &&
+              fileInput.type === "file"
+            ) {
+              e.preventDefault();
+              e.stopPropagation();
+              fileInput.click();
+            }
+          });
+        });
+
+        // Material Design fieldset style for form-col (barobill style)
+        const formCols = document.querySelectorAll(".form-col");
+        formCols.forEach((col) => {
+          // Set tabindex for accessibility
+          col.setAttribute("tabindex", "-1");
+
+          // Handle focus events
+          col.addEventListener("focus", function () {
+            this.classList.add("focused");
+          });
+
+          col.addEventListener("blur", function () {
+            this.classList.remove("focused");
+          });
+
+          // Handle input events for placeholder visibility
+          const input = col.querySelector("input, select, textarea");
+          if (input) {
+            input.addEventListener("input", function () {
+              if (this.value) {
+                col.classList.add("has-value");
+              } else {
+                col.classList.remove("has-value");
+              }
+            });
+
+            // Set initial state
+            if (input.value) {
+              col.classList.add("has-value");
+            }
+          }
+        });
+
+        // ============================================
+        // EmailJS 초기화 및 설정
+        // ============================================
+        // 📌 설정 필요: request/EMAILJS_SETUP.md 파일 참고
+        //
+        // 1. https://www.emailjs.com 에서 무료 계정 생성
+        // 2. Email Service 추가 (Gmail 등) → Service ID 복사
+        // 3. Email Template 생성 → Template ID 복사
+        // 4. Account > General에서 Public Key 복사
+        // 5. 아래 3곳의 "YOUR_XXX"를 실제 값으로 교체
+        // ============================================
+        (function () {
+          // ⚠️ 여기에 EmailJS Public Key 입력
+          // 예시: emailjs.init("user_abc123xyz");
+          emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+
+        // 폼 데이터를 이메일로 전송하는 함수
+        function sendEmail(formData, formType) {
+          const templateParams = {
+            to_email: "greena911@naver.com",
+            from_email: formData.email || "noreply@greenaofficial.com",
+            from_name: formData.name || "문의자",
+            company_name: formData.companyName || "",
+            phone: formData.phone || "",
+            inquiry_type: formType === "quote" ? "유지관리 문의" : "렌탈 문의",
+            inquiry_type_detail: formData.inquiryType || "",
+            integration_type: formData.integrationType || "",
+            api_selection: formData.api
+              ? Array.isArray(formData.api)
+                ? formData.api.join(", ")
+                : formData.api
+              : "",
+            content: formData.content || "",
+            subject: formType === "quote" ? "유지관리 문의" : "렌탈 문의",
+          };
+
+          // ⚠️ 여기에 EmailJS Service ID와 Template ID 입력
+          // 예시: emailjs.send("service_gmail123", "template_inquiry456", templateParams);
+          return emailjs.send(
+            "YOUR_SERVICE_ID", // EmailJS Service ID로 교체 필요
+            "YOUR_TEMPLATE_ID", // EmailJS Template ID로 교체 필요
+            templateParams
+          );
+        }
+
+        // 폼 데이터 수집 함수
+        function collectFormData(form) {
+          const formData = new FormData(form);
+          const data = {};
+
+          // 일반 필드
+          for (let [key, value] of formData.entries()) {
+            if (key === "api") {
+              // 체크박스는 배열로 처리
+              if (!data[key]) data[key] = [];
+              data[key].push(value);
+            } else {
+              data[key] = value;
+            }
+          }
+
+          // 라디오 버튼 값 수집
+          const radioButtons = form.querySelectorAll(
+            'input[type="radio"]:checked'
+          );
+          radioButtons.forEach((radio) => {
+            data[radio.name] = radio.value;
+          });
+
+          // 체크박스 값 수집 (이미 FormData에서 처리됨)
+          const checkboxes = form.querySelectorAll(
+            'input[type="checkbox"]:checked'
+          );
+          if (checkboxes.length > 0) {
+            data.api = Array.from(checkboxes).map((cb) => cb.value);
+          }
+
+          return data;
+        }
+
+        // Form submission
+        const quoteForm = document.getElementById("quoteForm");
+        const technicalForm = document.getElementById("technicalForm");
+
+        if (quoteForm) {
+          quoteForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // 폼 데이터 수집
+            const formData = collectFormData(this);
+
+            // 이메일 전송
+            sendEmail(formData, "quote")
+              .then(
+                function (response) {
+                  console.log("SUCCESS!", response.status, response.text);
+                  alert(
+                    "유지관리 문의가 접수되었습니다. 빠른 시간 내에 연락드리겠습니다."
+                  );
+                  this.reset();
+                }.bind(this)
+              )
+              .catch(function (error) {
+                console.error("FAILED...", error);
+                alert(
+                  "문의 접수 중 오류가 발생했습니다. 직접 이메일(greena911@naver.com)로 문의해주세요."
+                );
+              });
+          });
+        }
+
+        if (technicalForm) {
+          technicalForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // 폼 데이터 수집
+            const formData = collectFormData(this);
+
+            // 이메일 전송
+            sendEmail(formData, "technical")
+              .then(
+                function (response) {
+                  console.log("SUCCESS!", response.status, response.text);
+                  alert(
+                    "렌탈 문의가 접수되었습니다. 빠른 시간 내에 연락드리겠습니다."
+                  );
+                  this.reset();
+                }.bind(this)
+              )
+              .catch(function (error) {
+                console.error("FAILED...", error);
+                alert(
+                  "문의 접수 중 오류가 발생했습니다. 직접 이메일(greena911@naver.com)로 문의해주세요."
+                );
+              });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
