@@ -87,28 +87,28 @@
 
       /* Inquiry Section Container Padding (Barobill 스타일) */
       .inquiry-section .container {
-        padding-left: 120px !important;
-        padding-right: 120px !important;
+        padding-left: 180px !important; /* 120px * 1.5 */
+        padding-right: 180px !important; /* 120px * 1.5 */
       }
 
       @media (max-width: 1200px) {
         .inquiry-section .container {
-          padding-left: 80px !important;
-          padding-right: 80px !important;
+          padding-left: 120px !important; /* 80px * 1.5 */
+          padding-right: 120px !important; /* 80px * 1.5 */
         }
       }
 
       @media (max-width: 768px) {
         .inquiry-section .container {
-          padding-left: 40px !important;
-          padding-right: 40px !important;
+          padding-left: 60px !important; /* 40px * 1.5 */
+          padding-right: 60px !important; /* 40px * 1.5 */
         }
       }
 
       @media (max-width: 480px) {
         .inquiry-section .container {
-          padding-left: 20px !important;
-          padding-right: 20px !important;
+          padding-left: 30px !important; /* 20px * 1.5 */
+          padding-right: 30px !important; /* 20px * 1.5 */
         }
       }
 
@@ -536,7 +536,8 @@
       .inquiry-form-wrapper .form-group .form-textarea::placeholder,
       .form-group select::placeholder,
       .form-group textarea::placeholder {
-        color: #a6b1bf !important;
+        color: #dadfe7 !important;
+        font-size: 0.9rem !important;
         opacity: 1 !important;
       }
 
@@ -657,7 +658,7 @@
       /* Form File Text 스타일 (Barobill 스타일) */
       .form-file-text,
       .d-block.form-file-text {
-        color: #a6b1bf !important; /* 기본 색상: 파일 미선택 시 */
+        color: #dadfe7 !important; /* 기본 색상: 파일 미선택 시 */
         font-size: 0.9rem !important;
         font-weight: 400 !important;
       }
@@ -786,7 +787,8 @@
       }
 
       .form-input::placeholder {
-        color: #a6b1bf;
+        color: #dadfe7;
+        font-size: 0.9rem;
       }
 
       /* Form Textarea 스타일 */
@@ -824,7 +826,8 @@
       }
 
       .form-textarea::placeholder {
-        color: #a6b1bf;
+        color: #dadfe7;
+        font-size: 0.9rem;
       }
 
       /* Checkbox Group 스타일 */
@@ -1385,7 +1388,6 @@
                   name="content"
                   rows="6"
                   placeholder="별도로 문의하실 내용을 입력해주세요"
-                  required
                 ></textarea>
               </div>
 
@@ -1564,7 +1566,6 @@
                   name="content"
                   rows="6"
                   placeholder="별도로 문의하실 내용을 입력해주세요"
-                  required
                 ></textarea>
               </div>
 
