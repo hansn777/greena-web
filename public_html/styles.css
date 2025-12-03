@@ -114,6 +114,7 @@ section {
   align-items: center;
   padding: 16px 120px;
   width: 100%;
+  box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
   background: rgb(219 219 219 / 10%);
   min-height: 60px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -188,12 +189,15 @@ section {
   justify-content: flex-end;
   gap: 1rem;
   margin-left: auto;
+  flex-shrink: 0; /* 축소 방지 */
+  min-width: 0; /* flex item 최소 너비 제한 */
 }
 
 /* navTop_container for Maintenance Page */
 .navTop_container__E1TtP {
   /* nav-container와 동일한 스타일 상속 */
   position: relative;
+  box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
 }
 
 /* navTop_nav_sub_bar_wrap for Maintenance Page */
@@ -235,6 +239,7 @@ section {
   border-radius: 25px;
   font-size: 14px;
   font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif; /* company.html과 동일한 폰트 */
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
@@ -242,6 +247,16 @@ section {
   opacity: 1;
   transform: scale(1);
   white-space: nowrap;
+  flex-shrink: 0; /* 축소 방지 */
+  max-width: 100%; /* 부모 컨테이너를 넘지 않도록 */
+  box-sizing: border-box; /* company.html 버튼과 동일한 box-sizing */
+  line-height: 1.5; /* company.html 버튼과 동일한 line-height */
+  height: auto; /* 높이 자동 조정 */
+  min-height: 40px; /* 최소 높이 설정 (padding 12px * 2 + line-height) */
+  vertical-align: middle; /* 수직 정렬 */
+  letter-spacing: normal; /* letter-spacing 명시적 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  text-transform: none; /* 텍스트 변환 없음 */
 }
 
 .nav-menu a {
@@ -453,26 +468,29 @@ body.scrolled .nav-menu a {
   transform: scaleY(1);
 }
 
-.quote-btn {
-  position: absolute;
-  right: 120px;
-  background: #53c178;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-}
+/* 중복된 .quote-btn 스타일 제거 - 첫 번째 정의(234줄) 사용 */
 
 .quote-btn:hover {
   background: #53c178;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(38, 200, 110, 0.3);
+}
+
+/* button과 a 태그 모두 동일한 스타일 적용 (company.html 버튼 사이즈 기준) */
+.quote-btn,
+button.quote-btn,
+a.quote-btn {
+  box-sizing: border-box;
+  line-height: 1.5;
+  height: auto;
+  min-height: 40px;
+  vertical-align: middle;
+  font-family: "Noto Sans KR", sans-serif; /* company.html과 동일한 폰트 */
+  font-size: 14px; /* company.html과 동일한 폰트 사이즈 */
+  font-weight: 500; /* company.html과 동일한 폰트 굵기 */
+  letter-spacing: normal; /* letter-spacing 명시적 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  text-transform: none; /* 텍스트 변환 없음 */
 }
 
 .hamburger {
