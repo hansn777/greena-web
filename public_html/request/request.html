@@ -279,8 +279,8 @@
         box-shadow: none !important; /* box-shadow 제거 */
       }
 
-      /* 860px 이하에서 form-col has-value 좌우 풀로 차도록 */
-      @media (max-width: 860px) {
+      /* 768px 이하에서 form-col has-value 좌우 풀로 차도록 (form-row가 column일 때만) */
+      @media (max-width: 768px) {
         .inquiry-form-wrapper .form-col.has-value {
           width: 100% !important;
           flex: 1 1 100% !important;
@@ -469,6 +469,16 @@
       .checkbox-label:has(input[type="checkbox"]:checked) {
         box-shadow: none !important; /* box-shadow 삭제 */
         border: 1px solid #53c178 !important; /* 체크박스 활성화 시 border 색상 */
+      }
+
+      /* checkbox-label 활성화 시 span 텍스트 색상 변경 */
+      .checkbox-label:has(input[type="checkbox"]:checked) span {
+        color: #53c178 !important;
+      }
+
+      /* checkbox-group 내 checkbox-label 활성화 시 background color */
+      .checkbox-group .checkbox-label:has(input[type="checkbox"]:checked) {
+        background-color: #e9fff1 !important;
       }
 
       /* 개인정보 동의 체크박스만 border 제거 (request.html 한정) */
@@ -991,10 +1001,14 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 1040;
+        display: none; /* 기본적으로 숨김 */
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
       }
 
       .modal-backdrop.show {
-        display: block;
+        display: block !important;
+        opacity: 1;
       }
 
       .modal-dialog {
@@ -1003,6 +1017,14 @@
         max-width: 500px;
         margin: 1.75rem auto;
         z-index: 1050;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+
+      .modal.show .modal-dialog {
+        opacity: 1;
+        transform: scale(1);
       }
 
       .modal-dialog-centered {
@@ -1405,10 +1427,9 @@
                 <label class="checkbox-label">
                   <input type="checkbox" name="privacyAgree" required />
                   <span
-                    >개인정보 수집 및 이용에
-                    <a href="#" class="privacy-link" id="privacyLink1"
-                      >동의합니다.</a
-                    ></span
+                    ><a href="#" class="privacy-link" id="privacyLink1"
+                      >개인정보 수집 및 이용</a
+                    >에 동의합니다.</span
                   >
                 </label>
               </div>
@@ -1466,13 +1487,13 @@
                   <div class="form-col">
                     <label
                       class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
-                      >이메일</label
+                      >수신용 이메일</label
                     >
                     <input
                       type="email"
                       class="form-input"
                       name="email"
-                      placeholder="이메일"
+                      placeholder="수신용 이메일"
                       required
                     />
                   </div>
@@ -1480,55 +1501,117 @@
               </div>
 
               <div class="form-group">
-                <label class="form-label">문의내용</label>
+                <label class="form-label">지역</label>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >지역</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="region"
+                      placeholder="거주 지역의 구 까지만 작성해주세요"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">공기청정기 평수</label>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >공기청정기 평수</label
+                    >
+                    <input
+                      type="text"
+                      class="form-input"
+                      name="roomSize"
+                      placeholder="희망하는 공기청정기의 평수를 적어주세요. 모르시면 넘어가주세요"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">기기 대수</label>
+                <div class="form-row">
+                  <div class="form-col">
+                    <label
+                      class="bv-no-focus-ring col-form-label pt-0 col-form-label-lg font-weight-bold"
+                      >기기 대수</label
+                    >
+                    <input
+                      type="number"
+                      class="form-input"
+                      name="deviceCount"
+                      placeholder="렌탈 희망하는 기기의 대수를 적어주세요"
+                      required
+                      min="1"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">별도 문의사항</label>
                 <textarea
                   class="form-textarea"
                   name="content"
                   rows="6"
-                  placeholder="기술 문의 내용을 입력해주세요"
+                  placeholder="별도로 문의하실 내용을 입력해주세요"
                   required
                 ></textarea>
               </div>
 
               <div class="form-group">
-                <label class="form-label">첨부파일</label>
-                <div class="file-upload-group">
-                  <input
-                    type="file"
-                    class="file-input"
-                    name="file1"
-                    id="tech-file1"
-                  />
-                  <label for="tech-file1" class="file-label">첨부파일1</label>
-                </div>
-                <div class="file-upload-group">
-                  <input
-                    type="file"
-                    class="file-input"
-                    name="file2"
-                    id="tech-file2"
-                  />
-                  <label for="tech-file2" class="file-label">첨부파일2</label>
-                </div>
-                <div class="file-upload-group">
-                  <input
-                    type="file"
-                    class="file-input"
-                    name="file3"
-                    id="tech-file3"
-                  />
-                  <label for="tech-file3" class="file-label">첨부파일3</label>
-                </div>
+                <fieldset
+                  class="form-group mat-fieldset"
+                  id="file-fieldset-tech"
+                >
+                  <legend
+                    tabindex="-1"
+                    class="bv-no-focus-ring col-form-label pt-0"
+                  >
+                    사진 첨부
+                  </legend>
+                  <div>
+                    <div
+                      class="custom-file b-form-file"
+                      id="file-upload-wrapper-tech"
+                    >
+                      <input
+                        type="file"
+                        accept=".png, .jpg, .jpeg, .gif"
+                        class="custom-file-input"
+                        name="file1"
+                        id="tech-file1"
+                      />
+                      <label
+                        class="custom-file-label"
+                        for="tech-file1"
+                        data-browse="파일찾기"
+                      >
+                        <span class="d-block form-file-text"
+                          >파일을 선택하세요</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
               </div>
 
               <div class="form-group">
                 <label class="checkbox-label">
                   <input type="checkbox" name="privacyAgree" required />
                   <span
-                    >개인정보 수집 및 이용에
-                    <a href="#" class="privacy-link" id="privacyLink2"
-                      >동의합니다.</a
-                    ></span
+                    ><a href="#" class="privacy-link" id="privacyLink2"
+                      >개인정보 수집 및 이용</a
+                    >에 동의합니다.</span
                   >
                 </label>
               </div>
@@ -2157,20 +2240,36 @@
 
         function openModal() {
           if (privacyModal) {
-            privacyModal.classList.add("show");
+            // 먼저 display를 설정
+            privacyModal.style.display = "flex";
             if (modalBackdrop) {
-              modalBackdrop.classList.add("show");
+              modalBackdrop.style.display = "block";
             }
+            // 다음 프레임에서 애니메이션 시작
+            setTimeout(() => {
+              privacyModal.classList.add("show");
+              if (modalBackdrop) {
+                modalBackdrop.classList.add("show");
+              }
+            }, 10);
             document.body.style.overflow = "hidden";
           }
         }
 
         function closeModal() {
           if (privacyModal) {
+            // 애니메이션 시작
             privacyModal.classList.remove("show");
             if (modalBackdrop) {
               modalBackdrop.classList.remove("show");
             }
+            // 애니메이션 완료 후 display 제거
+            setTimeout(() => {
+              privacyModal.style.display = "none";
+              if (modalBackdrop) {
+                modalBackdrop.style.display = "none";
+              }
+            }, 300); // transition 시간과 동일하게
             document.body.style.overflow = "";
           }
         }
