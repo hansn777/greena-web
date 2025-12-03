@@ -85,6 +85,33 @@
         background: transparent !important; /* background: #ffffff; 제거 */
       }
 
+      /* Inquiry Section Container Padding (Barobill 스타일) */
+      .inquiry-section .container {
+        padding-left: 120px !important;
+        padding-right: 120px !important;
+      }
+
+      @media (max-width: 1200px) {
+        .inquiry-section .container {
+          padding-left: 80px !important;
+          padding-right: 80px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .inquiry-section .container {
+          padding-left: 40px !important;
+          padding-right: 40px !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .inquiry-section .container {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+      }
+
       /* Inquiry Form Wrapper 스타일 (request.html 한정) */
       .inquiry-form-wrapper {
         background-color: #ffffff;
@@ -143,6 +170,7 @@
         justify-content: center !important;
         gap: 32px;
         border-bottom: none !important; /* border-bottom: 2px solid #e5e7eb; 삭제 */
+        padding-bottom: 80px !important; /* bottom padding 80px */
       }
 
       /* 탭 콘텐츠 전환 (barobill 스타일) */
@@ -191,6 +219,7 @@
         }
         .inquiry-tabs {
           gap: 24px;
+          padding-bottom: 60px !important; /* 태블릿에서 padding 조정 */
         }
       }
 
@@ -198,6 +227,9 @@
         .inquiry-tab,
         .inquiry-tab.active {
           font-size: 12px !important; /* 중간 화면 텍스트 사이즈 */
+        }
+        .inquiry-tabs {
+          padding-bottom: 40px !important; /* 860px 이하에서 padding 조정 */
         }
       }
 
@@ -209,6 +241,7 @@
         }
         .inquiry-tabs {
           gap: 16px;
+          padding-bottom: 30px !important; /* 모바일에서 padding 조정 */
         }
       }
 
@@ -224,7 +257,7 @@
 
       /* Form Col border-color 및 border-radius 변경 (request.html 한정) */
       .inquiry-form-wrapper .form-col {
-        border: 1px solid #dee3ed !important;
+        border: 1px solid #dee3ed !important; /* 기본 border 컬러 */
         border-radius: 4px !important;
         padding: 0 !important;
       }
@@ -234,8 +267,24 @@
         box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1) !important;
       }
 
-      .inquiry-form-wrapper .form-col.has-value {
+      /* form-col has-value 상태는 focused일 때만 #53c178, blur 시에는 #dee3ed */
+      .inquiry-form-wrapper .form-col.has-value.focused {
         border-color: #53c178 !important;
+      }
+
+      /* form-col 기본 상태 (focused가 아니거나 has-value가 없을 때) - #dee3ed로 복귀 */
+      .inquiry-form-wrapper .form-col:not(.focused),
+      .inquiry-form-wrapper .form-col.has-value:not(.focused) {
+        border-color: #dee3ed !important; /* blur 시 기본 컬러로 복귀 */
+        box-shadow: none !important; /* box-shadow 제거 */
+      }
+
+      /* 860px 이하에서 form-col has-value 좌우 풀로 차도록 */
+      @media (max-width: 860px) {
+        .inquiry-form-wrapper .form-col.has-value {
+          width: 100% !important;
+          flex: 1 1 100% !important;
+        }
       }
 
       .inquiry-form-wrapper .form-col label {
@@ -250,15 +299,26 @@
         z-index: 1;
       }
 
+      /* col-form-label 텍스트 색상 */
+      .bv-no-focus-ring.col-form-label,
+      .col-form-label.pt-0.col-form-label-lg.font-weight-bold {
+        color: #a6b1bf !important;
+      }
+
       .inquiry-form-wrapper .form-col.focused label,
       .inquiry-form-wrapper .form-col.has-value label {
         color: #53c178 !important;
       }
 
       .inquiry-form-wrapper .form-col input {
+        width: 100% !important; /* div 안에 꽉 차도록 */
+        height: 100% !important; /* div 높이에 맞춤 */
+        min-width: 0 !important; /* flex item이 부모를 넘지 않도록 */
         border: none !important;
         background-color: transparent !important;
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 1rem !important;
+        box-sizing: border-box !important;
+        display: block !important;
       }
 
       .inquiry-form-wrapper .form-col input:focus {
@@ -270,11 +330,139 @@
       .checkbox-label {
         display: flex !important;
         align-items: center !important; /* 상하 가운데 정렬 */
-        justify-content: center !important; /* 좌우도 가운데 정렬 */
+        justify-content: flex-start !important; /* 왼쪽 정렬 */
         color: #212126 !important; /* 텍스트 색상 */
         border: 1px solid #dee3ed !important;
         border-radius: 4px !important;
-        font-size: 0.9rem !important;
+        padding: 0.75rem 0.5rem !important; /* 상하 padding 조정 (48px 높이 제한) */
+        font-size: 0.875rem !important; /* text-size-sm (Barobill 작은 화면) */
+        font-weight: 400 !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        background-color: #ffffff !important;
+        height: 48px !important; /* 높이 48px 고정 */
+        max-height: 48px !important; /* 최대 높이 48px 제한 */
+        box-sizing: border-box !important;
+        overflow: hidden !important; /* 내용이 넘치면 숨김 */
+        gap: 0.5rem !important; /* 체크박스와 텍스트 사이 간격 */
+      }
+
+      @media (min-width: 768px) {
+        .checkbox-label {
+          padding: 0.75rem 1rem !important; /* 상하 padding 유지, 좌우만 증가 (48px 높이 제한) */
+          font-size: 0.9375rem !important; /* text-md-size-md (Barobill 중간 화면) */
+        }
+      }
+
+      @media (max-width: 860px) {
+        .checkbox-label {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+      }
+
+      /* Checkbox Label margin-bottom 삭제 (특정 항목) */
+      .checkbox-label:has(input[value="air-purifier"]),
+      .checkbox-label:has(input[value="air-circulator"]) {
+        margin-bottom: 0 !important;
+      }
+
+      @media (max-width: 860px) {
+        .checkbox-label:has(input[value="hvac-kit"]) {
+          margin-bottom: 0 !important;
+        }
+      }
+
+      /* deviceType checkbox 색상 */
+      .checkbox-label input[type="checkbox"] {
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        max-width: 18px !important;
+        min-height: 18px !important;
+        max-height: 18px !important;
+        padding: 0 !important;
+        flex-grow: 0 !important;
+        box-sizing: border-box !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        border: 1px solid #dee3ed !important;
+        background-color: #ffffff !important;
+        border-radius: 2px !important;
+        cursor: pointer !important;
+        position: relative !important;
+      }
+
+      .checkbox-label:has(input[name="deviceType"]:not(:checked))
+        input[type="checkbox"] {
+        border-color: #dee3ed !important;
+        background-color: #ffffff !important;
+      }
+
+      .checkbox-label:has(input[name="deviceType"]:checked)
+        input[type="checkbox"] {
+        border-color: #53c178 !important;
+        background-color: #53c178 !important;
+      }
+
+      .checkbox-label:has(input[name="deviceType"]:checked)
+        input[type="checkbox"]::after {
+        content: "✓" !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        color: #ffffff !important;
+        font-size: 12px !important;
+        font-weight: bold !important;
+        line-height: 1 !important;
+      }
+
+      /* privacyAgree checkbox 스타일 */
+      .checkbox-label:has(input[name="privacyAgree"]) input[type="checkbox"] {
+        accent-color: #53c178 !important;
+        border: 1px solid #dee3ed !important;
+        border-radius: 2px !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        background-color: #ffffff !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        max-width: 18px !important;
+        min-height: 18px !important;
+        max-height: 18px !important;
+        padding: 0 !important;
+        flex-grow: 0 !important;
+      }
+
+      .checkbox-label:has(input[name="privacyAgree"]:not(:checked))
+        input[type="checkbox"] {
+        border-color: #dee3ed !important;
+        background-color: #ffffff !important;
+      }
+
+      .checkbox-label:has(input[name="privacyAgree"]:checked)
+        input[type="checkbox"] {
+        border-color: #53c178 !important;
+        background-color: #53c178 !important;
+      }
+
+      .checkbox-label:has(input[name="privacyAgree"]:checked)
+        input[type="checkbox"]::after {
+        content: "✓" !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        color: #ffffff !important;
+        font-size: 12px !important;
+        font-weight: bold !important;
+        line-height: 1 !important;
       }
 
       .checkbox-label.active,
@@ -303,6 +491,50 @@
         border: 1px solid #dee3ed;
         border-radius: 4px;
         color: #212126 !important; /* form-col과 동일한 텍스트 색상 */
+      }
+
+      /* Form Group Select, Textarea 스타일 (Barobill 스타일) */
+      .inquiry-form-wrapper .form-group select,
+      .inquiry-form-wrapper .form-group textarea,
+      .inquiry-form-wrapper .form-group .form-textarea,
+      .form-group select,
+      .form-group textarea {
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+        border: 1px solid #dee3ed !important;
+        border-radius: 4px !important;
+        font-size: 0.9rem !important;
+        color: #212126 !important;
+        background-color: #ffffff !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+        box-sizing: border-box !important;
+        font-family: inherit !important;
+      }
+
+      .inquiry-form-wrapper .form-group select:focus,
+      .inquiry-form-wrapper .form-group textarea:focus,
+      .inquiry-form-wrapper .form-group .form-textarea:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none !important;
+        border-color: #53c178 !important;
+        box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1) !important;
+      }
+
+      .inquiry-form-wrapper .form-group select::placeholder,
+      .inquiry-form-wrapper .form-group textarea::placeholder,
+      .inquiry-form-wrapper .form-group .form-textarea::placeholder,
+      .form-group select::placeholder,
+      .form-group textarea::placeholder {
+        color: #a6b1bf !important;
+        opacity: 1 !important;
+      }
+
+      .inquiry-form-wrapper .form-group textarea,
+      .inquiry-form-wrapper .form-group .form-textarea,
+      .form-group textarea {
+        resize: vertical !important;
+        min-height: 120px !important;
       }
 
       /* custom-file b-form-file 텍스트 색상 통일 (request.html 한정) */
@@ -412,6 +644,18 @@
         margin-right: 80px;
       }
 
+      /* Form File Text 스타일 (Barobill 스타일) */
+      .form-file-text,
+      .d-block.form-file-text {
+        color: #a6b1bf !important; /* 기본 색상: 파일 미선택 시 */
+        font-size: 0.9rem !important;
+        font-weight: 400 !important;
+      }
+
+      .custom-file-label.file-selected .form-file-text {
+        color: #000000 !important; /* 파일 선택 시 블랙 */
+      }
+
       /* 반응형 조정 */
       @media (max-width: 860px) {
         .custom-file,
@@ -458,17 +702,23 @@
       /* Form Label 스타일 */
       .form-label {
         display: block;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem; /* bottom margin 증가 */
         font-size: 1rem;
         font-weight: 600;
         color: #212126;
       }
 
+      /* Form Group Label 스타일 */
+      .form-group label {
+        margin-bottom: 1rem;
+      }
+
       /* Form Row 스타일 */
       .form-row {
         display: flex;
+        align-items: center; /* 박스 높이에 맞춰 정렬 */
         gap: 1rem;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; 삭제 */
       }
 
       @media (max-width: 768px) {
@@ -483,17 +733,23 @@
         flex: 1;
         position: relative;
         margin-bottom: 1.5rem;
-        border: 1px solid #dee3ed;
+        border: 1px solid #dee3ed !important; /* 디폴트 border */
         border-radius: 4px;
-        padding: 0;
+        padding: 0 !important;
         background: #ffffff;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        height: 48px !important; /* 높이 48px 고정 */
+        min-height: 48px !important; /* 최소 높이 48px 보장 */
+        width: 100% !important; /* 좌우 꽉 차도록 */
+        box-sizing: border-box !important;
       }
 
       /* Form Input 스타일 (Barobill 스타일) */
       .form-input {
         width: 100%;
-        padding: 0.75rem 1rem;
+        height: 48px !important; /* 높이 48px 고정 */
+        padding: 0 1rem !important; /* 좌우 padding만 */
+        line-height: 48px !important; /* 텍스트 수직 가운데 정렬 */
         border: 1px solid #dee3ed;
         border-radius: 4px;
         font-size: 0.9rem;
@@ -501,6 +757,16 @@
         background-color: #ffffff;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
         box-sizing: border-box;
+      }
+
+      .inquiry-form-wrapper .form-col input {
+        width: 100% !important; /* div 안에 꽉 차도록 */
+        height: 48px !important; /* 높이 48px 고정 */
+        min-width: 0 !important; /* flex item이 부모를 넘지 않도록 */
+        padding: 0 1rem !important; /* 좌우 padding만 */
+        line-height: 48px !important; /* 텍스트 수직 가운데 정렬 */
+        box-sizing: border-box !important;
+        display: block !important;
       }
 
       .form-input:focus {
@@ -517,7 +783,7 @@
       .form-textarea {
         width: 100%;
         padding: 0.75rem 1rem;
-        border: 1px solid #dee3ed;
+        border: 1px solid #dee3ed !important; /* 기본 border 컬러 */
         border-radius: 4px;
         font-size: 0.9rem;
         color: #212126;
@@ -531,8 +797,20 @@
 
       .form-textarea:focus {
         outline: none;
-        border-color: #53c178;
+        border-color: #53c178 !important;
         box-shadow: 0 0 0 3px rgba(83, 193, 120, 0.1);
+      }
+
+      /* form-textarea has-value 상태는 focus일 때만 #53c178, blur 시에는 #dee3ed */
+      .form-textarea.has-value:focus {
+        border-color: #53c178 !important;
+      }
+
+      /* form-textarea 기본 상태 (focus가 아니거나 has-value가 없을 때) - #dee3ed로 복귀 */
+      .form-textarea:not(:focus),
+      .form-textarea.has-value:not(:focus) {
+        border-color: #dee3ed !important; /* blur 시 기본 컬러로 복귀 */
+        box-shadow: none !important;
       }
 
       .form-textarea::placeholder {
@@ -541,15 +819,21 @@
 
       /* Checkbox Group 스타일 */
       .checkbox-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+        gap: 1rem; /* gap 변경 */
         margin-top: 0.5rem;
+      }
+
+      .checkbox-group .checkbox-label {
+        width: 100% !important;
+        height: 48px !important; /* 높이 48px 고정 */
+        max-height: 48px !important; /* 최대 높이 48px 제한 */
       }
 
       @media (max-width: 768px) {
         .checkbox-group {
-          flex-direction: column;
+          grid-template-columns: 1fr; /* 모바일에서는 1열 */
         }
       }
 
@@ -628,7 +912,7 @@
 
       /* Form Group 스타일 */
       .inquiry-form-wrapper .form-group {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
       }
 
       .inquiry-form-wrapper .form-group:last-child {
@@ -642,13 +926,19 @@
       }
 
       /* 반응형 조정 */
+      @media (max-width: 860px) {
+        .form-label {
+          font-size: 1.1rem; /* 860px 이하에서 사이즈 증가 */
+        }
+      }
+
       @media (max-width: 768px) {
         .inquiry-form-wrapper {
           padding: 2rem !important;
         }
 
         .form-label {
-          font-size: 0.9rem;
+          font-size: 1rem; /* 768px 이하에서도 사이즈 유지 */
         }
 
         .form-input,
@@ -660,6 +950,186 @@
         .inquiry-submit-btn {
           padding: 0.75rem 1.25rem;
           font-size: 0.9rem;
+        }
+      }
+
+      /* 개인정보 링크 스타일 */
+      .privacy-link {
+        color: #53c178 !important;
+        text-decoration: underline !important;
+        cursor: pointer !important;
+        transition: color 0.2s ease !important;
+      }
+
+      .privacy-link:hover {
+        color: #45a866 !important;
+      }
+
+      /* 모달 스타일 (Barobill 스타일) */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1050;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+      }
+
+      .modal-backdrop.show {
+        display: block;
+      }
+
+      .modal-dialog {
+        position: relative;
+        width: auto;
+        max-width: 500px;
+        margin: 1.75rem auto;
+        z-index: 1050;
+      }
+
+      .modal-dialog-centered {
+        display: flex;
+        align-items: center;
+        min-height: calc(100% - 3.5rem);
+      }
+
+      .modal-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+        border: none !important; /* border 전부 삭제 */
+        border-radius: 8px;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        outline: 0;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center; /* 상하 가운데 정렬 */
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #dee3ed;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #212126;
+      }
+
+      .modal-header .close {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+
+      .modal-header .close:hover {
+        opacity: 0.75;
+      }
+
+      .modal-body {
+        position: relative;
+        flex: 1 1 auto;
+        padding: 1.5rem;
+        max-height: 60vh;
+        overflow-y: auto;
+      }
+
+      .privacy-content h6 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #212126;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .privacy-content h6:first-child {
+        margin-top: 0;
+      }
+
+      .privacy-content p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #495057;
+        margin-bottom: 1rem;
+      }
+
+      .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 가운데 정렬 */
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #dee3ed;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      .btn-secondary {
+        color: #212126;
+        background-color: #f6f8fa;
+        /* border-color: #dee3ed; 삭제 */
+        width: 100%; /* div 사이즈에 맞춰서 조정 */
+        max-width: 100%;
+      }
+
+      .btn-secondary:hover {
+        background-color: #e9ecef;
+        border-color: #d1d5db;
+      }
+
+      @media (max-width: 576px) {
+        .modal-dialog {
+          max-width: 90%;
+          margin: 1rem;
+        }
+
+        .modal-body {
+          max-height: 50vh;
         }
       }
     </style>
@@ -934,7 +1404,12 @@
               <div class="form-group">
                 <label class="checkbox-label">
                   <input type="checkbox" name="privacyAgree" required />
-                  <span>개인정보 수집 및 이용에 동의합니다.</span>
+                  <span
+                    >개인정보 수집 및 이용에
+                    <a href="#" class="privacy-link" id="privacyLink1"
+                      >동의합니다.</a
+                    ></span
+                  >
                 </label>
               </div>
 
@@ -1049,7 +1524,12 @@
               <div class="form-group">
                 <label class="checkbox-label">
                   <input type="checkbox" name="privacyAgree" required />
-                  <span>개인정보 수집 및 이용에 동의합니다.</span>
+                  <span
+                    >개인정보 수집 및 이용에
+                    <a href="#" class="privacy-link" id="privacyLink2"
+                      >동의합니다.</a
+                    ></span
+                  >
                 </label>
               </div>
 
@@ -1059,6 +1539,70 @@
         </div>
       </div>
     </section>
+
+    <!-- 개인정보 수집 및 이용 모달 (Barobill 스타일) -->
+    <div
+      class="modal fade"
+      id="privacyModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="privacyModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="privacyModalLabel">
+              개인정보 수집 및 이용
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="privacy-content">
+              <h6>1. 수집하는 개인정보 항목</h6>
+              <p>회사명, 이름, 연락처, 이메일 주소</p>
+
+              <h6>2. 개인정보의 수집 및 이용 목적</h6>
+              <p>견적 문의 및 상담 서비스 제공, 고객 문의에 대한 회신</p>
+
+              <h6>3. 개인정보의 보유 및 이용 기간</h6>
+              <p>
+                수집·이용 동의일로부터 문의 처리 완료 시까지 보유·이용하며, 처리
+                완료 후 즉시 파기합니다.
+              </p>
+
+              <h6>4. 동의를 거부할 권리 및 거부 시 불이익</h6>
+              <p>
+                귀하는 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다.
+                다만, 동의를 거부하실 경우 견적 문의 서비스 이용이 제한될 수
+                있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              닫기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal-backdrop fade"
+      id="modalBackdrop"
+      style="display: none"
+    ></div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1285,21 +1829,6 @@
           }
         });
 
-        // File upload - 파일명 표시 및 label 클릭 시 파일 업로드 (barobill style)
-        const fileInputs = document.querySelectorAll(".custom-file-input");
-        fileInputs.forEach((input) => {
-          input.addEventListener("change", function () {
-            const fileName = this.files[0]
-              ? this.files[0].name
-              : "파일을 선택하세요";
-            const label = this.nextElementSibling;
-            const fileText = label.querySelector(".form-file-text");
-            if (fileText) {
-              fileText.textContent = fileName;
-            }
-          });
-        });
-
         // custom-file-label 클릭 시 파일 업로드 기능 추가
         const customFileLabels =
           document.querySelectorAll(".custom-file-label");
@@ -1346,22 +1875,39 @@
         // Material Design fieldset style for form-col (barobill style)
         const formCols = document.querySelectorAll(".form-col");
         formCols.forEach((col) => {
-          // Set tabindex for accessibility
-          col.setAttribute("tabindex", "-1");
-
-          // Handle focus events
-          col.addEventListener("focus", function () {
-            this.classList.add("focused");
-          });
-
-          col.addEventListener("blur", function () {
-            this.classList.remove("focused");
-          });
-
-          // Handle input events for placeholder visibility
           const input = col.querySelector("input, select, textarea");
           if (input) {
+            input.addEventListener("focus", function () {
+              col.classList.add("focused");
+              // focus 시에는 has-value 유지 (값이 있으면)
+              if (!this.value) {
+                col.classList.remove("has-value");
+              }
+            });
+
+            // Blur 이벤트: 항상 focused 클래스 제거 (활성화 상태 해제)
+            input.addEventListener("blur", function () {
+              col.classList.remove("focused");
+              // blur 시에는 has-value 클래스를 유지하지만, CSS에서 focused가 없으면 #dee3ed로 표시됨
+              // 값이 있으면 has-value 유지, 없으면 제거
+              if (this.value && this.value.trim() !== "") {
+                col.classList.add("has-value"); // 값이 있으면 has-value 유지
+              } else {
+                col.classList.remove("has-value"); // 값이 없으면 has-value 제거
+              }
+            });
+
+            // Handle input events for placeholder visibility
             input.addEventListener("input", function () {
+              if (this.value) {
+                col.classList.add("has-value");
+              } else {
+                col.classList.remove("has-value");
+              }
+            });
+
+            // Change 이벤트: select의 경우 change 이벤트도 처리
+            input.addEventListener("change", function () {
               if (this.value) {
                 col.classList.add("has-value");
               } else {
@@ -1374,6 +1920,60 @@
               col.classList.add("has-value");
             }
           }
+        });
+
+        // Form Textarea focus/blur 처리 (form-col과 동일한 로직)
+        const formTextareas = document.querySelectorAll(".form-textarea");
+        formTextareas.forEach((textarea) => {
+          textarea.addEventListener("focus", function () {
+            // focus 시에는 has-value 유지 (값이 있으면)
+            if (!this.value) {
+              this.classList.remove("has-value");
+            }
+          });
+
+          // Blur 이벤트: 값이 있으면 has-value 추가, 없으면 제거하여 #dee3ed로 복귀
+          textarea.addEventListener("blur", function () {
+            if (this.value && this.value.trim() !== "") {
+              this.classList.add("has-value"); // Add has-value if there's content
+            } else {
+              this.classList.remove("has-value"); // Remove if no content - default 컬러(#dee3ed)로 복귀
+            }
+          });
+
+          // Handle input events
+          textarea.addEventListener("input", function () {
+            if (this.value && this.value.trim() !== "") {
+              this.classList.add("has-value");
+            } else {
+              this.classList.remove("has-value");
+            }
+          });
+
+          // Set initial state
+          if (textarea.value && textarea.value.trim() !== "") {
+            textarea.classList.add("has-value");
+          }
+        });
+
+        // File upload - 파일명 표시 및 색상 변경 (barobill style)
+        const fileInputs = document.querySelectorAll(".custom-file-input");
+        fileInputs.forEach((input) => {
+          input.addEventListener("change", function () {
+            const fileName = this.files[0]
+              ? this.files[0].name
+              : "파일을 선택하세요";
+            const label = this.nextElementSibling;
+            const fileText = label.querySelector(".form-file-text");
+            if (fileText) {
+              fileText.textContent = fileName;
+              if (this.files[0]) {
+                label.classList.add("file-selected");
+              } else {
+                label.classList.remove("file-selected");
+              }
+            }
+          });
         });
 
         // ============================================
@@ -1513,6 +2113,66 @@
                 );
               });
           });
+        }
+
+        // 개인정보 수집 및 이용 모달 열기/닫기
+        const privacyLinks = document.querySelectorAll(".privacy-link");
+        const privacyModal = document.getElementById("privacyModal");
+        const modalBackdrop = document.getElementById("modalBackdrop");
+        const closeButtons = document.querySelectorAll(
+          '[data-dismiss="modal"], .modal-header .close'
+        );
+
+        privacyLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal();
+          });
+        });
+
+        closeButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            closeModal();
+          });
+        });
+
+        // 모달 배경 클릭 시 닫기
+        if (modalBackdrop) {
+          modalBackdrop.addEventListener("click", function () {
+            closeModal();
+          });
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            privacyModal &&
+            privacyModal.classList.contains("show")
+          ) {
+            closeModal();
+          }
+        });
+
+        function openModal() {
+          if (privacyModal) {
+            privacyModal.classList.add("show");
+            if (modalBackdrop) {
+              modalBackdrop.classList.add("show");
+            }
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        function closeModal() {
+          if (privacyModal) {
+            privacyModal.classList.remove("show");
+            if (modalBackdrop) {
+              modalBackdrop.classList.remove("show");
+            }
+            document.body.style.overflow = "";
+          }
         }
       });
     </script>
