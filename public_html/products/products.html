@@ -402,54 +402,16 @@
           </div>
         </div>
 
-        <!-- Product Services -->
-        <section class="maintenance-services">
-          <div class="container">
-            <h2 class="section-title">향기분사기 제품</h2>
-            <div class="maintenance-services-grid">
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-spray-can"></i>
-                </div>
-                <h3>방향제 디스펜서</h3>
-                <p>
-                  자동 분사 시스템으로 일정 간격마다 향을 분사하여 지속적인 향기
-                  유지가 가능합니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-flask"></i>
-                </div>
-                <h3>다양한 향 선택</h3>
-                <p>
-                  라벤더, 유칼립투스, 시트러스 등 다양한 향을 선택하여 공간에
-                  맞는 분위기를 연출할 수 있습니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-cog"></i>
-                </div>
-                <h3>자동 조절 시스템</h3>
-                <p>
-                  시간과 강도를 자동으로 조절하여 효율적이고 경제적인 향기
-                  관리를 제공합니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-tools"></i>
-                </div>
-                <h3>유지관리 서비스</h3>
-                <p>
-                  정기적인 필터 교체와 세척 서비스를 제공하여 항상 최상의 성능을
-                  유지할 수 있습니다.
-                </p>
-              </div>
+        <!-- Product Coming Soon Section (only for fragrance-section) -->
+        <div class="product-coming-soon" id="fragrance-coming-soon">
+          <div class="product-coming-soon-content">
+            <div class="product-coming-soon-icon">
+              <i class="fas fa-info-circle"></i>
             </div>
+            <p class="product-coming-soon-text">제품 준비중</p>
           </div>
-        </section>
+        </div>
+
       </div>
     </section>
 
@@ -747,17 +709,6 @@
             hash = "#air-purifier-section";
           }
 
-          // pd-prod-container 표시/숨김 처리
-          const pdProdContainer = document.querySelector(".pd-prod-container");
-          if (pdProdContainer) {
-            if (hash === "#fragrance-section") {
-              pdProdContainer.style.display = "none";
-            } else {
-              // air-purifier-section이거나 다른 섹션일 때는 표시
-              pdProdContainer.style.display = "";
-            }
-          }
-
           // 메가 메뉴 닫기
           closeMegaMenu();
 
@@ -775,16 +726,6 @@
 
             // 해당 섹션 보이기
             targetElement.classList.remove("hidden");
-            
-            // pd-prod-container 표시/숨김 재확인 (섹션 변경 후)
-            const pdProdContainer = document.querySelector(".pd-prod-container");
-            if (pdProdContainer) {
-              if (hash === "#fragrance-section") {
-                pdProdContainer.style.display = "none";
-              } else {
-                pdProdContainer.style.display = "";
-              }
-            }
 
             // 버튼이 있으면 활성화
             if (targetButton) {
@@ -794,6 +735,53 @@
               targetButton.classList.add("active");
             }
           }
+
+          // pd-prod-container 표시/숨김 처리
+          const pdProdContainer = document.querySelector(".pd-prod-container");
+          if (pdProdContainer) {
+            if (hash === "#fragrance-section") {
+              pdProdContainer.style.setProperty("display", "none", "important");
+            } else {
+              // air-purifier-section이거나 다른 섹션일 때는 표시
+              pdProdContainer.style.setProperty("display", "flex", "important");
+            }
+          }
+
+          // product-coming-soon 표시/숨김 처리
+          const productComingSoon = document.querySelector(".product-coming-soon");
+          if (productComingSoon) {
+            if (hash === "#fragrance-section") {
+              productComingSoon.style.display = "block";
+              // 애니메이션 재시작
+              productComingSoon.classList.remove("animate");
+              setTimeout(() => {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        setTimeout(() => {
+                          entry.target.classList.add("animate");
+                        }, 200);
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  {
+                    threshold: 0.2,
+                    rootMargin: "0px 0px -100px 0px",
+                  }
+                );
+                observer.observe(productComingSoon);
+              }, 100);
+            } else {
+              productComingSoon.style.display = "none";
+              productComingSoon.classList.remove("animate");
+            }
+          }
+          
+          // 강제 리플로우로 변경사항 즉시 적용
+          if (pdProdContainer) pdProdContainer.offsetHeight;
+          if (productComingSoon) productComingSoon.offsetHeight;
 
           // 스크롤을 맨 위로 이동
           window.scrollTo(0, 0);
@@ -839,12 +827,14 @@
           }
           // 메가 메뉴 닫기
           closeMegaMenu();
+          // 기본 섹션 표시
+          showSection("#air-purifier-section");
         }
 
         // 페이지 로드 시 메가 메뉴 닫기
         closeMegaMenu();
 
-        // 해시 변경 시 메가 메뉴 닫기
+        // 해시 변경 시 메가 메뉴 닫기 및 섹션 전환
         window.addEventListener("hashchange", function () {
           closeMegaMenu();
           const hash = window.location.hash;
@@ -855,6 +845,40 @@
             showSection("#air-purifier-section");
           }
         });
+        
+        // 초기 로드 시 상태 설정 (즉시 실행)
+        (function initializePageState() {
+          const initialHash = window.location.hash;
+          const pdProdContainer = document.querySelector(".pd-prod-container");
+          const productComingSoon = document.querySelector(".product-coming-soon");
+          const fragranceSection = document.getElementById("fragrance-section");
+          const airPurifierSection = document.getElementById("air-purifier-section");
+          
+          // 초기 상태 설정
+          if (initialHash === "#fragrance-section") {
+            // fragrance-section이 활성화된 경우
+            if (pdProdContainer) pdProdContainer.style.display = "none";
+            if (productComingSoon) productComingSoon.style.display = "block";
+            if (fragranceSection) fragranceSection.classList.remove("hidden");
+            if (airPurifierSection) airPurifierSection.classList.add("hidden");
+          } else {
+            // air-purifier-section이 활성화된 경우 (기본값)
+            if (pdProdContainer) pdProdContainer.style.display = "flex";
+            if (productComingSoon) productComingSoon.style.display = "none";
+            if (fragranceSection) fragranceSection.classList.add("hidden");
+            if (airPurifierSection) airPurifierSection.classList.remove("hidden");
+          }
+        })();
+        
+        // DOM이 완전히 로드된 후 섹션 표시 함수 호출
+        setTimeout(() => {
+          const initialHash = window.location.hash;
+          if (initialHash) {
+            showSection(initialHash);
+          } else {
+            showSection("#air-purifier-section");
+          }
+        }, 100);
 
         // nav-menu 링크 더블 클릭 방지 및 동적 콘텐츠로 이동 방지
         document.querySelectorAll(".nav-menu a").forEach((element) => {
@@ -1123,32 +1147,10 @@
               );
             }
 
-            // 모든 버튼에서 active 클래스 제거
-            maintenanceHeroBtns.forEach((btn) =>
-              btn.classList.remove("active")
-            );
-            // 클릭된 버튼에 active 클래스 추가
-            this.classList.add("active");
-
-            // 모든 섹션 숨기기
-            contentSections.forEach((section) => {
-              section.classList.add("hidden");
-            });
-
-            // 선택된 섹션만 보이기
-            const targetElement = document.getElementById(
-              targetSection + "-section"
-            );
-            if (targetElement) {
-              targetElement.classList.remove("hidden");
-            }
-
-            // URL 해시 업데이트 (버튼 클릭 시 해시 반영)
-            window.history.pushState(
-              null,
-              null,
-              "#" + targetSection + "-section"
-            );
+            // URL 해시 업데이트 및 showSection 호출
+            const hash = "#" + targetSection + "-section";
+            window.location.hash = hash;
+            showSection(hash);
           });
         });
 
@@ -1157,6 +1159,41 @@
         if (quoteInquiryBtn) {
           quoteInquiryBtn.addEventListener("click", function () {
             window.location.href = "../request/request.html";
+          });
+        }
+
+        // product-coming-soon 스크롤 애니메이션 적용
+        const productComingSoon = document.querySelector(".product-coming-soon");
+        if (productComingSoon) {
+          const comingSoonObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  setTimeout(() => {
+                    entry.target.classList.add("animate");
+                  }, 200);
+                  comingSoonObserver.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.2,
+              rootMargin: "0px 0px -100px 0px",
+            }
+          );
+
+          comingSoonObserver.observe(productComingSoon);
+          
+          requestAnimationFrame(() => {
+            const rect = productComingSoon.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+              setTimeout(() => {
+                productComingSoon.classList.add("animate");
+              }, 200);
+              comingSoonObserver.unobserve(productComingSoon);
+            }
           });
         }
 

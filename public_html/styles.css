@@ -5927,8 +5927,85 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 }
 
 /* fragrance-section이 활성화되면 pd-prod-container 숨김 */
-.dynamic-content:has(#fragrance-section:not(.hidden)) .pd-prod-container {
-  display: none !important;
+/* JavaScript에서 직접 제어하므로 CSS는 제거 */
+
+/* Product Coming Soon Section */
+.product-coming-soon {
+  padding: 120px 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  display: none; /* 기본적으로 숨김 */
+}
+
+.product-coming-soon.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-coming-soon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.product-coming-soon-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 32px;
+  box-shadow: 0 4px 12px rgba(83, 193, 120, 0.3);
+}
+
+.product-coming-soon-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .product-coming-soon {
+    padding: 80px 24px;
+  }
+
+  .product-coming-soon-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+
+  .product-coming-soon-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-coming-soon {
+    padding: 60px 24px;
+  }
+
+  .product-coming-soon-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .product-coming-soon-text {
+    font-size: 1.1rem;
+  }
+
+  .product-coming-soon-content {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 860px) {
