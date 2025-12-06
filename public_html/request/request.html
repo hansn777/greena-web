@@ -1586,14 +1586,14 @@
                       class="custom-file b-form-file"
                       id="file-upload-wrapper-tech"
                     >
-                      <input
-                        type="file"
+                  <input
+                    type="file"
                         accept=".png, .jpg, .jpeg, .gif"
                         class="custom-file-input"
-                        name="file1"
-                        id="tech-file1"
+                    name="file1"
+                    id="tech-file1"
                         data-max-size="5242880"
-                      />
+                  />
                       <label
                         class="custom-file-label"
                         for="tech-file1"
@@ -1603,8 +1603,8 @@
                           >파일을 선택하세요</span
                         >
                       </label>
-                    </div>
-                  </div>
+                </div>
+                </div>
                 </fieldset>
               </div>
 
@@ -1981,9 +1981,9 @@
               } else {
                 col.classList.remove("has-value"); // 값이 없으면 has-value 제거
               }
-            });
+          });
 
-            // Handle input events for placeholder visibility
+          // Handle input events for placeholder visibility
             input.addEventListener("input", function () {
               if (this.value) {
                 col.classList.add("has-value");
@@ -2311,11 +2311,11 @@
               });
           } else {
             // 파일이 없으면 emailjs.send() 사용 (더 가볍고 안정적)
-            return emailjs.send(
+          return emailjs.send(
               "service_x7z1wrj",
               "template_z5u1qlt",
-              templateParams
-            );
+            templateParams
+          );
           }
         }
 

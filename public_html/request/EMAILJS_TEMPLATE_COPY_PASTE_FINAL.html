@@ -1,0 +1,190 @@
+<div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
+  <div
+    style="
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    "
+  >
+    문의 유형: {{inquiry_type}}
+  </div>
+
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px 0;
+      border-width: 1px 0;
+      border-style: dashed;
+      border-color: lightgrey;
+    "
+  >
+    <table style="width: 100%" role="presentation">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; width: 1%">
+            <div
+              style="
+                padding: 10px 10px;
+                margin: 0 10px;
+                background-color: aliceblue;
+                border-radius: 5px;
+                font-size: 20px;
+              "
+              role="img"
+            >
+              👤
+            </div>
+          </td>
+          <td style="vertical-align: top; width: 88%">
+            <div style="color: #2c3e50; font-size: 16px">
+              <strong>{{from_name}}</strong>
+            </div>
+            <div style="color: #cccccc; font-size: 13px">{{company_name}}</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      📋 담당자 정보
+    </div>
+    <div style="font-size: 14px; line-height: 1.8">
+      • 회사명: {{company_name}}<br />
+      • 이름: {{from_name}}<br />
+      • 연락처: {{phone}}<br />
+      • 이메일: {{from_email}}
+    </div>
+  </div>
+
+  {{#if show_device_type}}
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      🔧 기기 종류
+    </div>
+    <div style="font-size: 14px; line-height: 1.8">{{device_type}}</div>
+  </div>
+  {{/if}} {{#if show_rental_info}}
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      🏠 렌탈 정보
+    </div>
+    <div style="font-size: 14px; line-height: 1.8">
+      • 지역: {{region}}<br />
+      • 공기청정기 평수: {{room_size}}<br />
+      • 기기 대수: {{device_count}}
+    </div>
+  </div>
+  {{/if}} {{#if content}}
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      💬 별도 문의사항
+    </div>
+    <div style="font-size: 14px; line-height: 1.8; white-space: pre-wrap">
+      {{content}}
+    </div>
+  </div>
+  {{/if}} {{#if file1}}
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      📎 첨부파일
+    </div>
+    <div style="font-size: 14px; line-height: 1.8">
+      파일이 첨부되었습니다: {{file1}}
+    </div>
+  </div>
+  {{/if}} {{#if file_name}}
+  <div
+    style="
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    "
+  >
+    <div
+      style="
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      "
+    >
+      📎 첨부파일
+    </div>
+    <div style="font-size: 14px; line-height: 1.8">파일명: {{file_name}}</div>
+  </div>
+  {{/if}}
+</div>

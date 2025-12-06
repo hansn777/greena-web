@@ -261,7 +261,7 @@
     <section class="maintenance-hero">
       <div
         class="maintenance-hero-bg"
-        style="background-image: url('back.png')"
+        style="background-image: url('product.png')"
       ></div>
       <div class="container">
         <div class="maintenance-hero-content">
@@ -294,65 +294,151 @@
               <h4>공기청정기 | AIR PURIFIER</h4>
               <h5>공기청정기</h5>
               <p>
-                그린에이는 <strong>고품질 공기청정기</strong>를 제공하여
-                깨끗하고 건강한 실내 공기 환경을 만들어드립니다.
-              </p>
-              <p>
-                다양한 평형과 용도에 맞는 공기청정기를 선택할 수 있으며,
-                <strong>전문적인 유지관리 서비스</strong>와 함께 제공됩니다.
+                그린에이는 <strong>고품질 공기청정기</strong>를 제공하여 깨끗하고 건강한 실내 공기 환경을 만들어드립니다. <br>
+                다양한 평형과 용도에 맞는 공기청정기를 선택할 수 있으며, <strong>전문적인 유지관리 서비스</strong>와 함께 제공됩니다.
               </p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Product Services -->
-        <section class="maintenance-services">
+      <!-- Product Gallery and Options Container -->
+      <div class="pd-prod-container">
+        <!-- Product Gallery -->
+        <div class="pd-prod-gallery-wrapper revamp-scrollspy-target">
           <div class="container">
-            <h2 class="section-title">공기청정기 제품</h2>
-            <div class="maintenance-services-grid">
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-wind"></i>
+            <div class="pd-prod-gallery">
+              <div class="pd-prod-gallery-main">
+                <div class="pd-prod-gallery-viewer">
+                  <div class="pd-prod-gallery-slider">
+                    <div class="pd-prod-gallery-slide active" data-index="0">
+                      <img src="back.png" alt="공기청정기 메인" class="pd-prod-gallery-img" />
+                    </div>
+                    <div class="pd-prod-gallery-slide" data-index="1">
+                      <img src="back.png" alt="공기청정기 사이드" class="pd-prod-gallery-img" />
+                    </div>
+                    <div class="pd-prod-gallery-slide" data-index="2">
+                      <img src="back.png" alt="공기청정기 필터" class="pd-prod-gallery-img" />
+                    </div>
+                    <div class="pd-prod-gallery-slide" data-index="3">
+                      <img src="back.png" alt="공기청정기 기능" class="pd-prod-gallery-img" />
+                    </div>
+                  </div>
+                  <button class="pd-prod-gallery-nav pd-prod-gallery-prev" aria-label="이전 이미지">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button class="pd-prod-gallery-nav pd-prod-gallery-next" aria-label="다음 이미지">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
                 </div>
-                <h3>WAC 시리즈</h3>
-                <p>
-                  고성능 필터 시스템으로 미세먼지, 유해물질을 효과적으로
-                  제거하는 공기청정기입니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-leaf"></i>
+                <div class="pd-prod-gallery-thumbnails">
+                  <button class="pd-prod-gallery-thumb active" data-index="0">
+                    <img src="back.png" alt="썸네일 1" />
+                  </button>
+                  <button class="pd-prod-gallery-thumb" data-index="1">
+                    <img src="back.png" alt="썸네일 2" />
+                  </button>
+                  <button class="pd-prod-gallery-thumb" data-index="2">
+                    <img src="back.png" alt="썸네일 3" />
+                  </button>
+                  <button class="pd-prod-gallery-thumb" data-index="3">
+                    <img src="back.png" alt="썸네일 4" />
+                  </button>
                 </div>
-                <h3>삼성 블루스카이</h3>
-                <p>
-                  삼성의 최신 기술이 적용된 공기청정기로 다양한 평형에 맞춰
-                  선택할 수 있습니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-shield-virus"></i>
-                </div>
-                <h3>공간살균탈취기</h3>
-                <p>
-                  i-EcoAir 시리즈로 살균과 탈취 기능을 동시에 제공하는
-                  공기청정기입니다.
-                </p>
-              </div>
-              <div class="maintenance-service-item">
-                <div class="maintenance-service-icon">
-                  <i class="fas fa-home"></i>
-                </div>
-                <h3>맞춤형 솔루션</h3>
-                <p>
-                  공간의 크기와 용도에 맞는 최적의 공기청정기를 추천하고
-                  설치해드립니다.
-                </p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+
+        <!-- Product Options -->
+        <div class="pd-prod-options" id="goodsRevampOption">
+          <div class="container">
+            <div class="pd-prod-options-content">
+              <h2 class="pd-prod-options-title">제품 둘러보기</h2>
+              <!-- Brand Selection -->
+              <div class="pd-prod-option-group">
+                <h3 class="pd-prod-option-label">선호 브랜드 선택</h3>
+                <div class="pd-prod-option-list">
+                  <button class="pd-prod-option-item active" data-option="model" data-value="wac">
+                    <img src="LGicon.png" alt="LG" class="pd-prod-option-icon" />
+                    <span class="pd-prod-option-name">LG</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="model" data-value="samsung">
+                    <img src="samsungicon.png" alt="Samsung" class="pd-prod-option-icon" />
+                    <span class="pd-prod-option-name">SAMSUNG</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="model" data-value="ecoair">
+                    <img src="carriericon.png" alt="Carrier" class="pd-prod-option-icon" />
+                    <span class="pd-prod-option-name">Carrier</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Model Selection -->
+              <div class="pd-prod-option-group">
+                <h3 class="pd-prod-option-label">모델 선택</h3>
+                <div class="pd-prod-option-list">
+                  <button class="pd-prod-option-item active" data-option="model" data-value="wac">
+                    <span class="pd-prod-option-name">WAC 시리즈</span>
+                    <span class="pd-prod-option-desc">고성능 필터 시스템</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="model" data-value="samsung">
+                    <span class="pd-prod-option-name">삼성 블루스카이</span>
+                    <span class="pd-prod-option-desc">최신 AI 기술 적용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="model" data-value="ecoair">
+                    <span class="pd-prod-option-name">공간살균탈취기</span>
+                    <span class="pd-prod-option-desc">i-EcoAir 시리즈</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Size Selection -->
+              <div class="pd-prod-option-group">
+                <h3 class="pd-prod-option-label">모델별 평형 추천</h3>
+                <div class="pd-prod-option-list">
+                  <button class="pd-prod-option-item active" data-option="size" data-value="10">
+                    <span class="pd-prod-option-name">10평형</span>
+                    <span class="pd-prod-option-desc">소형 공간용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="size" data-value="20">
+                    <span class="pd-prod-option-name">16평형</span>
+                    <span class="pd-prod-option-desc">중소형 공간용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="size" data-value="20">
+                    <span class="pd-prod-option-name">18평형</span>
+                    <span class="pd-prod-option-desc">중형 공간용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="size" data-value="20">
+                    <span class="pd-prod-option-name">20평형</span>
+                    <span class="pd-prod-option-desc">중형 공간용</span>
+                  <button class="pd-prod-option-item" data-option="size" data-value="20">
+                    <span class="pd-prod-option-name">24평형</span>
+                    <span class="pd-prod-option-desc">중형 공간용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="size" data-value="30">
+                    <span class="pd-prod-option-name">28평형</span>
+                    <span class="pd-prod-option-desc">중대형 공간용</span>
+                  <button class="pd-prod-option-item" data-option="size" data-value="30">
+                    <span class="pd-prod-option-name">30평형</span>
+                    <span class="pd-prod-option-desc">대형 공간용</span>
+                  </button>
+                  <button class="pd-prod-option-item" data-option="size" data-value="40">
+                    <span class="pd-prod-option-name">32평형</span>
+                    <span class="pd-prod-option-desc">초대형 공간용</span>
+                  <button class="pd-prod-option-item" data-option="size" data-value="40">
+                    <span class="pd-prod-option-name">35평형</span>
+                    <span class="pd-prod-option-desc">초대형 공간용</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Fragrance Section -->
@@ -427,55 +513,23 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <h2 class="section-title">CONTACT US</h2>
-        <h3 class="contact-subtitle">견적 문의</h3>
-        <div class="contact-content">
-          <div class="contact-form">
-            <form id="productsForm">
-              <div class="form-group">
-                <label>성 함</label>
-                <input type="text" name="name" required />
+    <section
+      class="container flex items-center justify-between contact-section animate"
+      id="contact"
+    >
+      <div class="flex flex-col gap-8 max-lg:items-center max-md:gap-6">
+        <div class="logo-group">
+          <img src="asset8.png" alt="그린에이 로고 8" class="logo-img" />
+          <img src="asset9.png" alt="그린에이 로고 9" class="logo-img" />
               </div>
-              <div class="form-group">
-                <label>연 락 처</label>
-                <input type="tel" name="phone" required />
+        <div class="flex flex-col gap-5 max-lg:items-center max-md:gap-1">
+          <h2 class="text-[42px] font-bold max-md:text-xl">
+            지금 바로 문의해보세요.
+          </h2>
               </div>
-              <div class="form-group">
-                <label>이 메 일</label>
-                <input type="email" name="email" required />
               </div>
-              <div class="form-group">
-                <label>지 역</label>
-                <input type="text" name="region" required />
-              </div>
-              <div class="form-group">
-                <label>제품 선택</label>
-                <select name="product" required>
-                  <option value="">선택</option>
-                  <option value="air-purifier">공기청정기</option>
-                  <option value="fragrance">향기분사기</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>모델 선택</label>
-                <select name="model" required>
-                  <option value="">선택</option>
-                  <option value="wac">WAC시리즈</option>
-                  <option value="samsung">삼성 블루스카이</option>
-                  <option value="ecoair">공간살균탈취기 i-EcoAir</option>
-                  <option value="dispenser">방향제 디스펜서</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>문의 사항</label>
-                <textarea name="message" rows="4"></textarea>
-              </div>
-              <button type="submit" class="submit-btn">보내기</button>
-            </form>
-          </div>
-        </div>
+      <div class="w-full max-w-400px">
+        <button type="button" class="contact-btn" id="quoteInquiryBtn">견적문의 바로가기</button>
       </div>
     </section>
 
@@ -1130,29 +1184,137 @@
           });
         });
 
-        // Form Submission
-        const productsForm = document.getElementById("productsForm");
-        if (productsForm) {
-          productsForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(productsForm);
-            const data = Object.fromEntries(formData);
-
-            // Simple validation
-            if (!data.name || !data.phone || !data.email) {
-              alert("필수 항목을 모두 입력해주세요.");
-              return;
-            }
-
-            // Simulate form submission
-            alert(
-              "견적 문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다."
-            );
-            productsForm.reset();
+        // Quote Inquiry Button
+        const quoteInquiryBtn = document.getElementById("quoteInquiryBtn");
+        if (quoteInquiryBtn) {
+          quoteInquiryBtn.addEventListener("click", function () {
+            window.location.href = "../request/request.html";
           });
         }
+
+        // contact-section 스크롤 애니메이션 적용
+        const contactSection = document.querySelector(".contact-section");
+        if (contactSection) {
+          const contactObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  setTimeout(() => {
+                    entry.target.classList.add("animate");
+                  }, 200);
+                  contactObserver.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.2,
+              rootMargin: "0px 0px -100px 0px",
+            }
+          );
+
+          contactObserver.observe(contactSection);
+          
+          requestAnimationFrame(() => {
+            const rect = contactSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (isVisible) {
+              setTimeout(() => {
+                contactSection.classList.add("animate");
+              }, 200);
+              contactObserver.unobserve(contactSection);
+            }
+          });
+        }
+
+        // Product Gallery Slider
+        const gallerySlider = document.querySelector(".pd-prod-gallery-slider");
+        const gallerySlides = document.querySelectorAll(".pd-prod-gallery-slide");
+        const galleryThumbs = document.querySelectorAll(".pd-prod-gallery-thumb");
+        const galleryPrev = document.querySelector(".pd-prod-gallery-prev");
+        const galleryNext = document.querySelector(".pd-prod-gallery-next");
+        
+        let currentSlideIndex = 0;
+
+        function updateGallerySlide(index) {
+          // Remove active class from all slides and thumbs
+          gallerySlides.forEach((slide) => slide.classList.remove("active"));
+          galleryThumbs.forEach((thumb) => thumb.classList.remove("active"));
+
+          // Add active class to current slide and thumb
+          if (gallerySlides[index]) {
+            gallerySlides[index].classList.add("active");
+          }
+          if (galleryThumbs[index]) {
+            galleryThumbs[index].classList.add("active");
+          }
+
+          currentSlideIndex = index;
+        }
+
+        // Thumbnail click event
+        galleryThumbs.forEach((thumb, index) => {
+          thumb.addEventListener("click", () => {
+            updateGallerySlide(index);
+          });
+        });
+
+        // Previous button
+        if (galleryPrev) {
+          galleryPrev.addEventListener("click", () => {
+            const prevIndex = currentSlideIndex === 0 ? gallerySlides.length - 1 : currentSlideIndex - 1;
+            updateGallerySlide(prevIndex);
+          });
+        }
+
+        // Next button
+        if (galleryNext) {
+          galleryNext.addEventListener("click", () => {
+            const nextIndex = currentSlideIndex === gallerySlides.length - 1 ? 0 : currentSlideIndex + 1;
+            updateGallerySlide(nextIndex);
+          });
+        }
+
+        // Product Options Selection
+        const optionItems = document.querySelectorAll(".pd-prod-option-item");
+        const selectedModelEl = document.getElementById("selectedModel");
+        const selectedSizeEl = document.getElementById("selectedSize");
+
+        const modelNames = {
+          wac: "WAC 시리즈",
+          samsung: "삼성 블루스카이",
+          ecoair: "공간살균탈취기"
+        };
+
+        const sizeNames = {
+          "10": "10평형",
+          "20": "20평형",
+          "30": "30평형",
+          "40": "40평형"
+        };
+
+        optionItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const optionType = item.getAttribute("data-option");
+            const optionValue = item.getAttribute("data-value");
+
+            // Remove active from same option type
+            document.querySelectorAll(`[data-option="${optionType}"]`).forEach((el) => {
+              el.classList.remove("active");
+            });
+
+            // Add active to clicked item
+            item.classList.add("active");
+
+            // Update selected summary
+            if (optionType === "model" && selectedModelEl) {
+              selectedModelEl.textContent = modelNames[optionValue] || optionValue;
+            }
+            if (optionType === "size" && selectedSizeEl) {
+              selectedSizeEl.textContent = sizeNames[optionValue] || optionValue;
+            }
+          });
+        });
 
         // Dynamic Content 내부 요소들의 스크롤 애니메이션 (company.html과 동일)
         const dynamicContent = document.querySelector(".dynamic-content");
