@@ -5937,38 +5937,39 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   display: none; /* 기본적으로 숨김 */
+  border: 1px solid #dee3ed;
+  background-color: #dee3ed;
 }
 
 .product-coming-soon.animate {
   opacity: 1;
   transform: translateY(0);
+  background-color: #f6f8fc;
+  border-radius: 12px;
+  margin-top: 80px;
 }
 
 .product-coming-soon-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 24px;
 }
 
 .product-coming-soon-icon {
-  width: 64px;
-  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #53c178 0%, #4aad6a 100%);
   border-radius: 50%;
-  color: #fff;
+  color: #969ea8;
   font-size: 32px;
-  box-shadow: 0 4px 12px rgba(83, 193, 120, 0.3);
 }
 
 .product-coming-soon-text {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
+  font-weight: 500;
+  color: #969ea8;
   margin: 0;
 }
 
@@ -5978,8 +5979,6 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   }
 
   .product-coming-soon-icon {
-    width: 56px;
-    height: 56px;
     font-size: 28px;
   }
 
@@ -5994,8 +5993,6 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   }
 
   .product-coming-soon-icon {
-    width: 48px;
-    height: 48px;
     font-size: 24px;
   }
 
