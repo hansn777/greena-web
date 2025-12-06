@@ -5926,6 +5926,11 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   align-items: flex-start;
 }
 
+/* fragrance-section이 활성화되면 pd-prod-container 숨김 */
+.dynamic-content:has(#fragrance-section:not(.hidden)) .pd-prod-container {
+  display: none !important;
+}
+
 @media (max-width: 860px) {
   .pd-prod-container {
     padding: 40px 0;

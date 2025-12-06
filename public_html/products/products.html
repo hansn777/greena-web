@@ -742,7 +742,21 @@
 
         // 섹션 표시 함수
         function showSection(hash) {
-          if (!hash) return;
+          if (!hash) {
+            // 해시가 없으면 기본적으로 air-purifier-section으로 처리
+            hash = "#air-purifier-section";
+          }
+
+          // pd-prod-container 표시/숨김 처리
+          const pdProdContainer = document.querySelector(".pd-prod-container");
+          if (pdProdContainer) {
+            if (hash === "#fragrance-section") {
+              pdProdContainer.style.display = "none";
+            } else {
+              // air-purifier-section이거나 다른 섹션일 때는 표시
+              pdProdContainer.style.display = "";
+            }
+          }
 
           // 메가 메뉴 닫기
           closeMegaMenu();
@@ -761,6 +775,16 @@
 
             // 해당 섹션 보이기
             targetElement.classList.remove("hidden");
+            
+            // pd-prod-container 표시/숨김 재확인 (섹션 변경 후)
+            const pdProdContainer = document.querySelector(".pd-prod-container");
+            if (pdProdContainer) {
+              if (hash === "#fragrance-section") {
+                pdProdContainer.style.display = "none";
+              } else {
+                pdProdContainer.style.display = "";
+              }
+            }
 
             // 버튼이 있으면 활성화
             if (targetButton) {
@@ -826,6 +850,9 @@
           const hash = window.location.hash;
           if (hash) {
             showSection(hash);
+          } else {
+            // 해시가 없으면 기본적으로 air-purifier-section 표시
+            showSection("#air-purifier-section");
           }
         });
 
@@ -1231,28 +1258,28 @@
                 name: "블루스카이 3100",
                 desc: "6단계 토탈 케어",
                 sizes: ["10"],
-                images: [] // 이미지 나중에 업데이트 예정
+                images: ["back.png"] // 임시 이미지
               },
               {
                 id: "samsung2",
                 name: "블루스카이 5000",
                 desc: "최신 AI 기술 적용",
                 sizes: ["16", "18", "20"],
-                images: [] // 이미지 나중에 업데이트 예정
+                images: ["back.png"] // 임시 이미지
               },
               {
                 id: "samsung3",
                 name: "블루스카이 5500",
                 desc: "360° 청정 시스템",
                 sizes: ["16", "18", "20"],
-                images: [] // 이미지 나중에 업데이트 예정
+                images: ["back.png"] // 임시 이미지
               },
               {
                 id: "samsung4",
                 name: "블루스카이 7000",
                 desc: "프리미엄 청정 시스템",
                 sizes: ["20", "24"],
-                images: [] // 이미지 나중에 업데이트 예정
+                images: ["back.png"] // 임시 이미지
               }
             ]
           },
@@ -1377,6 +1404,11 @@
           const currentModel = productData[brand].models.find(m => m.id === selectedModel);
           const modelSizes = currentModel ? currentModel.sizes : [];
 
+          // If no images, use placeholder
+          if (imageFiles.length === 0) {
+            imageFiles = ["back.png"]; // 임시 이미지 사용
+          }
+
           // Sort images by number in filename
           const sortedImages = imageFiles
             .map(file => {
@@ -1387,7 +1419,13 @@
               };
             })
             .sort((a, b) => a.num - b.num)
-            .map(item => brandFolder + item.file);
+            .map(item => {
+              // If image is placeholder (back.png) or doesn't have brand folder structure, use root path
+              if (item.file === "back.png" || !item.file.includes("_")) {
+                return item.file; // 루트 경로 사용
+              }
+              return brandFolder + item.file;
+            });
 
           sortedImages.forEach((imagePath, index) => {
             // Create slide
