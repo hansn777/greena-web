@@ -1293,30 +1293,37 @@
               {
                 id: "samsung1",
                 name: "블루스카이 3100",
-                desc: "6단계 토탈 케어",
+                desc: "3단계 청정 시스템",
                 sizes: ["10"],
-                images: ["back.png"] // 임시 이미지
+                images: ["블루스카이3100_1.png","블루스카이3100_2.png","블루스카이3100_3.png","블루스카이3100_4.png",]
               },
               {
                 id: "samsung2",
                 name: "블루스카이 5000",
-                desc: "최신 AI 기술 적용",
+                desc: "3단계 청정 시스템",
                 sizes: ["16", "18", "20"],
-                images: ["back.png"] // 임시 이미지
+                images: ["블루스카이5000_1.png","블루스카이5000_2.png","블루스카이5000_3.png","블루스카이5000_4.png"]
               },
               {
                 id: "samsung3",
                 name: "블루스카이 5500",
-                desc: "360° 청정 시스템",
+                desc: "3방향 입체청정",
                 sizes: ["16", "18", "20"],
-                images: ["back.png"] // 임시 이미지
+                images: ["블루스카이5500_1.png","블루스카이5500_2.png","블루스카이5500_3.png","블루스카이5500_4.png"]
               },
               {
                 id: "samsung4",
                 name: "블루스카이 7000",
-                desc: "프리미엄 청정 시스템",
+                desc: "3방향 입체청정",
                 sizes: ["20", "24"],
-                images: ["back.png"] // 임시 이미지
+                images: ["블루스카이7000_1.png","블루스카이7000_2.png","블루스카이7000_3.png","블루스카이7000_4.png"]
+              },
+             {
+                id: "samsung5",
+                name: "무풍 큐브",
+                desc: "무풍초순도 청정",
+                sizes: ["28", "30"],
+                images: ["무풍큐브_1.png","무풍큐브_2.png","무풍큐브_3.png"]
               }
             ]
           },
@@ -1325,7 +1332,7 @@
               {
                 id: "carrier1",
                 name: "CAP - 100SW",
-                desc: "6단계 토탈 케어",
+                desc: "3단계 공기청정 필터",
                 sizes: ["32", "35"],
                 images: ["캐리어_1.png", "캐리어_2.png"]
               }
@@ -1435,7 +1442,7 @@
           thumbnails.innerHTML = "";
 
           // Get brand folder path
-          const brandFolder = brand === "lg" ? "LG/" : brand === "samsung" ? "Samsung/" : "Carrier/";
+          const brandFolder = brand === "lg" ? "LG/" : brand === "samsung" ? "SAMSUNG/" : "Carrier/";
 
           // Get current model sizes for tags
           const currentModel = productData[brand].models.find(m => m.id === selectedModel);
