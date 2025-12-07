@@ -807,17 +807,39 @@ a.quote-btn {
   }
 
   .about-hero-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 2rem;
     padding: 0;
+    min-height: auto !important;
   }
 
-  .about-hero-content {
-    padding: 24px;
-    order: 2;
+  .about-hero-wrapper .about-hero-content {
+    grid-column: unset !important;
+    width: 100% !important;
+    padding: 24px !important;
+    max-width: 100% !important;
+    order: 2 !important;
+    min-height: auto !important;
+    flex: 0 0 auto !important;
+    box-sizing: border-box !important;
   }
 
-  .about-hero-image-section {
-    order: 1;
-    padding: 0;
+  .about-hero-wrapper .about-hero-image-section {
+    grid-column: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 1 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 860px) {
+  .about-hero-wrapper .about-hero-content {
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
   }
 }
 
@@ -2741,25 +2763,32 @@ a.quote-btn {
 
 @media (max-width: 780px) {
   .about-hero-wrapper {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
     gap: 2rem;
     padding: 0;
+    min-height: auto !important;
   }
 
-  .about-hero-content {
-    grid-column: span 1 / span 1;
-    padding: 24px;
-    max-width: 100%;
+  .about-hero-wrapper .about-hero-content {
+    grid-column: unset !important;
+    width: 100% !important;
+    padding: 24px !important;
+    max-width: 100% !important;
+    order: 2 !important;
+    min-height: auto !important;
+    flex: 0 0 auto !important;
+    box-sizing: border-box !important;
   }
 
-  .about-hero-image-section {
-    grid-column: span 1 / span 1;
-    max-width: 100%;
-    order: 1;
-  }
-
-  .about-hero-content {
-    order: 2;
+  .about-hero-wrapper .about-hero-image-section {
+    grid-column: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 1 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
   }
 
   .about-hero-title {
