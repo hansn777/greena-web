@@ -910,7 +910,6 @@ a.quote-btn {
 }
 
 .main-service-section .container {
-  max-width: 1400px;
   margin: 0 auto;
   padding: 0 120px;
 }
@@ -938,7 +937,7 @@ a.quote-btn {
 
 .service-item {
   margin-bottom: 0;
-  min-height: auto;
+  min-height: 56vh;
 }
 
 .service-item .about-hero-content {
@@ -950,7 +949,7 @@ a.quote-btn {
   align-items: center;
   justify-content: center;
   background: #f8f9fa;
-  min-height: 266.67px;
+  min-height: 8vh;
 }
 
 .service-item .service-icon {
@@ -971,6 +970,73 @@ a.quote-btn {
 
 .service-item:nth-child(even) .about-hero-image-section {
   order: 1;
+}
+
+#mainService ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mainService ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media only screen and (min-width: 879px) {
+  .main-service-section .container {
+    position: relative;
+  }
+
+  #mainService .grid {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    position: absolute;
+    width: 1px;
+    background-color: #e5e7eb;
+    transform: translateX(-50%);
+  }
+
+  #mainService .grid:before {
+    content: "\30FB";
+    line-height: 1;
+    text-indent: 1px;
+    display: inline-block;
+    color: #e5e7eb;
+    box-sizing: border-box;
+    border: 1px solid #e5e7eb;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -9px;
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  #mainService .grid:after {
+    content: "\30FB";
+    line-height: 1;
+    text-indent: 1px;
+    display: inline-block;
+    color: #e5e7eb;
+    box-sizing: border-box;
+    border: 1px solid #e5e7eb;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -9px;
+    bottom: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  #mainService .about-hero-content {
+    padding: 0;
+    padding-right: 120px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -1032,8 +1098,15 @@ a.quote-btn {
   color: unset;
 }
 
+#about .about-hero-wrapper {
+  background-image: url('index/공기 설계.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .about-hero-content {
-  grid-column: span 7 / span 7;
+  grid-column: span 6 / span 6;
   padding: 120px;
   display: flex;
   flex-direction: column;
@@ -1103,7 +1176,7 @@ a.quote-btn {
 .about-hero-description {
   font-size: 1rem;
   line-height: 1.75;
-  color: #212126;
+  color: #3a3a3a;
   margin: 0;
   transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-font-smoothing: antialiased;
@@ -1158,7 +1231,7 @@ a.quote-btn {
 }
 
 .about-hero-image-section {
-  grid-column: span 5 / span 5;
+  grid-column: span 6 / span 6;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -1167,7 +1240,7 @@ a.quote-btn {
 
 .about-hero-image {
   width: 100%;
-  height: 100%;
+  height: 40%;
   object-fit: cover;
   display: block;
 }
@@ -4392,7 +4465,7 @@ a.quote-btn {
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #666666;
+  color: #3a3a3a;
   line-height: 1.4;
 }
 
@@ -4400,12 +4473,12 @@ a.quote-btn {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: #666666;
+  color: #3a3a3a;
 }
 
 .float-label-status-text {
   font-weight: 400;
-  color: #666666;
+  color: #3a3a3a;
 }
 
 .float-tooltip {
@@ -4846,7 +4919,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   transition: all 0.3s ease;
   border-radius: 300px;
   text-align: center;
-  color: #666666;
+  color: #3a3a3a;
 }
 
 .maintenance-tab-item:hover {
@@ -4910,7 +4983,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 .maintenance-detail-description {
   font-size: 0.95rem;
   line-height: 1.8;
-  color: #4b5563;
+  color: #3a3a3a;
   margin-bottom: 24px;
 }
 
@@ -5206,7 +5279,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 .maintenance-cycle-table .cell-school,
 .maintenance-cycle-table .cell-government,
 .maintenance-cycle-table .cell-enterprise {
-  color: #4b5563;
+  color: #3a3a3a;
 }
 
 /* 컬럼 너비 조정 */
@@ -5721,7 +5794,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 .bento-card-text {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #4b5563;
+  color: #3a3a3a;
   margin-bottom: 16px;
 }
 
@@ -5757,7 +5830,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 #rental-section .slide-item .bento-card-description {
   font-size: 14px !important;
   line-height: 1.7;
-  color: #666666 !important;
+  color: #3a3a3a !important;
   margin: 0;
   padding-top: 8px !important;
   word-wrap: break-word;
@@ -6029,7 +6102,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   #maintenance-section .slide-item .bento-card-description,
   #rental-section .slide-item .bento-card-description {
     font-size: 14px !important;
-    color: #666666 !important;
+    color: #3a3a3a !important;
     padding-top: 8px !important;
   }
 
@@ -6232,7 +6305,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
   #maintenance-section .slide-item .bento-card-description,
   #rental-section .slide-item .bento-card-description {
     font-size: 14px !important;
-    color: #666666 !important;
+    color: #3a3a3a !important;
     padding-top: 8px !important;
   }
 
