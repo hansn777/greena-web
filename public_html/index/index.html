@@ -1188,6 +1188,162 @@
       }
 
       // 벤토 그리드 초기화 제거 (섹션 삭제됨)
+
+      // Challenge Section ~ Main Service Section 스크롤 애니메이션
+      document.addEventListener("DOMContentLoaded", function () {
+        // Challenge Section 애니메이션
+        const challengeSection = document.querySelector(".challenge");
+        if (challengeSection) {
+          const challengeElements = challengeSection.querySelectorAll(
+            ".challenge-label, .challenge-title, .challenge-description"
+          );
+
+          challengeElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            const transitionDuration = "0.6s";
+            const delayMultiplier = 0.08;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
+        // About Section 애니메이션
+        const aboutSection = document.querySelector("#about");
+        if (aboutSection) {
+          const aboutElements = aboutSection.querySelectorAll(
+            ".about-hero-logo, .about-hero-badge, .about-hero-title, .about-hero-description, .about-hero-buttons"
+          );
+
+          aboutElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            const transitionDuration = "0.6s";
+            const delayMultiplier = 0.06;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
+        // Main Service Section 애니메이션
+        const mainServiceSection = document.querySelector("#mainService");
+        if (mainServiceSection) {
+          // Main Title Area 애니메이션
+          const mainTitleArea = mainServiceSection.querySelector("#mainTitleArea");
+          if (mainTitleArea) {
+            const titleElements = mainTitleArea.querySelectorAll("h2, p");
+
+            titleElements.forEach((element, index) => {
+              element.style.opacity = "0";
+              element.style.transform = "translateY(30px)";
+
+              const transitionDuration = "0.6s";
+              const delay = index * 0.1;
+
+              element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+              const elementObserver = new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.opacity = "1";
+                      entry.target.style.transform = "translateY(0)";
+                      elementObserver.unobserve(entry.target);
+                    }
+                  });
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: "0px 0px -50px 0px",
+                }
+              );
+
+              elementObserver.observe(element);
+            });
+          }
+
+          // Service Items 애니메이션
+          const serviceItems = mainServiceSection.querySelectorAll(
+            ".service-item"
+          );
+
+          serviceItems.forEach((item, itemIndex) => {
+            const itemElements = item.querySelectorAll(
+              ".about-hero-title, .about-hero-description, .about-hero-buttons, .about-hero-image"
+            );
+
+            itemElements.forEach((element, elementIndex) => {
+              element.style.opacity = "0";
+              element.style.transform = "translateY(30px)";
+
+              const transitionDuration = "0.6s";
+              const delay = (itemIndex * 0.2) + (elementIndex * 0.08);
+
+              element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+              const elementObserver = new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.opacity = "1";
+                      entry.target.style.transform = "translateY(0)";
+                      elementObserver.unobserve(entry.target);
+                    }
+                  });
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: "0px 0px -100px 0px",
+                }
+              );
+
+              elementObserver.observe(element);
+            });
+          });
+        }
+      });
     </script>
   </body>
 </html>
