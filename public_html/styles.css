@@ -993,8 +993,8 @@ a.quote-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
   min-height: 8vh;
+  height: auto;
 }
 
 .service-item .service-icon {
@@ -1021,6 +1021,9 @@ a.quote-btn {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
 }
 
 #mainService ul li {
@@ -1147,12 +1150,18 @@ a.quote-btn {
     font-size: 2rem;
   }
 
-  .main-service-section .about-hero-image-section {
-    min-height: 4vh !important;
+  #mainService ul li .about-hero-image-section {
+    height: 200px !important;
+    min-height: 200px !important;
+    max-height: 200px !important;
+    overflow: hidden;
   }
 
   .main-service-section .about-hero-image {
-    height: 30% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 
   .main-service-section .about-hero-content {
@@ -1334,7 +1343,6 @@ a.quote-btn {
 
 .about-hero-image {
   width: 100%;
-  height: 46%;
   object-fit: cover;
   display: block;
 }
