@@ -818,7 +818,6 @@ a.quote-btn {
   .about-hero-wrapper .about-hero-content {
     grid-column: unset !important;
     width: 100% !important;
-    padding: 24px !important;
     max-width: 100% !important;
     order: 2 !important;
     min-height: auto !important;
@@ -837,19 +836,52 @@ a.quote-btn {
 }
 
 @media (min-width: 781px) and (max-width: 860px) {
+  .about-hero-wrapper {
+    gap: 2rem;
+  }
+
   .about-hero-wrapper .about-hero-content {
-    margin-top: 60px !important;
-    margin-bottom: 60px !important;
+    background: transparent !important;
   }
 
   #about .about-hero-wrapper {
     padding-top: 60px;
     padding-bottom: 60px;
+    background-image: none;
+    position: relative;
+  }
+
+  #about .about-hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('index/공기 설계.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  #about .about-hero-wrapper .about-hero-content {
+    position: relative;
+    z-index: 1;
   }
 
   #about .about-hero-content {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  #mainService ul li .about-hero-wrapper.service-item .about-hero-content {
+    padding: 0 !important;
+  }
+
+  .about-hero-wrapper.service-item .about-hero-text-section {
+    gap: 1.5rem;
   }
 }
 
@@ -895,7 +927,7 @@ a.quote-btn {
 .challenge-description {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #475569;
+  color: #666666;
   margin: 0 0 48px 0;
 }
 
@@ -928,13 +960,15 @@ a.quote-btn {
   text-align: center;
   margin-top: 160px;
   margin-bottom: 160px;
+  padding-left: 120px;
+  padding-right: 120px;
 }
 
 #mainTitleArea h2 {
   font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #1e293b;
+  color: #333333;
   margin: 0 0 24px 0;
   letter-spacing: -0.025em;
 }
@@ -942,7 +976,7 @@ a.quote-btn {
 #mainTitleArea p {
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #475569;
+  color: #666666;
   margin: 0;
 }
 
@@ -1065,6 +1099,20 @@ a.quote-btn {
   }
 }
 
+@media (min-width: 860px) and (max-width: 880px) {
+  #mainService ul li:nth-child(1) .about-hero-wrapper.service-item .about-hero-content,
+  #mainService ul li:nth-child(3) .about-hero-wrapper.service-item .about-hero-content {
+    padding: 0;
+    padding-right: 120px;
+  }
+
+  #mainService ul li:nth-child(2) .about-hero-wrapper.service-item .about-hero-content,
+  #mainService ul li:nth-child(4) .about-hero-wrapper.service-item .about-hero-content {
+    padding: 0;
+    padding-left: 60px;
+  }
+}
+
 @media (max-width: 860px) {
   .main-service-section {
     padding: 0;
@@ -1075,7 +1123,10 @@ a.quote-btn {
   }
 
   #mainTitleArea {
-    margin-bottom: 60px;
+    margin-top: 160px;
+    margin-bottom: 160px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   #mainTitleArea h2 {
@@ -1086,10 +1137,27 @@ a.quote-btn {
     font-size: 1rem;
   }
 
+  .about-hero-content {
+    background: transparent;
+  }
+
   .service-item .service-icon {
     width: 80px;
     height: 80px;
     font-size: 2rem;
+  }
+
+  .main-service-section .about-hero-image-section {
+    min-height: 4vh !important;
+  }
+
+  .main-service-section .about-hero-image {
+    height: 30% !important;
+  }
+
+  .main-service-section .about-hero-content {
+    padding: 24px !important;
+    margin-bottom: 120px;
   }
 }
 
@@ -1115,7 +1183,7 @@ a.quote-btn {
 .about-hero-wrapper {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 0;
+  gap: 2rem;
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -1126,7 +1194,7 @@ a.quote-btn {
 
 #about .about-hero-wrapper {
   background-image: url('index/공기 설계.jpg');
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -1204,6 +1272,7 @@ a.quote-btn {
   line-height: 1.75;
   color: #3a3a3a;
   margin: 0;
+  font-weight: 500;
   transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-font-smoothing: antialiased;
 }
@@ -1232,7 +1301,6 @@ a.quote-btn {
 }
 
 .about-hero-btn-primary:hover {
-  background-color: #4f46e5;
   transform: translateY(-1px);
 }
 
@@ -2978,15 +3046,47 @@ a.quote-btn {
     min-height: auto !important;
   }
 
+  #about .about-hero-wrapper {
+    background-image: none !important;
+    position: relative;
+  }
+
+  #about .about-hero-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('index/공기 설계.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  #about .about-hero-wrapper .about-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 24px !important;
+  }
+
   .about-hero-wrapper .about-hero-content {
     grid-column: unset !important;
     width: 100% !important;
-    padding: 24px !important;
+    padding: 0px !important;
     max-width: 100% !important;
     order: 2 !important;
     min-height: auto !important;
     flex: 0 0 auto !important;
     box-sizing: border-box !important;
+    background: transparent !important;
+  }
+
+
+  .about-hero-wrapper.service-item .about-hero-text-section {
+    gap: 1.5rem;
   }
 
   .about-hero-wrapper .about-hero-image-section {
@@ -5889,8 +5989,7 @@ body:has(#rental-section.visible) .maintenance-cycle-table-section {
 }
 
 @media (max-width: 860px) {
-  /* index.html에서 860px 이하일 때 렌탈, 유지관리 섹션 비노출 */
-  #maintenance-section,
+  /* index.html에서 860px 이하일 때 렌탈 섹션 비노출 */
   #rental-section {
     display: none !important;
   }
