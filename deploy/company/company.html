@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="naver-site-verification"
+      content="766b9efcf22f57c5a4c14a5fa0625a5ee1e147a5"
+    />
+    <title>회사소개 - 공기정화장치 전문기업</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../asset8.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../asset8.png" />
+    <link rel="apple-touch-icon" href="../asset8.png" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="그린에이의 그린 케어 시스템을 통해, 눈에 보이지 않는 공기의 변화를 직접 경험하세요."
+    />
+    <meta
+      name="keywords"
+      content="공기정화장치, 공기청정기, 렌탈, 유지관리, 그린에이, 공기청정기 렌탈, 공기정화장치 전문기업"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://greenaofficial.c/company/company.html"
+    />
+    <meta property="og:title" content="그린에이 - 공기정화장치 전문기업" />
+    <meta
+      property="og:description"
+      content="그린에이의 그린 케어 시스템을 통해, 눈에 보이지 않는 공기의 변화를 직접 경험하세요."
+    />
+    <meta property="og:image" content="https://greenaofficial.com/back.png" />
+    <meta property="og:site_name" content="그린에이" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://greenaofficial.c/company/company.html"
+    />
+    <meta name="twitter:title" content="회사소개 - 공기정화장치 전문기업" />
+    <meta
+      name="twitter:description"
+      content="그린에이의 그린 케어 시스템을 통해, 눈에 보이지 않는 공기의 변화를 직접 경험하세요."
+    />
+    <meta name="twitter:image" content="https://greenaofficial.com/back.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* 초기 스크롤을 맨 위로 고정 */
+      html {
+        scroll-behavior: auto !important;
+        scroll-padding-top: 0 !important;
+      }
+      body {
+        overflow-x: hidden;
+      }
+      /* 해시가 있을 때도 스크롤을 맨 위로 유지 */
+      html:has(:target),
+      body:has(:target) {
+        scroll-margin-top: 0 !important;
+        scroll-padding-top: 0 !important;
+      }
+      /* 초기에 모든 content-section을 숨기기 (깜빡거림 방지) */
+      .content-section {
+        display: none !important;
+      }
+      /* JavaScript가 실행되면 이 클래스를 추가하여 표시 */
+      .content-section.visible {
+        display: block !important;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 네이버 지도 API가 생성하는 요소 내부의 모든 div border와 shadow 제거 */
+      /* 단, 마커 내부의 Location Pin Icon은 제외 */
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div:not([style*="border: 3px solid #53C178"]),
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div
+        div:not([style*="border: 3px solid #53C178"]),
+      #naver-map
+        > div:not([class*="marker"]):not([id*="marker"])
+        div
+        div
+        div:not([style*="border: 3px solid #53C178"]) {
+        border: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+
+      /* 마커 내부의 Location Pin Icon border 유지 */
+      #naver-map div[style*="border: 3px solid #53C178"],
+      #naver-map div[style*="border: 3px solid #53c178"] {
+        border: 3px solid #53c178 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+      }
+
+      /* 네이버 지도 InfoWindow 내부 div border와 shadow 제거 */
+      .nmap_iw,
+      .nmap_iw div,
+      .nmap_iw div div {
+        border: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+      }
+
+      /* 네이버 지도 API가 생성하는 특정 스타일 요소의 background 제거 */
+      #naver-map
+        div[style*="position: absolute"][style*="z-index: 0"][style*="border: 1px solid rgb(51, 51, 51)"] {
+        background: transparent !important;
+      }
+
+      /* 더 넓은 범위로 background 제거 */
+      #naver-map div[style*="position: absolute"][style*="z-index: 0"] {
+        background: transparent !important;
+      }
+    </style>
+    <script>
+      // 페이지 로드 전에 즉시 해시를 제거하고 스크롤을 맨 위로 고정
+      (function () {
+        // 해시를 완전히 제거하여 브라우저의 자동 스크롤 방지
+        if (window.location.hash) {
+          const hash = window.location.hash;
+          // history.replaceState를 사용하여 해시를 제거 (페이지 리로드 없이)
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(
+              null,
+              null,
+              window.location.pathname + window.location.search
+            );
+          } else {
+            window.location.hash = "";
+          }
+          // 전역 변수에 해시 저장 (나중에 JavaScript가 처리)
+          window.__initialHash = hash;
+        }
+
+        // 스크롤을 맨 위로 고정
+        if (document.documentElement) {
+          document.documentElement.scrollTop = 0;
+        }
+        if (document.body) {
+          document.body.scrollTop = 0;
+        }
+        window.scrollTo(0, 0);
+
+        // 버튼 활성화를 즉시 처리 (DOM이 로드되기 전이라도 시도)
+        function activateButtonByHash() {
+          const hash = window.__initialHash || window.location.hash;
+          const buttons = document.querySelectorAll(".maintenance-hero-btn");
+          if (buttons.length === 0) return;
+
+          // 모든 버튼에서 active 제거
+          buttons.forEach((btn) => {
+            btn.classList.remove("active");
+          });
+
+          if (hash) {
+            const targetSection = hash.replace("#", "");
+            const targetButton = document.querySelector(
+              `[data-section="${targetSection}"]`
+            );
+            if (targetButton) {
+              targetButton.classList.add("active");
+            }
+          } else {
+            // 해시가 없으면 기본 버튼(회사소개) 활성화
+            const defaultButton = document.querySelector(
+              '[data-section="company-intro"]'
+            );
+            if (defaultButton) {
+              defaultButton.classList.add("active");
+            }
+          }
+        }
+
+        // DOM이 로드되면 즉시 실행
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", activateButtonByHash);
+        } else {
+          activateButtonByHash();
+        }
+        // 추가로 약간의 지연 후에도 실행 (확실히 하기 위해)
+        setTimeout(activateButtonByHash, 0);
+        setTimeout(activateButtonByHash, 10);
+      })();
+    </script>
+    <script
+      type="text/javascript"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=k32jds060c"
+      async
+      onload="console.log('네이버 지도 API 스크립트 로드 완료'); window.naverMapScriptLoaded = true;"
+      onerror="console.error('네이버 지도 API 스크립트 로드 실패'); window.naverMapScriptError = true;"
+    ></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-container navTop_container__E1TtP">
+          <div class="logo">
+            <a href="/index.html">
+              <div class="logo-group">
+                <img
+                  src="../asset8.png"
+                  alt="그린에이 로고 8"
+                  class="logo-img"
+                />
+                <img
+                  src="../asset9.png"
+                  alt="그린에이 로고 9"
+                  class="logo-img"
+                />
+              </div>
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="dropdown">
+              <a href="company.html">회사소개</a>
+            </li>
+            <li class="dropdown">
+              <a href="/products/products.html#air-purifier-section"
+                >제품소개</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="/maintenance.html#maintenance-section">유지관리/렌탈</a>
+            </li>
+            <li class="dropdown">
+              <a href="https://m.blog.naver.com/greena911" target="_blank"
+                >블로그</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-right">
+            <a href="/request/request.html" class="quote-btn">견적문의</a>
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 통합 메가 메뉴 - 4개 컬럼 구조 -->
+        <div class="navbar_hoveredMenuBg">
+          <ul class="navbar_hoveredMenuContainer">
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">회사소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="company.html#company-intro"><li>회사소개</li></a>
+                <a href="company.html#map"><li>오시는길</li></a>
+                <a href="company.html#certification"><li>인증서</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">제품소개</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="/products/products.html#air-purifier-section"
+                  ><li>공기청정기</li></a
+                >
+                <a href="/products/products.html#fragrance-section"
+                  ><li>향기분사기</li></a
+                >
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">유지관리/렌탈</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="/maintenance.html#maintenance-section"
+                  ><li>유지관리</li></a
+                >
+                <a href="/maintenance.html#rental-section"><li>렌탈</li></a>
+              </ul>
+            </li>
+            <li class="navbar_hoveredListContainer">
+              <div class="mega-menu-header">블로그</div>
+              <ul class="navbar_hoveredMenuList">
+                <a href="https://m.blog.naver.com/greena911" target="_blank"
+                  ><li>블로그</li></a
+                >
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Sidebar (Hamburger Menu) -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+          <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-nav-content">
+          <ul class="mobile-nav-menu">
+            <li>
+              <a href="company.html#company-intro" class="mobile-nav-link"
+                >회사소개</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a href="company.html#company-intro" class="mobile-nav-link"
+                    >회사소개</a
+                  >
+                </li>
+                <li>
+                  <a href="company.html#map" class="mobile-nav-link"
+                    >오시는길</a
+                  >
+                </li>
+                <li>
+                  <a href="company.html#certification" class="mobile-nav-link"
+                    >인증서</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="/products/products.html#air-purifier-section"
+                class="mobile-nav-link"
+                >제품소개</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a
+                    href="/products/products.html#air-purifier-section"
+                    class="mobile-nav-link"
+                    >공기청정기</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/products/products.html#fragrance-section"
+                    class="mobile-nav-link"
+                    >향기분사기</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="/maintenance.html#maintenance-section"
+                class="mobile-nav-link"
+                >유지관리/렌탈</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a
+                    href="/maintenance.html#maintenance-section"
+                    class="mobile-nav-link"
+                    >유지관리</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/maintenance.html#rental-section"
+                    class="mobile-nav-link"
+                    >렌탈</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://m.blog.naver.com/greena911"
+                target="_blank"
+                class="mobile-nav-link"
+                >블로그</a
+              >
+              <ul class="mobile-sub-menu">
+                <li>
+                  <a
+                    href="https://m.blog.naver.com/greena911"
+                    target="_blank"
+                    class="mobile-nav-link"
+                    >블로그</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="maintenance-hero">
+      <div
+        class="maintenance-hero-bg"
+        style="background-image: url('back.png')"
+      ></div>
+      <div class="container">
+        <div class="maintenance-hero-content">
+          <div class="maintenance-hero-badge">COMPANY INTRODUCTION</div>
+          <h1 class="maintenance-hero-title">회사 소개</h1>
+          <p class="maintenance-hero-subtitle">
+            그린에이그룹의 기업 이념을 소개합니다.
+          </p>
+        </div>
+        <div class="maintenance-hero-nav">
+          <div class="maintenance-hero-nav-wrapper">
+            <button class="maintenance-hero-btn" data-section="company-intro">
+              회사소개
+            </button>
+            <button class="maintenance-hero-btn" data-section="map">
+              오시는길
+            </button>
+            <button class="maintenance-hero-btn" data-section="certification">
+              인증서
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Content Section -->
+    <section class="dynamic-content">
+      <div class="container">
+        <!-- Company Introduction Section -->
+        <div class="content-section" id="company-intro">
+          <div class="intro-content">
+            <div class="intro-text">
+              <h4>회사소개 | COMPANY INTRODUCTION</h4>
+              <h5>보이지 않는 공기까지 정직하게 설계하는 기업</h5>
+
+              <p>
+                현대인의 삶 속에서 실내공기 오염은 점점 더 심각해지고 있으며,
+                미세먼지·꽃가루·알레르기 유발물질·화학적 유해물질 등 다양한
+                오염원이 실내 공기를 위협하고 있습니다. 이러한 유해 요소들을
+                효과적으로 제거하고 쾌적한 환경을 조성하기 위해 공기정화장치는
+                필수적인 설비로 자리 잡고 있습니다. 그러나 공기정화장치는
+                설치만으로는 충분하지 않으며, 정기적이고 전문적인 유지관리
+                없이는 성능이 급격히 저하될 수 있습니다. 저희 그린에이(Green
+                A)는 체계적이고 효율적인 공기정화장치 유지관리 서비스를 통해,
+                보다 깨끗하고 건강한 실내환경을 제공합니다.
+              </p>
+
+              <p>
+                그린에이는 최신 장비와 전문 인력을 바탕으로, 학교, 유치원,
+                관공서, 기업 사무실 등 다양한 공간에서 맞춤형 실내공기 관리
+                서비스를 제공하고 있습니다. 공기청정기, 공기순환기, 공기청정키트
+                등 실내공기질 개선에 필요한 전반적인 장비를 유지·관리하며,
+                고객의 니즈에 따라 S2B(학교장터), G2B(나라장터), 나라빌 등 공공
+                조달 시스템을 통한 신속하고 정확한 업무처리를 지원합니다. 또한
+                전시장, 건설현장 사무실, 팝업스토어, 단기 행사장과 같은 일시적
+                공간을 위한 공기청정기 단기렌탈 서비스도 제공하고 있어, 필요한
+                기간 동안 효율적으로 기기를 사용할 수 있습니다.
+              </p>
+
+              <p>
+                그린에이는 '정직'과 '신뢰'를 핵심 가치로 삼아, 환경 보호와
+                에너지 절약, 그리고 삶의 질 향상을 위해 끊임없이 고민하고
+                실천하는 기업입니다. 고객의 건강과 만족을 최우선으로 생각하며,
+                언제나 한결같은 품질과 서비스로 보답하겠습니다.
+              </p>
+            </div>
+            <div class="intro-image">
+              <img src="company-intro.png" alt="회사소개" />
+            </div>
+          </div>
+
+          <!-- Container Gutter M Section (한화 스타일 참고) -->
+          <div class="container gutter-m">
+            <div class="left-right-content">
+              <div class="left">
+                <h2 class="section-title">
+                  그린에이는 지속가능한 내일을 만들어 갑니다.
+                </h2>
+              </div>
+              <div class="right-value-wrapper">
+                <div class="right">
+                  <p class="section-description">
+                    그린에이는 눈앞의 결과보다 오래 남을 가치를 생각합니다.
+                    깨끗한 공기와 정직한 기술로, 우리 모두의 지속가능한 내일을
+                    만들어갑니다.
+                  </p>
+                </div>
+
+                <!-- Value Box Wrapper -->
+                <div class="value-box-wrapper">
+                  <!-- 한화 스타일 참고: Value Box Section -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>도전</h3>
+                      <p>익숙함에 물음표를 던지는 용기</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        도전은 익숙한 일에 질문을 던지는 순간 시작되며, 그 작은
+                        물음들이 그린에이를 앞으로 나아가게 합니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Value Box 2 -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>정도</h3>
+                      <p>보이지 않아도, 흐름은 정직한</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        조용한 실천이 신뢰를 만들기에 그린에이는 작은 작업
+                        하나에도 원칙을 지키며 조용히 신뢰를 쌓습니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Value Box 3 -->
+                  <div class="value-box active">
+                    <div class="sub-title-1 box-title">
+                      <h3>고객중심</h3>
+                      <p>사람을 위해 공기를 먼저</p>
+                    </div>
+                    <div class="sub-title-5">
+                      <p>
+                        우리가 다루는 건 기계지만, 그 안에서 숨 쉬는 사람을 먼저
+                        생각하며 모든 기준과 방식은 언제나 고객의 입장에서 다시
+                        점검합니다.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div id="map">
+          <div class="container">
+            <div class="intro-content">
+              <div class="intro-text">
+                <h4>오시는길 | MAP</h4>
+                <h5>오시는길</h5>
+              </div>
+              <div
+                class="list_end"
+                style="
+                  margin-top: 2rem;
+                  padding: 1.5rem;
+                  background: #f6f8fa;
+                  border-radius: 8px;
+                  font-family: 'Noto Sans KR', sans-serif;
+                "
+              >
+                <div style="font-size: 14px; line-height: 1.8; color: #333">
+                  <div
+                    style="
+                      margin-bottom: 0.5rem;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <strong style="color: #000000; white-space: nowrap"
+                      >주소:</strong
+                    >
+                    <span id="address-text"
+                      >경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동
+                      9043호</span
+                    >
+                    <button
+                      id="copy-address-btn"
+                      onclick="copyAddressToClipboard()"
+                      style="
+                        background: transparent;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        padding: 4px 8px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        color: #666;
+                        transition: all 0.2s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        white-space: nowrap;
+                        flex-shrink: 0;
+                      "
+                      onmouseover="this.style.borderColor='#53c178'; this.style.color='#53c178';"
+                      onmouseout="this.style.borderColor='#ddd'; this.style.color='#666';"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect
+                          x="9"
+                          y="9"
+                          width="13"
+                          height="13"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <path
+                          d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                        ></path>
+                      </svg>
+                      복사
+                    </button>
+                  </div>
+                  <div style="margin-bottom: 0.5rem">
+                    <strong style="color: #000000; white-space: nowrap"
+                      >전화:</strong
+                    >
+                    <span style="white-space: nowrap">031-522-5709</span>
+                  </div>
+                  <div>
+                    <strong style="color: #000000; white-space: nowrap"
+                      >팩스:</strong
+                    >
+                    <span style="white-space: nowrap">031-522-5706</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container" style="position: relative">
+              <div id="naver-map" style="width: 100%; height: 486px"></div>
+              <!-- 현위치 버튼 -->
+              <button
+                id="current-location-btn"
+                style="
+                  position: absolute;
+                  top: 70px;
+                  right: 20px;
+                  z-index: 1000;
+                  background: #ffffff;
+                  border: none;
+                  border-radius: 8px;
+                  padding: 12px;
+                  cursor: pointer;
+                  box-shadow: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #53c178;
+                  transition: all 0.3s ease;
+                  font-family: inherit;
+                "
+                onmouseover="this.style.background='#53C178'; this.style.color='#ffffff';"
+                onmouseout="this.style.background='#ffffff'; this.style.color='#53c178';"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </button>
+              <!-- 본사로 이동 버튼 -->
+              <button
+                id="go-to-office-btn"
+                style="
+                  position: absolute;
+                  top: 20px;
+                  right: 20px;
+                  z-index: 1000;
+                  background: #ffffff;
+                  border: none;
+                  border-radius: 8px;
+                  padding: 12px;
+                  cursor: pointer;
+                  box-shadow: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #53c178;
+                  transition: all 0.3s ease;
+                  font-family: inherit;
+                "
+                onmouseover="this.style.background='#53C178'; this.style.color='#ffffff';"
+                onmouseout="this.style.background='#ffffff'; this.style.color='#53c178';"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  ></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificate Section -->
+        <div class="content-section hidden" id="certification">
+          <div class="intro-content">
+            <div class="intro-text">
+              <h4>인증서 | CERTIFICATES</h4>
+              <h5 style="margin-bottom: 0">인증서</h5>
+              <a
+                href="#"
+                style="
+                  display: inline-block;
+                  margin-top: 2rem;
+                  margin-bottom: 32px;
+                  font-size: 1.1rem;
+                  color: #666;
+                  text-decoration: none;
+                  line-height: 1.8;
+                "
+                >안심하고 사용할 수 있는 인증된 필터로 변함없이 깨끗한 공기로</a
+              >
+            </div>
+          </div>
+          <div class="certificate-content">
+            <div class="certificate-grid">
+              <div class="certificate-item">
+                <div class="certificate-image">
+                  <img
+                    src="./hepa-filter.png"
+                    alt="ISO 9001 품질경영시스템"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>ISO 9001</div>';"
+                  />
+                </div>
+                <div class="certificate-info">
+                  <h4>헤파필터 - HEPA13등급</h4>
+                  <p>
+                    HEPA 13등급은 0.3μm 크기의 미세먼지를 99.95% 여과합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="certificate-item">
+                <div class="certificate-image">
+                  <img
+                    src="./medium-filter.png"
+                    alt="K-ECO 친환경 인증"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>K-ECO</div>';"
+                  />
+                </div>
+                <div class="certificate-info">
+                  <h4>미디움 필터 - MERV 16등급</h4>
+                  <p>미국 냉동공조협회(ASHRAE) 필터규격(MERV)을 준수합니다.</p>
+                </div>
+              </div>
+
+              <div class="certificate-item">
+                <div class="certificate-image">
+                  <img
+                    src="./pre-filter.png"
+                    alt="ISO 9001 품질경영시스템"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>ISO 9001</div>';"
+                  />
+                </div>
+                <div class="certificate-info">
+                  <h4>프리필터</h4>
+                  <p>
+                    대형 분진을 선제적으로 제거하는 필터로, 집진 성능 시험에서
+                    적합 판정을 받았습니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="certificate-item">
+                <div class="certificate-image">
+                  <img
+                    src="./deodor-filter.png"
+                    alt="ISO 9001 품질경영시스템"
+                    style="
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      background: #f6f8fa;
+                    "
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'certificate-placeholder\'>ISO 9001</div>';"
+                  />
+                </div>
+                <div class="certificate-info">
+                  <h4>탈취필터</h4>
+                  <p>
+                    활성탄 등 흡착 매체를 이용한 악취 및 유해가스 저감 성능을
+                    시험으로 확인했습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="/index.html">
+              <div class="logo-group">
+                <img
+                  src="../asset8.png"
+                  alt="그린에이 로고 8"
+                  class="logo-img"
+                />
+                <img
+                  src="../asset9.png"
+                  alt="그린에이 로고 9"
+                  class="logo-img"
+                />
+              </div>
+            </a>
+          </div>
+          <div class="footer-sections">
+            <div class="footer-section">
+              <h3>회사소개</h3>
+              <ul>
+                <li><a href="company.html">회사소개</a></li>
+                <li><a href="company.html#map">오시는길</a></li>
+                <li><a href="company.html#certification">인증서</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>제품소개</h3>
+              <ul>
+                <li>
+                  <a href="/products/products.html#air-purifier-section"
+                    >공기청정기</a
+                  >
+                </li>
+                <li>
+                  <a href="/products/products.html#fragrance-section"
+                    >향기분사기</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>유지관리/렌탈</h3>
+              <ul>
+                <li>
+                  <a href="/maintenance.html#maintenance-section">유지관리</a>
+                </li>
+                <li>
+                  <a href="/maintenance.html#rental-section">렌탈</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>블로그</h3>
+              <ul>
+                <li>
+                  <a href="https://m.blog.naver.com/greena911" target="_blank"
+                    >블로그</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>고객센터</h3>
+              <p>전화: 031-522-5709</p>
+              <p>이메일: greena911@naver.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>
+              <strong>(주)그린에이</strong><br />
+              Copyright © 2025 그린에이 All rights Reserved.
+            </p>
+            <p>
+              경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 9043호<br />
+              고객센터: 031-522-5709 · 팩스: 031-522-5706
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="float-container" id="floatContainer">
+      <!-- Channel.io Style Label Button -->
+      <button type="button" class="float-label-button" id="floatLabelButton">
+        <div class="float-label-text-wrapper">
+          <div class="float-label-title">견적문의가 필요하다면?</div>
+          <div class="float-label-status">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="float-label-icon"
+            >
+              <path
+                fill="currentColor"
+                d="M12 4c5.247 0 9.5 3.582 9.5 8s-4.253 8-9.5 8c-.69 0-1.363-.064-2.012-.182-1.416 1.21-3.05 1.794-4.11 2.062-.42.107-.716-.362-.496-.737.388-.66.863-1.599 1.14-2.609C4.09 17.086 2.5 14.7 2.5 12c0-4.418 4.253-8 9.5-8m-4.499 6.5c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501.826 0 1.5-.675 1.5-1.501 0-.824-.675-1.499-1.5-1.499m4.5 0c-.824 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499m4.5 0c-.825 0-1.5.675-1.501 1.499 0 .826.676 1.501 1.501 1.501s1.5-.675 1.5-1.501c0-.824-.675-1.499-1.5-1.499"
+              ></path>
+            </svg>
+            <span class="float-label-status-text">대화 시작하기</span>
+          </div>
+        </div>
+      </button>
+      <div class="float-menu" id="floatMenu">
+        <a href="tel:0315225709" class="float-item" aria-label="전화 상담">
+          <i class="fas fa-phone"></i>
+          <span class="float-tooltip">전화 상담</span>
+        </a>
+        <a
+          href="https://pf.kakao.com/_BFvHn/chat"
+          target="_blank"
+          class="float-item"
+          aria-label="카카오톡 상담"
+        >
+          <i class="fas fa-comment-dots"></i>
+          <span class="float-tooltip">카카오톡</span>
+        </a>
+        <a
+          href="/request/request.html"
+          class="float-item"
+          aria-label="견적 문의"
+        >
+          <i class="fas fa-file-alt"></i>
+          <span class="float-tooltip">견적 문의</span>
+        </a>
+      </div>
+      <button class="float-main-btn" id="floatMainBtn" aria-label="고객 상담">
+        <img
+          src="float-open.png"
+          alt="열기"
+          class="float-btn-img float-btn-open"
+        />
+        <img
+          src="float-close.png"
+          alt="닫기"
+          class="float-btn-img float-btn-close"
+        />
+      </button>
+    </div>
+
+    <script>
+      // 브라우저 스크롤 복원 비활성화
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      // 페이지 로드 시 즉시 스크롤을 맨 위로 이동 (최우선)
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      // DOMContentLoaded 전에도 스크롤을 맨 위로 유지
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+      } else {
+        // 이미 로드된 경우 즉시 실행
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
+
+      // 페이지 로드 완료 후에도 스크롤을 맨 위로 유지
+      window.addEventListener("load", function () {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        // requestAnimationFrame을 사용하여 브라우저 렌더링 후에도 스크롤 유지
+        requestAnimationFrame(function () {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        });
+      });
+
+      // 탭 전환 기능 구현 (maintenance.html과 동일한 구조)
+      document.addEventListener("DOMContentLoaded", function () {
+        const maintenanceHeroBtns = document.querySelectorAll(
+          ".maintenance-hero-btn[data-section]"
+        );
+        const contentSections = document.querySelectorAll(".content-section");
+
+        // 섹션 표시 함수
+        function showSection(hash, skipScroll) {
+          if (!hash) return;
+
+          const targetSection = hash.replace("#", "");
+          const targetButton = document.querySelector(
+            `[data-section="${targetSection}"]`
+          );
+          const targetElement = document.getElementById(hash.replace("#", ""));
+
+          if (targetElement) {
+            // 모든 content-section 섹션 숨기기
+            contentSections.forEach((section) => {
+              section.classList.add("hidden");
+              section.classList.remove("visible");
+            });
+
+            // content-section이 아닌 섹션들도 명시적으로 숨기기 (map, certification)
+            const mapSection = document.getElementById("map");
+            const certSection = document.getElementById("certification");
+
+            if (mapSection && targetSection !== "map") {
+              mapSection.classList.remove("visible");
+              mapSection.style.display = "none";
+            }
+
+            if (certSection && targetSection !== "certification") {
+              certSection.classList.remove("visible");
+              certSection.style.display = "none";
+            }
+
+            // 해당 섹션 보이기
+            targetElement.classList.remove("hidden");
+            // dynamic-content에는 visible 클래스를 추가하지 않음
+            if (!targetElement.classList.contains("dynamic-content")) {
+              targetElement.classList.add("visible");
+            }
+
+            // content-section이 아닌 경우 display도 설정
+            if (!targetElement.classList.contains("content-section")) {
+              targetElement.style.display = "block";
+            }
+
+            // #map 섹션이 표시될 때 지도 초기화
+            if (targetElement.id === "map") {
+              setTimeout(() => {
+                const mapContainer = document.getElementById("naver-map");
+                if (mapContainer) {
+                  // 지도 컨테이너가 보이도록 설정
+                  mapContainer.style.display = "block";
+
+                  // 네이버 지도 API가 로드되었는지 확인
+                  if (typeof naver !== "undefined") {
+                    // 지도가 초기화되지 않았으면 초기화
+                    if (!window.currentMap) {
+                      initMap();
+                    } else {
+                      // 이미 초기화되어 있으면 지도 리사이즈
+                      window.currentMap.refresh();
+                    }
+                  } else {
+                    // API가 아직 로드되지 않았으면 대기 후 재시도
+                    const checkNaver = setInterval(() => {
+                      if (typeof naver !== "undefined") {
+                        clearInterval(checkNaver);
+                        if (!window.currentMap) {
+                          initMap();
+                        } else {
+                          window.currentMap.refresh();
+                        }
+                      }
+                    }, 100);
+
+                    // 5초 후에도 로드되지 않으면 중단
+                    setTimeout(() => clearInterval(checkNaver), 5000);
+                  }
+                }
+              }, 300);
+            }
+
+            // 버튼이 있으면 활성화
+            if (targetButton) {
+              maintenanceHeroBtns.forEach((btn) =>
+                btn.classList.remove("active")
+              );
+              targetButton.classList.add("active");
+            }
+          }
+
+          // 스크롤을 맨 위로 이동 (skipScroll이 true면 스킵)
+          if (!skipScroll) {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+          }
+        }
+
+        // 같은 페이지 내 링크 클릭 처리 (새로고침 없이 섹션 전환)
+        // 메가 메뉴 닫기 함수
+        function closeMegaMenu() {
+          const navbarHoveredMenuBg = document.querySelector(
+            ".navbar_hoveredMenuBg"
+          );
+          if (navbarHoveredMenuBg) {
+            // CSS !important를 우회하기 위해 인라인 스타일에 !important 추가
+            navbarHoveredMenuBg.style.setProperty("opacity", "0", "important");
+            navbarHoveredMenuBg.style.setProperty(
+              "visibility",
+              "hidden",
+              "important"
+            );
+            navbarHoveredMenuBg.style.setProperty(
+              "transform",
+              "translateY(-10px) translateZ(0)",
+              "important"
+            );
+            navbarHoveredMenuBg.style.setProperty(
+              "pointer-events",
+              "none",
+              "important"
+            );
+
+            // 메가 메뉴에만 클래스 추가 (nav container는 유지)
+            navbarHoveredMenuBg.classList.add("mega-menu-closed");
+          }
+        }
+
+        // navbar_hoveredListContainer 내의 모든 클릭 가능한 요소 (a, button 등)
+        // 이벤트 위임을 사용하여 더 확실하게 처리
+        const navbarHoveredMenuBg = document.querySelector(
+          ".navbar_hoveredMenuBg"
+        );
+        if (navbarHoveredMenuBg) {
+          navbarHoveredMenuBg.addEventListener(
+            "click",
+            function (e) {
+              // 클릭된 요소가 링크나 버튼인지 확인
+              const clickedElement = e.target.closest("a, button");
+              if (
+                clickedElement &&
+                clickedElement.closest(".navbar_hoveredListContainer")
+              ) {
+                closeMegaMenu();
+              }
+            },
+            true
+          ); // 캡처 단계에서 처리
+        }
+
+        // nav container 호버 시 메가 메뉴 클래스 제거하여 다시 열리도록 함
+        const container = document.querySelector(".container");
+        const navContainer =
+          document.querySelector(".nav-container") ||
+          document.querySelector(".navTop_container__E1TtP");
+
+        function reopenMegaMenu() {
+          if (navbarHoveredMenuBg) {
+            navbarHoveredMenuBg.classList.remove("mega-menu-closed");
+            // 인라인 스타일도 제거하여 CSS 호버 상태가 작동하도록 함
+            navbarHoveredMenuBg.style.removeProperty("opacity");
+            navbarHoveredMenuBg.style.removeProperty("visibility");
+            navbarHoveredMenuBg.style.removeProperty("transform");
+            navbarHoveredMenuBg.style.removeProperty("pointer-events");
+          }
+        }
+
+        if (container) {
+          container.addEventListener("mouseenter", reopenMegaMenu);
+        }
+        if (navContainer) {
+          navContainer.addEventListener("mouseenter", reopenMegaMenu);
+        }
+        if (navbarHoveredMenuBg) {
+          navbarHoveredMenuBg.addEventListener("mouseenter", reopenMegaMenu);
+        }
+
+        document
+          .querySelectorAll(
+            ".navbar_hoveredListContainer a, .navbar_hoveredListContainer button, .navbar_hoveredMenuList a, .navbar_hoveredMenuList button, .footer-section a"
+          )
+          .forEach((element) => {
+            element.addEventListener("click", function (e) {
+              const href = this.getAttribute("href");
+
+              // 현재 페이지 경로 확인
+              const currentPath = window.location.pathname;
+              const isCompanyPage = currentPath.includes("company.html");
+
+              // navbar_hoveredMenuBg 닫기 (확실하게)
+              closeMegaMenu();
+
+              // href가 없는 경우 (button 등)는 여기서 종료
+              if (!href) return;
+
+              // 모든 링크 클릭 시 스크롤을 맨 위로 이동
+              window.scrollTo(0, 0);
+              document.documentElement.scrollTop = 0;
+              document.body.scrollTop = 0;
+
+              // 같은 페이지 내 해시 링크 처리 (#section)
+              if (href.startsWith("#") && !href.includes(".html")) {
+                e.preventDefault();
+                const hash = href;
+                window.location.hash = hash;
+                showSection(hash);
+                return;
+              }
+
+              // 같은 페이지로 이동하는 링크 처리 (company.html 또는 company.html#section)
+              if (
+                isCompanyPage &&
+                (href === "company.html" || href.includes("company.html"))
+              ) {
+                e.preventDefault();
+
+                // 해시가 있으면 해당 섹션으로, 없으면 기본 섹션(회사소개)으로
+                if (href.includes("#")) {
+                  const hash = "#" + href.split("#")[1];
+                  window.location.hash = hash;
+                  showSection(hash);
+                } else {
+                  // 해시가 없으면 기본 섹션(회사소개) 표시
+                  window.location.hash = "";
+                  showSection("#company-intro");
+                }
+                return;
+              }
+
+              // 다른 페이지로 이동하는 링크의 경우, 페이지 이동 전에 스크롤을 0으로 설정
+              // (페이지 로드 시 스크롤이 0으로 유지되도록)
+            });
+          });
+
+        // mobile-nav-menu 링크에도 동일한 동작 적용
+        document
+          .querySelectorAll(".mobile-nav-menu a.mobile-nav-link")
+          .forEach((element) => {
+            element.addEventListener("click", function (e) {
+              const href = this.getAttribute("href");
+              if (!href) return;
+
+              // 현재 페이지 경로 확인
+              const currentPath = window.location.pathname;
+              const isCompanyPage = currentPath.includes("company.html");
+
+              // 모바일 메뉴 닫기
+              const mobileNavOverlay =
+                document.getElementById("mobileNavOverlay");
+              if (mobileNavOverlay) {
+                mobileNavOverlay.classList.remove("active");
+                document.body.style.overflow = "auto";
+                const hamburger = document.querySelector(".hamburger");
+                if (hamburger) {
+                  hamburger.classList.remove("active");
+                }
+                document.body.classList.remove("mobile-nav-active");
+              }
+
+              // 모든 링크 클릭 시 스크롤을 맨 위로 이동
+              window.scrollTo(0, 0);
+              document.documentElement.scrollTop = 0;
+              document.body.scrollTop = 0;
+
+              // 같은 페이지 내 해시 링크 처리 (#section)
+              if (href.startsWith("#") && !href.includes(".html")) {
+                e.preventDefault();
+                const hash = href;
+                window.location.hash = hash;
+                showSection(hash);
+                return;
+              }
+
+              // 같은 페이지로 이동하는 링크 처리 (company.html 또는 company.html#section)
+              if (
+                isCompanyPage &&
+                (href === "company.html" || href.includes("company.html"))
+              ) {
+                e.preventDefault();
+
+                // 해시가 있으면 해당 섹션으로, 없으면 기본 섹션(회사소개)으로
+                if (href.includes("#")) {
+                  const hash = "#" + href.split("#")[1];
+                  window.location.hash = hash;
+                  showSection(hash);
+                } else {
+                  // 해시가 없으면 기본 섹션(회사소개) 표시
+                  window.location.hash = "";
+                  showSection("#company-intro");
+                }
+                return;
+              }
+
+              // 다른 페이지로 이동하는 링크의 경우, 페이지 이동 전에 스크롤을 0으로 설정
+              // (페이지 로드 시 스크롤이 0으로 유지되도록)
+            });
+          });
+
+        // Sub KV 스크롤 애니메이션 (한화 스타일 참고)
+        // Dynamic Content 내부 요소들의 스크롤 애니메이션 (한화 스타일 참고)
+        const dynamicContent = document.querySelector(".dynamic-content");
+        if (dynamicContent) {
+          // 각 섹션별로 intro-text 요소들을 그룹화하여 동일한 애니메이션 속도 적용
+          const sections = [
+            {
+              id: "#company-intro",
+              selector:
+                "#company-intro .intro-text, #company-intro .intro-text h4, #company-intro .intro-text h5, #company-intro .intro-text p",
+            },
+            {
+              id: "#map",
+              selector:
+                "#map .intro-text, #map .intro-text h4, #map .intro-text h5",
+            },
+            {
+              id: "#certification",
+              selector:
+                "#certification .intro-text, #certification .intro-text h4, #certification .intro-text h5",
+            },
+          ];
+
+          // 각 섹션의 intro-text 요소들에 동일한 애니메이션 적용 (#company-intro 기준)
+          sections.forEach((section) => {
+            const sectionElements = dynamicContent.querySelectorAll(
+              section.selector
+            );
+            sectionElements.forEach((element, index) => {
+              // 초기 상태 설정
+              element.style.opacity = "0";
+              element.style.transform = "translateY(30px)";
+
+              // #company-intro 기준: 0.6s duration, 0.05 delay multiplier
+              const transitionDuration = "0.6s";
+              const delayMultiplier = 0.05;
+              const delay = index * delayMultiplier;
+
+              element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+              const elementObserver = new IntersectionObserver(
+                (entries) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      entry.target.style.opacity = "1";
+                      entry.target.style.transform = "translateY(0)";
+                      elementObserver.unobserve(entry.target);
+                    }
+                  });
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: "0px 0px -50px 0px",
+                }
+              );
+
+              elementObserver.observe(element);
+            });
+          });
+
+          // 나머지 요소들 (intro-content, intro-image, container 등)
+          const otherElements = dynamicContent.querySelectorAll(
+            ".intro-content, .intro-image, #map .container, #certification .intro-content, .certificate-grid"
+          );
+
+          otherElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            // intro-image는 더 빠른 애니메이션 적용
+            const isIntroImage = element.classList.contains("intro-image");
+            const transitionDuration = isIntroImage ? "0.4s" : "0.6s";
+            const delayMultiplier = isIntroImage ? 0.03 : 0.05;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: isIntroImage ? 0.05 : 0.1,
+                rootMargin: isIntroImage
+                  ? "0px 0px -100px 0px"
+                  : "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
+        // Container Gutter M 스크롤 애니메이션 (dynamic-content와 동일)
+        const containerGutterM = document.querySelector(".container.gutter-m");
+        if (containerGutterM) {
+          const gutterMElements = containerGutterM.querySelectorAll(
+            ".left-right-content, .left, .right, .right-value-wrapper, .value-box-wrapper, .value-box, .section-title, .section-description, .sub-title-1, .sub-title-5"
+          );
+
+          gutterMElements.forEach((element, index) => {
+            // 초기 상태 설정
+            element.style.opacity = "0";
+            element.style.transform = "translateY(30px)";
+
+            // right-value-wrapper는 더 빠른 애니메이션 적용
+            const isRightValueWrapper = element.classList.contains(
+              "right-value-wrapper"
+            );
+            const transitionDuration = isRightValueWrapper ? "0.4s" : "0.6s";
+            const delayMultiplier = isRightValueWrapper ? 0.03 : 0.05;
+            const delay = index * delayMultiplier;
+
+            element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
+
+            const elementObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    elementObserver.unobserve(entry.target);
+                  }
+                });
+              },
+              {
+                threshold: isRightValueWrapper ? 0.05 : 0.1,
+                rootMargin: isRightValueWrapper
+                  ? "0px 0px -100px 0px"
+                  : "0px 0px -50px 0px",
+              }
+            );
+
+            elementObserver.observe(element);
+          });
+        }
+
+        // URL 해시에 따른 초기 섹션 설정
+        // 초기 해시는 전역 변수에서 가져오거나 현재 해시 사용
+        const hash = window.__initialHash || window.location.hash;
+
+        // 모든 버튼에서 active 클래스 제거 (초기 상태)
+        maintenanceHeroBtns.forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // 모든 섹션에서 visible 클래스 제거 (CSS display: none이 적용됨)
+        contentSections.forEach((section) => {
+          section.classList.remove("visible");
+        });
+
+        // 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+        if (hash) {
+          // 해시가 있으면 해당 섹션과 버튼 활성화
+          const targetSection = hash.replace("#", "");
+          const targetButton = document.querySelector(
+            `[data-section="${targetSection}"]`
+          );
+
+          // 버튼을 즉시 활성화 (깜빡거림 방지)
+          if (targetButton) {
+            targetButton.classList.add("active");
+          }
+
+          // requestAnimationFrame을 사용하여 브라우저 렌더링 후 섹션 표시
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              window.scrollTo(0, 0);
+              document.documentElement.scrollTop = 0;
+              document.body.scrollTop = 0;
+              showSection(hash, true);
+              // visible 클래스 추가하여 CSS display 제거
+              const targetElement = document.getElementById(
+                hash.replace("#", "")
+              );
+              if (
+                targetElement &&
+                !targetElement.classList.contains("dynamic-content")
+              ) {
+                targetElement.classList.add("visible");
+              }
+
+              // #map 섹션이 표시될 때 지도 초기화
+              if (targetElement && targetElement.id === "map") {
+                // #map 섹션이 보이도록 설정
+                targetElement.style.display = "block";
+
+                setTimeout(() => {
+                  const mapContainer = document.getElementById("naver-map");
+                  if (mapContainer) {
+                    // 지도 컨테이너가 보이도록 설정
+                    mapContainer.style.display = "block";
+
+                    // 네이버 지도 API가 로드되었는지 확인
+                    if (typeof naver !== "undefined") {
+                      // 지도가 초기화되지 않았으면 초기화
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        // 이미 초기화되어 있으면 지도 리사이즈
+                        window.currentMap.refresh();
+                      }
+                    } else {
+                      // API가 아직 로드되지 않았으면 대기 후 재시도
+                      const checkNaver = setInterval(() => {
+                        if (typeof naver !== "undefined") {
+                          clearInterval(checkNaver);
+                          if (!window.currentMap) {
+                            initMap();
+                          } else {
+                            window.currentMap.refresh();
+                          }
+                        }
+                      }, 100);
+
+                      // 5초 후에도 로드되지 않으면 중단
+                      setTimeout(() => clearInterval(checkNaver), 5000);
+                    }
+                  }
+                }, 500);
+              }
+            });
+          });
+        } else {
+          // 해시가 없으면 기본 섹션(회사소개)만 표시
+          const defaultSection = document.getElementById("company-intro");
+          const defaultButton = document.querySelector(
+            '[data-section="company-intro"]'
+          );
+
+          // 기본 버튼 활성화
+          if (defaultButton) {
+            defaultButton.classList.add("active");
+          }
+
+          // map과 certification 섹션 명시적으로 숨기기
+          const mapSection = document.getElementById("map");
+          const certSection = document.getElementById("certification");
+
+          if (mapSection) {
+            mapSection.classList.remove("visible");
+            mapSection.style.display = "none";
+          }
+
+          if (certSection) {
+            certSection.classList.remove("visible");
+            certSection.style.display = "none";
+          }
+
+          if (
+            defaultSection &&
+            !defaultSection.classList.contains("dynamic-content")
+          ) {
+            defaultSection.classList.add("visible");
+          }
+
+          // 기본 섹션이 #map인 경우 지도 초기화
+          if (defaultSection && defaultSection.id === "map") {
+            setTimeout(() => {
+              const mapContainer = document.getElementById("naver-map");
+              if (mapContainer) {
+                // 지도 컨테이너가 보이도록 설정
+                mapContainer.style.display = "block";
+
+                // 네이버 지도 API가 로드되었는지 확인
+                if (typeof naver !== "undefined") {
+                  // 지도가 초기화되지 않았으면 초기화
+                  if (!window.currentMap) {
+                    initMap();
+                  } else {
+                    // 이미 초기화되어 있으면 지도 리사이즈
+                    window.currentMap.refresh();
+                  }
+                } else {
+                  // API가 아직 로드되지 않았으면 대기 후 재시도
+                  const checkNaver = setInterval(() => {
+                    if (typeof naver !== "undefined") {
+                      clearInterval(checkNaver);
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        window.currentMap.refresh();
+                      }
+                    }
+                  }, 100);
+
+                  // 5초 후에도 로드되지 않으면 중단
+                  setTimeout(() => clearInterval(checkNaver), 5000);
+                }
+              }
+            }, 500);
+          }
+        }
+
+        // 배경 이미지 애니메이션을 위한 요소 선택
+        const maintenanceHeroBg = document.querySelector(
+          ".maintenance-hero-bg"
+        );
+
+        maintenanceHeroBtns.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // 이미 활성화된 버튼을 클릭한 경우 아무것도 하지 않음
+            if (this.classList.contains("active")) {
+              return;
+            }
+
+            const targetSection = this.getAttribute("data-section");
+
+            // 배경 이미지 애니메이션 트리거
+            if (maintenanceHeroBg) {
+              // 기존 클래스 및 스타일 제거 (리셋)
+              maintenanceHeroBg.classList.remove("animate");
+
+              // transition 제거하고 1.2로 즉시 확대
+              maintenanceHeroBg.style.transition = "none";
+              maintenanceHeroBg.style.transform = "scale(1.2)";
+
+              // 다음 프레임에서 transition 활성화하고 1.0으로 줄어들도록 애니메이션
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  // transition 활성화
+                  maintenanceHeroBg.style.transition = "";
+                  // 인라인 스타일을 명시적으로 scale(1)로 설정하여 CSS 클래스와 일치시킴
+                  maintenanceHeroBg.style.transform = "scale(1)";
+                  // animate 클래스 추가 (CSS 우선순위를 위해)
+                  maintenanceHeroBg.classList.add("animate");
+                });
+              });
+
+              // 애니메이션 완료 후 초기 상태로 리셋 (다음 클릭을 위해)
+              maintenanceHeroBg.addEventListener(
+                "transitionend",
+                function resetAnimation() {
+                  maintenanceHeroBg.classList.remove("animate");
+                  maintenanceHeroBg.style.transform = "";
+                  maintenanceHeroBg.removeEventListener(
+                    "transitionend",
+                    resetAnimation
+                  );
+                },
+                { once: true }
+              );
+            }
+
+            // 모든 버튼에서 active 클래스 제거
+            maintenanceHeroBtns.forEach((btn) =>
+              btn.classList.remove("active")
+            );
+            // 클릭된 버튼에 active 클래스 추가
+            this.classList.add("active");
+
+            // 모든 content-section 섹션 숨기기
+            contentSections.forEach((section) => {
+              section.classList.add("hidden");
+              section.classList.remove("visible");
+            });
+
+            // content-section이 아닌 섹션들도 명시적으로 숨기기 (map, certification)
+            const mapSection = document.getElementById("map");
+            const certSection = document.getElementById("certification");
+
+            if (mapSection && targetSection !== "map") {
+              mapSection.classList.remove("visible");
+              mapSection.style.display = "none";
+            }
+
+            if (certSection && targetSection !== "certification") {
+              certSection.classList.remove("visible");
+              certSection.style.display = "none";
+            }
+
+            // 선택된 섹션만 보이기
+            const targetElement = document.getElementById(targetSection);
+            if (targetElement) {
+              targetElement.classList.remove("hidden");
+              // dynamic-content에는 visible 클래스를 추가하지 않음
+              if (!targetElement.classList.contains("dynamic-content")) {
+                targetElement.classList.add("visible");
+              }
+              // CSS display를 강제로 설정
+              targetElement.style.display = "block";
+
+              // #map 섹션이 표시될 때 지도 초기화
+              if (targetElement.id === "map") {
+                setTimeout(() => {
+                  const mapContainer = document.getElementById("naver-map");
+                  if (mapContainer) {
+                    // 지도 컨테이너가 보이도록 설정
+                    mapContainer.style.display = "block";
+
+                    // 네이버 지도 API가 로드되었는지 확인
+                    if (typeof naver !== "undefined") {
+                      // 지도가 초기화되지 않았으면 초기화
+                      if (!window.currentMap) {
+                        initMap();
+                      } else {
+                        // 이미 초기화되어 있으면 지도 리사이즈
+                        window.currentMap.refresh();
+                      }
+                    } else {
+                      // API가 아직 로드되지 않았으면 대기 후 재시도
+                      const checkNaver = setInterval(() => {
+                        if (typeof naver !== "undefined") {
+                          clearInterval(checkNaver);
+                          if (!window.currentMap) {
+                            initMap();
+                          } else {
+                            window.currentMap.refresh();
+                          }
+                        }
+                      }, 100);
+
+                      // 5초 후에도 로드되지 않으면 중단
+                      setTimeout(() => clearInterval(checkNaver), 5000);
+                    }
+                  }
+                }, 300);
+              }
+            }
+
+            // URL 해시 업데이트 (버튼 클릭 시 해시 반영)
+            // data-section과 id 매핑
+            let hash = "";
+            if (targetSection === "company-intro") {
+              hash = "#company-intro";
+            } else if (targetSection === "map") {
+              hash = "#map";
+            } else if (targetSection === "certification") {
+              hash = "#certification";
+            }
+
+            if (hash) {
+              window.history.pushState(null, null, hash);
+            }
+          });
+        });
+      });
+
+      // 네이버 지도 초기화 함수
+      function initMap() {
+        // 지도 컨테이너 확인
+        const mapContainer = document.getElementById("naver-map");
+        if (!mapContainer) {
+          console.error("지도 컨테이너를 찾을 수 없습니다.");
+          return;
+        }
+
+        // 지도 컨테이너가 보이지 않으면 보이도록 설정
+        if (
+          mapContainer.style.display === "none" ||
+          mapContainer.offsetParent === null
+        ) {
+          mapContainer.style.display = "block";
+        }
+
+        // 이미 지도가 초기화되어 있고 유효한 경우 리사이즈만 수행
+        if (window.currentMap) {
+          try {
+            // 지도가 유효한지 확인
+            if (
+              window.currentMap &&
+              typeof window.currentMap.refresh === "function"
+            ) {
+              console.log(
+                "지도가 이미 초기화되어 있습니다. 리사이즈만 수행합니다."
+              );
+              setTimeout(() => {
+                if (window.currentMap) {
+                  window.currentMap.refresh();
+                }
+              }, 100);
+              return;
+            }
+          } catch (error) {
+            console.warn(
+              "기존 지도가 유효하지 않습니다. 재초기화합니다:",
+              error
+            );
+            window.currentMap = null;
+          }
+        }
+
+        // 네이버 지도 API가 로드되었는지 확인
+        if (typeof naver === "undefined" || typeof naver.maps === "undefined") {
+          console.error("네이버 지도 API가 로드되지 않았습니다.");
+          console.error("현재 프로토콜:", window.location.protocol);
+          console.error("현재 URL:", window.location.href);
+          console.error("naver 객체:", typeof naver);
+          console.error(
+            "naver.maps 객체:",
+            typeof naver !== "undefined"
+              ? typeof naver.maps
+              : "naver가 undefined"
+          );
+
+          // file:// 프로토콜 사용 시 경고
+          if (window.location.protocol === "file:") {
+            console.error(
+              "❌ 네이버 지도 API는 file:// 프로토콜을 지원하지 않습니다."
+            );
+            console.error("❌ 현재 URL:", window.location.href);
+            console.error("");
+            console.error("✅ 해결 방법:");
+            console.error(
+              "포트 5500이 이미 사용 중이므로 HTTP 서버가 실행 중입니다."
+            );
+            console.error("다음 URL로 접근하세요:");
+            console.error("👉 http://localhost:55/company/company.html");
+            console.error("   또는");
+            console.error("👉 http://127.0.0.1:55/company/company.html");
+            console.error("");
+            console.error("file:// URL 대신 위의 HTTP URL을 사용해야 합니다!");
+            showFallbackMap();
+            return;
+          }
+
+          // API가 로드되지 않았을 때 임시 지도 표시
+          showFallbackMap();
+
+          // API가 나중에 로드될 수 있으므로 재시도
+          if (!window.naverMapAPILoaded) {
+            setTimeout(() => {
+              if (
+                typeof naver !== "undefined" &&
+                typeof naver.maps !== "undefined"
+              ) {
+                console.log(
+                  "네이버 지도 API가 나중에 로드되었습니다. 재시도합니다."
+                );
+                initMap();
+              }
+            }, 1000);
+          }
+          return;
+        }
+
+        try {
+          // 경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 좌표
+          const mapCenter = new naver.maps.LatLng(37.6315, 127.1158);
+
+          const map = new naver.maps.Map("naver-map", {
+            center: mapCenter,
+            zoom: 15,
+          });
+
+          // 지도 인스턴스를 전역 변수에 저장
+          window.currentMap = map;
+
+          const marker = new naver.maps.Marker({
+            position: mapCenter,
+            map: map,
+            title: "그린에이 본사",
+            icon: {
+              content: `
+                <div style="
+                  position: relative;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                ">
+                  <!-- Location Pin Icon -->
+                  <div style="
+                    position: relative;
+                    width: 60px;
+                    height: 60px;
+                    background: #ffffff;
+                    border: 3px solid #53C178;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    z-index: 2;
+                  ">
+                    <img 
+                      src="../asset8.png" 
+                      alt="그린에이 로고" 
+                      style="
+                        width: 40px;
+                        height: 40px;
+                        object-fit: contain;
+                      "
+                      onerror="this.style.display='none';"
+                    />
+                  </div>
+                  <!-- Pin Point -->
+                  <div style="
+                    width: 0;
+                    height: 0;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-top: 16px solid #53C178;
+                    margin-top: -2px;
+                    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+                  "></div>
+                  <!-- Text Label -->
+                  <div style="
+                    padding: 4px 8px;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #1f2937;
+                    white-space: nowrap;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  ">그린에이</div>
+                </div>
+              `,
+              size: new naver.maps.Size(80, 96),
+              anchor: new naver.maps.Point(40, 76),
+            },
+          });
+
+          const infoWindow = new naver.maps.InfoWindow({
+            content: `
+              <div style="
+                padding: 15px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                border: 1px solid #e5e7eb;
+                min-width: 200px;
+              ">
+                <div style="
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #1f2937;
+                  margin-bottom: 8px;
+                ">그린에이 본사</div>
+                <div style="
+                  font-size: 14px;
+                  color: #6b7280;
+                  line-height: 1.5;
+                ">
+                  경기도 구리시 갈매중앙로 190<br>
+                  휴밸나인 지식산업센터 C동
+                </div>
+              </div>
+            `,
+          });
+
+          naver.maps.Event.addListener(marker, "click", function () {
+            if (infoWindow.getMap()) {
+              infoWindow.close();
+            } else {
+              infoWindow.open(map, marker);
+            }
+          });
+
+          // 마커 클릭 시 네이버 지도 검색으로 이동
+          naver.maps.Event.addListener(marker, "click", function () {
+            const address =
+              "경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 그린에이";
+            const searchUrl = `https://map.naver.com/v5/search/${encodeURIComponent(
+              address
+            )}`;
+            window.open(searchUrl, "_blank");
+          });
+
+          // 마커 위치 고정 (줌 레벨 변경 시에도 위치 유지)
+          // 마커의 position은 항상 고정된 좌표를 가리키도록 설정
+          marker.setPosition(mapCenter);
+
+          // 지도 줌 변경 시 마커 위치가 변경되지 않도록 보장
+          naver.maps.Event.addListener(map, "zoom_changed", function () {
+            // 줌 레벨이 변경되어도 마커 위치는 항상 고정
+            marker.setPosition(mapCenter);
+          });
+
+          // 지도 중심 변경 시에도 마커 위치 고정
+          naver.maps.Event.addListener(map, "center_changed", function () {
+            // 지도 중심이 변경되어도 마커는 항상 고정된 위치에 유지
+            // 단, 사용자가 직접 지도를 이동한 경우는 제외
+          });
+
+          // 초기 로드 시 마커를 중앙에 맞춤
+          setTimeout(() => {
+            map.setCenter(mapCenter);
+            map.setZoom(15);
+          }, 200);
+
+          // 본사 위치 (전역 변수로 저장)
+          const officeLocation = mapCenter;
+          let routePolyline = null;
+          let currentLocationMarker = null;
+
+          // 본사로 이동 버튼
+          const goToOfficeBtn = document.getElementById("go-to-office-btn");
+          if (goToOfficeBtn) {
+            goToOfficeBtn.addEventListener("click", function () {
+              // 지도를 본사 위치로 이동
+              map.setCenter(officeLocation);
+              map.setZoom(15);
+            });
+          }
+
+          // 현위치 조회 기능
+          const currentLocationBtn = document.getElementById(
+            "current-location-btn"
+          );
+
+          if (currentLocationBtn) {
+            currentLocationBtn.addEventListener("click", function () {
+              if (!navigator.geolocation) {
+                alert("현위치 조회 기능을 지원하지 않는 브라우저입니다.");
+                return;
+              }
+
+              // 버튼 비활성화 및 로딩 표시
+              currentLocationBtn.disabled = true;
+              currentLocationBtn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+              `;
+
+              navigator.geolocation.getCurrentPosition(
+                function (position) {
+                  const lat = position.coords.latitude;
+                  const lng = position.coords.longitude;
+                  const currentLocation = new naver.maps.LatLng(lat, lng);
+
+                  // 기존 현위치 마커 제거
+                  if (currentLocationMarker) {
+                    currentLocationMarker.setMap(null);
+                  }
+
+                  // 현위치 마커 생성
+                  currentLocationMarker = new naver.maps.Marker({
+                    position: currentLocation,
+                    map: map,
+                    icon: {
+                      content: `
+                        <div style="
+                          width: 20px;
+                          height: 20px;
+                          background: #4285f4;
+                          border: 3px solid #ffffff;
+                          border-radius: 50%;
+                          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                        "></div>
+                      `,
+                      size: new naver.maps.Size(20, 20),
+                      anchor: new naver.maps.Point(10, 10),
+                    },
+                    title: "현재 위치",
+                  });
+
+                  // 기존 경로 제거
+                  if (routePolyline) {
+                    routePolyline.setMap(null);
+                    routePolyline = null;
+                  }
+
+                  // 네이버 지도 Directions 5.0 API를 사용하여 자동차 경로 표시
+                  getCarRoute(currentLocation, officeLocation);
+
+                  // 지도를 현위치와 본사 위치를 모두 볼 수 있도록 조정
+                  const bounds = new naver.maps.LatLngBounds();
+                  bounds.extend(currentLocation);
+                  bounds.extend(officeLocation);
+                  map.fitBounds(bounds, { padding: 50 });
+
+                  // 버튼 복원
+                  currentLocationBtn.disabled = false;
+                  currentLocationBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  `;
+
+                  console.log("현위치 조회 완료:", lat, lng);
+                },
+                function (error) {
+                  let errorMessage = "현위치를 조회할 수 없습니다.";
+                  switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                      errorMessage = "현위치 조회 권한이 거부되었습니다.";
+                      break;
+                    case error.POSITION_UNAVAILABLE:
+                      errorMessage = "현위치 정보를 사용할 수 없습니다.";
+                      break;
+                    case error.TIMEOUT:
+                      errorMessage = "현위치 조회 시간이 초과되었습니다.";
+                      break;
+                  }
+                  alert(errorMessage);
+
+                  // 버튼 복원
+                  currentLocationBtn.disabled = false;
+                  currentLocationBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  `;
+                },
+                {
+                  enableHighAccuracy: true,
+                  timeout: 10000,
+                  maximumAge: 0,
+                }
+              );
+            });
+          }
+
+          // 네이버 지도 앱으로 자동차 경로 안내 (CORS 문제로 인해 직접 API 호출 불가)
+          function getCarRoute(start, end) {
+            // 기존 경로 제거
+            if (routePolyline) {
+              routePolyline.setMap(null);
+              routePolyline = null;
+            }
+
+            // 네이버 클라우드 플랫폼 Directions API는 브라우저에서 직접 호출 시 CORS 오류 발생
+            // 따라서 네이버 지도 앱으로 경로 안내 링크를 제공합니다
+            console.log("네이버 지도 앱으로 경로 안내를 제공합니다.");
+
+            // 직선 경로를 표시하고 네이버 지도 링크 제공
+            drawStraightRoute(start, end);
+            showNaverMapLink(start, end);
+          }
+
+          // 네이버 지도 앱으로 경로 안내 링크 표시
+          function showNaverMapLink(start, end) {
+            // 네이버 지도 본사 위치 바로가기 URL
+            const naverMapUrl = `https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EA%B0%88%EB%A7%A4%EC%A4%91%EC%95%99%EB%A1%9C%20190%20%ED%9C%B4%EB%B0%B8%EB%82%98%EC%9D%B8%20%EC%A7%80%EC%8B%9D%EC%82%B0%EC%97%85%EC%84%BC%ED%84%B0%20C%EB%8F%99%20%EA%B7%B8%EB%A6%B0%EC%97%90%EC%9D%B4/address/14151674.9795259,4528342.6847385,%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EA%B0%88%EB%A7%A4%EC%A4%91%EC%95%99%EB%A1%9C%20190?isCorrectAnswer=true&c=15.00,0,0,0,dh`;
+
+            // 기존 정보창 제거
+            if (routeInfoWindow) {
+              routeInfoWindow.close();
+            }
+
+            const infoContent = `
+              <div style="
+                padding: 16px;
+                background: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+                border: 2px solid #53C178;
+                min-width: 240px;
+                font-family: 'Noto Sans KR', sans-serif;
+              ">
+                <div style="
+                  font-size: 13px;
+                  color: #666;
+                  margin-bottom: 16px;
+                  line-height: 1.6;
+                ">
+                  상세 경로, 거리, 예상 시간은<br>
+                  네이버 지도에서 확인하실 수 있습니다.
+                </div>
+                <a href="${naverMapUrl}" target="_blank" style="
+                  display: block;
+                  background: #53C178;
+                  color: white;
+                  padding: 12px 20px;
+                  border-radius: 8px;
+                  text-decoration: none;
+                  font-size: 14px;
+                  font-weight: 600;
+                  text-align: center;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 2px 8px rgba(83, 193, 120, 0.3);
+                " 
+                onmouseover="this.style.background='#4aad6a'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.background='#53C178'; this.style.transform='translateY(0)';"
+                >네이버 지도 바로가기</a>
+              </div>
+            `;
+
+            routeInfoWindow = new naver.maps.InfoWindow({
+              content: infoContent,
+              anchorSize: new naver.maps.Size(0, 0),
+              pixelOffset: new naver.maps.Point(0, -10),
+            });
+
+            // 현위치 마커 위에 정보창 표시
+            if (currentLocationMarker) {
+              routeInfoWindow.open(map, currentLocationMarker);
+            } else {
+              // 마커가 없으면 지도 중심에 표시
+              routeInfoWindow.open(map, map.getCenter());
+            }
+          }
+
+          // 경로 정보 표시 함수
+          let routeInfoWindow = null;
+          function showRouteInfo(distance, duration) {
+            // 기존 정보창 제거
+            if (routeInfoWindow) {
+              routeInfoWindow.close();
+            }
+
+            const infoContent = `
+              <div style="
+                padding: 12px 16px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                border: 2px solid #53C178;
+                min-width: 200px;
+                font-family: 'Noto Sans KR', sans-serif;
+              ">
+                <div style="
+                  font-size: 14px;
+                  font-weight: 600;
+                  color: #53C178;
+                  margin-bottom: 8px;
+                ">🚗 자동차 경로 안내</div>
+                <div style="
+                  font-size: 13px;
+                  color: #333;
+                  margin-bottom: 4px;
+                ">거리: <strong>${distance} km</strong></div>
+                <div style="
+                  font-size: 13px;
+                  color: #333;
+                ">예상 시간: <strong>약 ${duration}분</strong></div>
+              </div>
+            `;
+
+            routeInfoWindow = new naver.maps.InfoWindow({
+              content: infoContent,
+              anchorSize: new naver.maps.Size(0, 0),
+            });
+
+            // 현위치 마커 위에 정보창 표시
+            if (currentLocationMarker) {
+              routeInfoWindow.open(map, currentLocationMarker);
+            }
+          }
+
+          // 직선 경로 그리기 함수 (경로 검색 실패 시 사용)
+          function drawStraightRoute(start, end) {
+            if (routePolyline) {
+              routePolyline.setMap(null);
+            }
+
+            routePolyline = new naver.maps.Polyline({
+              map: map,
+              path: [start, end],
+              strokeColor: "#53C178",
+              strokeWeight: 5,
+              strokeOpacity: 0.6,
+              strokeStyle: "dashed",
+            });
+          }
+
+          console.log("✅ 네이버 지도 초기화 완료");
+          console.log("지도 중심 좌표:", mapCenter);
+          console.log("지도 인스턴스:", map);
+        } catch (error) {
+          console.error("네이버 지도 초기화 중 오류:", error);
+          showFallbackMap();
+        }
+      }
+
+      // 주소 클립보드 복사 함수
+      function copyAddressToClipboard() {
+        const addressText = document.getElementById("address-text");
+        const address = addressText
+          ? addressText.textContent.trim()
+          : "경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 9043호";
+        const copyBtn = document.getElementById("copy-address-btn");
+
+        // 클립보드에 복사
+        navigator.clipboard
+          .writeText(address)
+          .then(function () {
+            // 복사 성공 시 버튼 텍스트 변경
+            if (copyBtn) {
+              const originalText = copyBtn.innerHTML;
+              copyBtn.innerHTML = `
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              복사됨
+            `;
+              copyBtn.style.borderColor = "#53c178";
+              copyBtn.style.color = "#53c178";
+
+              // 2초 후 원래대로 복원
+              setTimeout(function () {
+                copyBtn.innerHTML = originalText;
+                copyBtn.style.borderColor = "";
+                copyBtn.style.color = "";
+              }, 2000);
+            }
+          })
+          .catch(function (err) {
+            console.error("클립보드 복사 실패:", err);
+            alert("주소 복사에 실패했습니다. 다시 시도해주세요.");
+          });
+      }
+
+      // 네이버 지도 API 실패 시 대체 지도 표시
+      function showFallbackMap() {
+        const mapContainer = document.getElementById("naver-map");
+        if (!mapContainer) return;
+
+        mapContainer.innerHTML = `
+          <div style="
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          ">
+            <div style="
+              background: rgba(255, 255, 255, 0.2);
+              padding: 30px;
+              border-radius: 12px;
+              backdrop-filter: blur(10px);
+              border: 1px solid rgba(255, 255, 255, 0.3);
+            ">
+              <div style="font-size: 32px; margin-bottom: 15px;">🗺️</div>
+              <div style="font-size: 20px; font-weight: 600; margin-bottom: 10px;">그린에이 본사</div>
+              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 5px;">경기도 구리시 갈매중앙로 190</div>
+              <div style="font-size: 16px; opacity: 0.9; margin-bottom: 20px;">휴밸나인 지식산업센터 C동</div>
+              <div style="margin-top: 20px;">
+                <a href="https://map.naver.com/v5/search/경기도 구리시 갈매중앙로 190 휴밸나인 지식산업센터 C동 그린에이" 
+                   target="_blank" 
+                   style="
+                     display: inline-block;
+                     background: rgba(255, 255, 255, 0.3);
+                     color: white;
+                     padding: 12px 24px;
+                     border-radius: 25px;
+                     text-decoration: none;
+                     font-size: 16px;
+                     font-weight: 500;
+                     transition: all 0.3s ease;
+                     border: 1px solid rgba(255, 255, 255, 0.4);
+                   "
+                   onmouseover="this.style.background='rgba(255,255,255,0.5)'; this.style.transform='translateY(-2px)'"
+                   onmouseout="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(0)'"
+                >
+                  📍 네이버 지도에서 보기
+                </a>
+              </div>
+            </div>
+            <div style="
+              position: absolute;
+              top: 15px;
+              right: 15px;
+              background: rgba(0, 0, 0, 0.4);
+              color: white;
+              padding: 6px 12px;
+              border-radius: 6px;
+              font-size: 12px;
+              font-weight: 500;
+            ">
+              지도 로딩 중...
+            </div>
+          </div>
+        `;
+
+        console.log("대체 지도 표시 완료");
+      }
+
+      // 네이버 지도 API 로드 확인 및 자동 초기화
+      let naverMapAPICheckCount = 0;
+      const MAX_CHECK_COUNT = 100; // 최대 10초 대기 (100ms * 100)
+
+      function checkNaverMapAPI() {
+        naverMapAPICheckCount++;
+
+        // 현재 URL 정보 로깅 (첫 번째 시도만)
+        if (naverMapAPICheckCount === 1) {
+          console.log("=== 네이버 지도 API 로드 확인 시작 ===");
+          console.log("현재 프로토콜:", window.location.protocol);
+          console.log("현재 호스트:", window.location.host);
+          console.log("현재 URL:", window.location.href);
+          console.log(
+            "API 스크립트 URL:",
+            "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=k32jds060c"
+          );
+        }
+
+        if (typeof naver !== "undefined" && typeof naver.maps !== "undefined") {
+          console.log("✅ 네이버 지도 API 로드 성공!");
+          console.log("naver 객체:", naver);
+          console.log("naver.maps 객체:", naver.maps);
+          window.naverMapAPILoaded = true;
+
+          // URL에 #map이 있으면 자동으로 지도 초기화
+          if (window.location.hash === "#map") {
+            setTimeout(() => {
+              const mapSection = document.getElementById("map");
+              if (mapSection && mapSection.style.display !== "none") {
+                initMap();
+              }
+            }, 500);
+          }
+        } else {
+          if (naverMapAPICheckCount < MAX_CHECK_COUNT) {
+            if (naverMapAPICheckCount % 10 === 0) {
+              // 10회마다 로그 출력
+              console.log(
+                `⏳ 네이버 지도 API 로드 대기 중... (${naverMapAPICheckCount}/${MAX_CHECK_COUNT})`
+              );
+              console.log("naver 타입:", typeof naver);
+              if (typeof naver !== "undefined") {
+                console.log("naver.maps 타입:", typeof naver.maps);
+              }
+            }
+            // API가 아직 로드되지 않았으면 재시도
+            setTimeout(checkNaverMapAPI, 100);
+          } else {
+            console.error("❌ 네이버 지도 API 로드 실패: 최대 대기 시간 초과");
+            console.error("최종 naver 타입:", typeof naver);
+            if (typeof naver !== "undefined") {
+              console.error("최종 naver.maps 타입:", typeof naver.maps);
+            }
+            console.error("가능한 원인:");
+            console.error("1. 네이버 클라우드 콘솔의 Web 서비스 URL 설정 확인");
+            console.error("2. API 키 확인 (ncpKeyId=k32jds060c)");
+            console.error("3. 브라우저 콘솔에서 네트워크 탭 확인");
+            showFallbackMap();
+          }
+        }
+      }
+
+      // 페이지 로드 시 API 확인
+      window.addEventListener("load", function () {
+        console.log("페이지 로드 완료");
+        checkNaverMapAPI();
+      });
+
+      // DOMContentLoaded 시에도 확인 (더 빠른 초기화)
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", checkNaverMapAPI);
+      } else {
+        checkNaverMapAPI();
+      }
+
+      // 스크립트 로드 이벤트도 확인
+      (function () {
+        const naverMapScript = document.querySelector(
+          'script[src*="oapi.map.naver.com"], script[src*="openapi.map.naver.com"]'
+        );
+        if (naverMapScript) {
+          console.log(
+            "네이버 지도 API 스크립트 태그 발견:",
+            naverMapScript.src
+          );
+
+          // 이미 로드되었을 수 있으므로 즉시 확인
+          if (
+            naverMapScript.complete ||
+            naverMapScript.readyState === "complete"
+          ) {
+            console.log("✅ 네이버 지도 API 스크립트가 이미 로드되었습니다.");
+            setTimeout(checkNaverMapAPI, 100);
+          } else {
+            console.log("⏳ 네이버 지도 API 스크립트 로드 대기 중...");
+            naverMapScript.addEventListener("load", function () {
+              console.log("✅ 네이버 지도 API 스크립트 로드 이벤트 발생");
+              window.naverMapScriptLoaded = true;
+              setTimeout(checkNaverMapAPI, 100);
+            });
+            naverMapScript.addEventListener("error", function (e) {
+              console.error("❌ 네이버 지도 API 스크립트 로드 실패");
+              console.error("에러 상세:", e);
+              window.naverMapScriptError = true;
+              console.error("가능한 원인:");
+              console.error(
+                "1. 네이버 클라우드 콘솔의 Web 서비스 URL에 현재 도메인이 등록되어 있는지 확인"
+              );
+              console.error("2. API 키가 올바른지 확인");
+              console.error("3. 네트워크 연결 확인");
+              showFallbackMap();
+            });
+          }
+        } else {
+          console.error("❌ 네이버 지도 API 스크립트 태그를 찾을 수 없습니다.");
+        }
+      })();
+
+      // 추가 확인: 스크립트가 로드되었는지 주기적으로 확인
+      let scriptCheckCount = 0;
+      const scriptCheckInterval = setInterval(function () {
+        scriptCheckCount++;
+        if (typeof naver !== "undefined" && typeof naver.maps !== "undefined") {
+          console.log("네이버 지도 API 확인됨 (주기적 확인)");
+          clearInterval(scriptCheckInterval);
+          window.naverMapAPILoaded = true;
+          if (window.location.hash === "#map") {
+            setTimeout(() => {
+              const mapSection = document.getElementById("map");
+              if (mapSection && mapSection.style.display !== "none") {
+                initMap();
+              }
+            }, 500);
+          }
+        } else if (scriptCheckCount >= 100) {
+          // 10초 후에도 로드되지 않으면 중단
+          console.error("네이버 지도 API 로드 실패: 주기적 확인 시간 초과");
+          clearInterval(scriptCheckInterval);
+          if (window.naverMapScriptError) {
+            showFallbackMap();
+          }
+        }
+      }, 100);
+
+      // 오시는길 섹션이 활성화될 때 지도 초기화
+      document.addEventListener("DOMContentLoaded", function () {
+        const mapButton = document.querySelector('[data-section="map"]');
+        if (mapButton) {
+          mapButton.addEventListener("click", function () {
+            console.log("오시는길 버튼 클릭됨");
+
+            // 지도 컨테이너가 보이는지 확인
+            const mapContainer = document.getElementById("naver-map");
+            if (!mapContainer) {
+              console.error("지도 컨테이너를 찾을 수 없습니다.");
+              return;
+            }
+
+            // 지도 컨테이너가 숨겨져 있다면 보이도록 설정
+            if (mapContainer.style.display === "none") {
+              mapContainer.style.display = "block";
+            }
+
+            setTimeout(() => {
+              try {
+                console.log("지도 초기화 시작");
+
+                // 기존 지도가 있고 유효한 경우에만 refresh, 아니면 재초기화
+                if (window.currentMap) {
+                  try {
+                    // 지도가 유효한지 확인
+                    if (
+                      window.currentMap &&
+                      typeof window.currentMap.refresh === "function"
+                    ) {
+                      // 지도가 이미 있으면 refresh만 수행
+                      window.currentMap.refresh();
+                      console.log("지도 리사이즈 완료");
+                      return;
+                    }
+                  } catch (refreshError) {
+                    console.warn(
+                      "지도 refresh 실패, 재초기화합니다:",
+                      refreshError
+                    );
+                    // refresh 실패 시 재초기화를 위해 null로 설정
+                    window.currentMap = null;
+                  }
+                }
+
+                // 지도 컨테이너 초기화 (새로 초기화하는 경우만)
+                const mapContainer = document.getElementById("naver-map");
+                if (mapContainer && !window.currentMap) {
+                  // 지도가 없을 때만 컨테이너 초기화
+                  mapContainer.innerHTML = "";
+                }
+
+                initMap();
+                console.log("지도 초기화 완료");
+              } catch (error) {
+                console.error("지도 초기화 중 오류 발생:", error);
+              }
+            }, 300);
+          });
+        }
+      });
+    </script>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

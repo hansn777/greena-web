@@ -1,0 +1,30 @@
+# robots.txt for greenaofficial.com
+# 사이트 비활성화 중 - 모든 크롤러 차단
+
+User-agent: *
+Disallow: /
+
+# 네이버 봇 차단
+User-agent: Yeti
+Disallow: /
+
+# 구글 봇 차단
+User-agent: Googlebot
+Disallow: /
+
+# 빙 봇 차단
+User-agent: Bingbot
+Disallow: /
+
+# 기타 검색 엔진 봇 차단
+User-agent: Slurp
+Disallow: /
+
+User-agent: DuckDuckBot
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+
+

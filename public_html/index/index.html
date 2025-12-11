@@ -1271,7 +1271,8 @@
         const mainServiceSection = document.querySelector("#mainService");
         if (mainServiceSection) {
           // Main Title Area 애니메이션
-          const mainTitleArea = mainServiceSection.querySelector("#mainTitleArea");
+          const mainTitleArea =
+            mainServiceSection.querySelector("#mainTitleArea");
           if (mainTitleArea) {
             const titleElements = mainTitleArea.querySelectorAll("h2, p");
 
@@ -1305,9 +1306,8 @@
           }
 
           // Service Items 애니메이션
-          const serviceItems = mainServiceSection.querySelectorAll(
-            ".service-item"
-          );
+          const serviceItems =
+            mainServiceSection.querySelectorAll(".service-item");
 
           serviceItems.forEach((item, itemIndex) => {
             const itemElements = item.querySelectorAll(
@@ -1319,7 +1319,7 @@
               element.style.transform = "translateY(30px)";
 
               const transitionDuration = "0.6s";
-              const delay = (itemIndex * 0.2) + (elementIndex * 0.08);
+              const delay = itemIndex * 0.2 + elementIndex * 0.08;
 
               element.style.transition = `opacity ${transitionDuration} ease-out ${delay}s, transform ${transitionDuration} ease-out ${delay}s`;
 
